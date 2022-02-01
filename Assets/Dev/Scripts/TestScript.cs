@@ -7,7 +7,7 @@ public class TestScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Hello World");
-        Debug.Log("Hi i'm nathan");
+        Debug.Log("My name's Avishy");
     }
 
 }
