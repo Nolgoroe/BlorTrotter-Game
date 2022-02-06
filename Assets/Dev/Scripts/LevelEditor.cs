@@ -95,8 +95,7 @@ public class LevelEditor : MonoBehaviour
             {
 
                 int neighbourValue = 0;
-                int randomBtw0and3 = UnityEngine.Random.Range(1, 4);
-                int randomBtw0and2 = UnityEngine.Random.Range(1, 3);
+                
 
 
 
@@ -151,67 +150,69 @@ public class LevelEditor : MonoBehaviour
                 if(skuuu != null)
                 {
                     waterTile = skuuu.path;
+                    //to get random gameobject you will need to change "public GameObject path " into an array of GameObject and then watertile will be equal to random.range 
+                    //from 0 to the array size 
                 }
 
 
-                    //switch (neighbourValue)
-                    //{
+                //switch (neighbourValue)
+                //{
 
 
-                    //    case 0:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_SS");
-                    //        break;
-                    //    case 1:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_EBL");
-                    //        break;
-                    //    case 2:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_EBR");
-                    //        break;
-                    //    case 3:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_CB");
-                    //        break;
-                    //    case 4:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_ETL");
-                    //        break;
-                    //    case 5:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_LSL_0" + randomBtw0and2.ToString());
-                    //        break;
-                    //    case 6:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_CL");
-                    //        break;
-                    //    case 7:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_LBL_0" + randomBtw0and2.ToString());
-                    //        break;
-                    //    case 8:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_ETR");
-                    //        break;
-                    //    case 9:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_CSR");
-                    //        break;
-                    //    case 10:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_LSR_0" + randomBtw0and2.ToString());
-                    //        break;
-                    //    case 11:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_LBR_0" + randomBtw0and2.ToString());
-                    //        break;
-                    //    case 12:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_CT");
-                    //        break;
-                    //    case 13:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_LTL_0" + randomBtw0and2.ToString());
-                    //        break;
-                    //    case 14:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_LTR_0" + randomBtw0and2.ToString());
-                    //        break;
-                    //    case 15:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_CF_0" + randomBtw0and3.ToString());
-                    //        break;
-                    //    case 35:
-                    //        waterTile = GameObject.Find("Water/TER_D_Water_CSB");
-                    //        break;
+                //    case 0:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_SS");
+                //        break;
+                //    case 1:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_EBL");
+                //        break;
+                //    case 2:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_EBR");
+                //        break;
+                //    case 3:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_CB");
+                //        break;
+                //    case 4:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_ETL");
+                //        break;
+                //    case 5:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_LSL_0" + randomBtw0and2.ToString());
+                //        break;
+                //    case 6:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_CL");
+                //        break;
+                //    case 7:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_LBL_0" + randomBtw0and2.ToString());
+                //        break;
+                //    case 8:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_ETR");
+                //        break;
+                //    case 9:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_CSR");
+                //        break;
+                //    case 10:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_LSR_0" + randomBtw0and2.ToString());
+                //        break;
+                //    case 11:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_LBR_0" + randomBtw0and2.ToString());
+                //        break;
+                //    case 12:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_CT");
+                //        break;
+                //    case 13:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_LTL_0" + randomBtw0and2.ToString());
+                //        break;
+                //    case 14:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_LTR_0" + randomBtw0and2.ToString());
+                //        break;
+                //    case 15:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_CF_0" + randomBtw0and3.ToString());
+                //        break;
+                //    case 35:
+                //        waterTile = GameObject.Find("Water/TER_D_Water_CSB");
+                //        break;
 
-                    //}
-                    Debug.Log("AND now prefab : " + colorMapping.prefab);
+                //}
+                Debug.Log("AND now prefab : " + colorMapping.prefab);
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
                 GameObject tile = Instantiate(waterTile, position, Quaternion.identity);
                 tile.AddComponent<Tile>().cost = neighbourValue;
