@@ -5,15 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public int cost;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int index;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool isFull;
 }

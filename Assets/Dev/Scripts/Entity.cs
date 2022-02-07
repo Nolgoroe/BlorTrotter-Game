@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Tile currentTile; /// HAS TO BE A BETTER WAY TO DO THIS
+
+    public abstract void SayMyName();
+
+    public virtual async Task MoveEntity(Tile targetTile)
     {
-        
+        await Task.Yield();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetTargetTile() /// HAS TO BE A BETTER WAY TO DO THIS
     {
-        
+        currentTile = GridManager.instance.GetAdjacentTile(currentTile);
     }
+
+    public abstract void PlayerAnimation();
 }
