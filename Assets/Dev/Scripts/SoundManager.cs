@@ -18,7 +18,7 @@ public class EnumAndClip
     public AudioClip theSoundClip;
 }
 
-public class SoundManager : MonoBehaviour, IManagable
+public class SoundManager : MonoBehaviour, IManageable
 {
     public static SoundManager instance;
 
@@ -75,6 +75,11 @@ public class SoundManager : MonoBehaviour, IManagable
         audioSource.volume = Volume;
 
         audioSource.PlayOneShot(enumToSound[soundEnum]);
+    }
+
+    public void ResetVolume()
+    {
+        audioSource.volume = 1;
     }
 }
 

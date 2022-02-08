@@ -5,11 +5,7 @@ using System.Threading.Tasks;
 
 public class Slug : Entity
 {
-
-    public override void SayMyName()
-    {
-        Debug.Log("I AM SLUG");
-    }
+    public string slugName;
 
     public override async Task MoveEntity(Tile targetTile)
     {
@@ -18,7 +14,7 @@ public class Slug : Entity
         Debug.Log("ENEMY DONE");
     }
 
-    public override void PlayerAnimation()
+    public override void PlayAnimation()
     {
         /// Set Slug animation Data here
     }

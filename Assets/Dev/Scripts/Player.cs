@@ -5,17 +5,12 @@ using System.Threading.Tasks;
 
 public class Player : Entity
 {
-    public override void SayMyName()
-    {
-        Debug.Log("I AM THE PLAYER!!!");
-    }
-
     public override async Task MoveEntity(Tile targetTile)
     {
         await Task.Yield();
     }
 
-    public override void PlayerAnimation()
+    public override void PlayAnimation()
     {
         /// Set player animation Data here
     }

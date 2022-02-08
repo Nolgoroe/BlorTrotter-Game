@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.Events;
 
-public class TutorialManager : MonoBehaviour, IManagable
+public class TutorialManager : MonoBehaviour, IManageable
 {
     public static TutorialManager instance;
 
@@ -23,9 +23,4 @@ public class TutorialManager : MonoBehaviour, IManagable
 
 
 
-    [ContextMenu("HERE")]
-    public void CallDisplayTutorialText(UnityEvent actionEvent) //DELTE THIS AFTER SHOWING NATHAN
-    {
-        EventManager.instance.ShootEvent(actionEvent);
-    }
 }

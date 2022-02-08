@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SaveLoadManager : MonoBehaviour, IManagable
+public class SaveLoadManager : MonoBehaviour, IManageable
 {
     public static SaveLoadManager instance;
 
@@ -47,7 +47,10 @@ public class SaveLoadManager : MonoBehaviour, IManagable
             savePath = Application.dataPath + "/Game State.txt";
         }
 
-        JsonUtility.FromJsonOverwrite(File.ReadAllText(savePath), saveLoadDataObject);
+        if (File.Exists(savePath))
+        {
+            JsonUtility.FromJsonOverwrite(File.ReadAllText(savePath), saveLoadDataObject);
+        }
 
         Debug.Log("Done loading game state!");
     }

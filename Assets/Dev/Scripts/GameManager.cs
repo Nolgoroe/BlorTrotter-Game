@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         Debug.Log("success Game Manager");
+
+
+        InitAllGame();
     }
 
     [ContextMenu("Init complete system")]
@@ -20,9 +23,9 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject manager in allManagerObjects)
         {
-            if (manager.GetComponent<IManagable>() != null)
+            if (manager.GetComponent<IManageable>() != null)
             {
-                manager.GetComponent<IManagable>().initManager();
+                manager.GetComponent<IManageable>().initManager(); // initizalize all singleton objects
             }
             else
             {
@@ -31,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        SaveLoadManager.instance.LoadGameState();
+        SaveLoadManager.instance.LoadGameState(); // load the game
     }
 
 

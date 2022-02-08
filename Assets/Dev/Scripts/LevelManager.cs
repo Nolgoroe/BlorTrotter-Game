@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class LevelManager : MonoBehaviour, IManagable
+public class LevelManager : MonoBehaviour, IManageable
 {
     public static LevelManager instance;
 
@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour, IManagable
 
     public void ChooseLevel(int levelNum)
     {
-        currentLevel = Instantiate((LevelScriptableObject)Resources.Load("Scriptable Objects/Levels/Level " + levelNum));
+        currentLevel = Instantiate((LevelScriptableObject)Resources.Load("Scriptable Objects/Levels/Level " + levelNum)); /// NATHA PLEASE COMMENT THIS
     }
 
 
@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour, IManagable
 
         foreach (IndexToGameobject element in currentLevel.objectsOnGrid)
         {
-            Tile tile = GridManager.instance.allTilesInLevel.Where(p => p.index == element.tileIndex).SingleOrDefault();
+            Tile tilePoisition = GridManager.instance.allTilesInLevel.Where(p => p.index == element.tileIndex).SingleOrDefault();
 
             // add logic of instantiating.. sorting order.. maybe change logic to fit your coding style!
             // there is still morel logic to write here

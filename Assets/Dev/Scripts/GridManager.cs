@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GridManager : MonoBehaviour, IManagable
+public class GridManager : MonoBehaviour, IManageable
 {
     public static GridManager instance;
 
@@ -68,6 +68,9 @@ public class GridManager : MonoBehaviour, IManagable
 
     public bool CheckTileAvailability(Tile TargetTile)
     {
+        // Nathan will populate this with relevant logic
+
+
         if (TargetTile.isFull)
         {
             return false;
@@ -91,34 +94,10 @@ public class GridManager : MonoBehaviour, IManagable
 
     public Tile GetAdjacentTile(Tile currentTile)
     {
-        int random = Random.Range(0, 2);
+        /// this is not how the logic is supposed to work - we need to check the up, down, left and right tiles and choose one out of them
 
-        int indexCalc = 0;
 
-        if(random == 0)
-        {
-            if (currentTile.index + 1 > allTilesInLevel.Count)
-            {
-                indexCalc = -1;
-            }
-            else
-            {
-                indexCalc = 1;
-            }
-        }
-        else
-        {
-            if (currentTile.index - 1 < 0)
-            {
-                indexCalc = 1;
-            }
-            else
-            {
-                indexCalc = -1;
-            }
-        }
-
-        return allTilesInLevel[currentTile.index + indexCalc];
+        return null;
     }
 
 }

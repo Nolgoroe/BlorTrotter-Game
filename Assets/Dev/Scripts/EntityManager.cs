@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class EntityManager : MonoBehaviour, IManagable
+public class EntityManager : MonoBehaviour, IManageable
 {
     public static EntityManager instance;
 
@@ -38,9 +38,7 @@ public class EntityManager : MonoBehaviour, IManagable
 
     public async void MovePlayer(Tile targetTile)
     {
-        player.SetTargetTile(); /// HAS TO BE A BETTER WAY TO DO THIS
-
-        await player.MoveEntity(player.currentTile); /// HAS TO BE A BETTER WAY TO DO THIS.... THE MOVE ENTITY PART - THE AWAIT PART IS COOL
+        await player.MoveEntity(targetTile); /// HAS TO BE A BETTER WAY TO DO THIS.... THE MOVE ENTITY PART - THE AWAIT PART IS COOL
 
         MoveAllEnemies();
     }
@@ -66,18 +64,6 @@ public class EntityManager : MonoBehaviour, IManagable
 
 
 
-
-
-    [ContextMenu("test inheritence")]
-    public void TestInheritence() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        foreach (Entity e in allEnemies)
-        {
-            e.SayMyName();
-        }
-
-        player.SayMyName();
-    }
 
     [ContextMenu("Move Enemeies")]
     public void TestMoveEnemies() //DELTE THIS AFTER SHOWING NATHAN

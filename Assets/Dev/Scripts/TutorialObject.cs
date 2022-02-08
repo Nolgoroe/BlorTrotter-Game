@@ -14,6 +14,8 @@ public class TutorialObject : MonoBehaviour
     {
         UnityEvent tutorialDescription = new UnityEvent();
         tutorialDescription.AddListener(() => TutorialManager.instance.DisplayTutorialText(description));
+
+        actionEvent = tutorialDescription;
     }
 
 
@@ -21,4 +23,12 @@ public class TutorialObject : MonoBehaviour
     {
         return actionEvent;
     }
+
+
+    [ContextMenu("HERE")]
+    public void CallDisplayTutorialText() //DELETE THIS AFTER SHOWING NATHAN
+    {
+        EventManager.instance.ShootEvent(actionEvent);
+    }
+
 }

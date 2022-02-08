@@ -13,7 +13,7 @@ public enum UIScreenTypes
     screen4 //DELTE THIS AFTER SHOWING NATHAN
 }
 
-public class UIManager : MonoBehaviour, IManagable
+public class UIManager : MonoBehaviour, IManageable
 {
     public static UIManager instance;
 
@@ -45,7 +45,8 @@ public class UIManager : MonoBehaviour, IManagable
             screenTypeToObject.Add((UIScreenTypes)i, allGameScreens[i]);
         }
 
-        DisableAllScreens();
+        //DisableAllScreens();
+        DisplaySpecificScreens(new UIScreenTypes[] {UIScreenTypes.screen1});
 
         Debug.Log("success UI");
     }
@@ -110,7 +111,7 @@ public class UIManager : MonoBehaviour, IManagable
     }
 
 
-    public void FadeImage(bool fadeIn,Image toFade)
+    public void FadeImage(bool fadeIn, Image toFade)
     {
         if (fadeIn)
         {

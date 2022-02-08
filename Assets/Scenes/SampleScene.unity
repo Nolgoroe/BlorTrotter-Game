@@ -314,10 +314,10 @@ RectTransform:
   m_Father: {fileID: 749817935}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 1734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &126546210
 MonoBehaviour:
@@ -967,6 +967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7913fde3899759241acffb9196327eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
+  slugName: 
 --- !u!4 &678006239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4659010874594842254, guid: 94910fc435ac0374aad74ffd03a96611, type: 3}
@@ -1365,6 +1367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b693af0ef55611745b813bb93ca11225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLevelReached: 0
 --- !u!1 &977076360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977076360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.9, y: 4.2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.09, z: -5.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1687258585}
@@ -1843,7 +1846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allTilesInLevel: []
   currentlySelectedTile: {fileID: 0}
-  tileDisplayManager: {fileID: 0}
+  tileDisplayManager: {fileID: 2128938587}
 --- !u!4 &1194576572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5908041713204948884, guid: 65aabb1a0d52a3f4e8de68a9d1353c84, type: 3}
@@ -2228,6 +2231,8 @@ GameObject:
   - component: {fileID: 1474007866}
   - component: {fileID: 1474007865}
   - component: {fileID: 1474007867}
+  - component: {fileID: 1474007868}
+  - component: {fileID: 1474007869}
   m_Layer: 0
   m_Name: TER_D_Dirt01
   m_TagString: Tile
@@ -2294,7 +2299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474007864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.369, y: 0, z: 0}
+  m_LocalPosition: {x: -28.945, y: 0.665, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2329,6 +2334,37 @@ PolygonCollider2D:
       - {x: -0.97903335, y: 0.5024792}
       - {x: 0.0051736534, y: 1.0862061}
       - {x: 0.9932469, y: 0.521904}
+--- !u!114 &1474007868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474007864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299cb40dbdfb7e745959cfba09d7cd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  index: 0
+  isFull: 0
+--- !u!114 &1474007869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474007864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb24bc3900b1e649ba00d06a2dd072a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: this sdaskdnasnfjasnfjasnf
+  actionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1545832735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveLoadDataObject: {fileID: 967114396}
+  savePath: 
 --- !u!4 &1762371922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4628154750474375751, guid: 35279875515366b4a8306085ab65a7cb, type: 3}
@@ -2777,6 +2814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7913fde3899759241acffb9196327eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
+  slugName: 
 --- !u!4 &1855991678
 Transform:
   m_ObjectHideFlags: 0
@@ -2924,6 +2963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7913fde3899759241acffb9196327eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
+  slugName: 
 --- !u!1 &2012724472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,6 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958d62fac0cba5d4f8666608a6b317df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
 --- !u!4 &2115307416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6359421151913598188, guid: 91830a91611bb0146880fcfdfbc93236, type: 3}
