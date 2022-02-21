@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour, IManageable
+public class InputManager : MonoBehaviour, IManageable  //singleton , only instantiate one time 
 {
     public static InputManager instance;
 
@@ -20,8 +20,9 @@ public class InputManager : MonoBehaviour, IManageable
         {
             touch = Input.touches[0];
 
-            if (touch.phase == TouchPhase.Began)
-            {
+            if (touch.phase == TouchPhase.Began)  
+            {  
+                //if a finger touch the screen, cast a ray from the finger point, if the ray intersect with a tile, set the tile as currently selected
                 RaycastHit2D hit;
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
 

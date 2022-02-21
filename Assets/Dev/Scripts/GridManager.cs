@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GridManager : MonoBehaviour, IManageable
+public class GridManager : MonoBehaviour, IManageable  //singleton , only instantiate one time 
 {
     public static GridManager instance;
 
@@ -35,13 +35,15 @@ public class GridManager : MonoBehaviour, IManageable
         currentlySelectedTile = null;
     }
 
+
+     // when we click on a tile
     public void SetCurrentSelectedTile(Tile selectedTile)
     {
-        if (currentlySelectedTile == selectedTile)
+        if (currentlySelectedTile == selectedTile)  // if we click on the same tile as we clicked just before
         {
             bool validTarget = CheckTileAvailability(selectedTile);
 
-            if (validTarget)
+            if (validTarget) // if the tile is empty, move on it
             {
                 EntityManager.instance.MovePlayer(selectedTile); /// HAS TO BE A BETTER WAY TO DO THIS
                 //move the player to selectedTile here since we just selected the same tile twice..
@@ -51,7 +53,7 @@ public class GridManager : MonoBehaviour, IManageable
                 // dunno what to do here?
             }
 
-            tileDisplayManager.SetTileNotSelectedDisplay(currentlySelectedTile);
+            tileDisplayManager.SetTileNotSelectedDisplay(currentlySelectedTile);  
 
 
 
@@ -59,7 +61,8 @@ public class GridManager : MonoBehaviour, IManageable
         }
         else
         {
-            currentlySelectedTile = selectedTile;
+            // if we clicked on a new tile (not the same as we clicked before) this one become the new current one and we will have a visual aspect on it
+            currentlySelectedTile = selectedTile;  
             tileDisplayManager.SetTileSelectedDisplay(currentlySelectedTile);
 
             CheckDisplayTutorialText(selectedTile);
@@ -82,7 +85,7 @@ public class GridManager : MonoBehaviour, IManageable
     }
 
 
-
+    // feed the tutorial UI with text if possible
     public void CheckDisplayTutorialText(Tile tileToCheck)
     {
         if (tileToCheck.GetComponent<TutorialObject>())

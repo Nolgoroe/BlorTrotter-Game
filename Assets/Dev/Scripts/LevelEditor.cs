@@ -5,15 +5,15 @@ using System.Linq;
 using System;
 
 [Serializable]
-public class blehh
+public class WaterTiles
 {
     public int cost;
-    public GameObject path;
+    public GameObject[] water;
 }
 
 public class LevelEditor : MonoBehaviour
 {   
-    public List<blehh> blahBleh;
+    public List<WaterTiles> waterTiles;
     public Texture2D map;
     public LevelParser[] colorMappings;
 
@@ -146,10 +146,11 @@ public class LevelEditor : MonoBehaviour
 
                 
 
-                blehh skuuu = blahBleh.Where(p => p.cost == neighbourValue).SingleOrDefault();
-                if(skuuu != null)
+                WaterTiles waterTileToInstantiate = waterTiles.Where(p => p.cost == neighbourValue).SingleOrDefault();
+                if(waterTileToInstantiate != null)
                 {
-                    waterTile = skuuu.path;
+                    int i = UnityEngine.Random.Range(0, waterTileToInstantiate.water.Length);
+                    waterTile = waterTileToInstantiate.water[i];
                     //to get random gameobject you will need to change "public GameObject path " into an array of GameObject and then watertile will be equal to random.range 
                     //from 0 to the array size 
                 }

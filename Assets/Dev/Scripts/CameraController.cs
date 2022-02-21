@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     Transform camPivot;
 
-    public float panSpeed;
+    public float panSpeed;   // speed to move the cam pivot
     public float rightBound;
     public float leftBound;
     public float topBound;
@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
         {
             touch = Input.GetTouch(0);
 
-            if (Input.touchCount < 2)
+            if (Input.touchCount < 2) // if we touch the screen with only one finger
             {
                 if (!isZoom)
                 {
@@ -42,7 +42,8 @@ public class CameraController : MonoBehaviour
                     {
 
                         Vector2 touchDeltaPos = touch.deltaPosition;
-
+                        // we move the cam and if the cam translate to the rigt  it will looks like the game translate to the left
+                        // to avoid this we use minus 
                         camPivot.Translate(-touchDeltaPos.x * panSpeed * Time.deltaTime, -touchDeltaPos.y * panSpeed * Time.deltaTime, 0);
 
                         camPivot.position = new Vector3(Mathf.Clamp(camPivot.position.x, -leftBound, rightBound), Mathf.Clamp(camPivot.position.y, -bottomBound, topBound), -7.56f);
@@ -50,7 +51,7 @@ public class CameraController : MonoBehaviour
                 }
             }
 
-            if (Input.touchCount == 2)
+            if (Input.touchCount == 2) //zooming and dezooming by using 2 fingers 
             {
                 // zoom logic here
             }
@@ -67,73 +68,5 @@ public class CameraController : MonoBehaviour
 
 
 
-    // NATHAN PLEASE DELETE THIS WHEN YOU ARE READY
-
-    //public Transform target;
-    //public float distance = 10f;
-
-    //public float xSpeed = 250;
-    //public float ySpeed = 120;
-
-    ////public int yMinLimit = -20;
-    ////public int yMaxLimit = 80;
-
-    //private float x = 0;
-    //private float y = 0;
-
-    //float xsign = 1;
-
-
-
-
-    //private void Start()
-    //{
-    //    Vector3 angles = transform.eulerAngles;
-    //    x = angles.y;
-    //    y = angles.x;
-
-    //    Quaternion rotation = Quaternion.Euler(y, x, 0);
-    //    //Vector3 position = rotation * new Vector3(0, 0, -distance) + target.position;
-
-    //    transform.rotation = rotation;
-    //    //transform.position = position;
-
-    //}
-
-
-    //private void LateUpdate()
-    //{
-    //    //get the rotationsigns
-
-    //    Vector3 forward = transform.TransformDirection(Vector3.up);
-    //    Vector3 forward2 = target.transform.TransformDirection(Vector3.up);
-
-    //    if (Vector3.Dot(forward, forward2) < 0)
-    //    {
-    //        xsign = -1;
-    //    }
-    //    else
-    //    {
-    //        xsign = 1;
-    //    }
-
-    //    Debug.Log(xsign);
-
-    //    foreach (Touch touch in Input.touches)
-    //    {
-    //        if (touch.phase == TouchPhase.Moved)
-    //        {
-    //            x += xsign * touch.deltaPosition.x * xSpeed * 0.02f;
-    //            y -= touch.deltaPosition.y * ySpeed * 0.02f;
-
-
-
-    //            Quaternion rotation = Quaternion.Euler(y, x, 0);
-    //            Vector3 position = rotation * new Vector3(0, 1.17f, -distance) + target.position;
-
-    //            transform.rotation = rotation;
-    //            transform.position = position;
-    //        }
-    //    }
-    //}
+   
 }

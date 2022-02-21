@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour, IManageable
 
 
 
-    public void ChooseLevel(int levelNum)
+    public void ChooseLevel(int levelNum) // we instantiate to have a clone of the scriptable object, because we absolutely don't want to change the data in the original one
     {
         currentLevel = Instantiate((LevelScriptableObject)Resources.Load("Scriptable Objects/Levels/Level " + levelNum)); /// NATHA PLEASE COMMENT THIS
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventManager : MonoBehaviour, IManageable
+public class EventManager : MonoBehaviour, IManageable //singleton , only instantiate one time 
 {
     public static EventManager instance;
 

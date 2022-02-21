@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class EntityManager : MonoBehaviour, IManageable
+public class EntityManager : MonoBehaviour, IManageable  //singleton , only instantiate one time 
 {
     public static EntityManager instance;
 
     [SerializeField] private Entity player;
 
-    [SerializeField] private List<Entity> allEnemies;
+    [SerializeField] private List<Entity> allEnemies; // list is dynamic
 
     public void initManager()
     {
@@ -18,7 +18,7 @@ public class EntityManager : MonoBehaviour, IManageable
         Debug.Log("success Entity Manager");
     }
 
-    public void AddEnemyToEnemiesList(Entity enemyToAdd)
+    public void AddEnemyToEnemiesList(Entity enemyToAdd) // add enemy to the list 
     {
         allEnemies.Add(enemyToAdd);
     }
@@ -36,14 +36,14 @@ public class EntityManager : MonoBehaviour, IManageable
     }
 
 
-    public async void MovePlayer(Tile targetTile)
+    public async void MovePlayer(Tile targetTile) // wait for the player to move for moving all the enemies
     {
         await player.MoveEntity(targetTile); /// HAS TO BE A BETTER WAY TO DO THIS.... THE MOVE ENTITY PART - THE AWAIT PART IS COOL
 
         MoveAllEnemies();
     }
 
-    public async void MoveAllEnemies()
+    public async void MoveAllEnemies() // move all the enemies in the same time 
     {
         List<Task> tasks = new List<Task>();
 
@@ -65,7 +65,7 @@ public class EntityManager : MonoBehaviour, IManageable
 
 
 
-    [ContextMenu("Move Enemeies")]
+    [ContextMenu("Move Enemeies")] // contextMenu is used to simulate a call function 
     public void TestMoveEnemies() //DELTE THIS AFTER SHOWING NATHAN
     {
         MoveAllEnemies();

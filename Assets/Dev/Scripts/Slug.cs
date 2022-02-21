@@ -9,7 +9,7 @@ public class Slug : Entity
 
     public override async Task MoveEntity(Tile targetTile)
     {
-        await Task.Delay(3 * 1000);
+        await Task.Delay(3 * 1000);  // *1000 because Delay is in miliseconds
 
         Debug.Log("ENEMY DONE");
     }

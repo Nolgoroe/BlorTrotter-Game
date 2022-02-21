@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour, IManageable
+public class ScoreManager : MonoBehaviour, IManageable   //singleton , only instantiate one time 
 {
     public static ScoreManager instance;
 
     [SerializeField] private int levelScoreINT;
     [SerializeField] private float levelScoreFloat;
+
+    
+    
+    public int nbrMovesRemaining;
+    public int nbrFoodCollected;
+    public int nbrBlobCollected;
+    public int nbrBlobFragment;
 
     public void initManager()
     {

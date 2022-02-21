@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour  //singleton , only instantiate one time 
 {
-    public static GameManager instance;
+    public static GameManager instance;  
 
     [SerializeField] private GameObject[] allManagerObjects;
 

@@ -18,7 +18,7 @@ public class EnumAndClip
     public AudioClip theSoundClip;
 }
 
-public class SoundManager : MonoBehaviour, IManageable
+public class SoundManager : MonoBehaviour, IManageable   //singleton , only instantiate one time 
 {
     public static SoundManager instance;
 

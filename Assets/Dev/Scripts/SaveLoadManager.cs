@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SaveLoadManager : MonoBehaviour, IManageable
+public class SaveLoadManager : MonoBehaviour, IManageable   //singleton , only instantiate one time 
 {
     public static SaveLoadManager instance;
 
@@ -20,11 +20,11 @@ public class SaveLoadManager : MonoBehaviour, IManageable
 
     public void SaveGameState()
     {
-        string savedData = JsonUtility.ToJson(saveLoadDataObject);
+        string savedData = JsonUtility.ToJson(saveLoadDataObject);   // save the data in a file called Game State
 
         if (Application.platform == RuntimePlatform.Android)
         {
-            savePath = Application.persistentDataPath + "/Game State.txt";
+            savePath = Application.persistentDataPath + "/Game State.txt"; 
         }
         else
         {
@@ -37,7 +37,7 @@ public class SaveLoadManager : MonoBehaviour, IManageable
     }
 
     public void LoadGameState()
-    {
+    {                                                               //load Game State
         if (Application.platform == RuntimePlatform.Android)
         {
             savePath = Application.persistentDataPath + "/Game State.txt";
