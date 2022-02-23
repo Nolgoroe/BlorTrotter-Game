@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 
 public class Slug : Entity
 {
-    public string slugName;
-
     public override async Task MoveEntity(Tile targetTile)
     {
         await Task.Delay(3 * 1000);  // *1000 because Delay is in miliseconds

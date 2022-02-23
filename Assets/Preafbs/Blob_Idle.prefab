@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6117789543435538044}
   - component: {fileID: 6117789543435538047}
   - component: {fileID: 6117789543435538046}
+  - component: {fileID: 3138679924709094614}
   m_Layer: 0
   m_Name: Blob_Idle
   m_TagString: Player
@@ -102,3 +103,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3138679924709094614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117789543435538041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958d62fac0cba5d4f8666608a6b317df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}

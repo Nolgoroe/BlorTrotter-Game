@@ -24,9 +24,4 @@ public class WinLoseScreen : MonoBehaviour
         // add in the score manager the moves, food, blob... then i can use ScoreManager.instance.foodCollected.ToString(); and same for the others
 
     }
-   /* private void Start()
-    {
-        winOrLoseText.text = "Skuuuu";
-    }
-   */
 }
