@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UISelectable : MonoBehaviour, IPointerClickHandler
+public class UISelectable : MonoBehaviour, IPointerClickHandler  // can interact with a ui element 
 {
 
     public GameObject wikiPage;

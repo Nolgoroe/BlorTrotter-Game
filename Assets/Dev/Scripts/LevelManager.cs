@@ -29,17 +29,18 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         currentLevelNumberOfMoves = currentLevel.maxNumberOfMoves;
 
-        float offset = 1.184f;
+        float offset = 1.184f; // correspond to 2x the offset in the levelgenerator
         
 
-        foreach (IndexToGameobject element in currentLevel.objectsOnGrid)
+        foreach (IndexToGameobject element in currentLevel.objectsOnGrid) // level 1 scriptable object
         {
             Tile tilePosition = GridManager.instance.allTilesInLevel.Where(p => p.index == element.tileIndex).SingleOrDefault();
 
-            ////////////////HERE
+            //////////////// get the position of the tiles with obstacle or element on it in the scriptable object 
             Vector3 position = new Vector3(tilePosition.transform.position.x, tilePosition.transform.position.y + offset, tilePosition.transform.position.z);
             GameObject obstacle =  Instantiate(element.prefab, position, tilePosition.transform.rotation);
-            obstacle.GetComponent<SpriteRenderer>().sortingOrder = tilePosition.GetComponent<SpriteRenderer>().sortingOrder;
+            obstacle.GetComponent<SpriteRenderer>().sortingOrder = tilePosition.GetComponent<SpriteRenderer>().sortingOrder; 
+            // put the sprites on the same layer
         }
     }
 

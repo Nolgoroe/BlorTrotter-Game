@@ -12,7 +12,7 @@ public class ResetPositionScrollView : MonoBehaviour
         initialPos = rctTransform.localPosition;
     }
 
-    // Update is called once per frame
+    //reste the position to avoid the fact that if we scoll the  base screen, click on an element and go back to the base, the screen is still scrolled 
     
     private void OnDisable()
     {

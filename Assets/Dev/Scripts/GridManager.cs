@@ -106,7 +106,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     /// ////////
     
 
-    public void Start()
+    public void Start() //increment the index of tiles 
     {
         int i = 0;
 

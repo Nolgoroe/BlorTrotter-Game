@@ -10,10 +10,10 @@ public class ButtonReturn : MonoBehaviour
 
     public void ReturnButton()
     {
-         Transform parentTransform = this.transform.parent;
+         Transform parentTransform = this.transform.parent; //need the transform of the parent to get the gameobject 
          GameObject parent = parentTransform.gameObject;
 
-        parent.SetActive(false);
+        parent.SetActive(false);                ///disactive this object and reactive the menu
         precedentMenu.SetActive(true);
 
     }
