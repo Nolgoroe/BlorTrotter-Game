@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
         InitAllGame();
         LevelManager.instance.ChooseLevel(1);
         LevelEditor.instance.CallGenerateLevel();
+        StartLevelSetData(); 
+
+        CameraController.instance.CenterOnBlob();
     }
 
     [ContextMenu("Init complete system")]

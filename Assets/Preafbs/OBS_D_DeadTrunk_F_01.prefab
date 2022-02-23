@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7527507284177644908}
   m_Layer: 0
   m_Name: OBS_D_DeadTrunk_F_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

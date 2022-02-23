@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tile
+  - Enemy
+  - Obstacle
+  - OtherBlobs
   layers:
   - Default
   - TransparentFX

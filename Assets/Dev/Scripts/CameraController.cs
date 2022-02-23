@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : MonoBehaviour, IManageable
 {
+    public static CameraController instance;
+
     public static bool canControlCamera;
 
     private bool isZoom;
@@ -21,8 +23,10 @@ public class CameraController : MonoBehaviour
 
     public float startingDistanceFormBoard;
 
-    private void Start()
+    public void initManager()
     {
+        instance = this;
+
         cam = Camera.main;
         isZoom = false;
         canControlCamera = false;
@@ -64,7 +68,6 @@ public class CameraController : MonoBehaviour
     }
 
 
-
     [ContextMenu("Center On Blob")]
     public void CenterOnBlob()
     {
@@ -73,7 +76,4 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - startingDistanceFormBoard);
 
     }
-
-
-   
 }

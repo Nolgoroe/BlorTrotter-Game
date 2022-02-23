@@ -80,7 +80,7 @@ public class LevelEditor : MonoBehaviour, IManageable
             if (Mathf.Abs(pixelColor.r - colorMapping.color.r) <= threshold && Mathf.Abs(pixelColor.g - colorMapping.color.g) <= threshold && Mathf.Abs(pixelColor.b - colorMapping.color.b) <= threshold)
             {
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
-                tile = Instantiate(colorMapping.prefab, position, Quaternion.identity);
+                tile = Instantiate(colorMapping.prefab, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
                 
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
 
@@ -149,7 +149,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
           
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
-                tile = Instantiate(waterTile, position, Quaternion.identity);
+                tile = Instantiate(waterTile, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
                 tile.AddComponent<Tile>().cost = neighbourValue;
 
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
@@ -250,23 +250,44 @@ public class LevelEditor : MonoBehaviour, IManageable
             return;
         }
 
-
-        // Debug.Log("pixelcolor" + pixelColor);
-
         foreach (LevelParser colorMapping in colorMappingsObstacles)
         {
-            //  Debug.Log("colormapping" + colorMapping.color);
-
-
             if (Mathf.Abs(pixelColor.r - colorMapping.color.r) <= threshold && Mathf.Abs(pixelColor.g - colorMapping.color.g) <= threshold && Mathf.Abs(pixelColor.b - colorMapping.color.b) <= threshold)
             {
                 Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2) , parent.position.z);
                
 
-                GameObject obstacle = Instantiate(colorMapping.prefab, position, Quaternion.identity, parent );
-                obstacle.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                GameObject ToSummon = Instantiate(colorMapping.prefab, position, Quaternion.identity, parent );
+                ToSummon.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+                if (!ToSummon.CompareTag("Obstacle"))
+                {
+                    SetParentByTag(ToSummon);
+                }
               
             }
         }
     }   
+
+    void SetParentByTag(GameObject inObject)
+    {
+        switch (inObject.tag)
+        {
+            case "Player":
+                inObject.transform.SetParent(ObjectRefrencer.instance.enviroment.transform);
+                break;
+
+            case "Enemy":
+                inObject.transform.SetParent(ObjectRefrencer.instance.enemies.transform);
+                break;
+
+            case "OtherBlobs":
+                inObject.transform.SetParent(ObjectRefrencer.instance.otherBlobs.transform);
+                break;
+
+
+            default:
+                break;
+        }
+    }
 }
