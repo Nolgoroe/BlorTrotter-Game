@@ -264,7 +264,7 @@ public class LevelEditor : MonoBehaviour, IManageable
                
 
                 GameObject obstacle = Instantiate(colorMapping.prefab, position, Quaternion.identity, parent );
-                obstacle.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                obstacle.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
               
             }
         }

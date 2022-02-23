@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     public float topBound;
     public float bottomBound;
 
+    public float startingDistanceFormBoard;
 
     private void Start()
     {
@@ -46,7 +47,7 @@ public class CameraController : MonoBehaviour
                         // to avoid this we use minus 
                         camPivot.Translate(-touchDeltaPos.x * panSpeed * Time.deltaTime, -touchDeltaPos.y * panSpeed * Time.deltaTime, 0);
 
-                        camPivot.position = new Vector3(Mathf.Clamp(camPivot.position.x, -leftBound, rightBound), Mathf.Clamp(camPivot.position.y, -bottomBound, topBound), -7.56f);
+                        camPivot.position = new Vector3(Mathf.Clamp(camPivot.position.x, -leftBound, rightBound), Mathf.Clamp(camPivot.position.y, -bottomBound, topBound), 45f);
                     }
                 }
             }
@@ -64,8 +65,14 @@ public class CameraController : MonoBehaviour
 
 
 
+    [ContextMenu("Center On Blob")]
+    public void CenterOnBlob()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - startingDistanceFormBoard);
 
+    }
 
 
    
