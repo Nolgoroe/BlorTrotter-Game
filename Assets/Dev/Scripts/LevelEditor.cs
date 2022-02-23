@@ -30,6 +30,7 @@ public class LevelEditor : MonoBehaviour
 
 
     GameObject waterTile;
+    
 
 
     void Start()
@@ -43,16 +44,17 @@ public class LevelEditor : MonoBehaviour
         {
             for (int x = 0; x < map.width; x++)
             {
-
+               
                 GenerateTile(x, y);
+                
+                
             }
 
             //implementing the offset for each row
             offsetNewRowX++;
             offsetNewRowY -= offsetY;
         }
-        Debug.Log(map.width);
-        Debug.Log(map.height);
+        
     }
     void GenerateTile(int x, int y)
     {
@@ -66,11 +68,11 @@ public class LevelEditor : MonoBehaviour
         }
 
 
-        Debug.Log("pixelcolor" + pixelColor);
+       // Debug.Log("pixelcolor" + pixelColor);
 
         foreach (LevelParser colorMapping in colorMappings)
         {
-            Debug.Log("colormapping" + colorMapping.color);
+          //  Debug.Log("colormapping" + colorMapping.color);
 
 
             if (Mathf.Abs(pixelColor.r - colorMapping.color.r) <= threshold && Mathf.Abs(pixelColor.g - colorMapping.color.g) <= threshold && Mathf.Abs(pixelColor.b - colorMapping.color.b) <= threshold)
@@ -81,6 +83,8 @@ public class LevelEditor : MonoBehaviour
 
                 //each tile should be behind the tile above, we decrement the layer of each tile and start from a higher value each new line
                 spriteRenderer.sortingOrder = map.width + (offsetNewRowX - x);
+
+                GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());
             }
 
 
@@ -151,8 +155,7 @@ public class LevelEditor : MonoBehaviour
                 {
                     int i = UnityEngine.Random.Range(0, waterTileToInstantiate.water.Length);
                     waterTile = waterTileToInstantiate.water[i];
-                    //to get random gameobject you will need to change "public GameObject path " into an array of GameObject and then watertile will be equal to random.range 
-                    //from 0 to the array size 
+                    
                 }
 
 
@@ -213,15 +216,19 @@ public class LevelEditor : MonoBehaviour
                 //        break;
 
                 //}
-                Debug.Log("AND now prefab : " + colorMapping.prefab);
+                
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
                 GameObject tile = Instantiate(waterTile, position, Quaternion.identity);
                 tile.AddComponent<Tile>().cost = neighbourValue;
-                
+
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
 
                 //each tile should be behind the tile above, we decrement the layer of each tile and start from a higher value each new line
+
                 spriteRenderer.sortingOrder = map.width + (offsetNewRowX - x);
+
+                GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());
+
 
 
             }

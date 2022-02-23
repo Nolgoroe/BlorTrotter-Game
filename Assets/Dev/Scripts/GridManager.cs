@@ -102,5 +102,18 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
         return null;
     }
+    
+    /// ////////
+    
 
+    public void Start()
+    {
+        int i = 0;
+
+        foreach (Tile tile in allTilesInLevel)
+        {
+            tile.index = i;
+            i++;
+        }
+    }
 }

@@ -29,12 +29,17 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         currentLevelNumberOfMoves = currentLevel.maxNumberOfMoves;
 
+        float offset = 1.184f;
+        
+
         foreach (IndexToGameobject element in currentLevel.objectsOnGrid)
         {
-            Tile tilePoisition = GridManager.instance.allTilesInLevel.Where(p => p.index == element.tileIndex).SingleOrDefault();
+            Tile tilePosition = GridManager.instance.allTilesInLevel.Where(p => p.index == element.tileIndex).SingleOrDefault();
 
-            // add logic of instantiating.. sorting order.. maybe change logic to fit your coding style!
-            // there is still morel logic to write here
+            ////////////////HERE
+            Vector3 position = new Vector3(tilePosition.transform.position.x, tilePosition.transform.position.y + offset, tilePosition.transform.position.z);
+            GameObject obstacle =  Instantiate(element.prefab, position, tilePosition.transform.rotation);
+            obstacle.GetComponent<SpriteRenderer>().sortingOrder = tilePosition.GetComponent<SpriteRenderer>().sortingOrder;
         }
     }
 
