@@ -21,7 +21,10 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
         currentlySelectedTile = null;
 
+        TilesIndexer();
+
         Debug.Log("success Grid Manager");
+
     }
 
     public void AddTileToTileList(Tile toAdd)
@@ -106,7 +109,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     /// ////////
     
 
-    public void Start() //increment the index of tiles 
+  
+
+    private void TilesIndexer()
     {
         int i = 0;
 

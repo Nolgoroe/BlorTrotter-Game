@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
 
 
         InitAllGame();
+        LevelManager.instance.ChooseLevel(1);
+        LevelEditor.instance.CallGenerateLevel();
     }
 
     [ContextMenu("Init complete system")]

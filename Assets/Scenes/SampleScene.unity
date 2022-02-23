@@ -17638,7 +17638,7 @@ GameObject:
   - component: {fileID: 988551641}
   - component: {fileID: 988551640}
   m_Layer: 0
-  m_Name: LevelEditor
+  m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17725,6 +17725,9 @@ MonoBehaviour:
   - cost: 31
     water:
     - {fileID: 723329152823117466, guid: fa7bc589608fd1c4885af834d12ae6fc, type: 3}
+  - cost: 35
+    water:
+    - {fileID: 7777744510468585696, guid: 6cb791c5917f80941a28a9d2fd235df1, type: 3}
   - cost: 39
     water:
     - {fileID: 8944615624486153088, guid: d7724fd524f8dde4b8367d6a80d2305e, type: 3}
@@ -17799,12 +17802,24 @@ MonoBehaviour:
     - {fileID: 7520638590497887064, guid: e193dd7349a7d9245bdc0d33dcde9047, type: 3}
     - {fileID: 7504824777008735698, guid: 53a976d73c67f8847877a21278025831, type: 3}
     - {fileID: 6941153483349467083, guid: b851fd30e0553c44e8381c05b7b18529, type: 3}
-  map: {fileID: 2800000, guid: 967adcee24e02734ebc63fd75c9e5906, type: 3}
-  colorMappings:
+  levelMap: {fileID: 21300000, guid: dc39f3eeb66c49441922c698955feb56, type: 3}
+  levelObstacles: {fileID: 21300000, guid: 9c4decf9a00bce6489da17240e2ebe75, type: 3}
+  colorMappingsTiles:
   - color: {r: 1, g: 0, b: 0, a: 1}
     prefab: {fileID: 8253027442462377727, guid: f65f25bd0c7343441973a3342b665e3d, type: 3}
-  - color: {r: 0, g: 0, b: 0, a: 1}
-    prefab: {fileID: 0}
+  colorMappingsObstacles:
+  - color: {r: 0.047058824, g: 0.6666667, b: 0.105882354, a: 0.99215686}
+    prefab: {fileID: 6937486304539027265, guid: bb6c38a5781026343bd6d171f3e9db7e, type: 3}
+  - color: {r: 0.6284362, g: 0.6666667, b: 0.04705882, a: 0.99215686}
+    prefab: {fileID: 3330404291797304167, guid: 273aaa2a1f64341419a79a38d3d3bda3, type: 3}
+  - color: {r: 0.9223949, g: 0.033018887, b: 1, a: 0.99215686}
+    prefab: {fileID: 7139853343520406502, guid: e6a5064cb9034bf448627542881a159e, type: 3}
+  - color: {r: 0.049439307, g: 0.466453, b: 0.9528302, a: 0.99215686}
+    prefab: {fileID: 8815410267380514803, guid: 6988b4d8aadbaeb41b50496c9b0e402f, type: 3}
+  - color: {r: 0.8365422, g: 1, b: 0.75, a: 0.99215686}
+    prefab: {fileID: 6117789543435538041, guid: 52c55ecf1d3d0fe4187c63749e818613, type: 3}
+  - color: {r: 0.8962264, g: 0.61806256, b: 0.114142045, a: 0.99215686}
+    prefab: {fileID: 5684419901494802835, guid: 6bc9f08902035ca4b8c9b482e55f09b8, type: 3}
   threshold: 0.005
 --- !u!4 &988551641
 Transform:
@@ -29579,6 +29594,7 @@ MonoBehaviour:
   - {fileID: 883755848}
   - {fileID: 314558741}
   - {fileID: 1742337524}
+  - {fileID: 988551639}
   - {fileID: 1085763986}
 --- !u!1 &1547875113
 GameObject:
