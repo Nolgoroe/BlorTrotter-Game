@@ -24,7 +24,8 @@ public class LevelEditor : MonoBehaviour, IManageable
     [SerializeField]
     private float threshold;
 
-    float offsetY = 0.592f;
+    [HideInInspector]
+    public float offsetY = 0.592f;
     //fake isometric view mean we have to have an offset for each new row
     int offsetNewRowX = 0;
     float offsetNewRowY = 0;
@@ -54,12 +55,12 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 tileGenerated = GenerateTile(x, y);
 
-                if(tileGenerated != null)
+                if (tileGenerated != null)
                 {
                     GenerateObstacles(tileGenerated.transform, x, y);
-                }        
-                
-                if(x==0)
+                }
+
+                if (x==0)
                 {                  
                     tileGenerated.GetComponent<Tile>().edgeType = EdgeType.leftEdge;
                 }
@@ -100,9 +101,9 @@ public class LevelEditor : MonoBehaviour, IManageable
             {
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
                 tile = Instantiate(colorMapping.prefab, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
-                tile.name = "tile" + tile.GetComponent<Tile>().index;
                 
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
+                tile.GetComponent<Tile>().SetXY(x, y);
 
                 //each tile should be behind the tile above, we decrement the layer of each tile and start from a higher value each new line
                 spriteRenderer.sortingOrder = levelMap.texture.width + (offsetNewRowX - x);
@@ -308,7 +309,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                     EntityManager.instance.AddEnemyToEnemiesList(et);
                     et.SetCurrentTile(t);
-
+                    //et.SetTargetTileForAstarPath();
                     //need to think how to implement more enemies 
                 }
 

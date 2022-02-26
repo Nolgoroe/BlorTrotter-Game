@@ -42,29 +42,65 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         allEnemies.Clear();
     }
 
-
     public async void MovePlayer(Tile targetTile) // wait for the player to move for moving all the enemies
     {
-        await player.MoveEntity(targetTile); /// HAS TO BE A BETTER WAY TO DO THIS.... THE MOVE ENTITY PART - THE AWAIT PART IS COOL
+        await player.MoveEntity(targetTile);
 
-        MoveAllEnemies();
+        if (!targetTile.isGooPiece)
+        {
+            MoveAllEnemies();
+        }
     }
 
-    public async void MoveAllEnemies() // move all the enemies in the same time 
+    public async void MoveAllEnemies() // move all the enemies in the same time  // NEW
     {
         List<Task> tasks = new List<Task>();
 
+        List<Entity> tempList = new List<Entity>();
+        tempList.AddRange(allEnemies);
+
+        for (int i = 0; i < tempList.Count; i++)
+        {
+            if (tempList[i].enemyPath.Count <= 0)
+            {
+                await RemoveEnemyFromList(tempList[i], allEnemies);
+
+                await Task.Delay(1 * 1000);
+                Destroy(tempList[i].gameObject);
+            }
+        }
+
+
+
+
+
         for (int i = 0; i < allEnemies.Count; i++)
         {
-            
-            allEnemies[i].SetTargetTile(); 
 
-            tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].currentTile)); /// HAS TO BE A BETTER WAY TO DO THIS
+            //Tile target = allEnemies[i].SetTargetTileForAstarPath(); 
+            allEnemies[i].ManageTurnStart();
+
+
+            tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].enemyPath[0])); /// HAS TO BE A BETTER WAY TO DO THIS
         }
 
         await Task.WhenAll(tasks);
 
+
+
+
+
+
+
+        SetPlayerTurn();
         Debug.Log("All enemies done moving");
+    }
+
+    public async Task RemoveEnemyFromList(Entity entity, List<Entity> theList)
+    {
+        theList.Remove(entity);
+
+        await Task.Yield();
     }
 
     public void SetPlayerTurn()
@@ -73,7 +109,13 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     }
 
 
-
+    public void SetEnemyTargetTiles()
+    {
+        for (int i = 0; i < allEnemies.Count; i++)
+        {
+            allEnemies[i].SetTargetTileForAstarPath();
+        }
+    }
 
 
     [ContextMenu("Move Enemeies")] // contextMenu is used to simulate a call function 

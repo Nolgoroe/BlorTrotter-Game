@@ -34,6 +34,10 @@ public class LevelManager : MonoBehaviour, IManageable
 
         GridManager.instance.TilesIndexer();
         GridManager.instance.SetMapEdges();
+        GridManager.instance.FillallEdgeTileInLevelList();
+
+        EntityManager.instance.SetEnemyTargetTiles();
+
         EntityManager.instance.SetPlayerTurn();
 
     }
@@ -49,7 +53,11 @@ public class LevelManager : MonoBehaviour, IManageable
         }
     }
 
-
+    public void DecreaseNumberOfMoves() //NEW
+    {
+        currentLevelNumberOfMoves--;
+        CheckEndLevel();
+    }
 
 
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour  //singleton , only instantiate one time 
 {
@@ -75,6 +76,10 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
 
 
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     [ContextMenu("start level set data")]
     public void CallStartLevelSetData() //DELTE THIS AFTER SHOWING NATHAN

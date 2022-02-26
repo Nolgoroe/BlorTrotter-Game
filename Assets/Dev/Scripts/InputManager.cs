@@ -16,31 +16,38 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Player.isPlayerTurn) // NEW
         {
-            touch = Input.touches[0];
+            if (Input.touchCount > 0)
+            {
+                touch = Input.touches[0];
 
-            if (touch.phase == TouchPhase.Began)  
-            {  
-                //if a finger touch the screen, cast a ray from the finger point, if the ray intersect with a tile, set the tile as currently selected
-                RaycastHit2D hit;
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-
-                hit = Physics2D.GetRayIntersection(ray);
-
-                if (hit)
+                if (touch.phase == TouchPhase.Ended && !CameraController.isDragging)
                 {
-                    if (hit.collider.CompareTag("Tile"))
+                    //if a finger touch the screen, cast a ray from the finger point, if the ray intersect with a tile, set the tile as currently selected
+                    RaycastHit2D hit;
+                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
+
+                    hit = Physics2D.GetRayIntersection(ray);
+
+                    if (hit)
                     {
-                        Debug.Log("Detected Click on Tile object! " + hit.transform.name);
-                        GridManager.instance.SetCurrentSelectedTile(hit.transform.GetComponent<Tile>());
-                    }
-                }
-                else
-                {
-                    Debug.Log("NOTHING");
-                }
+                        if (hit.collider.CompareTag("Tile"))
+                        {
+                            Debug.Log("Detected Click on Tile object! " + hit.transform.name);
 
+                            if (EntityManager.instance.GetPlayer().entityAdjacentTiles.Contains(hit.transform.GetComponent<Tile>())) // NEW
+                            {
+                                GridManager.instance.SetCurrentSelectedTile(hit.transform.GetComponent<Tile>());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("NOTHING");
+                    }
+
+                }
             }
         }
     }

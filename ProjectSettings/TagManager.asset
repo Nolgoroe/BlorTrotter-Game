@@ -45,3 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tile
+    uniqueID: 450083661
+    locked: 0
+  - name: tileSelection
+    uniqueID: 1459811767
+    locked: 0
+  - name: obstacles & Entities
+    uniqueID: 3707639051
+    locked: 0

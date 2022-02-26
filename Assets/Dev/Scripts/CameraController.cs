@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour, IManageable
     public static CameraController instance;
 
     public static bool canControlCamera;
+    public static bool isDragging;  // NEW
 
     private bool isZoom;
     private Touch touch;
@@ -45,6 +46,7 @@ public class CameraController : MonoBehaviour, IManageable
                 {
                     if (touch.phase == TouchPhase.Moved)
                     {
+                        isDragging = true;  // NEW
 
                         Vector2 touchDeltaPos = touch.deltaPosition;
                         // we move the cam and if the cam translate to the rigt  it will looks like the game translate to the left
@@ -58,11 +60,13 @@ public class CameraController : MonoBehaviour, IManageable
 
             if (Input.touchCount == 2) //zooming and dezooming by using 2 fingers 
             {
+                isDragging = false;  // NEW
                 // zoom logic here
             }
         }
         else
         {
+            isDragging = false;  // NEW
             isZoom = false;  // Fail safe - we want to make absoloutly sure that zoom is false after we lifted all fingers from the screen
         }
     }
