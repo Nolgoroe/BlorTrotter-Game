@@ -32,6 +32,10 @@ public class LevelManager : MonoBehaviour, IManageable
         /// level editor generate level here          
         LevelEditor.instance.CallGenerateLevel();
 
+        GridManager.instance.TilesIndexer();
+        GridManager.instance.SetMapEdges();
+        EntityManager.instance.SetPlayerTurn();
+
     }
 
 

@@ -16,4 +16,28 @@ public class Slug : Entity
     {
         /// Set Slug animation Data here
     }
+    public override void SetTargetTile()
+    {
+        bool tileAvailable = false;
+        tileAvailable = GridManager.instance.CheckTileAvailability(currentTile);
+        // randomize available tile, chose one
+        // currentTile = ?
+        //each slugs's this will reference a different slug
+    }
+
+    public override void AddGooTiles(Tile gooTile)
+    {
+        gooTiles.Add(gooTile);
+    }
+
+    public override void ManageTurnStart()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SetCurrentTile(Tile tileOn)
+    {
+        currentTile = tileOn;
+    }
+
 }

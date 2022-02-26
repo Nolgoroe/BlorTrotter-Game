@@ -5,17 +5,35 @@ using System.Threading.Tasks;
 
 public abstract class Entity : MonoBehaviour // abstract class for inheritance and polymorphism
 {
-    public Tile currentTile; /// HAS TO BE A BETTER WAY TO DO THIS
 
+    public List<Tile> gooTiles;
+    public Tile currentTile;
+    public List<Tile> entityAdjacentTiles;
     public virtual async Task MoveEntity(Tile targetTile) // can be override
     {
         await Task.Yield();
     }
 
-    public void SetTargetTile() /// HAS TO BE A BETTER WAY TO DO THIS
+    #region   
+    public virtual void SetTargetTile() 
     {
-        currentTile = GridManager.instance.GetAdjacentTile(currentTile);
+        Debug.Log("not a player or enemy - problem");
+        
     }
 
+    public abstract void SetCurrentTile(Tile tileOn);
+   
+
+
+    #endregion
+
+
     public abstract void PlayAnimation();
+    public abstract void AddGooTiles(Tile gooTile);
+    public abstract void ManageTurnStart();
+
+
+
+
 }
+    

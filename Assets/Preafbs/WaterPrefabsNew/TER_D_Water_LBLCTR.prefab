@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3732992933654750656}
   - component: {fileID: 4196368607676331094}
+  - component: {fileID: 7837014713891975581}
   m_Layer: 0
   m_Name: TER_D_Water_LBLCTR
   m_TagString: Untagged
@@ -82,3 +83,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7837014713891975581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580836949090553938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299cb40dbdfb7e745959cfba09d7cd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  index: 0
+  isFull: 0
+  edgeType: 0

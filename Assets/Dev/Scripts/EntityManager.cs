@@ -8,13 +8,14 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     public static EntityManager instance;
 
     [SerializeField] private Entity player;
+    
 
     [SerializeField] private List<Entity> allEnemies; // list is dynamic
 
     public void initManager()
     {
         instance = this;
-        allEnemies = new List<Entity>();
+        allEnemies = new List<Entity>();     
         Debug.Log("success Entity Manager");
     }
 
@@ -27,6 +28,12 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         player = createdPlayer;
     }
+
+    public Entity GetPlayer()
+    {
+        return player;
+    }
+
 
 
     public void ResetEntityManagerData()
@@ -49,7 +56,8 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
         for (int i = 0; i < allEnemies.Count; i++)
         {
-            allEnemies[i].SetTargetTile(); /// HAS TO BE A BETTER WAY TO DO THIS
+            
+            allEnemies[i].SetTargetTile(); 
 
             tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].currentTile)); /// HAS TO BE A BETTER WAY TO DO THIS
         }
@@ -59,7 +67,10 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         Debug.Log("All enemies done moving");
     }
 
-
+    public void SetPlayerTurn()
+    {
+        player.ManageTurnStart();
+    }
 
 
 

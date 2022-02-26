@@ -9,11 +9,16 @@ public class TileDisplayManager : MonoBehaviour
 
     public void SetTileSelectedDisplay(Tile toSetSelect)
     {
-        // summon the selected sprite on this tile
+        toSetSelect.selectedSprite.SetActive(true);
     }
 
     public void SetTileNotSelectedDisplay(Tile toSetSelect)
     {
-        // summon the selected sprite on this tile
+        toSetSelect.selectedSprite.SetActive(false);
+    }
+
+    public void SetColorAdjacentTile()
+    {
+
     }
 }

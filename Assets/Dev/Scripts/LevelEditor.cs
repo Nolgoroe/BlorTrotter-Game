@@ -47,20 +47,39 @@ public class LevelEditor : MonoBehaviour, IManageable
     {
         for (int y = levelMap.texture.height - 1; y >= 0; y--)
         {
+            GameObject tileGenerated = null;
+
             for (int x = 0; x < levelMap.texture.width; x++)
             {
-                
-                GameObject tileGenerated =  GenerateTile(x, y);
+
+                tileGenerated = GenerateTile(x, y);
+
                 if(tileGenerated != null)
                 {
                     GenerateObstacles(tileGenerated.transform, x, y);
-                }              
+                }        
+                
+                if(x==0)
+                {                  
+                    tileGenerated.GetComponent<Tile>().edgeType = EdgeType.leftEdge;
+                }
+                else if(y== levelMap.texture.height - 1)
+                {
+                    tileGenerated.GetComponent<Tile>().edgeType = EdgeType.topEdge;
+                }
+                else if (y == 0)
+                {
+                    tileGenerated.GetComponent<Tile>().edgeType = EdgeType.bottomEdge;
+                }
             }
 
+            tileGenerated.GetComponent<Tile>().edgeType = EdgeType.rightEdge;
+
+            
             //implementing the offset for each row
             offsetNewRowX++;
             offsetNewRowY -= offsetY;
-        }
+        }     
     }
 
     GameObject GenerateTile(int x, int y)
@@ -81,6 +100,7 @@ public class LevelEditor : MonoBehaviour, IManageable
             {
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
                 tile = Instantiate(colorMapping.prefab, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
+                tile.name = "tile" + tile.GetComponent<Tile>().index;
                 
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
 
@@ -150,7 +170,9 @@ public class LevelEditor : MonoBehaviour, IManageable
           
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
                 tile = Instantiate(waterTile, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
-                tile.AddComponent<Tile>().cost = neighbourValue;
+                tile.GetComponent<Tile>().cost = neighbourValue;
+                tile.GetComponent<Tile>().isFull = true;
+                
 
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
 
@@ -257,14 +279,40 @@ public class LevelEditor : MonoBehaviour, IManageable
                 Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2) , parent.position.z);
                
 
-                GameObject ToSummon = Instantiate(colorMapping.prefab, position, Quaternion.identity, parent );
-                ToSummon.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                GameObject toSummon = Instantiate(colorMapping.prefab, position, Quaternion.identity, parent );
+                toSummon.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;     
+                
+                Tile t = parent.GetComponent<Tile>();
+                t.isFull = true;
 
-                if (!ToSummon.CompareTag("Obstacle"))
+                if (!toSummon.CompareTag("Obstacle"))
                 {
-                    SetParentByTag(ToSummon);
+                    SetParentByTag(toSummon);
+                    
                 }
-              
+
+                if (toSummon.CompareTag("Player"))
+                {
+                    
+                    Entity et = toSummon.GetComponent<Player>();
+
+                    EntityManager.instance.SetPlayer(et);
+                    et.AddGooTiles(t);
+                    et.SetCurrentTile(t);
+                }
+
+                if(toSummon.CompareTag("Enemy"))
+                {
+                    
+                    Entity et = toSummon.GetComponent<Slug>();    
+
+                    EntityManager.instance.AddEnemyToEnemiesList(et);
+                    et.SetCurrentTile(t);
+
+                    //need to think how to implement more enemies 
+                }
+
+
             }
         }
     }   

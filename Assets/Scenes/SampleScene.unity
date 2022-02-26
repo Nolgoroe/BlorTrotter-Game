@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15686,7 +15686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &893881501
 Transform:
   m_ObjectHideFlags: 0
@@ -17833,7 +17833,7 @@ MonoBehaviour:
     - {fileID: 7504824777008735698, guid: 53a976d73c67f8847877a21278025831, type: 3}
     - {fileID: 6941153483349467083, guid: b851fd30e0553c44e8381c05b7b18529, type: 3}
   levelMap: {fileID: 21300000, guid: dc39f3eeb66c49441922c698955feb56, type: 3}
-  levelObstacles: {fileID: 21300000, guid: 9c4decf9a00bce6489da17240e2ebe75, type: 3}
+  levelObstacles: {fileID: 21300000, guid: 24ce5794a2d0a224cbacf73e526d4281, type: 3}
   colorMappingsTiles:
   - color: {r: 1, g: 0, b: 0, a: 1}
     prefab: {fileID: 8253027442462377727, guid: f65f25bd0c7343441973a3342b665e3d, type: 3}
@@ -17846,7 +17846,7 @@ MonoBehaviour:
     prefab: {fileID: 7139853343520406502, guid: e6a5064cb9034bf448627542881a159e, type: 3}
   - color: {r: 0.049439307, g: 0.466453, b: 0.9528302, a: 0.99215686}
     prefab: {fileID: 8815410267380514803, guid: 6988b4d8aadbaeb41b50496c9b0e402f, type: 3}
-  - color: {r: 0.8365422, g: 1, b: 0.75, a: 0.99215686}
+  - color: {r: 0.8352941, g: 1, b: 0.7490196, a: 1}
     prefab: {fileID: 6117789543435538041, guid: 52c55ecf1d3d0fe4187c63749e818613, type: 3}
   - color: {r: 0.8962264, g: 0.61806256, b: 0.114142045, a: 0.99215686}
     prefab: {fileID: 5684419901494802835, guid: 6bc9f08902035ca4b8c9b482e55f09b8, type: 3}
@@ -20539,7 +20539,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092186772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86d67593558e73c469f4f2a1a367a69f, type: 3}
   m_Name: 
@@ -21063,7 +21063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1143018988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29523,13 +29523,13 @@ MonoBehaviour:
   - {fileID: 1124193488}
   - {fileID: 1049014635}
   - {fileID: 1085453639}
+  - {fileID: 988551639}
   - {fileID: 414032115}
   - {fileID: 1173800580}
   - {fileID: 806202568}
   - {fileID: 883755848}
   - {fileID: 314558741}
   - {fileID: 1742337524}
-  - {fileID: 988551639}
   - {fileID: 977076360}
   - {fileID: 203022142}
   - {fileID: 1085763986}
@@ -40406,7 +40406,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -63.408478}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
