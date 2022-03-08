@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour, IManageable
         }
     }
 
-    public void DecreaseNumberOfMoves() //NEW
+    public void DecreaseNumberOfMoves() 
     {
         currentLevelNumberOfMoves--;
         CheckEndLevel();

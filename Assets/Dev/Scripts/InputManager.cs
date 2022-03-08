@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
     void Update()
     {
-        if (Player.isPlayerTurn) // NEW
+        if (Player.isPlayerTurn) 
         {
             if (Input.touchCount > 0)
             {
@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
                         {
                             Debug.Log("Detected Click on Tile object! " + hit.transform.name);
 
-                            if (EntityManager.instance.GetPlayer().entityAdjacentTiles.Contains(hit.transform.GetComponent<Tile>())) // NEW
+                            if (EntityManager.instance.GetPlayer().entityAdjacentTiles.Contains(hit.transform.GetComponent<Tile>())) 
                             {
                                 GridManager.instance.SetCurrentSelectedTile(hit.transform.GetComponent<Tile>());
                             }

@@ -7,22 +7,30 @@ public class TileDisplayManager : MonoBehaviour
 {
     public Sprite tileSelectedSprite;
 
-    public void SetTileSelectedDisplay(Tile toSetSelect) // NEW
+    public void SetTileSelectedDisplay(Tile toSetSelect) 
     {
         toSetSelect.selectedSprite.SetActive(true);
     }
 
-    public void SetTileNotSelectedDisplay(Tile toSetSelect) // NEW
+    public void SetTileNotSelectedDisplay(Tile toSetSelect) 
     {
         toSetSelect.selectedSprite.SetActive(false);
     }
 
-    public void SetTileCanBeSelectedDisplayON(Tile tile) // NEW
+    public void SetTileCanBeSelectedDisplayON(Tile tile) 
     {
         tile.canBeSelectedSprite.SetActive(true);
     }
-    public void SetTileCanBeSelectedDisplayOFF(Tile tile) // NEW 
+    public void SetTileCanBeSelectedDisplayOFF(Tile tile) 
     {
         tile.canBeSelectedSprite.SetActive(false);
+    }
+    public void SetTileDisplayGooON(Tile tile)
+    {
+        tile.gooSprite.SetActive(true);
+    }
+    public void SetTileDisplayGooOFF(Tile tile)
+    {
+        tile.gooSprite.SetActive(false);
     }
 }

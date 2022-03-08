@@ -7,13 +7,14 @@ public class Tile : MonoBehaviour
 {
     public GameObject canBeSelectedSprite;
     public GameObject selectedSprite;
+    public GameObject gooSprite;
 
     public int cost;
     public int index;
 
     public bool isFull;
-    public bool isWaterTile; // NEW
-    public bool isGooPiece; // NEW
+    public bool isWaterTile; 
+    public bool isGooPiece; 
 
 
     public int gCost, hCost;

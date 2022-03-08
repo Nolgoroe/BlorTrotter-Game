@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11002,6 +11002,101 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -625}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &595377268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595377269}
+  - component: {fileID: 595377270}
+  m_Layer: 0
+  m_Name: Goo Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595377269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595377268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1597168637}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595377270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595377268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00326701c2ba5744481b275a1d01313a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGooList: []
+  enemiesGooList: []
+  gooTileOptions:
+  - cost: 0
+    gooSprite:
+    - {fileID: 21300000, guid: f924a90304d019f4cb95a90b35a716ea, type: 3}
+  - cost: 1
+    gooSprite:
+    - {fileID: 21300000, guid: cb8d29dfdac434241966f8ad1120995e, type: 3}
+  - cost: 2
+    gooSprite:
+    - {fileID: 21300000, guid: da354a10b113cf1458241432f7db1a3b, type: 3}
+  - cost: 3
+    gooSprite:
+    - {fileID: 21300000, guid: 8ee603a91f009dc48a1c03912286e1c3, type: 3}
+  - cost: 4
+    gooSprite:
+    - {fileID: 21300000, guid: cbc75c4050056aa4cab1d9d80aa7abf3, type: 3}
+  - cost: 5
+    gooSprite:
+    - {fileID: 21300000, guid: de999697c4e026d4ca235e5b17a2a541, type: 3}
+  - cost: 6
+    gooSprite:
+    - {fileID: 21300000, guid: ecdf7b25f516ff548b2a30758d105f4b, type: 3}
+  - cost: 7
+    gooSprite:
+    - {fileID: 21300000, guid: e26456fa1834a1246b3298d4f8c5f33a, type: 3}
+  - cost: 8
+    gooSprite:
+    - {fileID: 21300000, guid: 88ec3730a3243604f81cf56a3abd3a0d, type: 3}
+  - cost: 9
+    gooSprite:
+    - {fileID: 21300000, guid: 75f74f25729e5bb488ba3e2f8f667a2c, type: 3}
+  - cost: 10
+    gooSprite:
+    - {fileID: 21300000, guid: c3783d76e18c86e4fbd779608023636d, type: 3}
+  - cost: 11
+    gooSprite:
+    - {fileID: 21300000, guid: 5b2977ed14711884a8d4c5017837c796, type: 3}
+  - cost: 12
+    gooSprite:
+    - {fileID: 21300000, guid: a3c4048d208e95846b4b86b3b7276027, type: 3}
+  - cost: 13
+    gooSprite:
+    - {fileID: 21300000, guid: 14a2ede9ed9940147babe51f2a29af4a, type: 3}
+  - cost: 14
+    gooSprite:
+    - {fileID: 21300000, guid: 90a0ffdd75c5c80499daf19bb4a779e5, type: 3}
+  - cost: 15
+    gooSprite:
+    - {fileID: 21300000, guid: 106542ead77e9214c81f9a5ff22bd2dd, type: 3}
+    - {fileID: 21300000, guid: f924a90304d019f4cb95a90b35a716ea, type: 3}
 --- !u!1 &596342176
 GameObject:
   m_ObjectHideFlags: 0
@@ -29920,6 +30015,7 @@ MonoBehaviour:
   - {fileID: 977076360}
   - {fileID: 203022142}
   - {fileID: 133755224}
+  - {fileID: 595377268}
   - {fileID: 1085763986}
 --- !u!1 &1547875113
 GameObject:
@@ -31114,6 +31210,7 @@ Transform:
   - {fileID: 203022143}
   - {fileID: 1085763987}
   - {fileID: 133755225}
+  - {fileID: 595377269}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40795,7 +40892,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -63.408478}
+  m_BoundingSphereOverride: {x: 0, y: 1.3e-44, z: 9.548e-42, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

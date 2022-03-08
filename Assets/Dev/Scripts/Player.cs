@@ -5,24 +5,28 @@ using System.Threading.Tasks;
 
 public class Player : Entity
 {
-    public static bool isPlayerTurn; // NEW
+    public static bool isPlayerTurn; 
 
-    public override async Task MoveEntity(Tile targetTile) // NEW
+    public override async Task MoveEntity(Tile targetTile) 
     {
         isPlayerTurn = false;
 
         GridManager.instance.SetTileFull(currentTile);
-        GridManager.instance.SetTileFull(targetTile);
-
+        
         currentTile.isGooPiece = true;
 
         // Call some function to leave goo behind here
-        GridManager.instance.LeaveGooOnTile(currentTile);
+        
+        GooManager.instance.playerGooList.Add(currentTile); /// good place to do it ?
+        foreach (Tile element in GooManager.instance.playerGooList)
+        {
+            GridManager.instance.LeaveGooOnTile(element);
+        }
 
         currentTile = targetTile;
 
         transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
-        GetComponent<SpriteRenderer>().sortingOrder = targetTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
         if (!targetTile.isGooPiece)
         {
@@ -33,6 +37,8 @@ public class Player : Entity
         {
            EntityManager.instance.SetPlayerTurn();
         }
+
+        GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
 
         await Task.Yield();
     }
@@ -47,7 +53,7 @@ public class Player : Entity
         gooTiles.Add(gooTile);
     }
 
-    public override void ManageTurnStart() // NEW
+    public override void ManageTurnStart() 
     {
         isPlayerTurn = true;
 

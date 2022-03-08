@@ -30,23 +30,8 @@ public class Slug : Entity
         /// Set Slug animation Data here
     }
 
-    public override void SetTargetTileForAstarPath() // NEW
-    {
-        //bool tileAvailable = false;
-        //tileAvailable = GridManager.instance.CheckTileAvailability(currentTile);
-        // randomize available tile, chose one
-        // currentTile = ?
-        //each slugs's this will reference a different slug
-
-        //entityAdjacentTiles.Clear();
-        //GridManager.instance.GetAdjacentTile(currentTile, this); // reference to the script it's attached to
-
-        //int randomTile = UnityEngine.Random.Range(0, entityAdjacentTiles.Count);
-
-        //Tile targetTile = entityAdjacentTiles[randomTile];
-
-        //return targetTile;
-
+    public override void SetTargetTileForAstarPath() 
+    {      
         int randomIndex = UnityEngine.Random.Range(0, GridManager.instance.allEdgeTileInLevel.Count);
         Tile targetTile = GridManager.instance.allEdgeTileInLevel[randomIndex];
 

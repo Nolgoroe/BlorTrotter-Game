@@ -52,7 +52,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         }
     }
 
-    public async void MoveAllEnemies() // move all the enemies in the same time  // NEW
+    public async void MoveAllEnemies() // move all the enemies in the same time  
     {
         List<Task> tasks = new List<Task>();
 
@@ -70,10 +70,6 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             }
         }
 
-
-
-
-
         for (int i = 0; i < allEnemies.Count; i++)
         {
 
@@ -81,16 +77,10 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             allEnemies[i].ManageTurnStart();
 
 
-            tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].enemyPath[0])); /// HAS TO BE A BETTER WAY TO DO THIS
+            tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].enemyPath[0])); 
         }
 
         await Task.WhenAll(tasks);
-
-
-
-
-
-
 
         SetPlayerTurn();
         Debug.Log("All enemies done moving");
@@ -115,12 +105,5 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         {
             allEnemies[i].SetTargetTileForAstarPath();
         }
-    }
-
-
-    [ContextMenu("Move Enemeies")] // contextMenu is used to simulate a call function 
-    public void TestMoveEnemies() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        MoveAllEnemies();
     }
 }

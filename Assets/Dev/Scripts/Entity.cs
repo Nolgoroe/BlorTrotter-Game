@@ -17,7 +17,7 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
     }
 
     #region   
-    public virtual void SetTargetTileForAstarPath() //New
+    public virtual void SetTargetTileForAstarPath() 
     {
         Debug.Log("not a player or enemy - problem");
     }

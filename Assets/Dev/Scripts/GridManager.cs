@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 
 public class GridManager : MonoBehaviour, IManageable  //singleton , only instantiate one time 
@@ -41,28 +43,20 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
 
      // when we click on a tile
-    public void SetCurrentSelectedTile(Tile selectedTile) // NEW
+    public void SetCurrentSelectedTile(Tile selectedTile) 
     {
         if (currentlySelectedTile == selectedTile)  // if we click on the same tile as we clicked just before
         {
-            //bool validTarget = CheckTileAvailability(selectedTile);
-
-            //if (validTarget) // if the tile is empty, move on it
-            //{
+            
 
             EntityManager.instance.MovePlayer(selectedTile);
+
             //move the player to selectedTile here since we just selected the same tile twice..
 
-            //}
-            //else
-            //{
-            //    // dunno what to do here?
-            //}
+         
 
-            tileDisplayManager.SetTileNotSelectedDisplay(currentlySelectedTile);  
-
-
-
+            tileDisplayManager.SetTileNotSelectedDisplay(currentlySelectedTile);
+       
             currentlySelectedTile = null;
         }
         else
@@ -107,7 +101,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     }
 
 
-    public void GetAdjacentTile(Tile currentTile, Entity callingEntity) // NEW IN EVERY SWITCH CASE
+    public void GetAdjacentTile(Tile currentTile, Entity callingEntity) //    ! might make this better
     {
         /// this is not how the logic is supposed to work - we need to check the up, down, left and right tiles and choose one out of them
      
@@ -380,57 +374,88 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         }
     }
 
-    public Tile GetTileBottom(Tile tile)
+    public Tile GetTileBottom(Tile tile)    ///do the Same logic for the others 
     {
-        int tileIndex = tile.index + LevelEditor.instance.levelMap.texture.width;
-
-        if(allTilesInLevel[tileIndex].isFull)
+        //if(tile.index < ((LevelEditor.instance.levelMap.texture.width) * ((LevelEditor.instance.levelMap.texture.height) -1)))
+        if(!(tile.edgeType == EdgeType.bottomRightEdge) && !(tile.edgeType == EdgeType.bottomLeftEdge) && !(tile.edgeType == EdgeType.bottomEdge))
         {
-            return null;
+            int tileIndex = tile.index + LevelEditor.instance.levelMap.texture.width;
+
+            if (allTilesInLevel[tileIndex].isFull)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
         }
         else
         {
-            return allTilesInLevel[tileIndex];
-        }                 
+            return null;
+        }
+                        
     }
     public Tile GetTileTop(Tile tile)
     {
-        int tileIndex = tile.index - LevelEditor.instance.levelMap.texture.width;
-
-        if (allTilesInLevel[tileIndex].isFull)
+        if (!(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.topLeftEdge) && !(tile.edgeType == EdgeType.topEdge))
         {
-            return null;
+            int tileIndex = tile.index - LevelEditor.instance.levelMap.texture.width;
+
+            if (allTilesInLevel[tileIndex].isFull)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
         }
         else
         {
-            return allTilesInLevel[tileIndex];
+            return null;
         }
+            
         
     }
     public Tile GetTileLeft(Tile tile)
     {
-        int tileIndex = tile.index - 1;
-
-        if (allTilesInLevel[tileIndex].isFull)
+        if (!(tile.edgeType == EdgeType.bottomLeftEdge) && !(tile.edgeType == EdgeType.topLeftEdge) && !(tile.edgeType == EdgeType.leftEdge))
         {
-            return null;
+            int tileIndex = tile.index - 1;
+
+            if (allTilesInLevel[tileIndex].isFull)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
         }
         else
         {
-            return allTilesInLevel[tileIndex];
+            return null;
         }
     }
     public Tile GetTileRight(Tile tile)
     {
-        int tileIndex = tile.index + 1;
-
-        if (allTilesInLevel[tileIndex].isFull)
+        if (!(tile.edgeType == EdgeType.bottomRightEdge) && !(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.rightEdge))
         {
-            return null;
+            int tileIndex = tile.index + 1;
+
+            if (allTilesInLevel[tileIndex].isFull)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
         }
         else
         {
-            return allTilesInLevel[tileIndex];
+            return null;
         }
     }
     /// ////////
@@ -445,8 +470,8 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
             if (!tile.isWaterTile)
             { 
-                tile.canBeSelectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1; // NEW
-                tile.selectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 2; // NEW
+                tile.canBeSelectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder ; 
+                tile.selectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1; 
             }
 
             tile.name = "tile" + i;
@@ -481,7 +506,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         }
     }
 
-    public void SetInteractableTilesDisplay(Entity callingEntity) // NEW
+    public void SetInteractableTilesDisplay(Entity callingEntity) 
     {
         foreach (Tile t in callingEntity.entityAdjacentTiles)
         {
@@ -491,7 +516,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             }
         }
     }
-    public void SetInteractableTilesDisplayOFF() // NEW
+    public void SetInteractableTilesDisplayOFF()   //find a better way to do this
     {
         foreach (Tile t in allTilesInLevel)
         {
@@ -502,17 +527,69 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         }
     }
 
-    public void SetTileFull(Tile t) // NEW
+    public void SetTileFull(Tile t) 
     {
         t.isFull = !t.isFull;
     }
 
-    public void LeaveGooOnTile(Tile gooTile)
+    
+    // need to update the tile because if the player put goo A
+    //near to an already existing goo tile B, the neighbourgoo value of B is not anymore the same and the sprite has to change
+    // there is an error if we reach the edge
+    public void LeaveGooOnTile(Tile gooTile) 
     {
-        // goo logic here
+        int neighbourValue = 0;
+        //Debug.Log("ouuuuuuuuuuuuuuuuuuuu" + currentlySelectedTile);
+        
+
+        if (GetTileTop(gooTile))
+        {
+            if (GetTileTop(gooTile).isGooPiece || GetTileTop(gooTile) == currentlySelectedTile)
+            {
+                neighbourValue += 1; ///top
+            }
+        }
+        
+        if (GetTileRight(gooTile))
+        {
+            if (GetTileRight(gooTile).isGooPiece || GetTileRight(gooTile) == currentlySelectedTile)
+            {
+                neighbourValue += 2; ///right
+            }
+        }
+
+        if (GetTileBottom(gooTile))
+        {
+            if (GetTileBottom(gooTile).isGooPiece || GetTileBottom(gooTile) == currentlySelectedTile)
+            {
+                neighbourValue += 4;///bottom 
+                Debug.Log("ouuuuuuuuuuuuuuuuuuuuhhhhhh" + GetTileBottom(gooTile));
+            }
+        }
+
+        if (GetTileLeft(gooTile))
+        {
+            if (GetTileLeft(gooTile).isGooPiece || GetTileLeft(gooTile) == currentlySelectedTile)
+            {
+                neighbourValue += 8;///left
+            }
+        }
+           
+        Debug.Log("cost :::::::::::::::::" + neighbourValue);
+
+        GooTileOptions gooSpriteToShow = GooManager.instance.gooTileOptions.Where(p => p.cost == neighbourValue).SingleOrDefault();
+        
+        if (gooSpriteToShow != null)
+        {
+            int i = UnityEngine.Random.Range(0, gooSpriteToShow.gooSprite.Length);
+            Sprite goo = gooSpriteToShow.gooSprite[i];
+            gooTile.gooSprite.GetComponent<SpriteRenderer>().sprite = goo;           
+        }
+
+        tileDisplayManager.SetTileDisplayGooON(gooTile);
     }
 
-    public List<Tile> GetNeighbours(Tile currentTile, Entity callingEntity) // NEW
+    public List<Tile> GetNeighbours(Tile currentTile, Entity callingEntity) 
     {
         int w = LevelEditor.instance.levelMap.texture.width;
         int h = LevelEditor.instance.levelMap.texture.height;
