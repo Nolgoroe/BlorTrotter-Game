@@ -15,8 +15,8 @@ public class GooManager : MonoBehaviour, IManageable
 {
     public static GooManager instance;
 
-    public List<Tile> playerGooList;
-    public List<Tile> enemiesGooList;
+    //public List<Tile> playerGooList; //new
+    //public List<Tile> enemiesGooList; //new
     public List<GooTileOptions> gooTileOptions;
 
     public void initManager()
@@ -26,8 +26,8 @@ public class GooManager : MonoBehaviour, IManageable
 
     public void Start()
     {
-        playerGooList = new List<Tile>();
-        enemiesGooList = new List<Tile>();
+        //playerGooList = new List<Tile>(); //new
+        //enemiesGooList = new List<Tile>(); //new
         //gooTileOptions = new List<GooTileOptions>();
     }
 }

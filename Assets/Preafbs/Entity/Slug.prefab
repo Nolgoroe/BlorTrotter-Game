@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3860681702879419405}
   - component: {fileID: 5255579157140224568}
   - component: {fileID: 5853062765125756760}
+  - component: {fileID: 6272147095073752676}
   m_Layer: 0
   m_Name: Slug
   m_TagString: Enemy
@@ -97,7 +98,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 472d2e16b26586348bcc9c8cbc4c8097, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -118,3 +119,20 @@ MonoBehaviour:
   gooTiles: []
   currentTile: {fileID: 0}
   entityAdjacentTiles: []
+  enemyPath: []
+  anim: {fileID: 0}
+  tempPublictargetTile: {fileID: 0}
+  currentMoveDirection: 2
+--- !u!114 &6272147095073752676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684419901494802835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28db488eac35f164c99696715a766717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}

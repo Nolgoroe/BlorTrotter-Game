@@ -5,28 +5,67 @@ using System.Threading.Tasks;
 
 public class Player : Entity
 {
-    public static bool isPlayerTurn; 
+    public static bool isPlayerTurn;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    public override void PrepareToMove(Tile targetTile) //new
+    {
+        currentTile.isMainPlayerBody = false;
+        GridManager.instance.SetTileFull(currentTile);
+
+        currentTile = targetTile;
+
+        currentTile.isMainPlayerBody = true;
+        GridManager.instance.SetTileFull(currentTile);
+
+        PlayAnimation(AnimationType.Teleport);
+
+        ManageTurnStart();
+    }
 
     public override async Task MoveEntity(Tile targetTile) 
     {
         isPlayerTurn = false;
 
         GridManager.instance.SetTileFull(currentTile);
-        
-        currentTile.isGooPiece = true;
 
-        // Call some function to leave goo behind here
-        
-        GooManager.instance.playerGooList.Add(currentTile); /// good place to do it ?
-        foreach (Tile element in GooManager.instance.playerGooList)
+        currentTile.isGooPiece = true;
+        targetTile.isGooPiece = true;
+
+        currentTile.isMainPlayerBody = false;
+
+        if (!gooTiles.Contains(currentTile)) //new
+        {
+            gooTiles.Add(currentTile); /// good place to do it ?
+        }
+
+        if (!gooTiles.Contains(targetTile)) //new
+        {
+            gooTiles.Add(targetTile); /// good place to do it ?
+        }
+
+        // function to leave goo behind here
+        foreach (Tile element in gooTiles)
         {
             GridManager.instance.LeaveGooOnTile(element);
         }
 
-        currentTile = targetTile;
 
-        transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
-        GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        DetectMoveDirection(currentTile, targetTile);
+
+        currentTile = targetTile;
+        currentTile.isMainPlayerBody = true;
+        currentTile.isAdjacentToMainBody = false;
+
+
+        PlayAnimation(AnimationType.Move);
+
+
+        //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
         if (!targetTile.isGooPiece)
         {
@@ -40,17 +79,51 @@ public class Player : Entity
 
         GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
 
-        await Task.Yield();
+        await Task.Delay(500);
     }
 
-    public override void PlayAnimation()
+    public override async void PlayAnimation(AnimationType animType) //new
     {
+        switch (animType)
+        {
+            case AnimationType.Move:
+
+                await Task.Delay(300);
+
+                Vector3 targetVector = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
+                //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetVector, 10f, 0.0f);
+                //transform.rotation = Quaternion.Euler(newDirection);
+
+                LeanTween.move(gameObject, targetVector, 0.05f);
+                GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                break;
+            case AnimationType.Hurt:
+                break;
+            case AnimationType.Eat:
+                break;
+            case AnimationType.Teleport:
+                anim.SetBool("isRetracting", true);
+
+                await Task.Delay(1000);
+
+                GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
+
+                break;
+            default:
+                break;
+        }
         /// Set player animation Data here
     }
 
     public override void AddGooTiles(Tile gooTile)
     {
         gooTiles.Add(gooTile);
+    }
+
+    public override void RemoveGooTiles(Tile gooTile)
+    {
+        gooTiles.Remove(gooTile);
     }
 
     public override void ManageTurnStart() 
@@ -71,5 +144,44 @@ public class Player : Entity
     public override void SetCurrentTile(Tile tileOn)
     {
         currentTile = tileOn;
+    }
+
+    public override void DetectMoveDirection(Tile from, Tile TileTo) //new
+    {
+        if(TileTo.tileY < from.tileY)
+        {
+            Vector3 rotation = new Vector3(0,0,0);
+            transform.rotation = Quaternion.Euler(rotation);
+
+            anim.SetBool("Crawl_Anim_Down_Left", true);
+            Debug.Log("Down");
+        }
+        else if (TileTo.tileY > from.tileY)
+        {
+            Vector3 rotation = new Vector3(0, 0, 0);
+            transform.rotation = Quaternion.Euler(rotation);
+
+            anim.SetBool("CrawlBack_Anim_Up_Right", true);
+            Debug.Log("up");
+
+        }
+        else if (TileTo.tileX < from.tileX)
+        {
+            Vector3 rotation = new Vector3(0, 180, 0);
+            transform.rotation = Quaternion.Euler(rotation);
+
+            anim.SetBool("Crawl_Anim_Down_Left", true);
+            Debug.Log("left");
+
+        }
+        else if (TileTo.tileX > from.tileX)
+        {
+            Vector3 rotation = new Vector3(0, 180, 0);
+            transform.rotation = Quaternion.Euler(rotation);
+
+            anim.SetBool("CrawlBack_Anim_Up_Right", true);
+            Debug.Log("right");
+
+        }
     }
 }

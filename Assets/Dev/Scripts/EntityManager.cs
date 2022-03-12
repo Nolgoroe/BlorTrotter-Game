@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System;
 
 public class EntityManager : MonoBehaviour, IManageable  //singleton , only instantiate one time 
 {
@@ -46,11 +47,14 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         await player.MoveEntity(targetTile);
 
-        if (!targetTile.isGooPiece)
-        {
-            MoveAllEnemies();
-        }
+        MoveAllEnemies();
     }
+
+    public void CallPrepareToMovePlayer(Tile targetTile) //new
+    {
+        player.PrepareToMove(targetTile);
+    }
+
 
     public async void MoveAllEnemies() // move all the enemies in the same time  
     {
@@ -83,7 +87,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         await Task.WhenAll(tasks);
 
         SetPlayerTurn();
-        Debug.Log("All enemies done moving");
+        //Debug.Log("All enemies done moving");
     }
 
     public async Task RemoveEnemyFromList(Entity entity, List<Entity> theList)
@@ -105,5 +109,12 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         {
             allEnemies[i].SetTargetTileForAstarPath();
         }
+    }
+
+    public void SpawnPlayerRandomGooLocation()
+    {
+        int rand = UnityEngine.Random.Range(0, player.gooTiles.Count);
+
+        player.PrepareToMove(player.gooTiles[rand]);
     }
 }

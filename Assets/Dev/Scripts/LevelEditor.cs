@@ -300,9 +300,10 @@ public class LevelEditor : MonoBehaviour, IManageable
                     EntityManager.instance.SetPlayer(et);
                     et.AddGooTiles(t);
                     et.SetCurrentTile(t);
+                    t.isMainPlayerBody = true; //new
                 }
 
-                if(toSummon.CompareTag("Enemy"))
+                if (toSummon.CompareTag("Enemy"))
                 {
                     
                     Entity et = toSummon.GetComponent<Slug>();    

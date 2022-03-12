@@ -15,13 +15,15 @@ public class Tile : MonoBehaviour
     public bool isFull;
     public bool isWaterTile; 
     public bool isGooPiece; 
+    public bool isAdjacentToMainBody;  //new
+    public bool isMainPlayerBody;  //new
 
 
     public int gCost, hCost;
     public int tileX, tileY;
     public Tile parentTileForPath;
-
-    public int fCost // np need for set
+    public Tile playerTeleportTile;
+    public int fCost // no need for set
     {
         get
         {

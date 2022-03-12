@@ -27,7 +27,6 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         currentlySelectedTile = null;
 
         Debug.Log("success Grid Manager");
-
     }
 
     public void AddTileToTileList(Tile toAdd)
@@ -69,9 +68,24 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             }
 
             currentlySelectedTile = selectedTile;  
-            tileDisplayManager.SetTileSelectedDisplay(currentlySelectedTile);
+
+            //tileDisplayManager.SetTileSelectedDisplay(currentlySelectedTile);
 
             CheckDisplayTutorialText(selectedTile);
+
+            if (!selectedTile.isAdjacentToMainBody && !selectedTile.isGooPiece) //new
+            {
+                EntityManager.instance.CallPrepareToMovePlayer(selectedTile.playerTeleportTile);
+            }
+
+            if (selectedTile.isGooPiece)
+            {
+                EntityManager.instance.CallPrepareToMovePlayer(selectedTile);
+            }
+            else
+            {
+                tileDisplayManager.SetTileSelectedDisplay(currentlySelectedTile);
+            }
         }
     }
 
@@ -115,6 +129,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileBottom(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
@@ -124,6 +141,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileTop(currentTile))
                 {
                     Tile t = GetTileTop(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -135,6 +155,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileRight(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
@@ -144,6 +167,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileLeft(currentTile))
                 {
                     Tile t = GetTileLeft(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -157,6 +183,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileBottom(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
@@ -167,6 +196,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileTop(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
@@ -176,6 +208,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileRight(currentTile))
                 {
                     Tile t = GetTileRight(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -189,6 +224,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileLeft(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
@@ -199,6 +237,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileBottom(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
@@ -208,6 +249,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileTop(currentTile))
                 {
                     Tile t = GetTileTop(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -221,6 +265,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileTop(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
@@ -231,6 +278,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileRight(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
@@ -240,6 +290,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileLeft(currentTile))
                 {
                     Tile t = GetTileLeft(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -253,6 +306,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileRight(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
@@ -263,6 +319,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileLeft(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
@@ -272,6 +331,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileBottom(currentTile))
                 {
                     Tile t = GetTileBottom(currentTile);
+                    
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -285,6 +347,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileLeft(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
@@ -294,6 +359,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileBottom(currentTile))
                 {
                     Tile t = GetTileBottom(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -308,6 +376,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileRight(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
@@ -317,6 +388,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileBottom(currentTile))
                 {
                     Tile t = GetTileBottom(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -330,6 +404,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileLeft(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
@@ -339,6 +416,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileTop(currentTile))
                 {
                     Tile t = GetTileTop(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -352,6 +432,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 {
                     Tile t = GetTileTop(currentTile);
 
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
+
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
@@ -361,6 +444,9 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 if (GetTileRight(currentTile))
                 {
                     Tile t = GetTileRight(currentTile);
+
+                    t.playerTeleportTile = currentTile;
+                    t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
@@ -563,7 +649,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             if (GetTileBottom(gooTile).isGooPiece || GetTileBottom(gooTile) == currentlySelectedTile)
             {
                 neighbourValue += 4;///bottom 
-                Debug.Log("ouuuuuuuuuuuuuuuuuuuuhhhhhh" + GetTileBottom(gooTile));
+                //Debug.Log("ouuuuuuuuuuuuuuuuuuuuhhhhhh" + GetTileBottom(gooTile));
             }
         }
 
@@ -575,7 +661,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             }
         }
            
-        Debug.Log("cost :::::::::::::::::" + neighbourValue);
+        //Debug.Log("cost :::::::::::::::::" + neighbourValue);
 
         GooTileOptions gooSpriteToShow = GooManager.instance.gooTileOptions.Where(p => p.cost == neighbourValue).SingleOrDefault();
         
@@ -589,6 +675,10 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         tileDisplayManager.SetTileDisplayGooON(gooTile);
     }
 
+    public void RemoveGooTileDisplay(Tile target)
+    {
+        tileDisplayManager.SetTileDisplayGooOFF(target);
+    }
     public List<Tile> GetNeighbours(Tile currentTile, Entity callingEntity) 
     {
         int w = LevelEditor.instance.levelMap.texture.width;
@@ -797,9 +887,14 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             }
         }
     }
+
+    private bool CheckAdjacencyToMainPlayerBody(Tile toCheck)
+    {
+        return toCheck.isMainPlayerBody;
+    }
     public void OnDrawGizmos()
     {
-        Debug.Log("Drawing Gizmos");
+        //Debug.Log("Drawing Gizmos");
 
         //foreach (Tile t in allTilesInLevel)
         //{

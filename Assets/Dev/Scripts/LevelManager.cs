@@ -35,11 +35,13 @@ public class LevelManager : MonoBehaviour, IManageable
         GridManager.instance.TilesIndexer();
         GridManager.instance.SetMapEdges();
         GridManager.instance.FillallEdgeTileInLevelList();
+        GridManager.instance.LeaveGooOnTile(EntityManager.instance.GetPlayer().gooTiles[0]);
 
         EntityManager.instance.SetEnemyTargetTiles();
 
         EntityManager.instance.SetPlayerTurn();
 
+        InputManager.instance.canRecieveInput = true; //New
     }
 
 

@@ -8,6 +8,8 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
     private Touch touch;
 
+    public bool canRecieveInput; //new
+
     public void initManager()
     {
         instance = this;
@@ -16,7 +18,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
     void Update()
     {
-        if (Player.isPlayerTurn) 
+        if (Player.isPlayerTurn && canRecieveInput) 
         {
             if (Input.touchCount > 0)
             {
@@ -36,9 +38,14 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
                         {
                             Debug.Log("Detected Click on Tile object! " + hit.transform.name);
 
-                            if (EntityManager.instance.GetPlayer().entityAdjacentTiles.Contains(hit.transform.GetComponent<Tile>())) 
+                            Tile t = hit.transform.GetComponent<Tile>();
+
+                            if (!t.isMainPlayerBody && !t.isFull) //new
                             {
-                                GridManager.instance.SetCurrentSelectedTile(hit.transform.GetComponent<Tile>());
+                                if (EntityManager.instance.GetPlayer().entityAdjacentTiles.Contains(t) || EntityManager.instance.GetPlayer().gooTiles.Contains(t))
+                                {
+                                    GridManager.instance.SetCurrentSelectedTile(hit.transform.GetComponent<Tile>());
+                                }
                             }
                         }
                     }
