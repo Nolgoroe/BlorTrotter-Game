@@ -53,7 +53,7 @@ public class PathFinding : MonoBehaviour, IManageable
 
             foreach (Tile neighbourTile in GridManager.instance.GetNeighbours(currentTile, callingEntity))
             {
-                if(neighbourTile.isFull || neighbourTile.isWaterTile || closedSet.Contains(neighbourTile))
+                if((neighbourTile.isFull && !neighbourTile.isMainPlayerBody) || neighbourTile.isWaterTile || closedSet.Contains(neighbourTile))
                 {
                     continue;
                 }

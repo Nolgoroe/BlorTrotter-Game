@@ -7565,6 +7565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
   currentLevelNumberOfMoves: 0
+  currentCooldownSummonEnemies: 0
 --- !u!1 &414229893
 GameObject:
   m_ObjectHideFlags: 0
@@ -15996,6 +15997,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  enemySpawnTiles: []
+  slugPrefab: {fileID: 5684419901494802835, guid: bbda4c14d801f5444b56ff8beae66211, type: 3}
 --- !u!1 &889847521
 GameObject:
   m_ObjectHideFlags: 0
@@ -18232,8 +18235,8 @@ MonoBehaviour:
     - {fileID: 7520638590497887064, guid: e193dd7349a7d9245bdc0d33dcde9047, type: 3}
     - {fileID: 7504824777008735698, guid: 53a976d73c67f8847877a21278025831, type: 3}
     - {fileID: 6941153483349467083, guid: b851fd30e0553c44e8381c05b7b18529, type: 3}
-  levelMap: {fileID: 21300000, guid: dc39f3eeb66c49441922c698955feb56, type: 3}
-  levelObstacles: {fileID: 21300000, guid: 9c4decf9a00bce6489da17240e2ebe75, type: 3}
+  levelMap: {fileID: 21300000, guid: f9974b493344181469462244100d0bdb, type: 3}
+  levelObstacles: {fileID: 21300000, guid: 3c0d0d19c333f1749902e9f6d8437fee, type: 3}
   colorMappingsTiles:
   - color: {r: 0.3137255, g: 0.18431373, b: 0, a: 1}
     prefab:
@@ -40973,7 +40976,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: 7.876137e+23, z: 4.5904e-41, w: 9.403955e-38}
+  m_BoundingSphereOverride: {x: 0, y: -1.2721347e+26, z: 4.5907e-41, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

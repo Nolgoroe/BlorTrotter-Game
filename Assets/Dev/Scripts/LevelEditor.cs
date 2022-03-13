@@ -119,7 +119,9 @@ public class LevelEditor : MonoBehaviour, IManageable
                 //each tile should be behind the tile above, we decrement the layer of each tile and start from a higher value each new line
                 spriteRenderer.sortingOrder = levelMap.texture.width + (offsetNewRowX - x);
 
-                GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());         
+                GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());
+
+                break;
             }
                  
             
@@ -193,6 +195,7 @@ public class LevelEditor : MonoBehaviour, IManageable
                 spriteRenderer.sortingOrder = levelMap.texture.width + (offsetNewRowX - x);
 
                 GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());
+                break;
 
             }
         }
@@ -328,13 +331,18 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 if (toSummon.CompareTag("Enemy"))
                 {
-                    Entity et = toSummon.GetComponent<Slug>();    
+                    EntityManager.instance.enemySpawnTiles.Add(t);
 
-                    EntityManager.instance.AddEnemyToEnemiesList(et);
-                    et.SetCurrentTile(t);
+                    Destroy(toSummon.gameObject);
 
-                    Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2), parent.position.z);
-                    et.transform.position = position;
+                    t.isFull = false;
+                    //Entity et = toSummon.GetComponent<Slug>();    
+
+                    //EntityManager.instance.AddEnemyToEnemiesList(et);
+                    //et.SetCurrentTile(t);
+
+                    //Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2), parent.position.z);
+                    //et.transform.position = position;
                 }
 
                 if (toSummon.CompareTag("Food"))
@@ -348,7 +356,7 @@ public class LevelEditor : MonoBehaviour, IManageable
         }
     }   
 
-    void SetParentByTag(GameObject inObject)
+    public void SetParentByTag(GameObject inObject)
     {
         switch (inObject.tag)
         {

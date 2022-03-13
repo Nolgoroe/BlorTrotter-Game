@@ -6,7 +6,7 @@ using System;
 
 public class Slug : Entity
 {
-    public Tile tempPublictargetTile;
+    public Tile PublicTargetTile;
 
     public MoveDirection currentMoveDirection = MoveDirection.left;
 
@@ -27,17 +27,21 @@ public class Slug : Entity
         //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
         //GetComponent<SpriteRenderer>().sortingOrder = targetTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
+        await Task.Delay(300);
+
         CheckWhatIsNextTile(currentTile, targetTile);
 
         currentTile = targetTile;
 
-        await Task.Delay(100);
+
+        await Task.Delay(300);
+
+        PlayAnimation(AnimationType.Move);
 
         if (currentTile.isGooPiece)
         {
             EatGooPiece(targetTile);
         }
-
 
         enemyPath.RemoveAt(0);
 
@@ -57,7 +61,7 @@ public class Slug : Entity
         int randomIndex = UnityEngine.Random.Range(0, GridManager.instance.allEdgeTileInLevel.Count);
         Tile targetTile = GridManager.instance.allEdgeTileInLevel[randomIndex];
 
-        tempPublictargetTile = targetTile;
+        PublicTargetTile = targetTile;
 
         enemyPath = PathFinding.instance.FindPath(currentTile, targetTile, this);
     }
@@ -138,7 +142,7 @@ public class Slug : Entity
         }
     }
 
-    public void CheckWhatIsNextTile(Tile from, Tile TileTo)
+    public override void CheckWhatIsNextTile(Tile from, Tile TileTo)
     {
         if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
         {
@@ -162,9 +166,6 @@ public class Slug : Entity
                 anim.SetBool("isMovingBack", true);
             }
         }
-
-
-        PlayAnimation(AnimationType.Move);
     }
 
     void EatGooPiece(Tile target)
@@ -177,5 +178,10 @@ public class Slug : Entity
         {
             EntityManager.instance.SpawnPlayerRandomGooLocation();
         }
+    }
+
+    public override void ReleaseTargetTile()
+    {
+        PublicTargetTile.isFull = false;
     }
 }

@@ -13,10 +13,16 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
     [SerializeField] private List<Entity> allEnemies; // list is dynamic
 
+    public List<Tile> enemySpawnTiles;
+
+    public GameObject slugPrefab;
+
     public void initManager()
     {
         instance = this;
-        allEnemies = new List<Entity>();     
+        allEnemies = new List<Entity>();
+        enemySpawnTiles = new List<Tile>();
+
         Debug.Log("success Entity Manager");
     }
 
@@ -47,7 +53,32 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         await player.MoveEntity(targetTile);
 
-        MoveAllEnemies();
+        if (allEnemies.Count > 0)
+        {
+            MoveAllEnemies();
+        }
+
+        LevelManager.instance.DecreaseSummonEnemyCooldown();
+    }
+
+    public void SpawnEnemy()
+    {
+        int rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
+
+        GameObject toSummon = Instantiate(slugPrefab, enemySpawnTiles[rand].transform);
+        Transform parent = enemySpawnTiles[rand].transform;
+        Entity et = toSummon.GetComponent<Slug>();
+
+
+        Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
+        et.transform.position = position;
+        toSummon.GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+        LevelEditor.instance.SetParentByTag(toSummon);
+
+
+        AddEnemyToEnemiesList(et);
+        et.SetCurrentTile(enemySpawnTiles[rand]);
     }
 
     public void CallPrepareToMovePlayer(Tile targetTile) //new
@@ -67,6 +98,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         {
             if (tempList[i].enemyPath.Count <= 0)
             {
+                tempList[i].ReleaseTargetTile();
                 await RemoveEnemyFromList(tempList[i], allEnemies);
 
                 await Task.Delay(1 * 1000);
@@ -103,12 +135,13 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     }
 
 
-    public void SetEnemyTargetTiles()
+    public void SetEnemyTargetTiles(Entity enemy)
     {
-        for (int i = 0; i < allEnemies.Count; i++)
-        {
-            allEnemies[i].SetTargetTileForAstarPath();
-        }
+        enemy.SetTargetTileForAstarPath();
+        //for (int i = 0; i < allEnemies.Count; i++)
+        //{
+        //    allEnemies[i].SetTargetTileForAstarPath();
+        //}
     }
 
     public void SpawnPlayerRandomGooLocation()
@@ -116,5 +149,17 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         int rand = UnityEngine.Random.Range(0, player.gooTiles.Count);
 
         player.PrepareToMove(player.gooTiles[rand]);
+    }
+
+    public bool CheckLimitOfEnemiesReached(int amount)
+    {
+        if(allEnemies.Count >= LevelManager.instance.currentLevel.maxConcurrentSlugs)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

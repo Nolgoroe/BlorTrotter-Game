@@ -14,12 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelID: 1
   maxNumberOfMoves: 3
-  objectsOnGrid:
-  - tileIndex: 150
-    prefab: {fileID: 6937486304539027265, guid: bb6c38a5781026343bd6d171f3e9db7e, type: 3}
-  - tileIndex: 130
-    prefab: {fileID: 3330404291797304167, guid: 273aaa2a1f64341419a79a38d3d3bda3, type: 3}
-  - tileIndex: 131
-    prefab: {fileID: 7139853343520406502, guid: e6a5064cb9034bf448627542881a159e, type: 3}
-  - tileIndex: 132
-    prefab: {fileID: 8815410267380514803, guid: 6988b4d8aadbaeb41b50496c9b0e402f, type: 3}
+  summonEnemyCooldown: 1
+  maxConcurrentSlugs: 1

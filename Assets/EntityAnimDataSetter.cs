@@ -16,6 +16,8 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     {
         anim.SetBool("Crawl_Anim_Down_Left", false);
         anim.SetBool("CrawlBack_Anim_Up_Right", false);
+        anim.SetBool("isEating", false);
+        anim.SetBool("isEatingBack", false);
 
         await Task.Delay(100);
 
@@ -51,5 +53,10 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     public void SetRetractData()
     {
         InputManager.instance.canRecieveInput = false; //new
+    }
+
+    public void SetSlugSpawnActions()
+    {
+       EntityManager.instance.SetEnemyTargetTiles(GetComponent<Slug>());
     }
 }

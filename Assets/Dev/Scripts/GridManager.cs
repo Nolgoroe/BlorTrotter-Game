@@ -467,7 +467,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + LevelEditor.instance.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -488,7 +488,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - LevelEditor.instance.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -510,7 +510,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - 1;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -530,7 +530,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + 1;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -880,7 +880,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             if (!tile.isFull)
             {
-                if(tile.edgeType != EdgeType.notEdge)
+                if(tile.edgeType != EdgeType.notEdge && !EntityManager.instance.enemySpawnTiles.Contains(tile))
                 {
                     allEdgeTileInLevel.Add(tile);
                 }

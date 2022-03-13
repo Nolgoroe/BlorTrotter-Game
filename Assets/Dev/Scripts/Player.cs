@@ -7,6 +7,8 @@ public class Player : Entity
 {
     public static bool isPlayerTurn;
 
+    private MoveDirection currentMoveDirection = MoveDirection.down;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -54,8 +56,9 @@ public class Player : Entity
             GridManager.instance.LeaveGooOnTile(element);
         }
 
-
         DetectMoveDirection(currentTile, targetTile);
+
+        CheckWhatIsNextTile(currentTile, targetTile);
 
         currentTile = targetTile;
         currentTile.isMainPlayerBody = true;
@@ -77,7 +80,14 @@ public class Player : Entity
            EntityManager.instance.SetPlayerTurn();
         }
 
-        GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
+        if (!targetTile.isFood)
+        {
+            GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
+        }
+        else
+        {
+            EatFood(targetTile);
+        }
 
         await Task.Delay(500);
     }
@@ -148,38 +158,75 @@ public class Player : Entity
     {
         if(TileTo.tileY < from.tileY)
         {
+            currentMoveDirection = MoveDirection.down;
+
             Vector3 rotation = new Vector3(0,0,0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            anim.SetBool("Crawl_Anim_Down_Left", true);
             Debug.Log("Down");
         }
         else if (TileTo.tileY > from.tileY)
         {
+            currentMoveDirection = MoveDirection.up;
+
             Vector3 rotation = new Vector3(0, 0, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            anim.SetBool("CrawlBack_Anim_Up_Right", true);
             Debug.Log("up");
 
         }
         else if (TileTo.tileX < from.tileX)
         {
+            currentMoveDirection = MoveDirection.left;
+
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            anim.SetBool("Crawl_Anim_Down_Left", true);
             Debug.Log("left");
 
         }
         else if (TileTo.tileX > from.tileX)
         {
+            currentMoveDirection = MoveDirection.right;
+
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            anim.SetBool("CrawlBack_Anim_Up_Right", true);
             Debug.Log("right");
 
         }
+    }
+
+    public override void CheckWhatIsNextTile(Tile from, Tile TileTo)
+    {
+        if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
+        {
+            if (TileTo.isFood)
+            {
+                anim.SetBool("isEating", true);
+            }
+            else
+            {
+                anim.SetBool("Crawl_Anim_Down_Left", true);
+            }
+        }
+        else
+        {
+            if (TileTo.isFood)
+            {
+                anim.SetBool("isEatingBack", true);
+            }
+            else
+            {
+                anim.SetBool("CrawlBack_Anim_Up_Right", true);
+            }
+        }
+    }
+
+    void EatFood(Tile target)
+    {
+        target.isFood = false;
+        Destroy(target.foodObject.gameObject);
+        target.foodObject = null;
     }
 }

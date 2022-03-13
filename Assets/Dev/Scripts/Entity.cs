@@ -45,6 +45,14 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
     {
         Debug.Log("what happened?");
     }
+    public virtual void CheckWhatIsNextTile(Tile from, Tile TileTo) //new
+    {
+        Debug.Log("what happened?");
+    }
+    public virtual void ReleaseTargetTile() //new
+    {
+        Debug.Log("what happened?");
+    }
     public abstract void AddGooTiles(Tile gooTile);
     public abstract void RemoveGooTiles(Tile gooTile);
     public abstract void ManageTurnStart();

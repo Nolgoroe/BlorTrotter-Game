@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour, IManageable
 
     [SerializeField] private int currentLevelNumberOfMoves;
 
+    public int currentCooldownSummonEnemies;
+
     public void initManager()
     {
         instance = this;
@@ -28,7 +30,8 @@ public class LevelManager : MonoBehaviour, IManageable
     public void LoadLevel() 
     {
         currentLevelNumberOfMoves = currentLevel.maxNumberOfMoves;
-        
+        currentCooldownSummonEnemies = currentLevel.summonEnemyCooldown;
+
         /// level editor generate level here          
         LevelEditor.instance.CallGenerateLevel();
 
@@ -37,7 +40,7 @@ public class LevelManager : MonoBehaviour, IManageable
         GridManager.instance.FillallEdgeTileInLevelList();
         GridManager.instance.LeaveGooOnTile(EntityManager.instance.GetPlayer().gooTiles[0]);
 
-        EntityManager.instance.SetEnemyTargetTiles();
+        //EntityManager.instance.SetEnemyTargetTiles();
 
         EntityManager.instance.SetPlayerTurn();
 
@@ -59,6 +62,20 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         currentLevelNumberOfMoves--;
         CheckEndLevel();
+    }
+    public void DecreaseSummonEnemyCooldown() 
+    {
+        currentCooldownSummonEnemies--;
+
+        if(currentCooldownSummonEnemies <= 0)
+        {
+            if (!EntityManager.instance.CheckLimitOfEnemiesReached(currentCooldownSummonEnemies))
+            {
+                EntityManager.instance.SpawnEnemy();
+            }
+
+            currentCooldownSummonEnemies = currentLevel.summonEnemyCooldown;
+        }
     }
 
 

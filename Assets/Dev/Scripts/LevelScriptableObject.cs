@@ -7,4 +7,6 @@ public class LevelScriptableObject : ScriptableObject
 {
     public int levelID;
     public int maxNumberOfMoves;
+    public int summonEnemyCooldown;
+    public int maxConcurrentSlugs;
 }
