@@ -4,5 +4,5 @@ using UnityEngine;
 public class LevelParser 
 {
     public Color color;
-    public GameObject prefab;
+    public GameObject[] prefab;
 }

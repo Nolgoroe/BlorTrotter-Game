@@ -10877,7 +10877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584620033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7627507, y: 0.4133385, z: -7.9009895}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -18233,24 +18233,106 @@ MonoBehaviour:
     - {fileID: 7504824777008735698, guid: 53a976d73c67f8847877a21278025831, type: 3}
     - {fileID: 6941153483349467083, guid: b851fd30e0553c44e8381c05b7b18529, type: 3}
   levelMap: {fileID: 21300000, guid: dc39f3eeb66c49441922c698955feb56, type: 3}
-  levelObstacles: {fileID: 21300000, guid: 24ce5794a2d0a224cbacf73e526d4281, type: 3}
+  levelObstacles: {fileID: 21300000, guid: 9c4decf9a00bce6489da17240e2ebe75, type: 3}
   colorMappingsTiles:
+  - color: {r: 0.3137255, g: 0.18431373, b: 0, a: 1}
+    prefab:
+    - {fileID: 8253027442462377727, guid: f65f25bd0c7343441973a3342b665e3d, type: 3}
+    - {fileID: 8253027442462377727, guid: 3fb4455e0ec1f0945afada5e640ffa1d, type: 3}
+    - {fileID: 8253027442462377727, guid: 63ea518d898fc8c48b4ce29882e49f9b, type: 3}
+  - color: {r: 0, g: 0.5686275, b: 0.15686275, a: 1}
+    prefab:
+    - {fileID: 8253027442462377727, guid: 8cddf48dfc11ae94d997c0d617f4901b, type: 3}
+    - {fileID: 8253027442462377727, guid: 27e85635b9f280a40a83e94848c936e4, type: 3}
+    - {fileID: 8253027442462377727, guid: d3f1cb0e1662f1242b0acd66b46c8303, type: 3}
+  - color: {r: 0.15686275, g: 0.43137255, b: 0.23137255, a: 1}
+    prefab:
+    - {fileID: 8253027442462377727, guid: d32dc8c7bf0d8ac4888011e8de4d45ca, type: 3}
+    - {fileID: 8253027442462377727, guid: de9cfff476648fb4fb9df9a3375aa15a, type: 3}
+    - {fileID: 8253027442462377727, guid: 60fa17f0e8f34604ea8ff89f80416855, type: 3}
+  - color: {r: 0.20392157, g: 0.15294118, b: 0.08235294, a: 1}
+    prefab:
+    - {fileID: 8253027442462377727, guid: 8877591776042af4a8350991cdfeb325, type: 3}
+    - {fileID: 8253027442462377727, guid: 04eb2473f4ff5694395dd643693cb6d6, type: 3}
+    - {fileID: 8253027442462377727, guid: 4c03df8d0b39fe94a9b0be8840ede97d, type: 3}
+  - color: {r: 0.21176471, g: 0.7529412, b: 0.36078432, a: 1}
+    prefab:
+    - {fileID: 8253027442462377727, guid: 14385dd7eba3a574998001b4ea6a702e, type: 3}
+    - {fileID: 8253027442462377727, guid: 218c494d86616dd478f740d97828daaf, type: 3}
+    - {fileID: 8253027442462377727, guid: c31ed9c9a7c80e14cb6182b07e73981f, type: 3}
   - color: {r: 1, g: 0, b: 0, a: 1}
-    prefab: {fileID: 8253027442462377727, guid: f65f25bd0c7343441973a3342b665e3d, type: 3}
+    prefab:
+    - {fileID: 8253027442462377727, guid: f65f25bd0c7343441973a3342b665e3d, type: 3}
   colorMappingsObstacles:
-  - color: {r: 0.047058824, g: 0.6666667, b: 0.105882354, a: 0.99215686}
-    prefab: {fileID: 6937486304539027265, guid: bb6c38a5781026343bd6d171f3e9db7e, type: 3}
-  - color: {r: 0.6284362, g: 0.6666667, b: 0.04705882, a: 0.99215686}
-    prefab: {fileID: 3330404291797304167, guid: 273aaa2a1f64341419a79a38d3d3bda3, type: 3}
-  - color: {r: 0.9223949, g: 0.033018887, b: 1, a: 0.99215686}
-    prefab: {fileID: 7139853343520406502, guid: e6a5064cb9034bf448627542881a159e, type: 3}
-  - color: {r: 0.049439307, g: 0.466453, b: 0.9528302, a: 0.99215686}
-    prefab: {fileID: 8815410267380514803, guid: 6988b4d8aadbaeb41b50496c9b0e402f, type: 3}
-  - color: {r: 0.8352941, g: 1, b: 0.7490196, a: 1}
-    prefab: {fileID: 6117789543435538041, guid: 52c55ecf1d3d0fe4187c63749e818613, type: 3}
-  - color: {r: 0.8962264, g: 0.61806256, b: 0.114142045, a: 0.99215686}
-    prefab: {fileID: 5684419901494802835, guid: bbda4c14d801f5444b56ff8beae66211, type: 3}
-  threshold: 0.005
+  - color: {r: 1, g: 0.59607846, b: 0, a: 1}
+    prefab:
+    - {fileID: 6117789543435538041, guid: 52c55ecf1d3d0fe4187c63749e818613, type: 3}
+  - color: {r: 0.61960787, g: 0.21176471, b: 0.20392157, a: 0.99215686}
+    prefab:
+    - {fileID: 5684419901494802835, guid: bbda4c14d801f5444b56ff8beae66211, type: 3}
+  - color: {r: 0.5686275, g: 0.3254902, b: 0.6509804, a: 0.99215686}
+    prefab:
+    - {fileID: 4790705389336128169, guid: 6d504f6ccfee5cc4a87694298cee1430, type: 3}
+  - color: {r: 0.5137255, g: 0.6156863, b: 0.6431373, a: 0.99215686}
+    prefab:
+    - {fileID: 8600694958979609977, guid: e4900c879da9e7c47893d8cfa14552e8, type: 3}
+  - color: {r: 0.827451, g: 0.654902, b: 0.40784314, a: 0.99215686}
+    prefab:
+    - {fileID: 4078051595391934922, guid: 80f107bbbf78cf54abea87d95221b94b, type: 3}
+  - color: {r: 0.6509804, g: 0.5176471, b: 0.3254902, a: 0.99215686}
+    prefab:
+    - {fileID: 7176140011089557472, guid: e03becb7ee413b748b4191920b83016f, type: 3}
+  - color: {r: 0.5647059, g: 1, b: 0.5882353, a: 0.99215686}
+    prefab:
+    - {fileID: 8109669372181200080, guid: fc5d5b532039fb445a4ba5dd86390aa3, type: 3}
+    - {fileID: 3150983463210113892, guid: dc47c098eab13ee49b8da69335780398, type: 3}
+  - color: {r: 1, g: 0.5647059, b: 0.5647059, a: 0.99215686}
+    prefab:
+    - {fileID: 8094027689544407500, guid: a6ed3073e91db5140a7c37e387b5af5d, type: 3}
+    - {fileID: 4958723571647197257, guid: 92ef011729cfd0f4d9dd8489b9c50718, type: 3}
+    - {fileID: 6508513674240330668, guid: d357beb449b995744ad4edd235055905, type: 3}
+  - color: {r: 0.70980394, g: 0.5294118, b: 0.7137255, a: 0.99215686}
+    prefab:
+    - {fileID: 3011172484429230096, guid: 37b9200c10376d74b868edaa76f04893, type: 3}
+    - {fileID: 5725321239617451627, guid: 77b32c7fb117f6b4dac39a5acce8c361, type: 3}
+  - color: {r: 0.99215686, g: 0.52156866, b: 1, a: 0.99215686}
+    prefab:
+    - {fileID: 6927782706695051707, guid: 600f1bcfd081fe44890fb016821b3215, type: 3}
+    - {fileID: 4031982223920169125, guid: 3dcbb8a38d1824b4a97b8ec7119d253d, type: 3}
+  - color: {r: 0.9843137, g: 0.015686275, b: 1, a: 0.99215686}
+    prefab:
+    - {fileID: 8460835771869634015, guid: 4ce0f8880ebc65d499fa0ae3dadf31d3, type: 3}
+    - {fileID: 5247666409558507727, guid: 77a7de2673648694388ba58fa44136f3, type: 3}
+    - {fileID: 1613603393298147308, guid: 74b405ba164b34445be3a6e2ad92ea77, type: 3}
+  - color: {r: 0.16862746, g: 0.3372549, b: 0.1764706, a: 0.99215686}
+    prefab:
+    - {fileID: 9211284551298872562, guid: 579427d7f2c50894dabfa9db1e6ab4a0, type: 3}
+    - {fileID: 1956055154572168309, guid: 46efef150ca81d24b9b0dd9699bccc27, type: 3}
+  - color: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 0.99215686}
+    prefab:
+    - {fileID: 326381498615021187, guid: 86976f4e102ff3642b0dbeb55fcb6b3a, type: 3}
+    - {fileID: 3352435906083838030, guid: 60d4c395cc99bfd4bad16593553e358a, type: 3}
+    - {fileID: 1556068665757937873, guid: 4244ae26799edee4da9f7b63335c918c, type: 3}
+  - color: {r: 0.3254902, g: 0.3254902, b: 0.3254902, a: 0.99215686}
+    prefab:
+    - {fileID: 6432317716141924228, guid: 3042d6d4fd9c0054a83f6be2a984d2d9, type: 3}
+    - {fileID: 620326914810434912, guid: a4b9bf99bd9f7e04c8a9caa564a5a0ca, type: 3}
+    - {fileID: 745453257959988064, guid: 4e5fbf109f68702479b2e916f415dc1e, type: 3}
+  - color: {r: 0.78431374, g: 0.7921569, b: 0.78431374, a: 0.99215686}
+    prefab:
+    - {fileID: 6925105567021882177, guid: 740b0ac310aa2d541b79acb8f750b43e, type: 3}
+    - {fileID: 5899021715454094757, guid: 245193c7d4192a547a2406c173c279b6, type: 3}
+    - {fileID: 6506981695089941021, guid: 8dbee0fed0d848241bdef4c1fcfdb92c, type: 3}
+  - color: {r: 0.6117647, g: 0.5137255, b: 0.6431373, a: 0.99215686}
+    prefab:
+    - {fileID: 8513027430056029861, guid: 60c3d67ee2efb0149ae9205758bb8516, type: 3}
+    - {fileID: 7378125847388398752, guid: 794b74fb0e646b1478fcff91fe6e42b6, type: 3}
+  - color: {r: 0.20392157, g: 0.5372549, b: 0.61960787, a: 0.99215686}
+    prefab:
+    - {fileID: 5815336361248998145, guid: f6d31366625510e439ad5e5b70bf2e2d, type: 3}
+    - {fileID: 3361860738233613621, guid: 63cfccbf23443f746b47d911a6f228ab, type: 3}
+    - {fileID: 692439405828235915, guid: f61ed2c2114beb742aa6a5434c11fcf0, type: 3}
+  threshold: 0.009
   offsetY: 0.592
 --- !u!4 &988551641
 Transform:
@@ -40891,7 +40973,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.3e-44, z: 9.548e-42, w: 6e-44}
+  m_BoundingSphereOverride: {x: 4.5904e-41, y: 7.876137e+23, z: 4.5904e-41, w: 9.403955e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

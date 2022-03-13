@@ -88,6 +88,8 @@ public class LevelEditor : MonoBehaviour, IManageable
         Color pixelColor = levelMap.texture.GetPixel(x, y);
         GameObject tile = null;
 
+        string s = ColorUtility.ToHtmlStringRGB(pixelColor);
+
         // if transparent, ignore 
         if (pixelColor.a == 0)
         {
@@ -100,8 +102,17 @@ public class LevelEditor : MonoBehaviour, IManageable
             if (Mathf.Abs(pixelColor.r - colorMapping.color.r) <= threshold && Mathf.Abs(pixelColor.g - colorMapping.color.g) <= threshold && Mathf.Abs(pixelColor.b - colorMapping.color.b) <= threshold)
             {
                 Vector3 position = new Vector3(x + offsetNewRowX, (x * offsetY) + offsetNewRowY, 60);
-                tile = Instantiate(colorMapping.prefab, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
-                
+
+                if(colorMapping.prefab.Length > 1)
+                {
+                    int index = UnityEngine.Random.Range(0, colorMapping.prefab.Length);
+                    tile = Instantiate(colorMapping.prefab[index], position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
+                }
+                else
+                {
+                    tile = Instantiate(colorMapping.prefab[0], position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
+                }
+
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
                 tile.GetComponent<Tile>().SetXY(x, y);
 
@@ -277,10 +288,19 @@ public class LevelEditor : MonoBehaviour, IManageable
         {
             if (Mathf.Abs(pixelColor.r - colorMapping.color.r) <= threshold && Mathf.Abs(pixelColor.g - colorMapping.color.g) <= threshold && Mathf.Abs(pixelColor.b - colorMapping.color.b) <= threshold)
             {
-                Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2) , parent.position.z);
-               
+                GameObject toSummon = null;
 
-                GameObject toSummon = Instantiate(colorMapping.prefab, position, Quaternion.identity, parent );
+                if (colorMapping.prefab.Length > 1)
+                {
+                    int index = UnityEngine.Random.Range(0, colorMapping.prefab.Length);
+                    toSummon = Instantiate(colorMapping.prefab[index], parent);
+                }
+                else
+                {
+                    toSummon = Instantiate(colorMapping.prefab[0], parent);
+                }
+
+
                 toSummon.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;     
                 
                 Tile t = parent.GetComponent<Tile>();
@@ -289,29 +309,38 @@ public class LevelEditor : MonoBehaviour, IManageable
                 if (!toSummon.CompareTag("Obstacle"))
                 {
                     SetParentByTag(toSummon);
-                    
+                   
                 }
 
                 if (toSummon.CompareTag("Player"))
                 {
-                    
+
                     Entity et = toSummon.GetComponent<Player>();
 
                     EntityManager.instance.SetPlayer(et);
                     et.AddGooTiles(t);
                     et.SetCurrentTile(t);
                     t.isMainPlayerBody = true; //new
+
+                    Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2), parent.position.z);
+                    et.transform.position = position;
                 }
 
                 if (toSummon.CompareTag("Enemy"))
                 {
-                    
                     Entity et = toSummon.GetComponent<Slug>();    
 
                     EntityManager.instance.AddEnemyToEnemiesList(et);
                     et.SetCurrentTile(t);
-                    //et.SetTargetTileForAstarPath();
-                    //need to think how to implement more enemies 
+
+                    Vector3 position = new Vector3(parent.position.x, parent.position.y + (offsetY * 2), parent.position.z);
+                    et.transform.position = position;
+                }
+
+                if (toSummon.CompareTag("Food"))
+                {
+                    t.isFood = true;
+                    t.foodObject = toSummon;
                 }
 
 

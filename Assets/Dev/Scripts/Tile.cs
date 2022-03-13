@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     public GameObject canBeSelectedSprite;
     public GameObject selectedSprite;
     public GameObject gooSprite;
+    public GameObject foodObject;
 
     public int cost;
     public int index;
@@ -17,6 +18,7 @@ public class Tile : MonoBehaviour
     public bool isGooPiece; 
     public bool isAdjacentToMainBody;  //new
     public bool isMainPlayerBody;  //new
+    public bool isFood;  //new
 
 
     public int gCost, hCost;

@@ -23,12 +23,13 @@ public class Slug : Entity
 
         DetectMoveDirection(currentTile, targetTile);
 
-        currentTile = targetTile;
 
         //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
         //GetComponent<SpriteRenderer>().sortingOrder = targetTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
-        PlayAnimation(AnimationType.Move);
+        CheckWhatIsNextTile(currentTile, targetTile);
+
+        currentTile = targetTile;
 
         await Task.Delay(100);
 
@@ -43,30 +44,16 @@ public class Slug : Entity
         //Debug.Log("ENEMY DONE");
     }
 
-    public override async void PlayAnimation(AnimationType animType)
+    public override void PlayAnimation(AnimationType animType)
     {
-        switch (animType)
-        {
-            case AnimationType.Move:
+        Vector3 targetVector = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
-                await Task.Delay(300);
-
-                Vector3 targetVector = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
-
-                LeanTween.move(gameObject, targetVector, 0.05f);
-                GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
-                break;
-            case AnimationType.Hurt:
-                break;
-            case AnimationType.Eat:
-                break;
-            default:
-                break;
-        }
+        LeanTween.move(gameObject, targetVector, 0.05f);
+        GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
     }
 
-    public override void SetTargetTileForAstarPath() 
-    {      
+    public override void SetTargetTileForAstarPath()
+    {
         int randomIndex = UnityEngine.Random.Range(0, GridManager.instance.allEdgeTileInLevel.Count);
         Tile targetTile = GridManager.instance.allEdgeTileInLevel[randomIndex];
 
@@ -105,15 +92,6 @@ public class Slug : Entity
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            if (TileTo.isGooPiece || TileTo.isMainPlayerBody)
-            {
-                anim.SetBool("isEating", true);
-            }
-            else
-            {
-                anim.SetBool("isMoving", true);
-            }
-
             Debug.Log("Down");
         }
         else if (TileTo.tileY > from.tileY)
@@ -126,17 +104,6 @@ public class Slug : Entity
 
             Vector3 rotation = new Vector3(0, 0, 0);
             transform.rotation = Quaternion.Euler(rotation);
-
-            if (TileTo.isGooPiece || TileTo.isMainPlayerBody)
-            {
-                anim.SetBool("isEating", true);
-            }
-            else
-            {
-                anim.SetBool("isMovingBack", true);
-            }
-
-
 
             Debug.Log("up");
 
@@ -152,16 +119,6 @@ public class Slug : Entity
             Vector3 rotation = new Vector3(0, 0, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            if (TileTo.isGooPiece || TileTo.isMainPlayerBody)
-            {
-                anim.SetBool("isEating", true);
-            }
-            else
-            {
-                anim.SetBool("isMoving", true);
-            }
-
-
             Debug.Log("left");
 
         }
@@ -175,9 +132,27 @@ public class Slug : Entity
 
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
+       
+            Debug.Log("right");
 
-            
+        }
+    }
 
+    public void CheckWhatIsNextTile(Tile from, Tile TileTo)
+    {
+        if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
+        {
+            if (TileTo.isGooPiece || TileTo.isMainPlayerBody)
+            {
+                anim.SetBool("isEating", true);
+            }
+            else
+            {
+                anim.SetBool("isMoving", true);
+            }
+        }
+        else
+        {
             if (TileTo.isGooPiece || TileTo.isMainPlayerBody)
             {
                 anim.SetBool("isEating", true);
@@ -186,11 +161,10 @@ public class Slug : Entity
             {
                 anim.SetBool("isMovingBack", true);
             }
-
-
-            Debug.Log("right");
-
         }
+
+
+        PlayAnimation(AnimationType.Move);
     }
 
     void EatGooPiece(Tile target)

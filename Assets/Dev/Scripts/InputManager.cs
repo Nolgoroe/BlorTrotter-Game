@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
                             Tile t = hit.transform.GetComponent<Tile>();
 
-                            if (!t.isMainPlayerBody && !t.isFull) //new
+                            if (!t.isMainPlayerBody && (!t.isFull || t.isFood)) //new
                             {
                                 if (EntityManager.instance.GetPlayer().entityAdjacentTiles.Contains(t) || EntityManager.instance.GetPlayer().gooTiles.Contains(t))
                                 {

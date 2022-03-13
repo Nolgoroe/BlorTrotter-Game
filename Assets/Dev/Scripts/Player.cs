@@ -99,8 +99,6 @@ public class Player : Entity
                 break;
             case AnimationType.Hurt:
                 break;
-            case AnimationType.Eat:
-                break;
             case AnimationType.Teleport:
                 anim.SetBool("isRetracting", true);
 

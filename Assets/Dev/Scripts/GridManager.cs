@@ -467,7 +467,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + LevelEditor.instance.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
             {
                 return null;
             }
@@ -488,7 +488,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - LevelEditor.instance.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
             {
                 return null;
             }
@@ -510,7 +510,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - 1;
 
-            if (allTilesInLevel[tileIndex].isFull)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
             {
                 return null;
             }
@@ -530,7 +530,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + 1;
 
-            if (allTilesInLevel[tileIndex].isFull)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood)
             {
                 return null;
             }
@@ -556,7 +556,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
             if (!tile.isWaterTile)
             { 
-                tile.canBeSelectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder ; 
+                tile.canBeSelectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder; 
                 tile.selectedSprite.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1; 
             }
 

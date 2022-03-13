@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public enum AnimationType { Move, Hurt, Eat, Teleport}
+public enum AnimationType { Move, Hurt, Teleport}
 public enum MoveDirection { up, down, left, right}
 public abstract class Entity : MonoBehaviour // abstract class for inheritance and polymorphism
 {
