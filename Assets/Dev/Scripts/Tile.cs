@@ -19,6 +19,8 @@ public class Tile : MonoBehaviour
     public bool isAdjacentToMainBody;  //new
     public bool isMainPlayerBody;  //new
     public bool isFood;  //new
+    public bool isKinine;  //new
+    public bool isSalt;  //new
 
 
     public int gCost, hCost;

@@ -80,13 +80,13 @@ public class Player : Entity
            EntityManager.instance.SetPlayerTurn();
         }
 
-        if (!targetTile.isFood)
+        if (!targetTile.isFood && !targetTile.isKinine && !targetTile.isSalt)
         {
             GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
         }
         else
         {
-            EatFood(targetTile);
+            EatFood(targetTile, (targetTile.isKinine || targetTile.isSalt));
         }
 
         await Task.Delay(500);
@@ -201,7 +201,7 @@ public class Player : Entity
     {
         if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
         {
-            if (TileTo.isFood)
+            if (TileTo.isFood || TileTo.isKinine || TileTo.isSalt)
             {
                 anim.SetBool("isEating", true);
             }
@@ -212,7 +212,7 @@ public class Player : Entity
         }
         else
         {
-            if (TileTo.isFood)
+            if (TileTo.isFood || TileTo.isKinine || TileTo.isSalt)
             {
                 anim.SetBool("isEatingBack", true);
             }
@@ -223,10 +223,23 @@ public class Player : Entity
         }
     }
 
-    void EatFood(Tile target)
+    void EatFood(Tile target, bool isKinineOrSalt)
     {
         target.isFood = false;
-        Destroy(target.foodObject.gameObject);
+
+        if (isKinineOrSalt)
+        {
+            target.isKinine = false;
+            target.isSalt = false;
+
+            Animator anim = target.foodObject.GetComponent<Animator>();
+            anim.SetBool("Absorb", true);
+        }
+        else
+        {
+            Destroy(target.foodObject.gameObject);
+        }
+
         target.foodObject = null;
     }
 }

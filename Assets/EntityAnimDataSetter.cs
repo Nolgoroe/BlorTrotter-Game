@@ -59,4 +59,14 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     {
        EntityManager.instance.SetEnemyTargetTiles(GetComponent<Slug>());
     }
+
+    public void AfterKinineSaltSpawn()
+    {
+        anim.SetBool("Spawn", false);
+    }
+
+    public void DestroyAfterAnim()
+    {
+        Destroy(gameObject);
+    }
 }

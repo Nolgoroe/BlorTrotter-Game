@@ -351,6 +351,24 @@ public class LevelEditor : MonoBehaviour, IManageable
                     t.foodObject = toSummon;
                 }
 
+                if (toSummon.CompareTag("Kinine"))
+                {
+                    Animator anim = toSummon.GetComponent<Animator>();
+                    anim.SetBool("Spawn", true);
+
+                    t.isKinine = true;
+                    t.foodObject = toSummon;
+                }
+
+                if (toSummon.CompareTag("Salt"))
+                {
+                    Animator anim = toSummon.GetComponent<Animator>();
+                    anim.SetBool("Spawn", true);
+
+                    t.isSalt = true;
+                    t.foodObject = toSummon;
+                }
+
 
             }
         }

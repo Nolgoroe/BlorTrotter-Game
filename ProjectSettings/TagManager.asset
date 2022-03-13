@@ -9,6 +9,8 @@ TagManager:
   - Obstacle
   - OtherBlobs
   - Food
+  - Kinine
+  - Salt
   layers:
   - Default
   - TransparentFX
