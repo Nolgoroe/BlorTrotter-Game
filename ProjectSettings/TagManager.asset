@@ -11,6 +11,8 @@ TagManager:
   - Food
   - Kinine
   - Salt
+  - Lock Salt
+  - Lock Kinine
   layers:
   - Default
   - TransparentFX

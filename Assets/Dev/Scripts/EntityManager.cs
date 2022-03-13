@@ -68,7 +68,9 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         GameObject toSummon = Instantiate(slugPrefab, enemySpawnTiles[rand].transform);
         Transform parent = enemySpawnTiles[rand].transform;
         Entity et = toSummon.GetComponent<Slug>();
+        Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
 
+        t.isFull = true;
 
         Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
         et.transform.position = position;

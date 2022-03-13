@@ -369,7 +369,26 @@ public class LevelEditor : MonoBehaviour, IManageable
                     t.foodObject = toSummon;
                 }
 
+                if (toSummon.CompareTag("Lock Salt") || toSummon.CompareTag("Lock Kinine"))
+                {
+                    //t.isLocked = true;
 
+                    Animator anim = Instantiate(UIManager.instance.lockPrefab, parent).GetComponent<Animator>();
+                    ConnecetdElement connected = anim.GetComponent<ConnecetdElement>();
+
+                    connected.connectedElement = t.gameObject;
+
+
+                    if (toSummon.CompareTag("Lock Salt"))
+                    {
+                        LevelManager.instance.saltLocks.Add(anim);
+                    }
+                    else
+                    {
+                        LevelManager.instance.kinineLocks.Add(anim);
+
+                    }
+                }
             }
         }
     }   

@@ -27,12 +27,14 @@ public class UIManager : MonoBehaviour, IManageable
 
     private Dictionary<UIScreenTypes, GameObject> screenTypeToObject;
 
-
     [Header("UI screen Effect Settings")]
     [SerializeField] private int screenFadeSpeed;
 
     public TMP_Text testText; //DELTE THIS AFTER SHOWING NATHAN
     public Image imageTest; //DELTE THIS AFTER SHOWING NATHAN
+
+    [Header("UI Animations")]
+    public GameObject lockPrefab;
 
     public void initManager()
     {

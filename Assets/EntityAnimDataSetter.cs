@@ -64,9 +64,8 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     {
         anim.SetBool("Spawn", false);
     }
-
     public void DestroyAfterAnim()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 }

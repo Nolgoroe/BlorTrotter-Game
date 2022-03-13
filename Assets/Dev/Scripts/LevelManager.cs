@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Threading.Tasks;
 
 public class LevelManager : MonoBehaviour, IManageable
 {
@@ -13,9 +14,17 @@ public class LevelManager : MonoBehaviour, IManageable
 
     public int currentCooldownSummonEnemies;
 
+    public bool hasKininePower, hasSaltPower;
+
+    public List<Animator> kinineLocks;
+    public List<Animator> saltLocks;
+
     public void initManager()
     {
         instance = this;
+        kinineLocks = new List<Animator>();
+        saltLocks = new List<Animator>();
+
         Debug.Log("success levels");
     }
 
@@ -31,6 +40,10 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         currentLevelNumberOfMoves = currentLevel.maxNumberOfMoves;
         currentCooldownSummonEnemies = currentLevel.summonEnemyCooldown;
+        hasSaltPower = false;
+        hasKininePower = false;
+        kinineLocks.Clear();
+        saltLocks.Clear();
 
         /// level editor generate level here          
         LevelEditor.instance.CallGenerateLevel();
@@ -78,9 +91,51 @@ public class LevelManager : MonoBehaviour, IManageable
         }
     }
 
+    public async void ActivateKininePower()
+    {
+        hasKininePower = true;
 
+        await Task.Delay(1000);
 
+        UnlcokKinine();
+    }
 
+    public async void ActivateSaltPower()
+    {
+        hasSaltPower = true;
+
+        await Task.Delay(1000);
+
+        UnlockSalt();
+    }
+
+    private void UnlockSalt()
+    {
+        foreach (Animator anim in saltLocks)
+        {
+            anim.SetBool("Unlock", true);
+            //anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isLocked = false;
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isFull = false;
+        }
+
+        saltLocks.Clear();
+
+        GridManager.instance.FillallEdgeTileInLevelList();
+    }
+
+    private void UnlcokKinine()
+    {
+        foreach (Animator anim in kinineLocks)
+        {
+            anim.SetBool("Unlock", true);
+            //anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isLocked = false;
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isFull = false;
+        }
+
+        kinineLocks.Clear();
+
+        GridManager.instance.FillallEdgeTileInLevelList();
+    }
 
 
 

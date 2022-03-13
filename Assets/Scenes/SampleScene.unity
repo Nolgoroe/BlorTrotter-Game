@@ -2679,6 +2679,7 @@ MonoBehaviour:
   screenFadeSpeed: 3
   testText: {fileID: 1245221682}
   imageTest: {fileID: 1876455099}
+  lockPrefab: {fileID: 7504948771664232755, guid: 35bba7265efe24c4fbb1dece11985e51, type: 3}
 --- !u!1 &108165940
 GameObject:
   m_ObjectHideFlags: 0
@@ -7566,6 +7567,8 @@ MonoBehaviour:
   currentLevel: {fileID: 0}
   currentLevelNumberOfMoves: 0
   currentCooldownSummonEnemies: 0
+  hasKininePower: 0
+  hasSaltPower: 0
 --- !u!1 &414229893
 GameObject:
   m_ObjectHideFlags: 0

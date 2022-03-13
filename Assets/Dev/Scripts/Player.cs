@@ -229,11 +229,21 @@ public class Player : Entity
 
         if (isKinineOrSalt)
         {
-            target.isKinine = false;
-            target.isSalt = false;
-
             Animator anim = target.foodObject.GetComponent<Animator>();
             anim.SetBool("Absorb", true);
+
+            if (target.isKinine)
+            {
+                LevelManager.instance.ActivateKininePower();
+            }
+
+            if (target.isSalt)
+            {
+                LevelManager.instance.ActivateSaltPower();
+            }
+
+            target.isKinine = false;
+            target.isSalt = false;
         }
         else
         {

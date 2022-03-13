@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour
     public int index;
 
     public bool isFull;
+    //public bool isLocked;
     public bool isWaterTile; 
     public bool isGooPiece; 
     public bool isAdjacentToMainBody;  //new

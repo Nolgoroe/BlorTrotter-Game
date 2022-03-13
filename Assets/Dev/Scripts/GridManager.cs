@@ -876,6 +876,8 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
     public void FillallEdgeTileInLevelList()
     {
+        allEdgeTileInLevel.Clear();
+
         foreach (Tile tile in allTilesInLevel)
         {
             if (!tile.isFull)
