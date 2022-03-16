@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SafeArea : MonoBehaviour
 {
-    RectTransform rectTransform;
-    Rect safeArea;
-    Vector2 minAnchor;
-    Vector2 maxAnchor;
+    public RectTransform rectTransform;
+    public Rect safeArea;
+    public Vector2 minAnchor;
+    public Vector2 maxAnchor;
 
     private void Awake()
     {
