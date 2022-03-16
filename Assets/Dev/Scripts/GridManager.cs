@@ -134,7 +134,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
                     if (!callingEntity.entityAdjacentTiles.Contains(t))
                     {
-                        callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
+                        callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));  //t
                     }
                 }
 
