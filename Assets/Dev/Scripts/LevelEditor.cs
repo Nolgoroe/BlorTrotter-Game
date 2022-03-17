@@ -132,19 +132,19 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 int neighbourValue = 0;
 
-                if ((Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold))
+                if (((Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold)) || levelMap.texture.GetPixel((x+1), y) == null)
                 {
                     neighbourValue += 2; ///right
                 }
-                if ((Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold))
+                if (((Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold)) || levelMap.texture.GetPixel((x ), y + 1) == null)
                 {
                     neighbourValue += 1; ///top
                 }
-                if ((Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold))
+                if (((Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold)) || levelMap.texture.GetPixel((x ), y - 1) == null)
                 {
                     neighbourValue += 4;///bottom 
                 }
-                if ((Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold))
+                if (((Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold)) || levelMap.texture.GetPixel((x - 1), y) == null)
                 {
                     neighbourValue += 8;///left
                 }
