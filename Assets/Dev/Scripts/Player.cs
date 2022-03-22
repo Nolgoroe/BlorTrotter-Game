@@ -32,6 +32,7 @@ public class Player : Entity
     public override async Task MoveEntity(Tile targetTile) 
     {
         isPlayerTurn = false;
+        LevelManager.instance.DecreaseNumberOfMoves();
 
         GridManager.instance.SetTileFull(currentTile);
 
@@ -88,6 +89,8 @@ public class Player : Entity
         {
             EatFood(targetTile, (targetTile.isKinine || targetTile.isSalt));
         }
+
+        LevelManager.instance.CheckLoseLevel();
 
         await Task.Delay(500);
     }
@@ -244,12 +247,21 @@ public class Player : Entity
 
             target.isKinine = false;
             target.isSalt = false;
+
+            LevelManager.instance.AddMovesEat(LevelManager.instance.currentLevel.amountToAddOnEatBlob);
         }
         else
         {
             Destroy(target.foodObject.gameObject);
+
+            LevelManager.instance.AddMovesEat(LevelManager.instance.currentLevel.amountToAddOnEatFood);
+            ScoreManager.instance.currentCollectedFood++;
+            UIManager.instance.UpdateFoodAmount();
+
+            LevelManager.instance.CheckWinLevel();
         }
 
         target.foodObject = null;
+
     }
 }

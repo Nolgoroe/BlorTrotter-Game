@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour  //singleton , only instantiate one time 
 {
@@ -17,13 +18,12 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
 
 
         InitAllGame();
-        LevelManager.instance.ChooseLevel(1);
-        LevelManager.instance.LoadLevel();
+        //LevelManager.instance.ChooseLevel(1);
+        //LevelManager.instance.LoadLevel();
+        //StartLevelSetData(); 
+        //CameraController.instance.CenterOnBlob();
 
-        
-        StartLevelSetData(); 
-
-        CameraController.instance.CenterOnBlob();
+        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen, UIScreenTypes.MainMenu });
     }
 
     [ContextMenu("Init complete system")]
@@ -47,27 +47,6 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
 
 
 
-    public void StartLevelSetData()
-    {
-        CameraController.canControlCamera = true;
-
-        //call reset datas here?
-    }
-
-
-    public void EndLevelSetData()
-    {
-        CameraController.canControlCamera = false;
-
-        //call reset datas here?
-    }
-
-
-
-
-
-
-
 
 
 
@@ -81,15 +60,15 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
         SceneManager.LoadScene(0);
     }
 
-    [ContextMenu("start level set data")]
-    public void CallStartLevelSetData() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        StartLevelSetData();
-    }
+    //[ContextMenu("start level set data")]
+    //public void CallStartLevelSetData() //DELTE THIS AFTER SHOWING NATHAN
+    //{
+    //    StartLevelSetData();
+    //}
 
-    [ContextMenu("end level set data")]
-    public void CallEndLevelSetData() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        EndLevelSetData();
-    }
+    //[ContextMenu("end level set data")]
+    //public void CallEndLevelSetData() //DELTE THIS AFTER SHOWING NATHAN
+    //{
+    //    EndLevelSetData();
+    //}
 }

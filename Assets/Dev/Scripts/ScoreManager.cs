@@ -9,11 +9,10 @@ public class ScoreManager : MonoBehaviour, IManageable   //singleton , only inst
     [SerializeField] private int levelScoreINT;
     [SerializeField] private float levelScoreFloat;
 
-    
-    
-    public int nbrMovesRemaining;
-    public int nbrFoodCollected;
-    public int nbrBlobCollected;
+
+    public int currentLevelNumberOfMovesRemaining;
+    public int currentCollectedFood;
+    public int currentCollectedKnowledge;
     public int nbrBlobFragment;
 
     public void initManager()
@@ -44,7 +43,27 @@ public class ScoreManager : MonoBehaviour, IManageable   //singleton , only inst
 
 
 
+    public int calcualteEndLevelScore()/// can only be 1 - 3
+    {
+        int score = 0;
 
+        if(currentLevelNumberOfMovesRemaining >= LevelManager.instance.currentLevel.movesNeeded)
+        {
+            score++;
+        }
+
+        if(currentCollectedFood >= LevelManager.instance.currentLevel.amountOfFood)
+        {
+            score++;
+        }
+
+        if(currentCollectedKnowledge >= LevelManager.instance.currentLevel.amountOfKnowledge)
+        {
+            score++;
+        }
+
+        return score;
+    }
 
 
 

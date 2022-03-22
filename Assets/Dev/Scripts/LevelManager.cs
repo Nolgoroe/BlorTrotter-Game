@@ -9,10 +9,10 @@ public class LevelManager : MonoBehaviour, IManageable
     public static LevelManager instance;
 
     public LevelScriptableObject currentLevel;
-
-    [SerializeField] private int currentLevelNumberOfMoves;
+    public LevelScriptableObject[] allLevels;
 
     public int currentCooldownSummonEnemies;
+    //public int currentCollectedKnowledge, currentCollectedFood;
 
     public bool hasKininePower, hasSaltPower;
 
@@ -29,21 +29,106 @@ public class LevelManager : MonoBehaviour, IManageable
     }
 
 
-
-    public void ChooseLevel(int levelNum) // we instantiate to have a clone of the scriptable object, because we absolutely don't want to change the data in the original one
+    public void LaunchLevel(int index)
     {
-        currentLevel = Instantiate((LevelScriptableObject)Resources.Load("Scriptable Objects/Levels/Level " + levelNum)); /// NATHA PLEASE COMMENT THIS
+
+        ChooseLevel(index);
+        ResetDataStartLevel();
+        LoadLevel();
+        CameraController.instance.CenterOnBlob();
+
+        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LoadingScreen, UIScreenTypes.GameScreen });
     }
 
-
-    public void LoadLevel() 
+    public void ResetDataStartLevel()
     {
-        currentLevelNumberOfMoves = currentLevel.maxNumberOfMoves;
+        CameraController.canControlCamera = true;
+
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining = currentLevel.maxNumberOfMoves;
         currentCooldownSummonEnemies = currentLevel.summonEnemyCooldown;
         hasSaltPower = false;
         hasKininePower = false;
         kinineLocks.Clear();
         saltLocks.Clear();
+
+        EntityManager.instance.SetPlayer(null);
+
+        ScoreManager.instance.currentCollectedKnowledge = 0;
+        ScoreManager.instance.currentCollectedFood = 0;
+
+        UIManager.instance.saltPowerSprite.SetActive(false);
+        UIManager.instance.kininePowerSprite.SetActive(false);
+        UIManager.instance.SetInGameUIData();
+
+        for (int i = 0; i < ObjectRefrencer.instance.levelMap.transform.childCount; i++)
+        {
+            Destroy(ObjectRefrencer.instance.levelMap.transform.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < ObjectRefrencer.instance.enemies.transform.childCount; i++)
+        {
+            Destroy(ObjectRefrencer.instance.enemies.transform.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < ObjectRefrencer.instance.blobs.transform.childCount; i++)
+        {
+            Destroy(ObjectRefrencer.instance.blobs.transform.GetChild(i).gameObject);
+        }
+
+
+        GridManager.instance.allTilesInLevel.Clear();
+        GridManager.instance.allEdgeTileInLevel.Clear();
+        GridManager.instance.allEnemyGooTiles.Clear();
+    }
+
+    public void DestroyLevel()
+    {
+        InputManager.instance.canRecieveInput = false;
+        CameraController.canControlCamera = false;
+
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining = 0;
+        currentCooldownSummonEnemies = 0;
+        hasSaltPower = false;
+        hasKininePower = false;
+        kinineLocks.Clear();
+        saltLocks.Clear();
+
+        GridManager.instance.allTilesInLevel.Clear();
+        GridManager.instance.allEdgeTileInLevel.Clear();
+
+        EntityManager.instance.SetPlayer(null);
+
+        ScoreManager.instance.currentCollectedKnowledge = 0;
+        ScoreManager.instance.currentCollectedFood = 0;
+
+        UIManager.instance.saltPowerSprite.SetActive(false);
+        UIManager.instance.kininePowerSprite.SetActive(false);
+
+        for (int i = 0; i < ObjectRefrencer.instance.levelMap.transform.childCount; i++)
+        {
+            Destroy(ObjectRefrencer.instance.levelMap.transform.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < ObjectRefrencer.instance.enemies.transform.childCount; i++)
+        {
+            Destroy(ObjectRefrencer.instance.enemies.transform.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < ObjectRefrencer.instance.blobs.transform.childCount; i++)
+        {
+            Destroy(ObjectRefrencer.instance.blobs.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void ChooseLevel(int levelIndex) // we instantiate to have a clone of the scriptable object, because we absolutely don't want to change the data in the original one
+    {
+        //currentLevel = Instantiate((LevelScriptableObject)Resources.Load("Scriptable Objects/Levels/Level " + levelNum)); /// NATHA PLEASE COMMENT THIS
+        currentLevel = allLevels[levelIndex];
+    }
+
+
+    public void LoadLevel() 
+    {
 
         /// level editor generate level here          
         LevelEditor.instance.CallGenerateLevel();
@@ -61,20 +146,42 @@ public class LevelManager : MonoBehaviour, IManageable
     }
 
 
-    public void CheckEndLevel()
+    public void CheckLoseLevel()
     {
-        if(currentLevelNumberOfMoves <= 0)
+        if(ScoreManager.instance.currentLevelNumberOfMovesRemaining <= 0)
         {
             // level lost logic here
             // send to UI Screen to manage screen display
             Debug.Log("LOST LEVEL, OUT OF MOVES!");
         }
     }
+    public void CheckWinLevel()
+    {
+        if(ScoreManager.instance.currentCollectedFood == currentLevel.amountOfFood)
+        {
+            InputManager.instance.canRecieveInput = false;
+            CameraController.canControlCamera = false;
+
+            UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen});
+
+            int score = ScoreManager.instance.calcualteEndLevelScore();
+
+            LevelManagerSaveData.instance.SaveLevel(score);
+
+            UIManager.instance.SetWinLoseScreenData();
+            Debug.Log("WON LEVEL");
+        }
+    }
 
     public void DecreaseNumberOfMoves() 
     {
-        currentLevelNumberOfMoves--;
-        CheckEndLevel();
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining--;
+        UIManager.instance.UpdateNumOfMoves();
+    }
+    public void AddMovesEat(int amount) 
+    {
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining += amount;
+        UIManager.instance.UpdateNumOfMoves();
     }
     public void DecreaseSummonEnemyCooldown() 
     {
@@ -94,6 +201,7 @@ public class LevelManager : MonoBehaviour, IManageable
     public async void ActivateKininePower()
     {
         hasKininePower = true;
+        UIManager.instance.kininePowerSprite.SetActive(true);
 
         await Task.Delay(1000);
 
@@ -103,6 +211,7 @@ public class LevelManager : MonoBehaviour, IManageable
     public async void ActivateSaltPower()
     {
         hasSaltPower = true;
+        UIManager.instance.saltPowerSprite.SetActive(true);
 
         await Task.Delay(1000);
 
@@ -140,6 +249,11 @@ public class LevelManager : MonoBehaviour, IManageable
 
 
 
+    public void MoveToNextLevel()
+    {
+        LaunchLevel(currentLevel.levelID + 1);
+    }
+
     [ContextMenu("Choose Level")]
     public void callChooseLevel() //DELTE THIS AFTER SHOWING NATHAN
     {
@@ -155,7 +269,7 @@ public class LevelManager : MonoBehaviour, IManageable
     [ContextMenu("Decrease Number Of Moves")]
     public void test() //DELTE THIS AFTER SHOWING NATHAN
     {
-        currentLevelNumberOfMoves--;
-        CheckEndLevel();
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining--;
+        CheckLoseLevel();
     }
 }

@@ -16,8 +16,6 @@ public class LevelEditor : MonoBehaviour, IManageable
     public static LevelEditor instance;
 
     public List<WaterTiles> waterTiles;
-    public Sprite levelMap;
-    public Sprite levelObstacles;
     public LevelParser[] colorMappingsTiles;
     public LevelParser[] colorMappingsObstacles;
 
@@ -46,11 +44,11 @@ public class LevelEditor : MonoBehaviour, IManageable
     
     void GenerateLevel()
     {
-        for (int y = levelMap.texture.height - 1; y >= 0; y--)
+        for (int y = LevelManager.instance.currentLevel.levelMap.texture.height - 1; y >= 0; y--)
         {
             GameObject tileGenerated = null;
 
-            for (int x = 0; x < levelMap.texture.width; x++)
+            for (int x = 0; x < LevelManager.instance.currentLevel.levelMap.texture.width; x++)
             {
 
                 tileGenerated = GenerateTile(x, y);
@@ -64,7 +62,7 @@ public class LevelEditor : MonoBehaviour, IManageable
                 {                  
                     tileGenerated.GetComponent<Tile>().edgeType = EdgeType.leftEdge;
                 }
-                else if(y== levelMap.texture.height - 1)
+                else if(y== LevelManager.instance.currentLevel.levelMap.texture.height - 1)
                 {
                     tileGenerated.GetComponent<Tile>().edgeType = EdgeType.topEdge;
                 }
@@ -85,7 +83,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
     GameObject GenerateTile(int x, int y)
     {
-        Color pixelColor = levelMap.texture.GetPixel(x, y);
+        Color pixelColor = LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, y);
         GameObject tile = null;
 
         string s = ColorUtility.ToHtmlStringRGB(pixelColor);
@@ -117,7 +115,7 @@ public class LevelEditor : MonoBehaviour, IManageable
                 tile.GetComponent<Tile>().SetXY(x, y);
 
                 //each tile should be behind the tile above, we decrement the layer of each tile and start from a higher value each new line
-                spriteRenderer.sortingOrder = levelMap.texture.width + (offsetNewRowX - x);
+                spriteRenderer.sortingOrder = LevelManager.instance.currentLevel.levelMap.texture.width + (offsetNewRowX - x);
 
                 GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());
 
@@ -132,19 +130,19 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 int neighbourValue = 0;
 
-                if (((Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold)) || levelMap.texture.GetPixel((x+1), y) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x+1), y) == null)
                 {
                     neighbourValue += 2; ///right
                 }
-                if (((Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold)) || levelMap.texture.GetPixel((x ), y + 1) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x ), y + 1) == null)
                 {
                     neighbourValue += 1; ///top
                 }
-                if (((Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold)) || levelMap.texture.GetPixel((x ), y - 1) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x ), y - 1) == null)
                 {
                     neighbourValue += 4;///bottom 
                 }
-                if (((Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold)) || levelMap.texture.GetPixel((x - 1), y) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y) == null)
                 {
                     neighbourValue += 8;///left
                 }
@@ -192,7 +190,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 //each tile should be behind the tile above, we decrement the layer of each tile and start from a higher value each new line
 
-                spriteRenderer.sortingOrder = levelMap.texture.width + (offsetNewRowX - x);
+                spriteRenderer.sortingOrder = LevelManager.instance.currentLevel.levelMap.texture.width + (offsetNewRowX - x);
 
                 GridManager.instance.AddTileToTileList(tile.GetComponent<Tile>());
                 break;
@@ -209,11 +207,11 @@ public class LevelEditor : MonoBehaviour, IManageable
         switch (checkdirection)
         {
             case checkDirection.bottomLeft:
-                if ((Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold))
+                if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold))
                 {
-                    if ((Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold))
+                    if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold))
                     {
-                        if ((Mathf.Abs(levelMap.texture.GetPixel(x - 1, (y - 1)).r - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x - 1, (y - 1)).g - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x - 1, (y - 1)).b - 1) >= threshold))
+                        if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x - 1, (y - 1)).r - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x - 1, (y - 1)).g - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x - 1, (y - 1)).b - 1) >= threshold))
                         {
                             return true;
                         }
@@ -224,11 +222,11 @@ public class LevelEditor : MonoBehaviour, IManageable
 
             case checkDirection.bottomRight:
 
-                if ((Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold))
+                if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold))
                 {
-                    if ((Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold))
+                    if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold))
                     {
-                        if ((Mathf.Abs(levelMap.texture.GetPixel(x + 1, (y - 1)).r - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x + 1, (y - 1)).g - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x + 1, (y - 1)).b - 1) >= threshold))
+                        if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x + 1, (y - 1)).r - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x + 1, (y - 1)).g - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x + 1, (y - 1)).b - 1) >= threshold))
                         {
                             return true;
                         }
@@ -239,11 +237,11 @@ public class LevelEditor : MonoBehaviour, IManageable
 
             case checkDirection.topLeft:
 
-                if ((Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold))
+                if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold))
                 {
-                    if ((Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold))
+                    if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold))
                     {
-                        if ((Mathf.Abs(levelMap.texture.GetPixel(x - 1, (y + 1)).r - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x - 1, (y + 1)).g - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x - 1, (y + 1)).b - 1) >= threshold))
+                        if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x - 1, (y + 1)).r - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x - 1, (y + 1)).g - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x - 1, (y + 1)).b - 1) >= threshold))
                         {
                             return true;
                         }
@@ -254,11 +252,11 @@ public class LevelEditor : MonoBehaviour, IManageable
 
             case checkDirection.topRight:
 
-                if ((Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold))
+                if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold))
                 {
-                    if ((Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold))
+                    if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold))
                     {
-                        if ((Mathf.Abs(levelMap.texture.GetPixel(x + 1, (y + 1)).r - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x + 1, (y + 1)).g - 0) >= threshold || Mathf.Abs(levelMap.texture.GetPixel(x + 1, (y + 1)).b - 1) >= threshold))
+                        if ((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x + 1, (y + 1)).r - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x + 1, (y + 1)).g - 0) >= threshold || Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x + 1, (y + 1)).b - 1) >= threshold))
                         {
                             return true;
                         }
@@ -278,7 +276,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
     void GenerateObstacles(Transform parent, int x , int y )
     {
-        Color pixelColor = levelObstacles.texture.GetPixel(x, y);
+        Color pixelColor = LevelManager.instance.currentLevel.levelObstacles.texture.GetPixel(x, y);
         GameObject parentObject = parent.gameObject;
 
         // if transparent, ignore 
@@ -349,6 +347,8 @@ public class LevelEditor : MonoBehaviour, IManageable
                 {
                     t.isFood = true;
                     t.foodObject = toSummon;
+
+                    t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.Food);
                 }
 
                 if (toSummon.CompareTag("Kinine"))
@@ -398,7 +398,7 @@ public class LevelEditor : MonoBehaviour, IManageable
         switch (inObject.tag)
         {
             case "Player":
-                inObject.transform.SetParent(ObjectRefrencer.instance.enviroment.transform);
+                inObject.transform.SetParent(ObjectRefrencer.instance.blobs.transform);
                 break;
 
             case "Enemy":
@@ -406,7 +406,7 @@ public class LevelEditor : MonoBehaviour, IManageable
                 break;
 
             case "OtherBlobs":
-                inObject.transform.SetParent(ObjectRefrencer.instance.otherBlobs.transform);
+                inObject.transform.SetParent(ObjectRefrencer.instance.blobs.transform);
                 break;
 
 

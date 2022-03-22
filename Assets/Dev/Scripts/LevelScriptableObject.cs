@@ -5,8 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Create Level")]
 public class LevelScriptableObject : ScriptableObject
 {
+    [Header("Basic Data")]
     public int levelID;
+
+    [Header("Level Specific Data")]
     public int maxNumberOfMoves;
     public int summonEnemyCooldown;
     public int maxConcurrentSlugs;
+    public int amountOfKnowledge;
+    public int amountOfFood;
+    public int amountToAddOnEatFood;
+    public int amountToAddOnEatBlob;
+    public bool hasEnemies;
+
+
+    [Header("Level Display Data")]
+    public Sprite levelMap;
+    public Sprite levelObstacles;
+    public Sprite spriteLevelImage;
+
+    [Header("Level Win Data")]
+    public int movesNeeded;
 }

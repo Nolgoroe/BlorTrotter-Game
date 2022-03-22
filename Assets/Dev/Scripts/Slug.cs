@@ -18,25 +18,49 @@ public class Slug : Entity
     public override async Task MoveEntity(Tile targetTile)
     {
         GridManager.instance.SetTileFull(currentTile);
-        GridManager.instance.SetTileFull(targetTile);
 
+        currentTile.isEnemyGooPiece = true;
+        targetTile.isEnemyGooPiece = true;
+
+        currentTile.turnsUntilEnemyGooDissappears = 4;
+        targetTile.turnsUntilEnemyGooDissappears = 4;
+
+        GridManager.instance.allEnemyGooTiles.Add(currentTile);
+        GridManager.instance.allEnemyGooTiles.Add(targetTile);
 
         DetectMoveDirection(currentTile, targetTile);
 
+        if (!gooTiles.Contains(currentTile))
+        {
+            gooTiles.Add(currentTile);
+        }
 
-        //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
-        //GetComponent<SpriteRenderer>().sortingOrder = targetTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        if (!gooTiles.Contains(targetTile))
+        {
+            gooTiles.Add(targetTile);
+        }
+
 
         await Task.Delay(300);
 
         CheckWhatIsNextTile(currentTile, targetTile);
 
-        currentTile = targetTile;
 
 
         await Task.Delay(300);
 
+        foreach (Tile element in gooTiles)
+        {
+            GridManager.instance.LeaveGooOnTileEnemy(element);
+        }
+
+
+        currentTile = targetTile;
+
         PlayAnimation(AnimationType.Move);
+
+        GridManager.instance.SetTileFull(targetTile);
+
 
         if (currentTile.isGooPiece)
         {
@@ -44,6 +68,12 @@ public class Slug : Entity
         }
 
         enemyPath.RemoveAt(0);
+
+
+        if (GridManager.instance.allEnemyGooTiles.Count > 0)
+        {
+            GridManager.instance.CountdownEnemyGooTiles(this);
+        }
 
         //Debug.Log("ENEMY DONE");
     }

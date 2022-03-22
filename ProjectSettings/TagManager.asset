@@ -13,6 +13,7 @@ TagManager:
   - Salt
   - Lock Salt
   - Lock Kinine
+  - Locking
   layers:
   - Default
   - TransparentFX
@@ -61,4 +62,7 @@ TagManager:
     locked: 0
   - name: GodRay
     uniqueID: 2426577589
+    locked: 0
+  - name: Above ALL
+    uniqueID: 1502219711
     locked: 0

@@ -19,6 +19,15 @@ public class TutorialManager : MonoBehaviour, IManageable
         UIManager.instance.TypeWriterWrite(text, UIManager.instance.tutorialTextObject);
     }
 
+    public void CheckDisplayTutorialText(Tile tileToCheck)
+    {
+        if (tileToCheck.GetComponent<TutorialObject>())
+        {
+            EventManager.instance.ShootEvent(tileToCheck.GetComponent<TutorialObject>().GetActionEvent());
+
+            UIManager.instance.DisplayTutorialExclimation();
+        }
+    }
 
 
 

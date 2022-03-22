@@ -53,12 +53,15 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         await player.MoveEntity(targetTile);
 
-        if (allEnemies.Count > 0)
+        if (LevelManager.instance.currentLevel.hasEnemies)
         {
-            MoveAllEnemies();
-        }
+            if (allEnemies.Count > 0)
+            {
+                MoveAllEnemies();
+            }
 
-        LevelManager.instance.DecreaseSummonEnemyCooldown();
+            LevelManager.instance.DecreaseSummonEnemyCooldown();
+        }
     }
 
     public void SpawnEnemy()
@@ -71,6 +74,13 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
 
         t.isFull = true;
+        et.AddGooTiles(t);
+        t.isEnemyGooPiece = true;
+
+        foreach (Tile element in et.gooTiles)
+        {
+            GridManager.instance.LeaveGooOnTileEnemy(element);
+        }
 
         Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
         et.transform.position = position;

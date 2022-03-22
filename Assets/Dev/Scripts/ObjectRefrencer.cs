@@ -9,7 +9,7 @@ public class ObjectRefrencer : MonoBehaviour, IManageable
     public GameObject enviroment;
     public GameObject levelMap;
     public GameObject enemies;
-    public GameObject otherBlobs;
+    public GameObject blobs;
 
     public void initManager()
     {

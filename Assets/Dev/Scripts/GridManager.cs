@@ -11,6 +11,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
     public List<Tile> allTilesInLevel;
     public List<Tile> allEdgeTileInLevel;
+    public List<Tile> allEnemyGooTiles;
 
     [SerializeField] private Tile currentlySelectedTile;
 
@@ -71,8 +72,6 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
             //tileDisplayManager.SetTileSelectedDisplay(currentlySelectedTile);
 
-            CheckDisplayTutorialText(selectedTile);
-
             if (!selectedTile.isAdjacentToMainBody && !selectedTile.isGooPiece) //new
             {
                 EntityManager.instance.CallPrepareToMovePlayer(selectedTile.playerTeleportTile);
@@ -106,21 +105,14 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
 
     // feed the tutorial UI with text if possible
-    public void CheckDisplayTutorialText(Tile tileToCheck)
-    {
-        if (tileToCheck.GetComponent<TutorialObject>())
-        {
-            EventManager.instance.ShootEvent(tileToCheck.GetComponent<TutorialObject>().GetActionEvent());
-        }
-    }
 
 
     public void GetAdjacentTile(Tile currentTile, Entity callingEntity) //    ! might make this better
     {
         /// this is not how the logic is supposed to work - we need to check the up, down, left and right tiles and choose one out of them
      
-        int w = LevelEditor.instance.levelMap.texture.width;
-        int h = LevelEditor.instance.levelMap.texture.height;
+        int w = LevelManager.instance.currentLevel.levelMap.texture.width;
+        int h = LevelManager.instance.currentLevel.levelMap.texture.height;
 
         switch (currentTile.edgeType)
         {
@@ -465,7 +457,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         //if(tile.index < ((LevelEditor.instance.levelMap.texture.width) * ((LevelEditor.instance.levelMap.texture.height) -1)))
         if(!(tile.edgeType == EdgeType.bottomRightEdge) && !(tile.edgeType == EdgeType.bottomLeftEdge) && !(tile.edgeType == EdgeType.bottomEdge))
         {
-            int tileIndex = tile.index + LevelEditor.instance.levelMap.texture.width;
+            int tileIndex = tile.index + LevelManager.instance.currentLevel.levelMap.texture.width;
 
             if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
@@ -486,7 +478,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     {
         if (!(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.topLeftEdge) && !(tile.edgeType == EdgeType.topEdge))
         {
-            int tileIndex = tile.index - LevelEditor.instance.levelMap.texture.width;
+            int tileIndex = tile.index - LevelManager.instance.currentLevel.levelMap.texture.width;
 
             if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
@@ -567,8 +559,8 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
     public void SetMapEdges()
     {
-        int w = LevelEditor.instance.levelMap.texture.width;
-        int h = LevelEditor.instance.levelMap.texture.height;
+        int w = LevelManager.instance.currentLevel.levelMap.texture.width;
+        int h = LevelManager.instance.currentLevel.levelMap.texture.height;
 
 
         foreach (Tile tile in allTilesInLevel)
@@ -674,6 +666,58 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
         tileDisplayManager.SetTileDisplayGooON(gooTile);
     }
+    public void LeaveGooOnTileEnemy(Tile gooTile) 
+    {
+        int neighbourValue = 0;
+        //Debug.Log("ouuuuuuuuuuuuuuuuuuuu" + currentlySelectedTile);
+        
+
+        if (GetTileTop(gooTile))
+        {
+            if (GetTileTop(gooTile).isEnemyGooPiece)
+            {
+                neighbourValue += 1; ///top
+            }
+        }
+        
+        if (GetTileRight(gooTile))
+        {
+            if (GetTileRight(gooTile).isEnemyGooPiece)
+            {
+                neighbourValue += 2; ///right
+            }
+        }
+
+        if (GetTileBottom(gooTile))
+        {
+            if (GetTileBottom(gooTile).isEnemyGooPiece)
+            {
+                neighbourValue += 4;///bottom 
+                //Debug.Log("ouuuuuuuuuuuuuuuuuuuuhhhhhh" + GetTileBottom(gooTile));
+            }
+        }
+
+        if (GetTileLeft(gooTile))
+        {
+            if (GetTileLeft(gooTile).isEnemyGooPiece)
+            {
+                neighbourValue += 8;///left
+            }
+        }
+           
+        //Debug.Log("cost :::::::::::::::::" + neighbourValue);
+
+        GooTileOptions gooSpriteToShow = GooManager.instance.gooTileOptions.Where(p => p.cost == neighbourValue).SingleOrDefault();
+        
+        if (gooSpriteToShow != null)
+        {
+            int i = UnityEngine.Random.Range(0, gooSpriteToShow.gooSprite.Length);
+            Sprite goo = gooSpriteToShow.gooSprite[i];
+            gooTile.gooSprite.GetComponent<SpriteRenderer>().sprite = goo;           
+        }
+
+        tileDisplayManager.SetTileDisplayGooON(gooTile);
+    }
 
     public void RemoveGooTileDisplay(Tile target)
     {
@@ -681,8 +725,8 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     }
     public List<Tile> GetNeighbours(Tile currentTile, Entity callingEntity) 
     {
-        int w = LevelEditor.instance.levelMap.texture.width;
-        int h = LevelEditor.instance.levelMap.texture.height;
+        int w = LevelManager.instance.currentLevel.levelMap.texture.width;
+        int h = LevelManager.instance.currentLevel.levelMap.texture.height;
 
         List<Tile> neighbours = new List<Tile>();
 
@@ -893,6 +937,25 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     private bool CheckAdjacencyToMainPlayerBody(Tile toCheck)
     {
         return toCheck.isMainPlayerBody;
+    }
+
+    public void CountdownEnemyGooTiles(Entity et)
+    {
+        List<Tile> tempList = new List<Tile>();
+        tempList.AddRange(allEnemyGooTiles);
+
+        foreach (Tile tile in tempList)
+        {
+            tile.turnsUntilEnemyGooDissappears--;
+
+            if(tile.turnsUntilEnemyGooDissappears <= 0)
+            {
+                tile.isEnemyGooPiece = false;
+                tileDisplayManager.SetTileDisplayGooOFF(tile);
+                allEnemyGooTiles.Remove(tile);
+                et.gooTiles.Remove(tile);
+            }
+        }
     }
     public void OnDrawGizmos()
     {

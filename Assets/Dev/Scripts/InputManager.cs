@@ -18,7 +18,27 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
     void Update()
     {
-        if (Player.isPlayerTurn && canRecieveInput) 
+        CheckBeginTouches();
+
+        CheckGameplayControls();
+    }
+
+    void CheckBeginTouches()
+    {
+        if (Input.touchCount > 0)
+        {
+            touch = Input.touches[0];
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                UIManager.instance.CheckDisableTempScreens();
+            }
+        }
+    }
+
+    void CheckGameplayControls()
+    {
+        if (Player.isPlayerTurn && canRecieveInput)
         {
             if (Input.touchCount > 0)
             {
@@ -39,6 +59,8 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
                             Debug.Log("Detected Click on Tile object! " + hit.transform.name);
 
                             Tile t = hit.transform.GetComponent<Tile>();
+
+                            TutorialManager.instance.CheckDisplayTutorialText(t);
 
                             if (!t.isMainPlayerBody && (!t.isFull || t.isFood || t.isKinine || t.isSalt) /*&& !t.isLocked*/) //new
                             {

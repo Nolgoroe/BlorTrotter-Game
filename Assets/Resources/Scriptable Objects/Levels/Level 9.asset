@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175db6ea9fb650d45bd7515061446024, type: 3}
+  m_Name: Level 9
+  m_EditorClassIdentifier: 
+  levelID: 8
+  maxNumberOfMoves: 3
+  summonEnemyCooldown: 1
+  maxConcurrentSlugs: 1
+  amountOfKnowledge: 0
+  amountOfFood: 0
+  amountToAddOnEatFood: 3
+  hasEnemies: 1
+  levelMap: {fileID: 21300000, guid: bb2e319ebec788147baa96c7f0b6d27d, type: 3}
+  levelObstacles: {fileID: 21300000, guid: e31c4f67e27d52647bd0008f3e3c4365, type: 3}
+  spriteLevelImage: {fileID: 2764843325049342122, guid: 8825aea2adf02d94e9988c7f45a8f170, type: 3}
+  movesNeeded: 6

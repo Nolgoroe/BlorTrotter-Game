@@ -17,6 +17,7 @@ public class Tile : MonoBehaviour
     //public bool isLocked;
     public bool isWaterTile; 
     public bool isGooPiece; 
+    public bool isEnemyGooPiece; 
     public bool isAdjacentToMainBody;  //new
     public bool isMainPlayerBody;  //new
     public bool isFood;  //new
@@ -28,6 +29,10 @@ public class Tile : MonoBehaviour
     public int tileX, tileY;
     public Tile parentTileForPath;
     public Tile playerTeleportTile;
+
+
+    public int turnsUntilEnemyGooDissappears;
+
     public int fCost // no need for set
     {
         get
