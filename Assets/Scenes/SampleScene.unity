@@ -28800,7 +28800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NOURRITURE COLLECTE
+  m_text: NOURRITURE COLLECTEE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb0aeb724f664e2489dcab936d36c256, type: 2}
   m_sharedMaterial: {fileID: -2549645006107359616, guid: bb0aeb724f664e2489dcab936d36c256, type: 2}
