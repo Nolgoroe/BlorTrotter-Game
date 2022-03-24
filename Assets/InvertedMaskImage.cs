@@ -8,7 +8,7 @@ public class InvertedMaskImage : Image
     {
         get
         {
-            Material result = base.materialForRendering;
+            Material result = new Material(base.materialForRendering);
             result.SetInt("_StencilComp", (int)CompareFunction.NotEqual);
             return result;
         }

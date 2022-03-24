@@ -15,12 +15,14 @@ MonoBehaviour:
   levelID: 7
   maxNumberOfMoves: 3
   summonEnemyCooldown: 1
-  maxConcurrentSlugs: 1
+  maxConcurrentSlugs: 2
   amountOfKnowledge: 3
   amountOfFood: 2
   amountToAddOnEatFood: 3
+  amountToAddOnEatBlob: 0
   hasEnemies: 1
   levelMap: {fileID: 21300000, guid: f9974b493344181469462244100d0bdb, type: 3}
   levelObstacles: {fileID: 21300000, guid: 3c0d0d19c333f1749902e9f6d8437fee, type: 3}
-  spriteLevelImage: {fileID: -6014312305763870098, guid: 7aa4af0c8d04c354193d8a1136360037, type: 3}
+  spriteLevelImage: {fileID: 21300000, guid: 21adb715392151642a1cc542fcc7d51b, type: 3}
+  spriteLevelImageLocked: {fileID: 21300000, guid: 50b9801793389d045bd28cbc92abce2f, type: 3}
   movesNeeded: 6

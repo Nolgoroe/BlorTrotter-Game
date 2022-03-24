@@ -14,11 +14,12 @@ public enum UIScreenTypes
     WinLoseScreen,
     LevelSelection,
     WikiBlob,
-    Settings,
+    Options,
     Pause,
     Credits,
     LoadingScreen,
-    StartGifScreen
+    StartGifScreen,
+    NarratorBlobScreen
 }
 
 public class UIManager : MonoBehaviour, IManageable
@@ -69,7 +70,7 @@ public class UIManager : MonoBehaviour, IManageable
     public GameObject kininePowerSprite;
     public Slider FoodSlider, KnowledgeSlider;
     public float SliderSpeed;
-
+    public Image blobNarratorImage;
 
     [Header("Win Lose Screen")]
     public TMP_Text numberOfMovesText;
@@ -83,6 +84,28 @@ public class UIManager : MonoBehaviour, IManageable
     [Header("Tutorial")]
     public GameObject exclimationMark;
     public int timeExclimationMarkShown;
+
+    [Header("Settings Screen")]
+    public Image toggleOn;
+    public Image toggleOff;
+    public Image musicImage, soundImage;
+
+    [Header("in game options screen")]
+    public Image toggleOnOptions;
+    public Image toggleOffOptions;
+    public Image musicImageOptions, soundImageOptions;
+
+    [Header("Settings Screen AND in game options screen")]
+    public Sprite toggleOnSpriteOrange, toggleOnSpriteGrey, toggleOffSpriteOrange, toggleOffSpriteGrey;
+    public Sprite musicSpriteOrange, musicSpriteGrey, soundSpriteOrange, soundSpriteGrey;
+
+    [Header("Narrator Blob")]
+    public Sprite[] blobSprites;
+    public Image blobImage;
+    public int currentBlobImageIndex;
+
+    [Header("Feedbacks")]
+    public Sprite[] slugMucus;
 
     [Header("ETC")]
     public List<GameObject> tempScreens;
@@ -261,9 +284,16 @@ public class UIManager : MonoBehaviour, IManageable
         InputManager.instance.canRecieveInput = false;
         CameraController.canControlCamera = false;
     }
+    public void ClosePauseScreen()
+    {
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen });
+
+        InputManager.instance.canRecieveInput = true;
+        CameraController.canControlCamera = true;
+    }
     public void OpenSettingsScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Settings});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Options});
     }
     public void OpenCreditsScreen()
     {
@@ -417,7 +447,6 @@ public class UIManager : MonoBehaviour, IManageable
     private void LevelSelectionScreenLogic()
     {
         levelNameText.text = LevelManager.instance.allLevels[currentLevelDisplayedID].name;
-        levelImage.sprite = LevelManager.instance.allLevels[currentLevelDisplayedID].spriteLevelImage;
 
         LevelSavedData data = LevelManagerSaveData.instance.levelsSaved.Where(p => p.levelID == currentLevelDisplayedID).SingleOrDefault();
 
@@ -432,6 +461,10 @@ public class UIManager : MonoBehaviour, IManageable
             levelButton.interactable = false;
             lockImage.SetActive(true);
             starsParent.SetActive(false);
+            levelImage.sprite = LevelManager.instance.allLevels[currentLevelDisplayedID].spriteLevelImageLocked;
+
+            CustomChildFitter CCF = levelButton.GetComponent<CustomChildFitter>();
+            CCF.fitChild = false;
         }
         else
         {
@@ -439,6 +472,10 @@ public class UIManager : MonoBehaviour, IManageable
             levelButton.interactable = true;
             lockImage.SetActive(false);
             starsParent.SetActive(true);
+            levelImage.sprite = LevelManager.instance.allLevels[currentLevelDisplayedID].spriteLevelImage;
+
+            CustomChildFitter CCF = levelButton.GetComponent<CustomChildFitter>();
+            CCF.fitChild = true;
 
             for (int i = 0; i < data.AmountOfStars; i++)
             {
@@ -480,54 +517,112 @@ public class UIManager : MonoBehaviour, IManageable
         exclimationMark.SetActive(false);
     }
 
+
+
+    public void OpenBlobNarratorScreen()
+    {
+        DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.NarratorBlobScreen });
+
+        currentBlobImageIndex = 0;
+
+        ChangeBlobNarratorDisplay();
+
+    }
+    public void CloseBlobNarratorScreen()
+    {
+        DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.NarratorBlobScreen });
+
+        currentBlobImageIndex = 0;
+
+    }
+    public void BlobNarratorArrowLeft()
+    {
+        currentBlobImageIndex--;
+
+        if (currentBlobImageIndex < 0)
+        {
+            currentBlobImageIndex = blobSprites.Length - 1;
+        }
+
+        ChangeBlobNarratorDisplay();
+    }
+    public void BlobNarratorArrowRight()
+    {
+        currentBlobImageIndex++;
+
+        if (currentBlobImageIndex == blobSprites.Length)
+        {
+            currentBlobImageIndex = 0;
+        }
+
+        ChangeBlobNarratorDisplay();
+    }
+    public void SetBlobNarratorSprite()
+    {
+        blobNarratorImage.sprite = blobSprites[currentBlobImageIndex];
+
+        CloseBlobNarratorScreen();
+    }
+
+    private void ChangeBlobNarratorDisplay()
+    {
+        blobImage.sprite = blobSprites[currentBlobImageIndex];
+    }
+
+    public void FlipSeeTutorials(bool displayTutorials)
+    {
+        TutorialManager.instance.showTutorials = displayTutorials;
+
+        if (displayTutorials)
+        {
+            toggleOn.sprite = toggleOnSpriteGrey;
+            toggleOff.sprite = toggleOffSpriteOrange;
+
+            toggleOnOptions.sprite = toggleOnSpriteGrey;
+            toggleOffOptions.sprite = toggleOffSpriteOrange;
+        }
+        else
+        {
+            toggleOn.sprite = toggleOnSpriteOrange;
+            toggleOff.sprite = toggleOffSpriteGrey;
+
+            toggleOnOptions.sprite = toggleOnSpriteOrange;
+            toggleOffOptions.sprite = toggleOffSpriteGrey;
+        }
+    }
+    public void FlipHearMusic()
+    {
+        if (SoundManager.instance.canHearMusic)
+        {
+            SoundManager.instance.canHearMusic = false;
+
+            musicImage.sprite = musicSpriteGrey;
+            musicImageOptions.sprite = musicSpriteGrey;
+        }
+        else
+        {
+            SoundManager.instance.canHearMusic = true;
+
+            musicImage.sprite = musicSpriteOrange;
+            musicImageOptions.sprite = musicSpriteGrey;
+        }
+    }
+    public void FlipHearSounds()
+    {
+        if (SoundManager.instance.canHearSounds)
+        {
+            SoundManager.instance.canHearSounds = false;
+
+            soundImage.sprite = soundSpriteGrey;
+            soundImageOptions.sprite = soundSpriteGrey;
+        }
+        else
+        {
+            SoundManager.instance.canHearSounds = true;
+
+            soundImage.sprite = soundSpriteOrange;
+            soundImageOptions.sprite = soundSpriteOrange;
+        }
+
+    }
 }
-
-//[ContextMenu("Test Display Screens")]
-//public void Display() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.screen1, UIScreenTypes.screen2});
-//}
-
-//[ContextMenu("Test Display Screens no Deactivate")]
-//public void Display2() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.screen3});
-//}
-
-//[ContextMenu("Test Deactivate Specific Screens")]
-//public void Display3() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.screen3});
-//}
-
-//[ContextMenu("Test Deactivate ALL Screens")]
-//public void Display4() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    DisableAllScreens();
-//}
-
-//[ContextMenu("Test Fade In Screen")]
-//public void CallFadeIn() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    FadeImage(true, imageTest);
-//}
-
-
-//[ContextMenu("Test Fade Out Screen")]
-//public void CallFadeOut() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    FadeImage(false, imageTest);
-//}
-
-//[ContextMenu("Test Fade In TEXT")]
-//public void CallFadeInText() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    FadeText(true, testText);
-//}
-
-
-//[ContextMenu("Test Fade Out TEXT")]
-//public void CallFadeOutText() //DELTE THIS AFTER SHOWING NATHAN
-//{
-//    FadeText(false, testText);
-//}

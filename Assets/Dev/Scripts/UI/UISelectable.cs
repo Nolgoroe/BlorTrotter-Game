@@ -8,11 +8,8 @@ public class UISelectable : MonoBehaviour, IPointerClickHandler  // can interact
     public GameObject basePage;
     
     public void OnPointerClick(PointerEventData pointerEventData)
-    {
-        
-        
+    {       
         wikiPage.SetActive(true);
-        basePage.SetActive(false);
-        
+        basePage.SetActive(false);       
     }
 }

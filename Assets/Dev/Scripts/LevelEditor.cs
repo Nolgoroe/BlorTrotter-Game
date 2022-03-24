@@ -39,6 +39,9 @@ public class LevelEditor : MonoBehaviour, IManageable
 
     public void CallGenerateLevel()
     {
+        offsetNewRowX = 0;
+        offsetNewRowY = 0;
+
         GenerateLevel();
     }
     
@@ -379,13 +382,22 @@ public class LevelEditor : MonoBehaviour, IManageable
                     connected.connectedElement = t.gameObject;
 
 
+
                     if (toSummon.CompareTag("Lock Salt"))
                     {
                         LevelManager.instance.saltLocks.Add(anim);
+
+                        SpriteRenderer childOne = toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                        SpriteRenderer childTwo = toSummon.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+                        childOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                        childTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
                     }
                     else
                     {
                         LevelManager.instance.kinineLocks.Add(anim);
+
+                        toSummon.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
 
                     }
                 }

@@ -51,7 +51,7 @@ public class PathFinding : MonoBehaviour, IManageable
                 return finalPath;
             }
 
-            foreach (Tile neighbourTile in GridManager.instance.GetNeighbours(currentTile, callingEntity))
+            foreach (Tile neighbourTile in GridManager.instance.GetNeighboursEnemyPath(currentTile, callingEntity))
             {
                 if((neighbourTile.isFull && !neighbourTile.isMainPlayerBody) || neighbourTile.isWaterTile || closedSet.Contains(neighbourTile))
                 {

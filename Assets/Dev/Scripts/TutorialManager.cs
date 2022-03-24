@@ -8,9 +8,13 @@ public class TutorialManager : MonoBehaviour, IManageable
 {
     public static TutorialManager instance;
 
+    public bool showTutorials;
+
     public void initManager()
     {
         instance = this;
+
+        showTutorials = true;
         Debug.Log("success tutorial");
     }
 

@@ -124,7 +124,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));  //t
                     }
@@ -137,7 +137,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
                     }
@@ -150,7 +150,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
                     }
@@ -163,7 +163,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
                     }
@@ -178,7 +178,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
                     }
@@ -191,7 +191,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
                     }
@@ -204,7 +204,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
                     }
@@ -219,7 +219,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
                     }
@@ -232,7 +232,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
                     }
@@ -245,7 +245,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
                     }
@@ -260,7 +260,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
                     }
@@ -273,7 +273,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
                     }
@@ -286,7 +286,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
                     }
@@ -301,7 +301,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
                     }
@@ -314,7 +314,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
                     }
@@ -327,7 +327,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
                     }
@@ -342,7 +342,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
                     }
@@ -355,7 +355,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
                     }
@@ -371,7 +371,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
                     }
@@ -384,7 +384,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileBottom(currentTile));
                     }
@@ -399,7 +399,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileLeft(currentTile));
                     }
@@ -412,7 +412,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
                     }
@@ -427,7 +427,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileTop(currentTile));
                     }
@@ -440,7 +440,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                     t.playerTeleportTile = currentTile;
                     t.isAdjacentToMainBody = CheckAdjacencyToMainPlayerBody(currentTile);
 
-                    if (!callingEntity.entityAdjacentTiles.Contains(t))
+                    if (!callingEntity.entityAdjacentTiles.Contains(t) && !callingEntity.gooTiles.Contains(t))
                     {
                         callingEntity.entityAdjacentTiles.Add(GetTileRight(currentTile));
                     }
@@ -459,7 +459,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + LevelManager.instance.currentLevel.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -480,7 +480,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - LevelManager.instance.currentLevel.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -502,7 +502,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - 1;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -517,6 +517,90 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         }
     }
     public Tile GetTileRight(Tile tile)
+    {
+        if (!(tile.edgeType == EdgeType.bottomRightEdge) && !(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.rightEdge))
+        {
+            int tileIndex = tile.index + 1;
+
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public Tile GetTileBottomEnemyPath(Tile tile)    ///do the Same logic for the others 
+    {
+        //if(tile.index < ((LevelEditor.instance.levelMap.texture.width) * ((LevelEditor.instance.levelMap.texture.height) -1)))
+        if(!(tile.edgeType == EdgeType.bottomRightEdge) && !(tile.edgeType == EdgeType.bottomLeftEdge) && !(tile.edgeType == EdgeType.bottomEdge))
+        {
+            int tileIndex = tile.index + LevelManager.instance.currentLevel.levelMap.texture.width;
+
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
+        }
+        else
+        {
+            return null;
+        }
+                        
+    }
+    public Tile GetTileTopEnemyPath(Tile tile)
+    {
+        if (!(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.topLeftEdge) && !(tile.edgeType == EdgeType.topEdge))
+        {
+            int tileIndex = tile.index - LevelManager.instance.currentLevel.levelMap.texture.width;
+
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
+        }
+        else
+        {
+            return null;
+        }
+            
+        
+    }
+    public Tile GetTileLeftEnemyPath(Tile tile)
+    {
+        if (!(tile.edgeType == EdgeType.bottomLeftEdge) && !(tile.edgeType == EdgeType.topLeftEdge) && !(tile.edgeType == EdgeType.leftEdge))
+        {
+            int tileIndex = tile.index - 1;
+
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            {
+                return null;
+            }
+            else
+            {
+                return allTilesInLevel[tileIndex];
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public Tile GetTileRightEnemyPath(Tile tile)
     {
         if (!(tile.edgeType == EdgeType.bottomRightEdge) && !(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.rightEdge))
         {
@@ -666,64 +750,20 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
         tileDisplayManager.SetTileDisplayGooON(gooTile);
     }
-    public void LeaveGooOnTileEnemy(Tile gooTile) 
+    public void LeaveGooOnTileEnemy(Tile gooTile)
     {
-        int neighbourValue = 0;
-        //Debug.Log("ouuuuuuuuuuuuuuuuuuuu" + currentlySelectedTile);
-        
+        //Sprite goo = UIManager.instance.slugMucus[UIManager.instance.slugMucus.Length - 1];
 
-        if (GetTileTop(gooTile))
-        {
-            if (GetTileTop(gooTile).isEnemyGooPiece)
-            {
-                neighbourValue += 1; ///top
-            }
-        }
-        
-        if (GetTileRight(gooTile))
-        {
-            if (GetTileRight(gooTile).isEnemyGooPiece)
-            {
-                neighbourValue += 2; ///right
-            }
-        }
+        //gooTile.enemyGooSprite.GetComponent<SpriteRenderer>().sprite = goo;
 
-        if (GetTileBottom(gooTile))
-        {
-            if (GetTileBottom(gooTile).isEnemyGooPiece)
-            {
-                neighbourValue += 4;///bottom 
-                //Debug.Log("ouuuuuuuuuuuuuuuuuuuuhhhhhh" + GetTileBottom(gooTile));
-            }
-        }
-
-        if (GetTileLeft(gooTile))
-        {
-            if (GetTileLeft(gooTile).isEnemyGooPiece)
-            {
-                neighbourValue += 8;///left
-            }
-        }
-           
-        //Debug.Log("cost :::::::::::::::::" + neighbourValue);
-
-        GooTileOptions gooSpriteToShow = GooManager.instance.gooTileOptions.Where(p => p.cost == neighbourValue).SingleOrDefault();
-        
-        if (gooSpriteToShow != null)
-        {
-            int i = UnityEngine.Random.Range(0, gooSpriteToShow.gooSprite.Length);
-            Sprite goo = gooSpriteToShow.gooSprite[i];
-            gooTile.gooSprite.GetComponent<SpriteRenderer>().sprite = goo;           
-        }
-
-        tileDisplayManager.SetTileDisplayGooON(gooTile);
+        tileDisplayManager.SetTileDisplayEnemyGooON(gooTile);
     }
 
     public void RemoveGooTileDisplay(Tile target)
     {
         tileDisplayManager.SetTileDisplayGooOFF(target);
     }
-    public List<Tile> GetNeighbours(Tile currentTile, Entity callingEntity) 
+    public List<Tile> GetNeighboursEnemyPath(Tile currentTile, Entity callingEntity) 
     {
         int w = LevelManager.instance.currentLevel.levelMap.texture.width;
         int h = LevelManager.instance.currentLevel.levelMap.texture.height;
@@ -733,131 +773,131 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         switch (currentTile.edgeType)
         {
             case EdgeType.notEdge:
-                if (GetTileBottom(currentTile))
+                if (GetTileBottomEnemyPath(currentTile))
                 {
-                    Tile t = GetTileBottom(currentTile);
+                    Tile t = GetTileBottomEnemyPath(currentTile);
 
                     neighbours.Add(t);
                 }
 
-                if (GetTileTop(currentTile))
+                if (GetTileTopEnemyPath(currentTile))
                 {
-                    Tile t = GetTileTop(currentTile);
+                    Tile t = GetTileTopEnemyPath(currentTile);
 
                     neighbours.Add(t);
                 }
 
-                if (GetTileRight(currentTile))
+                if (GetTileRightEnemyPath(currentTile))
                 {
-                    Tile t = GetTileRight(currentTile);
+                    Tile t = GetTileRightEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
 
-                if (GetTileLeft(currentTile))
+                if (GetTileLeftEnemyPath(currentTile))
                 {
-                    Tile t = GetTileLeft(currentTile);
+                    Tile t = GetTileLeftEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
                 break;
 
             case EdgeType.leftEdge:
-                if (GetTileBottom(currentTile))
+                if (GetTileBottomEnemyPath(currentTile))
                 {
-                    Tile t = GetTileBottom(currentTile);
+                    Tile t = GetTileBottomEnemyPath(currentTile);
 
                     neighbours.Add(t);
                 }
 
-                if (GetTileTop(currentTile))
+                if (GetTileTopEnemyPath(currentTile))
                 {
-                    Tile t = GetTileTop(currentTile);
+                    Tile t = GetTileTopEnemyPath(currentTile);
 
                     neighbours.Add(t);
                 }
 
-                if (GetTileRight(currentTile))
+                if (GetTileRightEnemyPath(currentTile))
                 {
-                    Tile t = GetTileRight(currentTile);
+                    Tile t = GetTileRightEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
                 break;
 
             case EdgeType.rightEdge:
-                if (GetTileLeft(currentTile))
+                if (GetTileLeftEnemyPath(currentTile))
                 {
-                    Tile t = GetTileLeft(currentTile);
+                    Tile t = GetTileLeftEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
 
-                if (GetTileBottom(currentTile))
+                if (GetTileBottomEnemyPath(currentTile))
                 {
-                    Tile t = GetTileBottom(currentTile);
+                    Tile t = GetTileBottomEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
 
-                if (GetTileTop(currentTile))
+                if (GetTileTopEnemyPath(currentTile))
                 {
-                    Tile t = GetTileTop(currentTile);
+                    Tile t = GetTileTopEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
                 break;
 
             case EdgeType.bottomEdge:
-                if (GetTileTop(currentTile))
+                if (GetTileTopEnemyPath(currentTile))
                 {
-                    Tile t = GetTileTop(currentTile);
+                    Tile t = GetTileTopEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
 
-                if (GetTileRight(currentTile))
+                if (GetTileRightEnemyPath(currentTile))
                 {
-                    Tile t = GetTileRight(currentTile);
+                    Tile t = GetTileRightEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
 
-                if (GetTileLeft(currentTile))
+                if (GetTileLeftEnemyPath(currentTile))
                 {
-                    Tile t = GetTileLeft(currentTile);
+                    Tile t = GetTileLeftEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
                 break;
 
             case EdgeType.topEdge:
-                if (GetTileRight(currentTile))
+                if (GetTileRightEnemyPath(currentTile))
                 {
-                    Tile t = GetTileRight(currentTile);
+                    Tile t = GetTileRightEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
 
-                if (GetTileLeft(currentTile))
+                if (GetTileLeftEnemyPath(currentTile))
                 {
-                    Tile t = GetTileLeft(currentTile);
+                    Tile t = GetTileLeftEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
 
-                if (GetTileBottom(currentTile))
+                if (GetTileBottomEnemyPath(currentTile))
                 {
-                    Tile t = GetTileBottom(currentTile);
+                    Tile t = GetTileBottomEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
                 break;
 
             case EdgeType.topRightEdge:
-                if (GetTileLeft(currentTile))
+                if (GetTileLeftEnemyPath(currentTile))
                 {
-                    Tile t = GetTileLeft(currentTile);
+                    Tile t = GetTileLeftEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
 
-                if (GetTileBottom(currentTile))
+                if (GetTileBottomEnemyPath(currentTile))
                 {
-                    Tile t = GetTileBottom(currentTile);
+                    Tile t = GetTileBottomEnemyPath(currentTile);
                     
                     neighbours.Add(t);
                 }
@@ -865,46 +905,46 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 break;
 
             case EdgeType.topLeftEdge:
-                if (GetTileRight(currentTile))
+                if (GetTileRightEnemyPath(currentTile))
                 {
-                    Tile t = GetTileRight(currentTile);
+                    Tile t = GetTileRightEnemyPath(currentTile);
 
                     neighbours.Add(t);
                 }
 
-                if (GetTileBottom(currentTile))
+                if (GetTileBottomEnemyPath(currentTile))
                 {
-                    Tile t = GetTileBottom(currentTile);
+                    Tile t = GetTileBottomEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
                 break;
 
             case EdgeType.bottomRightEdge:
-                if (GetTileLeft(currentTile))
+                if (GetTileLeftEnemyPath(currentTile))
                 {
-                    Tile t = GetTileLeft(currentTile);
+                    Tile t = GetTileLeftEnemyPath(currentTile);
                     neighbours.Add(t);
                 }
 
-                if (GetTileTop(currentTile))
+                if (GetTileTopEnemyPath(currentTile))
                 {
-                    Tile t = GetTileTop(currentTile);
+                    Tile t = GetTileTopEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
                 break;
 
             case EdgeType.bottomLeftEdge:
-                if (GetTileTop(currentTile))
+                if (GetTileTopEnemyPath(currentTile))
                 {
-                    Tile t = GetTileTop(currentTile);
+                    Tile t = GetTileTopEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
 
-                if (GetTileRight(currentTile))
+                if (GetTileRightEnemyPath(currentTile))
                 {
-                    Tile t = GetTileRight(currentTile);
+                    Tile t = GetTileRightEnemyPath(currentTile);
                     neighbours.Add(t);
 
                 }
@@ -939,7 +979,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         return toCheck.isMainPlayerBody;
     }
 
-    public void CountdownEnemyGooTiles(Entity et)
+    public void CountdownEnemyGooTiles()
     {
         List<Tile> tempList = new List<Tile>();
         tempList.AddRange(allEnemyGooTiles);
@@ -951,9 +991,22 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             if(tile.turnsUntilEnemyGooDissappears <= 0)
             {
                 tile.isEnemyGooPiece = false;
-                tileDisplayManager.SetTileDisplayGooOFF(tile);
+                tileDisplayManager.SetTileDisplayEnemyGooOFF(tile);
                 allEnemyGooTiles.Remove(tile);
-                et.gooTiles.Remove(tile);
+
+                foreach (Entity entity in EntityManager.instance.allEnemies)
+                {
+                    if (entity.gooTiles.Contains(tile))
+                    {
+                        entity.gooTiles.Remove(tile);
+                    }
+                }
+            }
+            else
+            {
+                Sprite goo = UIManager.instance.slugMucus[tile.turnsUntilEnemyGooDissappears];
+
+                tile.enemyGooSprite.GetComponent<SpriteRenderer>().sprite = goo;
             }
         }
     }
@@ -976,9 +1029,18 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         //            Gizmos.color = Color.grey;
         //        }
         //    }
-            
+
         //    Gizmos.DrawCube(new Vector3(t.transform.position.x, t.transform.position.y + 0.592f, t.transform.position.z), Vector3.one / 2);
         //}
+
+        foreach (Tile t in allTilesInLevel)
+        {
+            if (t.isFull)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawCube(new Vector3(t.transform.position.x, t.transform.position.y + 0.592f, t.transform.position.z), Vector3.one / 2);
+            }
+        }
 
         foreach (Tile t in allEdgeTileInLevel)
         {

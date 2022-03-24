@@ -25,8 +25,15 @@ public class Slug : Entity
         currentTile.turnsUntilEnemyGooDissappears = 4;
         targetTile.turnsUntilEnemyGooDissappears = 4;
 
-        GridManager.instance.allEnemyGooTiles.Add(currentTile);
-        GridManager.instance.allEnemyGooTiles.Add(targetTile);
+        if (!GridManager.instance.allEnemyGooTiles.Contains(currentTile))
+        {
+            GridManager.instance.allEnemyGooTiles.Add(currentTile);
+        }
+
+        if (!GridManager.instance.allEnemyGooTiles.Contains(targetTile))
+        {
+            GridManager.instance.allEnemyGooTiles.Add(targetTile);
+        }
 
         DetectMoveDirection(currentTile, targetTile);
 
@@ -68,12 +75,6 @@ public class Slug : Entity
         }
 
         enemyPath.RemoveAt(0);
-
-
-        if (GridManager.instance.allEnemyGooTiles.Count > 0)
-        {
-            GridManager.instance.CountdownEnemyGooTiles(this);
-        }
 
         //Debug.Log("ENEMY DONE");
     }
@@ -198,7 +199,7 @@ public class Slug : Entity
         }
     }
 
-    void EatGooPiece(Tile target)
+    public void EatGooPiece(Tile target)
     {
         target.isGooPiece = false;
         GridManager.instance.RemoveGooTileDisplay(target);

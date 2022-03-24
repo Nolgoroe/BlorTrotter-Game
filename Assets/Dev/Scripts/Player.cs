@@ -32,7 +32,15 @@ public class Player : Entity
     public override async Task MoveEntity(Tile targetTile) 
     {
         isPlayerTurn = false;
-        LevelManager.instance.DecreaseNumberOfMoves();
+
+        if (targetTile.isLightTile)
+        {
+            LevelManager.instance.DecreaseNumberOfMoves(3);
+        }
+        else
+        {
+            LevelManager.instance.DecreaseNumberOfMoves(1);
+        }
 
         GridManager.instance.SetTileFull(currentTile);
 
@@ -43,12 +51,12 @@ public class Player : Entity
 
         if (!gooTiles.Contains(currentTile)) //new
         {
-            gooTiles.Add(currentTile); /// good place to do it ?
+            AddGooTiles(currentTile);
         }
 
         if (!gooTiles.Contains(targetTile)) //new
         {
-            gooTiles.Add(targetTile); /// good place to do it ?
+            AddGooTiles(targetTile);
         }
 
         // function to leave goo behind here
@@ -71,15 +79,10 @@ public class Player : Entity
 
         //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
-        if (!targetTile.isGooPiece)
-        {
-            AddGooTiles(targetTile);
-            LevelManager.instance.DecreaseNumberOfMoves();
-        }
-        else
-        {
-           EntityManager.instance.SetPlayerTurn();
-        }
+        //if (targetTile.isGooPiece)
+        //{
+        //    EntityManager.instance.SetPlayerTurn();
+        //}
 
         if (!targetTile.isFood && !targetTile.isKinine && !targetTile.isSalt)
         {

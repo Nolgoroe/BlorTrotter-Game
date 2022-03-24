@@ -33,4 +33,12 @@ public class TileDisplayManager : MonoBehaviour
     {
         tile.gooSprite.SetActive(false);
     }
+    public void SetTileDisplayEnemyGooON(Tile tile)
+    {
+        tile.enemyGooSprite.SetActive(true);
+    }
+    public void SetTileDisplayEnemyGooOFF(Tile tile)
+    {
+        tile.enemyGooSprite.SetActive(false);
+    }
 }

@@ -22,12 +22,15 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
 {
     public static SoundManager instance;
 
-    public AudioSource audioSource;
+    public AudioSource musicAudioSource;
+    public AudioSource SFXAudioSource;
 
     public EnumAndClip[] soundsForGame;
 
     public Dictionary<Sounds, AudioClip> enumToSound;
 
+
+    public bool canHearMusic, canHearSounds;
 
 
     public void initManager()
@@ -35,7 +38,7 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
         instance = this;
 
 
-        audioSource = GetComponent<AudioSource>();
+        SFXAudioSource = GetComponent<AudioSource>();
 
 
         enumToSound = new Dictionary<Sounds, AudioClip>();
@@ -46,40 +49,44 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
             enumToSound.Add(enumAndClip.enumSound, enumAndClip.theSoundClip);
         }
 
+
+        canHearMusic = true;
+        canHearSounds = true;
+
         Debug.Log("success Sound");
     }
 
     public void PlaySound(Sounds soundEnum)
     {
-        audioSource.PlayOneShot(enumToSound[soundEnum]);
+        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public void PlaySoundChangeVolume(Sounds soundEnum, float Volume)
     {
-        audioSource.volume = Volume;
+        SFXAudioSource.volume = Volume;
 
-        audioSource.PlayOneShot(enumToSound[soundEnum]);
+        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public async void PlaySoundDelay(Sounds soundEnum, int timeToWait)
     {
         await Task.Delay(timeToWait * 1000);
 
-        audioSource.PlayOneShot(enumToSound[soundEnum]);
+        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public async void PlaySoundChangeVolumeAndDelay(Sounds soundEnum, float Volume, int timeToWait)
     {
         await Task.Delay(timeToWait * 1000);
 
-        audioSource.volume = Volume;
+        SFXAudioSource.volume = Volume;
 
-        audioSource.PlayOneShot(enumToSound[soundEnum]);
+        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public void ResetVolume()
     {
-        audioSource.volume = 1;
+        SFXAudioSource.volume = 1;
     }
 }
 

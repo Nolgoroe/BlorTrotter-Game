@@ -60,7 +60,10 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
                             Tile t = hit.transform.GetComponent<Tile>();
 
-                            TutorialManager.instance.CheckDisplayTutorialText(t);
+                            if (TutorialManager.instance.showTutorials)
+                            {
+                                TutorialManager.instance.CheckDisplayTutorialText(t);
+                            }
 
                             if (!t.isMainPlayerBody && (!t.isFull || t.isFood || t.isKinine || t.isSalt) /*&& !t.isLocked*/) //new
                             {

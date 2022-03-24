@@ -11,7 +11,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     [SerializeField] private Entity player;
     
 
-    [SerializeField] private List<Entity> allEnemies; // list is dynamic
+    public List<Entity> allEnemies; // list is dynamic
 
     public List<Tile> enemySpawnTiles;
 
@@ -55,9 +55,18 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
         if (LevelManager.instance.currentLevel.hasEnemies)
         {
+            if (GridManager.instance.allEnemyGooTiles.Count > 0)
+            {
+                GridManager.instance.CountdownEnemyGooTiles();
+            }
+
             if (allEnemies.Count > 0)
             {
                 MoveAllEnemies();
+            }
+            else
+            {
+                SetPlayerTurn();
             }
 
             LevelManager.instance.DecreaseSummonEnemyCooldown();
@@ -68,19 +77,46 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         int rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
 
+        Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
+
+        int counter = 1000;
+
+        while (t.isFull)
+        {
+            counter--;
+            rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
+            t = enemySpawnTiles[rand].GetComponent<Tile>();
+
+            if(counter <= 0)
+            {
+                Debug.LogError("PROBLEM WITH SLUG SPAWN");
+                break;
+            }
+        }
+
         GameObject toSummon = Instantiate(slugPrefab, enemySpawnTiles[rand].transform);
         Transform parent = enemySpawnTiles[rand].transform;
         Entity et = toSummon.GetComponent<Slug>();
-        Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
 
-        t.isFull = true;
+        if (t.isGooPiece)
+        {
+            toSummon.GetComponent<Slug>().EatGooPiece(t);
+        }
+
+        t.SetEnemySpawnData();
+
+        if (!GridManager.instance.allEnemyGooTiles.Contains(t))
+        {
+            GridManager.instance.allEnemyGooTiles.Add(t);
+        }
+
         et.AddGooTiles(t);
-        t.isEnemyGooPiece = true;
 
         foreach (Tile element in et.gooTiles)
         {
             GridManager.instance.LeaveGooOnTileEnemy(element);
         }
+
 
         Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
         et.transform.position = position;
@@ -108,9 +144,20 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
         for (int i = 0; i < tempList.Count; i++)
         {
-            if (tempList[i].enemyPath.Count <= 0)
+            if (tempList[i].enemyPath != null)
             {
-                tempList[i].ReleaseTargetTile();
+                if (tempList[i].enemyPath.Count <= 0)
+                {
+                    tempList[i].ReleaseTargetTile();
+                    await RemoveEnemyFromList(tempList[i], allEnemies);
+
+                    await Task.Delay(1 * 1000);
+                    Destroy(tempList[i].gameObject);
+                }
+            }
+            else
+            {
+                tempList[i].currentTile.isFull = false;
                 await RemoveEnemyFromList(tempList[i], allEnemies);
 
                 await Task.Delay(1 * 1000);
@@ -123,7 +170,6 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
             //Tile target = allEnemies[i].SetTargetTileForAstarPath(); 
             allEnemies[i].ManageTurnStart();
-
 
             tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].enemyPath[0])); 
         }

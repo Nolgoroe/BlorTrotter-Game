@@ -23,6 +23,7 @@ public class LevelScriptableObject : ScriptableObject
     public Sprite levelMap;
     public Sprite levelObstacles;
     public Sprite spriteLevelImage;
+    public Sprite spriteLevelImageLocked;
 
     [Header("Level Win Data")]
     public int movesNeeded;

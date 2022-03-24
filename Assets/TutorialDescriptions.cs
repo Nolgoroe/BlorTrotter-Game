@@ -5,7 +5,7 @@ using System;
 
 public enum TypeOfTutorial
 {
-    Food,
+    Food, Kinine, Salt,
 }
 
 [Serializable]

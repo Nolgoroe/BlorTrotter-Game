@@ -19,8 +19,10 @@ MonoBehaviour:
   amountOfKnowledge: 0
   amountOfFood: 0
   amountToAddOnEatFood: 3
+  amountToAddOnEatBlob: 0
   hasEnemies: 1
   levelMap: {fileID: 21300000, guid: b4f4f5c1a7026364f9065698e0585c89, type: 3}
   levelObstacles: {fileID: 21300000, guid: 9f0320eb9a3176c46a46adeb2d38dce8, type: 3}
-  spriteLevelImage: {fileID: 2456203159206239868, guid: ec65d189965cb514e86d5a9fe5a13356, type: 3}
+  spriteLevelImage: {fileID: 21300000, guid: 93992842841d6e348bfd1f766be4655c, type: 3}
+  spriteLevelImageLocked: {fileID: 21300000, guid: 652defa545a503248bda6ec4947d336e, type: 3}
   movesNeeded: 6

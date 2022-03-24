@@ -52,6 +52,8 @@ public class LevelManager : MonoBehaviour, IManageable
         saltLocks.Clear();
 
         EntityManager.instance.SetPlayer(null);
+        EntityManager.instance.enemySpawnTiles.Clear();
+        EntityManager.instance.allEnemies.Clear();
 
         ScoreManager.instance.currentCollectedKnowledge = 0;
         ScoreManager.instance.currentCollectedFood = 0;
@@ -97,6 +99,8 @@ public class LevelManager : MonoBehaviour, IManageable
         GridManager.instance.allEdgeTileInLevel.Clear();
 
         EntityManager.instance.SetPlayer(null);
+        EntityManager.instance.enemySpawnTiles.Clear();
+        EntityManager.instance.allEnemies.Clear();
 
         ScoreManager.instance.currentCollectedKnowledge = 0;
         ScoreManager.instance.currentCollectedFood = 0;
@@ -173,9 +177,9 @@ public class LevelManager : MonoBehaviour, IManageable
         }
     }
 
-    public void DecreaseNumberOfMoves() 
+    public void DecreaseNumberOfMoves(int amount) 
     {
-        ScoreManager.instance.currentLevelNumberOfMovesRemaining--;
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining-= amount;
         UIManager.instance.UpdateNumOfMoves();
     }
     public void AddMovesEat(int amount) 
@@ -252,6 +256,13 @@ public class LevelManager : MonoBehaviour, IManageable
     public void MoveToNextLevel()
     {
         LaunchLevel(currentLevel.levelID + 1);
+    }
+
+
+
+    public void RestartLevel()
+    {
+        LaunchLevel(currentLevel.levelID);
     }
 
     [ContextMenu("Choose Level")]

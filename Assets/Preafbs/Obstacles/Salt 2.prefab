@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6247142233467430354}
   - component: {fileID: 6247142233467430355}
-  - component: {fileID: 2291971811798400120}
   m_Layer: 0
   m_Name: ATLAS_Environment_20
   m_TagString: Untagged
@@ -167,18 +166,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2291971811798400120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6247142233467430357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0a7e24e169f6d844a5213111fdfd443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6247142233663552733
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6247142233663552730}
   - component: {fileID: 6247142233663552731}
-  - component: {fileID: 6987439799163591694}
   m_Layer: 0
   m_Name: ATLAS_Environment_19
   m_TagString: Untagged
@@ -262,15 +248,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6987439799163591694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6247142233663552733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0a7e24e169f6d844a5213111fdfd443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

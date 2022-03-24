@@ -115,6 +115,7 @@ Transform:
   - {fileID: 2821924686266982345}
   - {fileID: 7776647436333017869}
   - {fileID: 1312888729241600108}
+  - {fileID: 1109916510119903417}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -213,20 +214,99 @@ MonoBehaviour:
   canBeSelectedSprite: {fileID: 6442434399231159554}
   selectedSprite: {fileID: 7776647436333017856}
   gooSprite: {fileID: 2574490714868321772}
+  enemyGooSprite: {fileID: 861356345231938204}
+  foodObject: {fileID: 0}
   cost: 0
   index: 0
   isFull: 0
   isWaterTile: 0
   isGooPiece: 0
+  isEnemyGooPiece: 0
   isAdjacentToMainBody: 0
   isMainPlayerBody: 0
+  isFood: 0
+  isKinine: 0
+  isSalt: 0
+  isLightTile: 0
   gCost: 0
   hCost: 0
   tileX: 0
   tileY: 0
   parentTileForPath: {fileID: 0}
   playerTeleportTile: {fileID: 0}
+  turnsUntilEnemyGooDissappears: 0
   edgeType: 0
+--- !u!1001 &369238771292447513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8253027442462377725}
+    m_Modifications:
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075212131137499525, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_Name
+      value: Enemy goo sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075212131137499525, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+--- !u!1 &861356345231938204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1075212131137499525, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+  m_PrefabInstance: {fileID: 369238771292447513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1109916510119903417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 754629583880971168, guid: 37a374c1593640841a46499953e37dc1, type: 3}
+  m_PrefabInstance: {fileID: 369238771292447513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &385933174465660239
 PrefabInstance:
   m_ObjectHideFlags: 0
