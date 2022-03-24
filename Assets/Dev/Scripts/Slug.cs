@@ -22,8 +22,8 @@ public class Slug : Entity
         currentTile.isEnemyGooPiece = true;
         targetTile.isEnemyGooPiece = true;
 
-        currentTile.turnsUntilEnemyGooDissappears = 4;
-        targetTile.turnsUntilEnemyGooDissappears = 4;
+        //currentTile.turnsUntilEnemyGooDissappears = 3;
+        targetTile.turnsUntilEnemyGooDissappears = 3;
 
         if (!GridManager.instance.allEnemyGooTiles.Contains(currentTile))
         {
@@ -79,12 +79,14 @@ public class Slug : Entity
         //Debug.Log("ENEMY DONE");
     }
 
-    public override void PlayAnimation(AnimationType animType)
+    public override async Task PlayAnimation(AnimationType animType)
     {
         Vector3 targetVector = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
         LeanTween.move(gameObject, targetVector, 0.05f);
         GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+        await Task.Yield();
     }
 
     public override void SetTargetTileForAstarPath()
@@ -173,7 +175,7 @@ public class Slug : Entity
         }
     }
 
-    public override void CheckWhatIsNextTile(Tile from, Tile TileTo)
+    public override async Task CheckWhatIsNextTile(Tile from, Tile TileTo)
     {
         if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
         {
@@ -197,6 +199,8 @@ public class Slug : Entity
                 anim.SetBool("isMovingBack", true);
             }
         }
+
+        await Task.Yield();
     }
 
     public void EatGooPiece(Tile target)

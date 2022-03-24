@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public enum AnimationType { Move, Hurt, Teleport}
+public enum AnimationType { Move, Hurt, Teleport, Win}
 public enum MoveDirection { up, down, left, right}
 public abstract class Entity : MonoBehaviour // abstract class for inheritance and polymorphism
 {
@@ -30,7 +30,7 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
     #endregion
 
 
-    public virtual async void PlayAnimation(AnimationType animType) //new
+    public virtual async Task PlayAnimation(AnimationType animType) //new
     {
         Debug.Log("what happened?");
         await Task.Delay(300);
@@ -45,9 +45,10 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
     {
         Debug.Log("what happened?");
     }
-    public virtual void CheckWhatIsNextTile(Tile from, Tile TileTo) //new
+    public virtual async Task CheckWhatIsNextTile(Tile from, Tile TileTo) //new
     {
         Debug.Log("what happened?");
+        await Task.Delay(300);
     }
     public virtual void ReleaseTargetTile() //new
     {

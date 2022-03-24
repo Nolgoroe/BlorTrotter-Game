@@ -58,5 +58,6 @@ public class Tile : MonoBehaviour
         isEnemyGooPiece = true;
         isAdjacentToMainBody = false;
         isMainPlayerBody = false;
+        turnsUntilEnemyGooDissappears = 3;
     }
 }

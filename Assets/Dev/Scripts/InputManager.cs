@@ -31,7 +31,10 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
             if (touch.phase == TouchPhase.Began)
             {
-                UIManager.instance.CheckDisableTempScreens();
+                if(UIManager.instance.tempScreens.Count > 0)
+                {
+                    UIManager.instance.CheckDisableTempScreens();
+                }
             }
         }
     }

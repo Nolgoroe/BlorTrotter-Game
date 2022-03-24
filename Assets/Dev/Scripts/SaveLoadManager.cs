@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class SaveLoadManager : MonoBehaviour, IManageable   //singleton , only instantiate one time 
 {
     public static SaveLoadManager instance;
 
-    [SerializeField] private SaveLoadData saveLoadDataObject;
+    public SaveLoadData saveLoadDataObject;
 
     [SerializeField] private string savePath;
 
@@ -53,5 +55,56 @@ public class SaveLoadManager : MonoBehaviour, IManageable   //singleton , only i
         }
 
         Debug.Log("Done loading game state!");
+    }
+
+
+    public void SaveLevel(int score)
+    {
+        LevelSavedData data = saveLoadDataObject.levelsSaved.Where(p => p.levelID == LevelManager.instance.currentLevel.levelID).SingleOrDefault();
+
+        if(data == null)
+        {
+            LevelSavedData newData = new LevelSavedData();
+            newData.levelID = LevelManager.instance.currentLevel.levelID;
+            newData.AmountOfStars = score;
+            saveLoadDataObject.levelsSaved.Add(newData);
+        }
+        else
+        {
+            int currentScore = data.AmountOfStars;
+
+            if(score > currentScore)
+            {
+                data.AmountOfStars = score;
+            }
+            Debug.Log("Already have this level");
+        }
+    }
+    public void CheckMaxLevelReached(int numIN)
+    {
+        if(numIN > saveLoadDataObject.maxLevelReached)
+        {
+            saveLoadDataObject.maxLevelReached = numIN;
+        }
+    }
+
+
+    public void ResetGameData()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            savePath = Application.persistentDataPath + "/Game State.txt";
+        }
+        else
+        {
+            savePath = Application.dataPath + "/Game State.txt";
+        }
+
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+        }
+
+        SceneManager.LoadScene(0);
     }
 }

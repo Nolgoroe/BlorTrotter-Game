@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelID: 0
   maxNumberOfMoves: 9
-  summonEnemyCooldown: 1
-  maxConcurrentSlugs: 1
+  summonEnemyCooldown: 0
+  maxConcurrentSlugs: 0
   amountOfKnowledge: 0
   amountOfFood: 1
   amountToAddOnEatFood: 3
-  amountToAddOnEatBlob: 0
+  amountToAddOnEatBlob: 1
   hasEnemies: 0
   levelMap: {fileID: 21300000, guid: 121f1fdc29decde419b3ffd6f12a622a, type: 3}
   levelObstacles: {fileID: 21300000, guid: 227c1e76528cfe040a81f4a844c0bfc8, type: 3}

@@ -988,7 +988,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             tile.turnsUntilEnemyGooDissappears--;
 
-            if(tile.turnsUntilEnemyGooDissappears <= 0)
+            if(tile.turnsUntilEnemyGooDissappears < 0)
             {
                 tile.isEnemyGooPiece = false;
                 tileDisplayManager.SetTileDisplayEnemyGooOFF(tile);

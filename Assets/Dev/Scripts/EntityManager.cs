@@ -71,6 +71,10 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
             LevelManager.instance.DecreaseSummonEnemyCooldown();
         }
+        else
+        {
+            SetPlayerTurn();
+        }
     }
 
     public void SpawnEnemy()

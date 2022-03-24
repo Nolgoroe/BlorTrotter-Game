@@ -33,15 +33,6 @@ public class Player : Entity
     {
         isPlayerTurn = false;
 
-        if (targetTile.isLightTile)
-        {
-            LevelManager.instance.DecreaseNumberOfMoves(3);
-        }
-        else
-        {
-            LevelManager.instance.DecreaseNumberOfMoves(1);
-        }
-
         GridManager.instance.SetTileFull(currentTile);
 
         currentTile.isGooPiece = true;
@@ -67,15 +58,25 @@ public class Player : Entity
 
         DetectMoveDirection(currentTile, targetTile);
 
-        CheckWhatIsNextTile(currentTile, targetTile);
+        await CheckWhatIsNextTile(currentTile, targetTile);
 
         currentTile = targetTile;
         currentTile.isMainPlayerBody = true;
         currentTile.isAdjacentToMainBody = false;
 
 
-        PlayAnimation(AnimationType.Move);
+        await PlayAnimation(AnimationType.Move);
 
+
+        if (targetTile.isLightTile)
+        {
+            LevelManager.instance.DecreaseNumberOfMoves(3);
+            await PlayAnimation(AnimationType.Hurt);
+        }
+        else
+        {
+            LevelManager.instance.DecreaseNumberOfMoves(1);
+        }
 
         //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
@@ -98,7 +99,7 @@ public class Player : Entity
         await Task.Delay(500);
     }
 
-    public override async void PlayAnimation(AnimationType animType) //new
+    public override async Task PlayAnimation(AnimationType animType) //new
     {
         switch (animType)
         {
@@ -110,10 +111,11 @@ public class Player : Entity
                 //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetVector, 10f, 0.0f);
                 //transform.rotation = Quaternion.Euler(newDirection);
 
-                LeanTween.move(gameObject, targetVector, 0.05f);
+                LeanTween.move(gameObject, targetVector, 0.1f);
                 GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
                 break;
             case AnimationType.Hurt:
+                anim.SetBool("isHurting", true);
                 break;
             case AnimationType.Teleport:
                 anim.SetBool("isRetracting", true);
@@ -123,6 +125,9 @@ public class Player : Entity
                 GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
                 transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
+                break;
+            case AnimationType.Win:
+                anim.SetBool("hasWon", true);
                 break;
             default:
                 break;
@@ -203,24 +208,27 @@ public class Player : Entity
         }
     }
 
-    public override void CheckWhatIsNextTile(Tile from, Tile TileTo)
+    public override async Task CheckWhatIsNextTile(Tile from, Tile TileTo)
     {
         if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
         {
             if (TileTo.isFood || TileTo.isKinine || TileTo.isSalt)
             {
                 anim.SetBool("isEating", true);
+                await Task.Delay(125);
             }
             else
             {
                 anim.SetBool("Crawl_Anim_Down_Left", true);
             }
+
         }
         else
         {
             if (TileTo.isFood || TileTo.isKinine || TileTo.isSalt)
             {
                 anim.SetBool("isEatingBack", true);
+                await Task.Delay(125);
             }
             else
             {

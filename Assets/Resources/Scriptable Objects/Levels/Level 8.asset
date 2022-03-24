@@ -15,7 +15,7 @@ MonoBehaviour:
   levelID: 7
   maxNumberOfMoves: 3
   summonEnemyCooldown: 1
-  maxConcurrentSlugs: 2
+  maxConcurrentSlugs: 1
   amountOfKnowledge: 3
   amountOfFood: 2
   amountToAddOnEatFood: 3

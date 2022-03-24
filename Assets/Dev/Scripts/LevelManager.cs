@@ -29,15 +29,18 @@ public class LevelManager : MonoBehaviour, IManageable
     }
 
 
-    public void LaunchLevel(int index)
+    public async void LaunchLevel(int index)
     {
 
         ChooseLevel(index);
         ResetDataStartLevel();
         LoadLevel();
-        CameraController.instance.CenterOnBlob();
 
         UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LoadingScreen, UIScreenTypes.GameScreen });
+        
+        await Task.Delay(1000);
+        CameraController.instance.CenterOnBlob();
+
     }
 
     public void ResetDataStartLevel()
@@ -61,6 +64,7 @@ public class LevelManager : MonoBehaviour, IManageable
         UIManager.instance.saltPowerSprite.SetActive(false);
         UIManager.instance.kininePowerSprite.SetActive(false);
         UIManager.instance.SetInGameUIData();
+        UIManager.instance.ResetWinScreenPositions();
 
         for (int i = 0; i < ObjectRefrencer.instance.levelMap.transform.childCount; i++)
         {
@@ -145,8 +149,6 @@ public class LevelManager : MonoBehaviour, IManageable
         //EntityManager.instance.SetEnemyTargetTiles();
 
         EntityManager.instance.SetPlayerTurn();
-
-        InputManager.instance.canRecieveInput = true; //New
     }
 
 
@@ -166,13 +168,8 @@ public class LevelManager : MonoBehaviour, IManageable
             InputManager.instance.canRecieveInput = false;
             CameraController.canControlCamera = false;
 
-            UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen});
+            UIManager.instance.WinLevelAnimationSequence();
 
-            int score = ScoreManager.instance.calcualteEndLevelScore();
-
-            LevelManagerSaveData.instance.SaveLevel(score);
-
-            UIManager.instance.SetWinLoseScreenData();
             Debug.Log("WON LEVEL");
         }
     }

@@ -57,6 +57,9 @@ TagManager:
   - name: tileSelection
     uniqueID: 1459811767
     locked: 0
+  - name: Blobs
+    uniqueID: 2071696537
+    locked: 0
   - name: obstacles & Entities
     uniqueID: 3707639051
     locked: 0

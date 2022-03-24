@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour, IManageable
     [Header("Loading Screen")]
     public GameObject tapToContinueText;
     public GameObject loadingText;
+    public GameObject[] loadingAnimations;
 
     [Header("Game Screen")]
     public TMP_Text knowledgeText;
@@ -77,6 +78,18 @@ public class UIManager : MonoBehaviour, IManageable
     public TMP_Text foodEatenText;
     public TMP_Text blobsCollectedText;
     public TMP_Text blobFragmentsText;
+    public TMP_Text SuccessText;
+    public TMP_Text levelNumText;
+    public float screenFadeSpeedSuccessText;
+    public RectTransform mainPanel;
+    public Vector3 mainPanelTargetPos;
+    public Vector3 mainPanelOriginalPos;
+    public float mainPanelMoveTime;
+    public RectTransform Logo;
+    public Vector3 LogoTargetPos;
+    public Vector3 LogoOriginalPos;
+    public float LogoMoveTime;
+    public int timeBetweenLogoAndMain;
 
     public GameObject[] stars;
     public int timeWaitBetweenStars;
@@ -103,6 +116,9 @@ public class UIManager : MonoBehaviour, IManageable
     public Sprite[] blobSprites;
     public Image blobImage;
     public int currentBlobImageIndex;
+    public Vector3 toScaleToBlobImage;
+    public Vector3 originalScaleBlobImage;
+    public float timeToScaleBlobImage;
 
     [Header("Feedbacks")]
     public Sprite[] slugMucus;
@@ -121,6 +137,10 @@ public class UIManager : MonoBehaviour, IManageable
             screenTypeToObject.Add((UIScreenTypes)i, allGameScreens[i]);
         }
 
+        originalScaleBlobImage = blobImage.rectTransform.localScale;
+
+        mainPanelOriginalPos = mainPanel.localPosition;
+        LogoOriginalPos = Logo.localPosition;
         //DisableAllScreens();
         Debug.Log("success UI");
     }
@@ -162,6 +182,7 @@ public class UIManager : MonoBehaviour, IManageable
             {
                 tapToContinueText.SetActive(false);
                 loadingText.SetActive(true);
+                ChooseAnimationToShowLoading();
                 LoadingTime();
             }
 
@@ -181,6 +202,18 @@ public class UIManager : MonoBehaviour, IManageable
         tempScreens.Add(screenTypeToObject[UIScreenTypes.LoadingScreen]);
         tapToContinueText.SetActive(true);
         loadingText.SetActive(false);
+    }
+    private void ChooseAnimationToShowLoading()
+    {
+        foreach (GameObject go in loadingAnimations)
+        {
+            go.SetActive(false);
+        }
+
+        int rand = UnityEngine.Random.Range(0, loadingAnimations.Length);
+
+        loadingAnimations[rand].SetActive(true);
+
     }
     private async void LoadingTimeGif()
     {
@@ -214,11 +247,11 @@ public class UIManager : MonoBehaviour, IManageable
         }
     }
 
-    public void FadeImage(bool fadeIn, Image toFade)
+    public void FadeImage(bool fadeIn, Image toFade, float speed)
     {
         if (fadeIn)
         {
-            LeanTween.value(toFade.gameObject, 0, 1, screenFadeSpeed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
             {
                 Image sr = toFade.GetComponent<Image>();
                 Color newColor = sr.color;
@@ -228,7 +261,7 @@ public class UIManager : MonoBehaviour, IManageable
         }
         else
         {
-            LeanTween.value(toFade.gameObject, 1, 0, screenFadeSpeed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
             {
                 Image sr = toFade.GetComponent<Image>();
                 Color newColor = sr.color;
@@ -238,26 +271,43 @@ public class UIManager : MonoBehaviour, IManageable
         }
     }
 
-    public void FadeText(bool fadeIn, TMP_Text toFade)
+    public void FadeText(bool fadeIn, TMP_Text toFade, float speed)
     {
         if (fadeIn)
         {
-            LeanTween.value(toFade.gameObject, 0, 1, screenFadeSpeed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
             {
-                TMP_Text sr = toFade.GetComponent<TMP_Text>();
-                Color newColor = sr.color;
+                TMP_Text text = toFade.GetComponent<TMP_Text>();
+                Color newColor = text.color;
                 newColor.a = val;
-                sr.color = newColor;
+                text.color = newColor;
             });
         }
         else
         {
-            LeanTween.value(toFade.gameObject, 1, 0, screenFadeSpeed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
             {
-                TMP_Text sr = toFade.GetComponent<TMP_Text>();
-                Color newColor = sr.color;
+                TMP_Text text = toFade.GetComponent<TMP_Text>();
+                Color newColor = text.color;
                 newColor.a = val;
-                sr.color = newColor;
+                text.color = newColor;
+            });
+        }
+    }
+    public void FadeTextCanvasGroup(bool fadeIn, CanvasGroup toFade, float speed)
+    {
+        if (fadeIn)
+        {
+            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            {
+                toFade.alpha = val;
+            });
+        }
+        else
+        {
+            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            {
+                toFade.alpha = val;
             });
         }
     }
@@ -270,12 +320,17 @@ public class UIManager : MonoBehaviour, IManageable
         }
 
         tempScreens.Clear();
+
+        CheckEnableTouchInputs();
     }
 
-
-
-
-
+    private void CheckEnableTouchInputs()
+    {
+        if (screenTypeToObject[UIScreenTypes.GameScreen].activeInHierarchy)
+        {
+            InputManager.instance.canRecieveInput = true;
+        }
+    }
 
     public void OpenPauseScreen()
     {
@@ -361,14 +416,14 @@ public class UIManager : MonoBehaviour, IManageable
 
     public void CallContinuePlaying()
     {
-        int lastLevelPlayer = 0;
+        int lastLevelPlayed = SaveLoadManager.instance.saveLoadDataObject.maxLevelReached;
 
         /// get last played level here...
 
 
-        /// if there is no last levelplayer, start from level 0.
+        /// if there is no last levelplayed, start from level 0.
         
-        LevelManager.instance.LaunchLevel(lastLevelPlayer);
+        LevelManager.instance.LaunchLevel(lastLevelPlayed + 1);
     }
 
     public void SetInGameUIData()
@@ -448,7 +503,7 @@ public class UIManager : MonoBehaviour, IManageable
     {
         levelNameText.text = LevelManager.instance.allLevels[currentLevelDisplayedID].name;
 
-        LevelSavedData data = LevelManagerSaveData.instance.levelsSaved.Where(p => p.levelID == currentLevelDisplayedID).SingleOrDefault();
+        LevelSavedData data = SaveLoadManager.instance.saveLoadDataObject.levelsSaved.Where(p => p.levelID == currentLevelDisplayedID).SingleOrDefault();
 
         for (int i = 0; i < 3; i++)
         {
@@ -485,29 +540,6 @@ public class UIManager : MonoBehaviour, IManageable
     }
 
 
-
-    public async void SetWinLoseScreenData()
-    {
-        numberOfMovesText.text = ScoreManager.instance.currentLevelNumberOfMovesRemaining + "/" + LevelManager.instance.currentLevel.movesNeeded;
-        foodEatenText.text = ScoreManager.instance.currentCollectedFood + "/" + LevelManager.instance.currentLevel.amountOfFood;
-        blobsCollectedText.text = ScoreManager.instance.currentCollectedKnowledge + "/" + LevelManager.instance.currentLevel.amountOfKnowledge;
-
-
-        int score = ScoreManager.instance.calcualteEndLevelScore();
-
-        for (int i = 0; i < score; i++)
-        {
-            stars[i].SetActive(true);
-
-            await Task.Delay(timeWaitBetweenStars);
-        }
-
-        //blobFragmentsText WHAT IS THIS
-    }
-
-
-
-
     public async void DisplayTutorialExclimation()
     {
         exclimationMark.SetActive(true);
@@ -523,16 +555,16 @@ public class UIManager : MonoBehaviour, IManageable
     {
         DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.NarratorBlobScreen });
 
-        currentBlobImageIndex = 0;
+        //currentBlobImageIndex = 0;
 
-        ChangeBlobNarratorDisplay();
+        //ChangeBlobNarratorDisplay();
 
     }
     public void CloseBlobNarratorScreen()
     {
         DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.NarratorBlobScreen });
 
-        currentBlobImageIndex = 0;
+        //currentBlobImageIndex = 0;
 
     }
     public void BlobNarratorArrowLeft()
@@ -567,6 +599,12 @@ public class UIManager : MonoBehaviour, IManageable
     private void ChangeBlobNarratorDisplay()
     {
         blobImage.sprite = blobSprites[currentBlobImageIndex];
+
+        LeanTween.scale(blobImage.rectTransform, toScaleToBlobImage, timeToScaleBlobImage).setOnComplete(() => ResetBlobImageScale());
+    }
+    private void ResetBlobImageScale()
+    {
+        LeanTween.scale(blobImage.rectTransform, originalScaleBlobImage, timeToScaleBlobImage);
     }
 
     public void FlipSeeTutorials(bool displayTutorials)
@@ -624,5 +662,79 @@ public class UIManager : MonoBehaviour, IManageable
             soundImageOptions.sprite = soundSpriteOrange;
         }
 
+    }
+
+
+    public async void WinLevelAnimationSequence()
+    {
+        await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Win);
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen });
+
+        await FadeInSuccessText();
+
+        SuccessText.alpha = 0;
+        SetWinLoseScreenData();
+
+        await animateWinScreen();
+
+
+        await DisplayStarsForWinScreen();
+
+        int score = ScoreManager.instance.calcualteEndLevelScore();
+        SaveLoadManager.instance.SaveLevel(score);
+        SaveLoadManager.instance.CheckMaxLevelReached(LevelManager.instance.currentLevel.levelID);
+        SaveLoadManager.instance.SaveGameState();
+    }
+
+    public void SetWinLoseScreenData()
+    {
+        numberOfMovesText.text = ScoreManager.instance.currentLevelNumberOfMovesRemaining + "/" + LevelManager.instance.currentLevel.movesNeeded;
+        foodEatenText.text = ScoreManager.instance.currentCollectedFood + "/" + LevelManager.instance.currentLevel.amountOfFood;
+        blobsCollectedText.text = ScoreManager.instance.currentCollectedKnowledge + "/" + LevelManager.instance.currentLevel.amountOfKnowledge;
+        levelNumText.text = "NIVEAU " + (LevelManager.instance.currentLevel.levelID + 1);
+
+        int score = ScoreManager.instance.calcualteEndLevelScore();
+
+        SaveLoadManager.instance.saveLoadDataObject.SaveLevel(score);
+
+        //blobFragmentsText WHAT IS THIS
+    }
+
+    public async Task DisplayStarsForWinScreen()
+    {
+        int score = ScoreManager.instance.calcualteEndLevelScore();
+
+
+        for (int i = 0; i < score; i++)
+        {
+            stars[i].SetActive(true);
+
+            await Task.Delay(timeWaitBetweenStars);
+        }
+
+    }
+    public async Task FadeInSuccessText()
+    {
+        FadeText(true, SuccessText, screenFadeSpeedSuccessText);
+
+        float timeToWait = screenFadeSpeedSuccessText * 1000;
+
+        await Task.Delay((int)timeToWait);
+    }
+    public async Task animateWinScreen()
+    {
+        LeanTween.move(Logo, LogoTargetPos, LogoMoveTime).setEaseOutBounce();
+
+        await Task.Delay(timeBetweenLogoAndMain);
+
+        LeanTween.move(mainPanel, mainPanelTargetPos, mainPanelMoveTime).setEaseOutBounce();
+
+        await Task.Delay(1000);
+    }
+
+    public void ResetWinScreenPositions()
+    {
+        mainPanel.localPosition = mainPanelOriginalPos;
+        Logo.localPosition = LogoOriginalPos;
     }
 }

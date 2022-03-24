@@ -38,6 +38,11 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
         anim.SetBool("isEating", false);
     }
 
+    public void ResetPlayerHurt()
+    {
+        anim.SetBool("isHurting", false);
+    }
+
     public void SetMoveData()
     {
         InputManager.instance.canRecieveInput = false; //new

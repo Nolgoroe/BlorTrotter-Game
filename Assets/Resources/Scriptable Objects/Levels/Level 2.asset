@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   levelID: 1
-  maxNumberOfMoves: 3
-  summonEnemyCooldown: 1
-  maxConcurrentSlugs: 1
-  amountOfKnowledge: 4
-  amountOfFood: 3
+  maxNumberOfMoves: 7
+  summonEnemyCooldown: 0
+  maxConcurrentSlugs: 0
+  amountOfKnowledge: 0
+  amountOfFood: 2
   amountToAddOnEatFood: 3
-  amountToAddOnEatBlob: 0
+  amountToAddOnEatBlob: 1
   hasEnemies: 0
   levelMap: {fileID: 21300000, guid: bb78da903e33f4d4980f52072890b019, type: 3}
   levelObstacles: {fileID: 21300000, guid: 9b743c36abe55c0438e25aa913339521, type: 3}

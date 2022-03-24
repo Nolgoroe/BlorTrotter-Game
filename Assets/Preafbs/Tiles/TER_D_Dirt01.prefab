@@ -362,10 +362,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy goo sprite
       objectReference: {fileID: 0}
-    - target: {fileID: 1075212131137499525, guid: 37a374c1593640841a46499953e37dc1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37a374c1593640841a46499953e37dc1, type: 3}
 --- !u!1 &2267908278791049636 stripped

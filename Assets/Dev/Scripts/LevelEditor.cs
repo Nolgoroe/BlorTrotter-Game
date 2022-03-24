@@ -417,7 +417,10 @@ public class LevelEditor : MonoBehaviour, IManageable
                 inObject.transform.SetParent(ObjectRefrencer.instance.enemies.transform);
                 break;
 
-            case "OtherBlobs":
+            case "Salt":
+                inObject.transform.SetParent(ObjectRefrencer.instance.blobs.transform);
+                break;
+            case "Kinine":
                 inObject.transform.SetParent(ObjectRefrencer.instance.blobs.transform);
                 break;
 
