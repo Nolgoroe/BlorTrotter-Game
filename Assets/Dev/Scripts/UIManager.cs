@@ -22,6 +22,8 @@ public enum UIScreenTypes
     NarratorBlobScreen,
     AsthericWoodsGameScreen,
     InGameScreenHud,
+    GameBG,
+    MenuBG
 }
 
 public class UIManager : MonoBehaviour, IManageable
@@ -233,7 +235,7 @@ public class UIManager : MonoBehaviour, IManageable
 
         DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen});
 
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu, UIScreenTypes.MenuBG });
 
     }
     public void DisplaySpecificScreensNoDeactivate(UIScreenTypes[] screens)
@@ -347,14 +349,14 @@ public class UIManager : MonoBehaviour, IManageable
 
     public void OpenPauseScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Pause});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Pause, UIScreenTypes.GameBG});
 
         InputManager.instance.canRecieveInput = false;
         CameraController.canControlCamera = false;
     }
     public void ClosePauseScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen,  UIScreenTypes.InGameScreenHud, UIScreenTypes.AsthericWoodsGameScreen });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen, UIScreenTypes.GameBG, UIScreenTypes.InGameScreenHud, UIScreenTypes.AsthericWoodsGameScreen });
 
         InputManager.instance.canRecieveInput = true;
         CameraController.canControlCamera = true;
@@ -369,7 +371,7 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public void OpenWikiScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WikiBlob});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WikiBlob, UIScreenTypes.MenuBG});
     }
     public void BackToBaseWiki(GameObject toDeactivate)
     {
@@ -378,7 +380,7 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public void OpenLevelSelectionScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LevelSelection});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LevelSelection, UIScreenTypes.MenuBG});
 
         currentLevelDisplayedID = 0;
 
@@ -386,12 +388,12 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public void ReturnToMainMenu()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu, UIScreenTypes.MenuBG });
     }
     public void ReturnToMainMenuFromGame()
     {
         LevelManager.instance.DestroyLevel();
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu, UIScreenTypes.MenuBG });
     }
 
 

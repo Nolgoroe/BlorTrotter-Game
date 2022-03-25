@@ -398,8 +398,11 @@ public class LevelEditor : MonoBehaviour, IManageable
                     {
                         LevelManager.instance.kinineLocks.Add(anim);
 
-                        toSummon.GetComponent<SpriteRenderer>().sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                        SpriteRenderer childOne = toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                        SpriteRenderer childTwo = toSummon.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+                        childOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                        childTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
                     }
                 }
             }
