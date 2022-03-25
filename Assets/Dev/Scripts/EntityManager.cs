@@ -122,7 +122,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             nextTileToSpawnEnemy = t;
         }
 
-        if (!CheckLimitOfEnemiesReached(LevelManager.instance.currentCooldownSummonEnemies))
+        if (!CheckLimitOfEnemiesReached(LevelManager.instance.currentCooldownSummonEnemies) && nextTileToSpawnEnemy)
         {
             GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemy);
         }

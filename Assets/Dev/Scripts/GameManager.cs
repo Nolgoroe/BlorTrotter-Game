@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour  //singleton , only instantiate one tim
         //StartLevelSetData(); 
         //CameraController.instance.CenterOnBlob();
 
-        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen, UIScreenTypes.MainMenu });
+        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen});
     }
 
     [ContextMenu("Init complete system")]

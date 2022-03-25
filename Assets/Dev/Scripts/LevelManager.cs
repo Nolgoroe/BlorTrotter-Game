@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour, IManageable
         ResetDataStartLevel();
         LoadLevel();
 
-        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LoadingScreen, UIScreenTypes.GameScreen, UIScreenTypes.AsthericWoodsGameScreen });
+        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LoadingScreen, UIScreenTypes.GameScreen, UIScreenTypes.InGameScreenHud, UIScreenTypes.AsthericWoodsGameScreen });
         
         await Task.Delay(1000);
         CameraController.instance.CenterOnBlob();

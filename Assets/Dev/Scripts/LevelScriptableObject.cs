@@ -12,6 +12,7 @@ public class LevelScriptableObject : ScriptableObject
     public int maxNumberOfMoves;
     public int summonEnemyCooldown;
     public int maxConcurrentSlugs;
+    public int maxConcurrentBeetles;
     public int amountOfKnowledge;
     public int amountOfFood;
     public int amountToAddOnEatFood;

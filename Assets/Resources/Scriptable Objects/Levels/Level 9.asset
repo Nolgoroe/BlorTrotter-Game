@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Level 9
   m_EditorClassIdentifier: 
   levelID: 8
-  maxNumberOfMoves: 3
-  summonEnemyCooldown: 1
-  maxConcurrentSlugs: 1
-  amountOfKnowledge: 0
-  amountOfFood: 0
+  maxNumberOfMoves: 14
+  summonEnemyCooldown: 3
+  maxConcurrentSlugs: 2
+  amountOfKnowledge: 1
+  amountOfFood: 3
   amountToAddOnEatFood: 3
-  amountToAddOnEatBlob: 0
+  amountToAddOnEatBlob: 1
   hasEnemies: 1
-  levelMap: {fileID: 21300000, guid: bb2e319ebec788147baa96c7f0b6d27d, type: 3}
-  levelObstacles: {fileID: 21300000, guid: e31c4f67e27d52647bd0008f3e3c4365, type: 3}
+  levelMap: {fileID: 21300000, guid: 967f502078e0d2c4da1eb0c5f2309149, type: 3}
+  levelObstacles: {fileID: 21300000, guid: ad81f210e02567f42bf5202c1bc7a490, type: 3}
   spriteLevelImage: {fileID: 21300000, guid: 5188e9aa698f1c4428214b819d9a44f1, type: 3}
   spriteLevelImageLocked: {fileID: 21300000, guid: 84e7e7b348dfad14686be3443869d71e, type: 3}
   movesNeeded: 6

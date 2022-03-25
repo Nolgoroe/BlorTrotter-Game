@@ -21,6 +21,7 @@ public enum UIScreenTypes
     StartGifScreen,
     NarratorBlobScreen,
     AsthericWoodsGameScreen,
+    InGameScreenHud,
 }
 
 public class UIManager : MonoBehaviour, IManageable
@@ -231,6 +232,9 @@ public class UIManager : MonoBehaviour, IManageable
         await Task.Delay(randomTime * 1000);
 
         DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen});
+
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu });
+
     }
     public void DisplaySpecificScreensNoDeactivate(UIScreenTypes[] screens)
     {
@@ -350,7 +354,7 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public void ClosePauseScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen, UIScreenTypes.AsthericWoodsGameScreen });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen,  UIScreenTypes.InGameScreenHud, UIScreenTypes.AsthericWoodsGameScreen });
 
         InputManager.instance.canRecieveInput = true;
         CameraController.canControlCamera = true;
