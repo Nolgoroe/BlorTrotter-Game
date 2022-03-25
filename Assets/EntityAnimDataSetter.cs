@@ -19,7 +19,7 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
         anim.SetBool("isEating", false);
         anim.SetBool("isEatingBack", false);
 
-        await Task.Delay(100);
+        await Task.Delay(500);
 
         InputManager.instance.canRecieveInput = true; //new
     }

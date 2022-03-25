@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour, IManageable
     public int currentCooldownSummonEnemies;
     //public int currentCollectedKnowledge, currentCollectedFood;
 
-    public bool hasKininePower, hasSaltPower;
+    public bool levelEnded;
 
     public List<Animator> kinineLocks;
     public List<Animator> saltLocks;
@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour, IManageable
 
     public async void LaunchLevel(int index)
     {
+        levelEnded = false;
 
         ChooseLevel(index);
         ResetDataStartLevel();
@@ -49,8 +50,6 @@ public class LevelManager : MonoBehaviour, IManageable
 
         ScoreManager.instance.currentLevelNumberOfMovesRemaining = currentLevel.maxNumberOfMoves;
         currentCooldownSummonEnemies = currentLevel.summonEnemyCooldown;
-        hasSaltPower = false;
-        hasKininePower = false;
         kinineLocks.Clear();
         saltLocks.Clear();
 
@@ -94,8 +93,6 @@ public class LevelManager : MonoBehaviour, IManageable
 
         ScoreManager.instance.currentLevelNumberOfMovesRemaining = 0;
         currentCooldownSummonEnemies = 0;
-        hasSaltPower = false;
-        hasKininePower = false;
         kinineLocks.Clear();
         saltLocks.Clear();
 
@@ -156,8 +153,11 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         if(ScoreManager.instance.currentLevelNumberOfMovesRemaining <= 0)
         {
-            // level lost logic here
-            // send to UI Screen to manage screen display
+            InputManager.instance.canRecieveInput = false;
+            CameraController.canControlCamera = false;
+            levelEnded = true;
+
+            UIManager.instance.LoseLevelAnimationSequence();
             Debug.Log("LOST LEVEL, OUT OF MOVES!");
         }
     }
@@ -167,6 +167,7 @@ public class LevelManager : MonoBehaviour, IManageable
         {
             InputManager.instance.canRecieveInput = false;
             CameraController.canControlCamera = false;
+            levelEnded = true;
 
             UIManager.instance.WinLevelAnimationSequence();
 
@@ -177,17 +178,22 @@ public class LevelManager : MonoBehaviour, IManageable
     public void DecreaseNumberOfMoves(int amount) 
     {
         ScoreManager.instance.currentLevelNumberOfMovesRemaining-= amount;
-        UIManager.instance.UpdateNumOfMoves();
+
+        if (ScoreManager.instance.currentLevelNumberOfMovesRemaining < 0)
+        {
+            ScoreManager.instance.currentLevelNumberOfMovesRemaining = 0;
+        }
+
+        UIManager.instance.UpdateNumOfMoves(false);
     }
     public void AddMovesEat(int amount) 
     {
         ScoreManager.instance.currentLevelNumberOfMovesRemaining += amount;
-        UIManager.instance.UpdateNumOfMoves();
+        UIManager.instance.UpdateNumOfMoves(true);
     }
 
     public async void ActivateKininePower()
     {
-        hasKininePower = true;
         UIManager.instance.kininePowerSprite.SetActive(true);
 
         await Task.Delay(1000);
@@ -197,7 +203,6 @@ public class LevelManager : MonoBehaviour, IManageable
 
     public async void ActivateSaltPower()
     {
-        hasSaltPower = true;
         UIManager.instance.saltPowerSprite.SetActive(true);
 
         await Task.Delay(1000);
@@ -246,24 +251,5 @@ public class LevelManager : MonoBehaviour, IManageable
     public void RestartLevel()
     {
         LaunchLevel(currentLevel.levelID);
-    }
-
-    [ContextMenu("Choose Level")]
-    public void callChooseLevel() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        ChooseLevel(1);
-    }
-
-    [ContextMenu("Load Level")]
-    public void CallLoadLevel() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        LoadLevel();
-    }
-
-    [ContextMenu("Decrease Number Of Moves")]
-    public void test() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        ScoreManager.instance.currentLevelNumberOfMovesRemaining--;
-        CheckLoseLevel();
     }
 }

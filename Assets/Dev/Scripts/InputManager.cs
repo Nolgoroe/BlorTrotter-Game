@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
     void CheckGameplayControls()
     {
-        if (Player.isPlayerTurn && canRecieveInput)
+        if (Player.isPlayerTurn && canRecieveInput && !LevelManager.instance.levelEnded)
         {
             if (Input.touchCount > 0)
             {

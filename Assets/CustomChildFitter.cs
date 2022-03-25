@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [Serializable]
 public class ChildPositonCombo
@@ -29,7 +30,9 @@ public class CustomChildFitter : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (fitChild)
+        bool interact = GetComponent<Button>().interactable;
+
+        if (fitChild && interact)
         {
             foreach (ChildPositonCombo childCombo in childPosCombo)
             {

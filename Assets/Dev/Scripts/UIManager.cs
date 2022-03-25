@@ -80,6 +80,9 @@ public class UIManager : MonoBehaviour, IManageable
     public TMP_Text blobsCollectedText;
     public TMP_Text blobFragmentsText;
     public TMP_Text SuccessText;
+    public TMP_Text defeatText;
+    public TMP_Text successTextMainPanel;
+    public TMP_Text defeatTextMainPanel;
     public TMP_Text levelNumText;
     public float screenFadeSpeedSuccessText;
     public RectTransform mainPanel;
@@ -91,6 +94,7 @@ public class UIManager : MonoBehaviour, IManageable
     public Vector3 LogoOriginalPos;
     public float LogoMoveTime;
     public int timeBetweenLogoAndMain;
+    public Button restartButton, continueButton;
 
     public GameObject[] stars;
     public int timeWaitBetweenStars;
@@ -459,6 +463,9 @@ public class UIManager : MonoBehaviour, IManageable
             go.SetActive(false);
         }
 
+        restartButton.interactable = false;
+        continueButton.interactable = false;
+
         numberOfMovesText.text = "0/" + LevelManager.instance.currentLevel.movesNeeded;
         foodEatenText.text = "0/" + LevelManager.instance.currentLevel.amountOfFood;
         blobsCollectedText.text = "0/" + LevelManager.instance.currentLevel.amountOfKnowledge;
@@ -499,11 +506,14 @@ public class UIManager : MonoBehaviour, IManageable
 
     }
 
-    public void UpdateNumOfMoves()
+    public void UpdateNumOfMoves(bool add)
     {
         moveAmount.text = ScoreManager.instance.currentLevelNumberOfMovesRemaining.ToString();
 
-        moveAmount.GetComponent<Animator>().SetBool("Effect Now", true);
+        if (add)
+        {
+            moveAmount.GetComponent<Animator>().SetBool("Effect Now", true);
+        }
     }
 
     private void LevelSelectionScreenLogic()
@@ -674,8 +684,11 @@ public class UIManager : MonoBehaviour, IManageable
 
     public async void WinLevelAnimationSequence()
     {
+
         await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Win);
         DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen });
+        successTextMainPanel.gameObject.SetActive(true);
+        defeatTextMainPanel.gameObject.SetActive(false);
 
         await FadeInSuccessText();
 
@@ -691,6 +704,34 @@ public class UIManager : MonoBehaviour, IManageable
         SaveLoadManager.instance.SaveLevel(score);
         SaveLoadManager.instance.CheckMaxLevelReached(LevelManager.instance.currentLevel.levelID);
         SaveLoadManager.instance.SaveGameState();
+
+        restartButton.interactable = true;
+        continueButton.interactable = true;
+    }
+    public async void LoseLevelAnimationSequence()
+    {
+        //await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Win);
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen });
+        successTextMainPanel.gameObject.SetActive(false);
+        defeatTextMainPanel.gameObject.SetActive(true);
+
+        await FadeInDefeatText();
+
+        defeatText.alpha = 0;
+        SetWinLoseScreenData();
+
+        await animateWinScreen();
+
+
+        await DisplayStarsForWinScreen();
+
+        int score = ScoreManager.instance.calcualteEndLevelScore();
+        SaveLoadManager.instance.SaveLevel(score);
+        SaveLoadManager.instance.CheckMaxLevelReached(LevelManager.instance.currentLevel.levelID);
+        SaveLoadManager.instance.SaveGameState();
+
+        restartButton.interactable = true;
+        continueButton.interactable = true;
     }
 
     public void SetWinLoseScreenData()
@@ -723,6 +764,14 @@ public class UIManager : MonoBehaviour, IManageable
     public async Task FadeInSuccessText()
     {
         FadeText(true, SuccessText, screenFadeSpeedSuccessText);
+
+        float timeToWait = screenFadeSpeedSuccessText * 1000;
+
+        await Task.Delay((int)timeToWait);
+    }
+    public async Task FadeInDefeatText()
+    {
+        FadeText(true, defeatText, screenFadeSpeedSuccessText);
 
         float timeToWait = screenFadeSpeedSuccessText * 1000;
 
