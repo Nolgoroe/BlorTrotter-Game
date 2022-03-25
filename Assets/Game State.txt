@@ -1,1 +1,1 @@
-{"maxLevelReached":1,"levelsSaved":[{"levelID":0,"AmountOfStars":3},{"levelID":1,"AmountOfStars":3}]}
+{"maxLevelReached":0,"levelsSaved":[{"levelID":1,"AmountOfStars":3},{"levelID":2,"AmountOfStars":2},{"levelID":7,"AmountOfStars":2},{"levelID":0,"AmountOfStars":3}]}

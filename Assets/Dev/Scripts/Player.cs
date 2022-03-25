@@ -174,7 +174,7 @@ public class Player : Entity
             Vector3 rotation = new Vector3(0,0,0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("Down");
+            //Debug.Log("Down");
         }
         else if (TileTo.tileY > from.tileY)
         {
@@ -183,7 +183,7 @@ public class Player : Entity
             Vector3 rotation = new Vector3(0, 0, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("up");
+            //Debug.Log("up");
 
         }
         else if (TileTo.tileX < from.tileX)
@@ -193,7 +193,7 @@ public class Player : Entity
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("left");
+            //Debug.Log("left");
 
         }
         else if (TileTo.tileX > from.tileX)
@@ -203,7 +203,7 @@ public class Player : Entity
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("right");
+            //Debug.Log("right");
 
         }
     }
@@ -245,7 +245,9 @@ public class Player : Entity
         {
             Animator anim = target.foodObject.GetComponent<Animator>();
             anim.SetBool("Absorb", true);
+            int currentSorting = anim.GetComponent<SpriteRenderer>().sortingOrder;
 
+            anim.GetComponent<SpriteRenderer>().sortingOrder = currentSorting - 1;
             if (target.isKinine)
             {
                 LevelManager.instance.ActivateKininePower();

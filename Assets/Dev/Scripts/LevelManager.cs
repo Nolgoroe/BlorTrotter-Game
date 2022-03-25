@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour, IManageable
         ResetDataStartLevel();
         LoadLevel();
 
-        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LoadingScreen, UIScreenTypes.GameScreen });
+        UIManager.instance.DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.LoadingScreen, UIScreenTypes.GameScreen, UIScreenTypes.AsthericWoodsGameScreen });
         
         await Task.Delay(1000);
         CameraController.instance.CenterOnBlob();
@@ -183,20 +183,6 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         ScoreManager.instance.currentLevelNumberOfMovesRemaining += amount;
         UIManager.instance.UpdateNumOfMoves();
-    }
-    public void DecreaseSummonEnemyCooldown() 
-    {
-        currentCooldownSummonEnemies--;
-
-        if(currentCooldownSummonEnemies <= 0)
-        {
-            if (!EntityManager.instance.CheckLimitOfEnemiesReached(currentCooldownSummonEnemies))
-            {
-                EntityManager.instance.SpawnEnemy();
-            }
-
-            currentCooldownSummonEnemies = currentLevel.summonEnemyCooldown;
-        }
     }
 
     public async void ActivateKininePower()

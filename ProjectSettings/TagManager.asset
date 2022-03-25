@@ -57,14 +57,14 @@ TagManager:
   - name: tileSelection
     uniqueID: 1459811767
     locked: 0
-  - name: Blobs
-    uniqueID: 2071696537
-    locked: 0
   - name: obstacles & Entities
     uniqueID: 3707639051
     locked: 0
   - name: GodRay
     uniqueID: 2426577589
+    locked: 0
+  - name: Between
+    uniqueID: 3275397591
     locked: 0
   - name: Above ALL
     uniqueID: 1502219711

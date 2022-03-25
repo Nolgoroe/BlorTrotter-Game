@@ -10,6 +10,11 @@ public class Slug : Entity
 
     public MoveDirection currentMoveDirection = MoveDirection.left;
 
+    public GameObject DownArrowPrefab;
+    public GameObject UpArrowPrefab;
+    public GameObject LeftArrowPrefab;
+    public GameObject RightArrowPrefab;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -76,6 +81,16 @@ public class Slug : Entity
 
         enemyPath.RemoveAt(0);
 
+
+        await Task.Delay(100);
+        if (enemyPath.Count > 0)
+        {
+            CalculateDirectionNextTile(currentTile, enemyPath[0], this);
+        }
+        else
+        {
+            TurnOffAllEnemyArrows();
+        }
         //Debug.Log("ENEMY DONE");
     }
 
@@ -129,7 +144,7 @@ public class Slug : Entity
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("Down");
+            ///Debug.Log("Down");
         }
         else if (TileTo.tileY > from.tileY)
         {
@@ -142,7 +157,7 @@ public class Slug : Entity
             Vector3 rotation = new Vector3(0, 0, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("up");
+            //Debug.Log("up");
 
         }
         else if (TileTo.tileX < from.tileX)
@@ -156,7 +171,7 @@ public class Slug : Entity
             Vector3 rotation = new Vector3(0, 0, 0);
             transform.rotation = Quaternion.Euler(rotation);
 
-            Debug.Log("left");
+            //Debug.Log("left");
 
         }
         else if (TileTo.tileX > from.tileX)
@@ -170,7 +185,7 @@ public class Slug : Entity
             Vector3 rotation = new Vector3(0, 180, 0);
             transform.rotation = Quaternion.Euler(rotation);
        
-            Debug.Log("right");
+            //Debug.Log("right");
 
         }
     }
@@ -218,5 +233,55 @@ public class Slug : Entity
     public override void ReleaseTargetTile()
     {
         PublicTargetTile.isFull = false;
+    }
+
+
+    public void TurnOffAllEnemyArrows()
+    {
+        RightArrowPrefab.SetActive(false);
+        LeftArrowPrefab.SetActive(false);
+        DownArrowPrefab.SetActive(false);
+        UpArrowPrefab.SetActive(false);
+
+    }
+
+
+    public void CalculateDirectionNextTile(Tile from, Tile TileTo, Slug calling)
+    {
+        calling.TurnOffAllEnemyArrows();
+
+        if (TileTo.tileY < from.tileY)
+        {
+            calling.DownArrowPrefab.SetActive(true);
+
+            calling.DownArrowPrefab.transform.position = new Vector3(calling.transform.position.x + 1, calling.transform.position.y - 1, calling.transform.position.z);
+            Debug.Log("Down");
+        }
+        else if (TileTo.tileY > from.tileY)
+        {
+            calling.UpArrowPrefab.SetActive(true);
+
+            calling.UpArrowPrefab.transform.position = new Vector3(calling.transform.position.x - 1, calling.transform.position.y, calling.transform.position.z);
+            Debug.Log("up");
+
+        }
+        else if (TileTo.tileX < from.tileX)
+        {
+            calling.LeftArrowPrefab.SetActive(true);
+
+            calling.LeftArrowPrefab.transform.position = new Vector3(calling.transform.position.x - 1, calling.transform.position.y - 1, calling.transform.position.z);
+
+            Debug.Log("left");
+
+        }
+        else if (TileTo.tileX > from.tileX)
+        {
+            calling.RightArrowPrefab.SetActive(true);
+
+            calling.RightArrowPrefab.transform.position = new Vector3(calling.transform.position.x + 1, calling.transform.position.y, calling.transform.position.z);
+
+            Debug.Log("right");
+
+        }
     }
 }

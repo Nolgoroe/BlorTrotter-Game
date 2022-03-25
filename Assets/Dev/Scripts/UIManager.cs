@@ -19,7 +19,8 @@ public enum UIScreenTypes
     Credits,
     LoadingScreen,
     StartGifScreen,
-    NarratorBlobScreen
+    NarratorBlobScreen,
+    AsthericWoodsGameScreen,
 }
 
 public class UIManager : MonoBehaviour, IManageable
@@ -122,6 +123,10 @@ public class UIManager : MonoBehaviour, IManageable
 
     [Header("Feedbacks")]
     public Sprite[] slugMucus;
+    //public GameObject RightArrowPrefab;
+    //public GameObject LeftArrowPrefab;
+    //public GameObject UpArrowPrefab;
+    //public GameObject DownArrowPrefab;
 
     [Header("ETC")]
     public List<GameObject> tempScreens;
@@ -341,7 +346,7 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public void ClosePauseScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen, UIScreenTypes.AsthericWoodsGameScreen });
 
         InputManager.instance.canRecieveInput = true;
         CameraController.canControlCamera = true;
@@ -497,6 +502,8 @@ public class UIManager : MonoBehaviour, IManageable
     public void UpdateNumOfMoves()
     {
         moveAmount.text = ScoreManager.instance.currentLevelNumberOfMovesRemaining.ToString();
+
+        moveAmount.GetComponent<Animator>().SetBool("Effect Now", true);
     }
 
     private void LevelSelectionScreenLogic()

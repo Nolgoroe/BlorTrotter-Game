@@ -62,7 +62,17 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
 
     public void SetSlugSpawnActions()
     {
-       EntityManager.instance.SetEnemyTargetTiles(GetComponent<Slug>());
+        Slug slug = GetComponent<Slug>();
+
+        EntityManager.instance.SetEnemyTargetTiles(slug);
+
+        if(slug.enemyPath != null)
+        {
+            if (slug.enemyPath.Count > 0)
+            {
+                slug.CalculateDirectionNextTile(slug.currentTile, slug.enemyPath[0], slug);
+            }
+        }
     }
 
     public void AfterKinineSaltSpawn()

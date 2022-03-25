@@ -59,7 +59,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
                     {
                         if (hit.collider.CompareTag("Tile"))
                         {
-                            Debug.Log("Detected Click on Tile object! " + hit.transform.name);
+                            //Debug.Log("Detected Click on Tile object! " + hit.transform.name);
 
                             Tile t = hit.transform.GetComponent<Tile>();
 
@@ -79,7 +79,7 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
                     }
                     else
                     {
-                        Debug.Log("NOTHING");
+                        //Debug.Log("NOTHING");
                     }
 
                 }

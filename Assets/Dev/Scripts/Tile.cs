@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
     public GameObject gooSprite;
     public GameObject enemyGooSprite;
     public GameObject foodObject;
+    public GameObject enemySpawnParent;
 
     public int cost;
     public int index;

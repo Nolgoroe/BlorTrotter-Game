@@ -17,6 +17,8 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
     public GameObject slugPrefab;
 
+    public Tile nextTileToSpawnEnemy;
+
     public void initManager()
     {
         instance = this;
@@ -69,7 +71,9 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
                 SetPlayerTurn();
             }
 
-            LevelManager.instance.DecreaseSummonEnemyCooldown();
+            DecreaseSpawnEnemyCooldown();
+
+            CheckNextSpawnTileEnemy();
         }
         else
         {
@@ -77,44 +81,74 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         }
     }
 
+    public void DecreaseSpawnEnemyCooldown()
+    {
+        LevelManager.instance.currentCooldownSummonEnemies--;
+
+        if (LevelManager.instance.currentCooldownSummonEnemies <= 0)
+        {
+            if (!CheckLimitOfEnemiesReached(LevelManager.instance.currentCooldownSummonEnemies))
+            {
+                SpawnEnemy();
+            }
+
+            LevelManager.instance.currentCooldownSummonEnemies = LevelManager.instance.currentLevel.summonEnemyCooldown;
+        }
+    }
+
+    public void CheckNextSpawnTileEnemy()
+    {
+        if (LevelManager.instance.currentCooldownSummonEnemies - 1 == 0 && !nextTileToSpawnEnemy)
+        {
+            int rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
+
+            Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
+
+            int counter = 1000;
+
+            while (t.isFull)
+            {
+                counter--;
+                rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
+                t = enemySpawnTiles[rand].GetComponent<Tile>();
+
+                if (counter <= 0)
+                {
+                    Debug.LogError("PROBLEM WITH SLUG SPAWN");
+                    break;
+                }
+            }
+
+            nextTileToSpawnEnemy = t;
+        }
+
+        if (!CheckLimitOfEnemiesReached(LevelManager.instance.currentCooldownSummonEnemies))
+        {
+            GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemy);
+        }
+    }
+
     public void SpawnEnemy()
     {
-        int rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
 
-        Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
+        GameObject toSummon = Instantiate(slugPrefab, nextTileToSpawnEnemy.transform);
+        Transform parent = nextTileToSpawnEnemy.transform;
+        Entity et = toSummon.transform.GetChild(0).GetComponent<Slug>();
 
-        int counter = 1000;
-
-        while (t.isFull)
+        if (nextTileToSpawnEnemy.isGooPiece)
         {
-            counter--;
-            rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
-            t = enemySpawnTiles[rand].GetComponent<Tile>();
-
-            if(counter <= 0)
-            {
-                Debug.LogError("PROBLEM WITH SLUG SPAWN");
-                break;
-            }
+            toSummon.transform.GetChild(0).GetComponent<Slug>().EatGooPiece(nextTileToSpawnEnemy);
         }
 
-        GameObject toSummon = Instantiate(slugPrefab, enemySpawnTiles[rand].transform);
-        Transform parent = enemySpawnTiles[rand].transform;
-        Entity et = toSummon.GetComponent<Slug>();
+        nextTileToSpawnEnemy.SetEnemySpawnData();
 
-        if (t.isGooPiece)
+
+        if (!GridManager.instance.allEnemyGooTiles.Contains(nextTileToSpawnEnemy))
         {
-            toSummon.GetComponent<Slug>().EatGooPiece(t);
+            GridManager.instance.allEnemyGooTiles.Add(nextTileToSpawnEnemy);
         }
 
-        t.SetEnemySpawnData();
-
-        if (!GridManager.instance.allEnemyGooTiles.Contains(t))
-        {
-            GridManager.instance.allEnemyGooTiles.Add(t);
-        }
-
-        et.AddGooTiles(t);
+        et.AddGooTiles(nextTileToSpawnEnemy);
 
         foreach (Tile element in et.gooTiles)
         {
@@ -124,13 +158,18 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
         Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
         et.transform.position = position;
-        toSummon.GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
         LevelEditor.instance.SetParentByTag(toSummon);
 
 
         AddEnemyToEnemiesList(et);
-        et.SetCurrentTile(enemySpawnTiles[rand]);
+        et.SetCurrentTile(nextTileToSpawnEnemy);
+
+
+        GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemy);
+
+        nextTileToSpawnEnemy = null;
     }
 
     public void CallPrepareToMovePlayer(Tile targetTile) //new
@@ -156,7 +195,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
                     await RemoveEnemyFromList(tempList[i], allEnemies);
 
                     await Task.Delay(1 * 1000);
-                    Destroy(tempList[i].gameObject);
+                    Destroy(tempList[i].transform.parent.gameObject);
                 }
             }
             else
@@ -195,7 +234,6 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         player.ManageTurnStart();
     }
-
 
     public void SetEnemyTargetTiles(Entity enemy)
     {

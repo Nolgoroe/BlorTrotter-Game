@@ -41,4 +41,14 @@ public class TileDisplayManager : MonoBehaviour
     {
         tile.enemyGooSprite.SetActive(false);
     }
+    public void SetTileDisplayEnemySpawnON(Tile tile)
+    {
+        tile.enemySpawnParent.SetActive(true);
+        tile.enemySpawnParent.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        tile.enemySpawnParent.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 2;
+    }
+    public void SetTileDisplayEnemySpawnOFF(Tile tile)
+    {
+        tile.enemySpawnParent.SetActive(false);
+    }
 }

@@ -1010,6 +1010,17 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
             }
         }
     }
+
+
+    public void SetSpawnTileON(Tile target)
+    {
+        tileDisplayManager.SetTileDisplayEnemySpawnON(target);
+    }
+    public void RemoveSpawnTileDisplay(Tile target)
+    {
+        tileDisplayManager.SetTileDisplayEnemySpawnOFF(target);
+    }
+
     public void OnDrawGizmos()
     {
         //Debug.Log("Drawing Gizmos");

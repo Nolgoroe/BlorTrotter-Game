@@ -322,6 +322,7 @@ public class LevelEditor : MonoBehaviour, IManageable
                     Entity et = toSummon.GetComponent<Player>();
 
                     EntityManager.instance.SetPlayer(et);
+                    EntityManager.instance.CheckNextSpawnTileEnemy();
                     et.AddGooTiles(t);
                     et.SetCurrentTile(t);
                     t.isMainPlayerBody = true; //new
