@@ -21069,6 +21069,9 @@ MonoBehaviour:
   player: {fileID: 0}
   allEnemies: []
   enemySpawnTiles: []
+  beetleSpawnTiles: []
+  beetleTargetTiles: []
+  beetleTargetAndSpawnTiles: []
   slugPrefab: {fileID: 6652384447640864243, guid: 1db6ce4fdfa1e98499751ec3f0afb7d4, type: 3}
   nextTileToSpawnEnemy: {fileID: 0}
 --- !u!1 &889754266
@@ -23596,7 +23599,7 @@ MonoBehaviour:
     - {fileID: 6117789543435538041, guid: 52c55ecf1d3d0fe4187c63749e818613, type: 3}
   - color: {r: 0.61960787, g: 0.21176471, b: 0.20392157, a: 0.99215686}
     prefab:
-    - {fileID: 5684419901494802835, guid: bbda4c14d801f5444b56ff8beae66211, type: 3}
+    - {fileID: 6652384447640864243, guid: 1db6ce4fdfa1e98499751ec3f0afb7d4, type: 3}
   - color: {r: 0.5686275, g: 0.3254902, b: 0.6509804, a: 0.99215686}
     prefab:
     - {fileID: 4790705389336128169, guid: 6d504f6ccfee5cc4a87694298cee1430, type: 3}
@@ -23658,6 +23661,13 @@ MonoBehaviour:
     - {fileID: 5815336361248998145, guid: f6d31366625510e439ad5e5b70bf2e2d, type: 3}
     - {fileID: 3361860738233613621, guid: 63cfccbf23443f746b47d911a6f228ab, type: 3}
     - {fileID: 692439405828235915, guid: f61ed2c2114beb742aa6a5434c11fcf0, type: 3}
+  colorMappingsBeetleData:
+  - color: {r: 0.49411765, g: 0.42745098, b: 0.42745098, a: 1}
+    prefab:
+    - {fileID: 6428711482272601728, guid: 2655717d708c28e438e01cb0497aa1c5, type: 3}
+  - color: {r: 0.7137255, g: 0.6666667, b: 0.6666667, a: 1}
+    prefab:
+    - {fileID: 714912379746563699, guid: d30f45a0b2c8a0a4aaba47f94371cff5, type: 3}
   threshold: 0.009
   offsetY: 0.592
 --- !u!4 &988551641

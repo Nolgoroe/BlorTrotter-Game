@@ -11,6 +11,7 @@ public class LevelScriptableObject : ScriptableObject
     [Header("Level Specific Data")]
     public int maxNumberOfMoves;
     public int summonEnemyCooldown;
+    public int maxConcurrentenemies;
     public int maxConcurrentSlugs;
     public int maxConcurrentBeetles;
     public int amountOfKnowledge;
@@ -23,6 +24,7 @@ public class LevelScriptableObject : ScriptableObject
     [Header("Level Display Data")]
     public Sprite levelMap;
     public Sprite levelObstacles;
+    public Sprite levelBeetleData;
     public Sprite spriteLevelImage;
     public Sprite spriteLevelImageLocked;
 

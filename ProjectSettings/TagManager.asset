@@ -14,6 +14,8 @@ TagManager:
   - Lock Salt
   - Lock Kinine
   - Locking
+  - Beetle Spawn Point
+  - Beetle Target Point
   layers:
   - Default
   - TransparentFX

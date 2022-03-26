@@ -24,6 +24,7 @@ MonoBehaviour:
   hasEnemies: 1
   levelMap: {fileID: 21300000, guid: 3eff0249a49583d489d3622c77c9d33b, type: 3}
   levelObstacles: {fileID: 21300000, guid: ad8915c43c042d64b99d82a73d92f10c, type: 3}
+  levelBeetleData: {fileID: 21300000, guid: cea16ec178715a34c99bdd887981ea4d, type: 3}
   spriteLevelImage: {fileID: 21300000, guid: 5188e9aa698f1c4428214b819d9a44f1, type: 3}
   spriteLevelImageLocked: {fileID: 21300000, guid: 84e7e7b348dfad14686be3443869d71e, type: 3}
   movesNeeded: 6

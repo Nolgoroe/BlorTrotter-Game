@@ -18,6 +18,7 @@ public class LevelEditor : MonoBehaviour, IManageable
     public List<WaterTiles> waterTiles;
     public LevelParser[] colorMappingsTiles;
     public LevelParser[] colorMappingsObstacles;
+    public LevelParser[] colorMappingsBeetleData;
 
     [SerializeField]
     private float threshold;
@@ -59,6 +60,11 @@ public class LevelEditor : MonoBehaviour, IManageable
                 if (tileGenerated != null)
                 {
                     GenerateObstacles(tileGenerated.transform, x, y);
+
+                    if (LevelManager.instance.currentLevel.levelBeetleData)
+                    {
+                        GenerateBeetleData(tileGenerated.transform, x, y);
+                    }
                 }
 
                 if (x==0)
@@ -404,6 +410,49 @@ public class LevelEditor : MonoBehaviour, IManageable
                         childOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
                         childTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
                     }
+                }
+            }
+        }
+    }   
+    void GenerateBeetleData(Transform parent, int x , int y )
+    {
+        Color pixelColor = LevelManager.instance.currentLevel.levelBeetleData.texture.GetPixel(x, y);
+        GameObject parentObject = parent.gameObject;
+
+        // if transparent, ignore 
+        if (pixelColor.a == 0)
+        {
+            return;
+        }
+
+        foreach (LevelParser colorMapping in colorMappingsBeetleData)
+        {
+            if (Mathf.Abs(pixelColor.r - colorMapping.color.r) <= threshold && Mathf.Abs(pixelColor.g - colorMapping.color.g) <= threshold && Mathf.Abs(pixelColor.b - colorMapping.color.b) <= threshold)
+            {
+                GameObject toSummon = null;
+
+                if (colorMapping.prefab.Length > 1)
+                {
+                    int index = UnityEngine.Random.Range(0, colorMapping.prefab.Length);
+                    toSummon = colorMapping.prefab[index];
+                }
+                else
+                {
+                    toSummon = colorMapping.prefab[0];
+                }
+
+                Tile t = parent.GetComponent<Tile>();
+
+                if (toSummon.CompareTag("Beetle Spawn Point"))
+                {
+                    EntityManager.instance.beetleSpawnTiles.Add(t);
+                    EntityManager.instance.beetleTargetAndSpawnTiles.Add(t);                  
+                }
+
+                if (toSummon.CompareTag("Beetle Target Point"))
+                {
+                    EntityManager.instance.beetleTargetTiles.Add(t);
+                    EntityManager.instance.beetleTargetAndSpawnTiles.Add(t);
                 }
             }
         }

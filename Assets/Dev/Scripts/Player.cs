@@ -158,6 +158,8 @@ public class Player : Entity
         }
 
         GridManager.instance.SetInteractableTilesDisplay(this);
+
+        LevelManager.instance.CheckLoseLevel();
     }
 
     public override void SetCurrentTile(Tile tileOn)

@@ -55,6 +55,8 @@ public class LevelManager : MonoBehaviour, IManageable
 
         EntityManager.instance.SetPlayer(null);
         EntityManager.instance.enemySpawnTiles.Clear();
+        EntityManager.instance.beetleSpawnTiles.Clear();
+        EntityManager.instance.beetleTargetAndSpawnTiles.Clear();
         EntityManager.instance.allEnemies.Clear();
 
         ScoreManager.instance.currentCollectedKnowledge = 0;
@@ -101,6 +103,8 @@ public class LevelManager : MonoBehaviour, IManageable
 
         EntityManager.instance.SetPlayer(null);
         EntityManager.instance.enemySpawnTiles.Clear();
+        EntityManager.instance.beetleSpawnTiles.Clear();
+        EntityManager.instance.beetleTargetAndSpawnTiles.Clear();
         EntityManager.instance.allEnemies.Clear();
 
         ScoreManager.instance.currentCollectedKnowledge = 0;
@@ -151,7 +155,7 @@ public class LevelManager : MonoBehaviour, IManageable
 
     public void CheckLoseLevel()
     {
-        if(ScoreManager.instance.currentLevelNumberOfMovesRemaining <= 0)
+        if(ScoreManager.instance.currentLevelNumberOfMovesRemaining <= 0 || EntityManager.instance.GetPlayer().entityAdjacentTiles.Count == 0)
         {
             InputManager.instance.canRecieveInput = false;
             CameraController.canControlCamera = false;
