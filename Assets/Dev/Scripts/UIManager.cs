@@ -21,7 +21,6 @@ public enum UIScreenTypes
     StartGifScreen,
     NarratorBlobScreen,
     AsthericWoodsGameScreen,
-    InGameScreenHud,
     GameBG,
     MenuBG
 }
@@ -98,6 +97,26 @@ public class UIManager : MonoBehaviour, IManageable
     public float LogoMoveTime;
     public int timeBetweenLogoAndMain;
     public Button restartButton, continueButton;
+    public RectTransform topZone;
+    public Vector3 topZoneOriginPos;
+    public Vector3 topZoneTargetPos;
+    public RectTransform bottomZone;
+    public Vector3 bototmZoneOriginPos;
+    public Vector3 bottomZoneTargetPos;
+    public float zonesMoveTime;
+    public RectTransform topLeftFoliage;
+    public Vector3 topLeftFoliageOriginPos;
+    public Vector3 topLeftFoliageTargetPos;
+    public RectTransform topRightFoliage;
+    public Vector3 topRightFoliageOriginPos;
+    public Vector3 topRightFoliageTargetPos;
+    public RectTransform bottomLeftoliage;
+    public Vector3 bottomLeftFoliageOriginPos;
+    public Vector3 bottomLeftFoliageTargetPos;
+    public RectTransform bottomRightFoliage;
+    public Vector3 bottomRightFoliageOriginPos;
+    public Vector3 bottomRightFoliageTargetPos;
+    public float foliageMoveTime;
 
     public GameObject[] stars;
     public int timeWaitBetweenStars;
@@ -125,6 +144,7 @@ public class UIManager : MonoBehaviour, IManageable
     public Image blobImage;
     public int currentBlobImageIndex;
     public Vector3 toScaleToBlobImage;
+    public Vector3 toScaleMidBlobImage;
     public Vector3 originalScaleBlobImage;
     public float timeToScaleBlobImage;
 
@@ -151,8 +171,17 @@ public class UIManager : MonoBehaviour, IManageable
 
         originalScaleBlobImage = blobImage.rectTransform.localScale;
 
-        mainPanelOriginalPos = mainPanel.localPosition;
-        LogoOriginalPos = Logo.localPosition;
+        mainPanelOriginalPos = mainPanel.anchoredPosition;
+        LogoOriginalPos = Logo.anchoredPosition;
+
+        topZoneOriginPos = topZone.anchoredPosition;
+        bototmZoneOriginPos = bottomZone.anchoredPosition;
+
+        topLeftFoliageOriginPos = topLeftFoliage.anchoredPosition;
+        topRightFoliageOriginPos = topRightFoliage.anchoredPosition;
+        bottomLeftFoliageOriginPos = bottomLeftoliage.anchoredPosition;
+        bottomRightFoliageOriginPos = bottomRightFoliage.anchoredPosition;
+
         //DisableAllScreens();
         Debug.Log("success UI");
     }
@@ -349,25 +378,25 @@ public class UIManager : MonoBehaviour, IManageable
 
     public void OpenPauseScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Pause, UIScreenTypes.GameBG});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Pause, UIScreenTypes.GameBG, UIScreenTypes.AsthericWoodsGameScreen, UIScreenTypes.GameBG });
 
         InputManager.instance.canRecieveInput = false;
         CameraController.canControlCamera = false;
     }
     public void ClosePauseScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen, UIScreenTypes.GameBG, UIScreenTypes.InGameScreenHud, UIScreenTypes.AsthericWoodsGameScreen });
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.GameScreen, UIScreenTypes.GameBG, UIScreenTypes.AsthericWoodsGameScreen });
 
         InputManager.instance.canRecieveInput = true;
         CameraController.canControlCamera = true;
     }
     public void OpenSettingsScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Options});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Options, UIScreenTypes.MenuBG });
     }
     public void OpenCreditsScreen()
     {
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Credits});
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.Credits, UIScreenTypes.MenuBG });
     }
     public void OpenWikiScreen()
     {
@@ -623,7 +652,12 @@ public class UIManager : MonoBehaviour, IManageable
     {
         blobImage.sprite = blobSprites[currentBlobImageIndex];
 
-        LeanTween.scale(blobImage.rectTransform, toScaleToBlobImage, timeToScaleBlobImage).setOnComplete(() => ResetBlobImageScale());
+        LeanTween.scale(blobImage.rectTransform, toScaleToBlobImage, timeToScaleBlobImage).setOnComplete(() => NextStepBlobResize());
+    }
+
+    private void NextStepBlobResize()
+    {
+        LeanTween.scale(blobImage.rectTransform, toScaleMidBlobImage, timeToScaleBlobImage).setOnComplete(() => ResetBlobImageScale());
     }
     private void ResetBlobImageScale()
     {
@@ -665,7 +699,7 @@ public class UIManager : MonoBehaviour, IManageable
             SoundManager.instance.canHearMusic = true;
 
             musicImage.sprite = musicSpriteOrange;
-            musicImageOptions.sprite = musicSpriteGrey;
+            musicImageOptions.sprite = musicSpriteOrange;
         }
     }
     public void FlipHearSounds()
@@ -692,11 +726,16 @@ public class UIManager : MonoBehaviour, IManageable
     {
 
         await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Win);
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen });
+
+        await MoveGameplayFoliage();
+        await MoveGameplayPanelZones();
+
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen, UIScreenTypes.GameBG });
         successTextMainPanel.gameObject.SetActive(true);
         defeatTextMainPanel.gameObject.SetActive(false);
 
         await FadeInSuccessText();
+        await FadeOutSuccessText();
 
         SuccessText.alpha = 0;
         SetWinLoseScreenData();
@@ -716,12 +755,15 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public async void LoseLevelAnimationSequence()
     {
-        //await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Win);
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen });
+        await MoveGameplayFoliage();
+        await MoveGameplayPanelZones();
+
+        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen, UIScreenTypes.GameBG });
         successTextMainPanel.gameObject.SetActive(false);
         defeatTextMainPanel.gameObject.SetActive(true);
 
         await FadeInDefeatText();
+        await FadeOutDefeatText();
 
         defeatText.alpha = 0;
         SetWinLoseScreenData();
@@ -775,9 +817,25 @@ public class UIManager : MonoBehaviour, IManageable
 
         await Task.Delay((int)timeToWait);
     }
+    public async Task FadeOutSuccessText()
+    {
+        FadeText(false, SuccessText, screenFadeSpeedSuccessText);
+
+        float timeToWait = screenFadeSpeedSuccessText * 1000;
+
+        await Task.Delay((int)timeToWait);
+    }
     public async Task FadeInDefeatText()
     {
         FadeText(true, defeatText, screenFadeSpeedSuccessText);
+
+        float timeToWait = screenFadeSpeedSuccessText * 1000;
+
+        await Task.Delay((int)timeToWait);
+    }
+    public async Task FadeOutDefeatText()
+    {
+        FadeText(false, defeatText, screenFadeSpeedSuccessText);
 
         float timeToWait = screenFadeSpeedSuccessText * 1000;
 
@@ -796,7 +854,40 @@ public class UIManager : MonoBehaviour, IManageable
 
     public void ResetWinScreenPositions()
     {
-        mainPanel.localPosition = mainPanelOriginalPos;
-        Logo.localPosition = LogoOriginalPos;
+        mainPanel.anchoredPosition = mainPanelOriginalPos;
+        Logo.anchoredPosition = LogoOriginalPos;
+
+        topZone.anchoredPosition = topZoneOriginPos;
+        bottomZone.anchoredPosition = bototmZoneOriginPos;
+
+        topLeftFoliage.anchoredPosition = topLeftFoliageOriginPos;
+        topRightFoliage.anchoredPosition = topRightFoliageOriginPos;
+        bottomLeftoliage.anchoredPosition = bottomLeftFoliageOriginPos;
+        bottomRightFoliage.anchoredPosition = bottomRightFoliageOriginPos;
+
+    }
+
+    public async Task MoveGameplayPanelZones()
+    {
+        LeanTween.move(topZone, topZoneTargetPos, zonesMoveTime);
+        LeanTween.move(bottomZone, bottomZoneTargetPos, zonesMoveTime);
+
+        float timeToWait = zonesMoveTime * 1000;
+
+        await Task.Delay((int)timeToWait);
+
+    }
+    public async Task MoveGameplayFoliage()
+    {
+        LeanTween.move(topLeftFoliage, topLeftFoliageTargetPos, foliageMoveTime);
+        LeanTween.move(topRightFoliage, topRightFoliageTargetPos, foliageMoveTime);
+        LeanTween.move(bottomLeftoliage, bottomLeftFoliageTargetPos, foliageMoveTime);
+        LeanTween.move(bottomRightFoliage, bottomRightFoliageTargetPos, foliageMoveTime);
+
+
+        float timeToWait = foliageMoveTime * 1000;
+
+        await Task.Delay((int)timeToWait);
+
     }
 }
