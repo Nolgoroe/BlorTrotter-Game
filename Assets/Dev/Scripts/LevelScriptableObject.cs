@@ -21,7 +21,7 @@ public class LevelScriptableObject : ScriptableObject
     public bool hasEnemies;
     public bool hasSlugs;
     public bool hasBeetles;
-
+    public AudioClip levelMusic;
 
     [Header("Level Display Data")]
     public Sprite levelMap;

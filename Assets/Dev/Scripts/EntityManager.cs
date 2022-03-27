@@ -64,7 +64,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
     public async void MovePlayer(Tile targetTile) // wait for the player to move for moving all the enemies
     {
-        await player.MoveEntity(targetTile);
+        player.MoveEntity(targetTile);
 
         if (LevelManager.instance.currentLevel.hasEnemies)
         {
@@ -184,11 +184,10 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         }
     }
 
-    public void SpawnEnemy()
+    public async void SpawnEnemy()
     {
         if (summonSlug)
         {
-            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Slug_Spawning);
 
             GameObject toSummon = Instantiate(slugPrefab, nextTileToSpawnEnemySlug.transform);
             Transform parent = nextTileToSpawnEnemySlug.transform;
@@ -229,6 +228,10 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemySlug);
 
             nextTileToSpawnEnemySlug = null;
+
+            await Task.Delay(500);
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Slug_Spawning);
+
         }
         else
         {
@@ -248,6 +251,10 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
 
             GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemyBeetle);
+
+            nextTileToSpawnEnemyBeetle.SetEnemySpawnDataBeetle();
+
+            nextTileToSpawnEnemyBeetle.isBeetleForTutorial = true;
 
             nextTileToSpawnEnemyBeetle = null;
 

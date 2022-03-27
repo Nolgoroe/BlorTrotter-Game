@@ -25,9 +25,10 @@ MonoBehaviour:
   hasEnemies: 1
   hasSlugs: 1
   hasBeetles: 0
+  levelMusic: {fileID: 8300000, guid: fcdba32486cd3574bbc023d917e5f64e, type: 3}
   levelMap: {fileID: 21300000, guid: 0c8e2240e6c28e544bdeeeeb9d8c8901, type: 3}
   levelObstacles: {fileID: 21300000, guid: 6f89e917c0033344ebc91d6ebb166d93, type: 3}
   levelBeetleData: {fileID: 0}
-  spriteLevelImage: {fileID: 21300000, guid: 21adb715392151642a1cc542fcc7d51b, type: 3}
-  spriteLevelImageLocked: {fileID: 21300000, guid: 50b9801793389d045bd28cbc92abce2f, type: 3}
-  movesNeeded: 20
+  spriteLevelImage: {fileID: 21300000, guid: c9a5258abb60d3e48a3b447e4510008a, type: 3}
+  spriteLevelImageLocked: {fileID: 21300000, guid: 8b3ff1469e0dff44e88afccd4259725c, type: 3}
+  movesNeeded: 3

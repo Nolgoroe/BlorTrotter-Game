@@ -464,7 +464,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 return null;
             }
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isLocked) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -490,7 +490,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 return null;
             }
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isLocked) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -517,7 +517,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 return null;
             }
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isLocked) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -542,7 +542,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
                 return null;
             }
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isLocked) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -563,7 +563,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + LevelManager.instance.currentLevel.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isFood || allTilesInLevel[tileIndex].isKinine || allTilesInLevel[tileIndex].isSalt)
             {
                 return null;
             }
@@ -584,7 +584,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - LevelManager.instance.currentLevel.levelMap.texture.width;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isFood || allTilesInLevel[tileIndex].isKinine || allTilesInLevel[tileIndex].isSalt)
             {
                 return null;
             }
@@ -606,7 +606,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - 1;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isFood || allTilesInLevel[tileIndex].isKinine || allTilesInLevel[tileIndex].isSalt)
             {
                 return null;
             }
@@ -626,7 +626,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + 1;
 
-            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isFood || allTilesInLevel[tileIndex].isKinine || allTilesInLevel[tileIndex].isSalt)
             {
                 return null;
             }

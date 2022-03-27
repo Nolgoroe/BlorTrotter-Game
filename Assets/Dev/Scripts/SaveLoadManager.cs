@@ -20,6 +20,7 @@ public class SaveLoadManager : MonoBehaviour, IManageable   //singleton , only i
         Debug.Log("success save load manager");
     }
 
+    [ContextMenu("Save Game")]
     public void SaveGameState()
     {
         string savedData = JsonUtility.ToJson(saveLoadDataObject);   // save the data in a file called Game State

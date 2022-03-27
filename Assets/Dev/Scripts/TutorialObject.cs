@@ -39,6 +39,7 @@ public class TutorialObject : MonoBehaviour
         }
     }
 
+
     [ContextMenu("HERE")]
     public void CallDisplayTutorialText() //DELETE THIS AFTER SHOWING NATHAN
     {

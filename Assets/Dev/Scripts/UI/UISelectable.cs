@@ -10,6 +10,7 @@ public class UISelectable : MonoBehaviour, IPointerClickHandler  // can interact
     public void OnPointerClick(PointerEventData pointerEventData)
     {       
         wikiPage.SetActive(true);
-        basePage.SetActive(false);       
+        basePage.SetActive(false);
+        SoundManager.instance.UIInteractSound();
     }
 }

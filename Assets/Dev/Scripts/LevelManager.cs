@@ -34,6 +34,10 @@ public class LevelManager : MonoBehaviour, IManageable
         levelEnded = false;
 
         ChooseLevel(index);
+
+        SoundManager.instance.StopMusic();
+        SoundManager.instance.PlaySound(SoundManager.instance.musicAudioSource, currentLevel.levelMusic);
+
         ResetDataStartLevel();
         LoadLevel();
 
@@ -233,12 +237,19 @@ public class LevelManager : MonoBehaviour, IManageable
         {
             anim.SetBool("Unlock", true);
             //anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isLocked = false;
-            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isFull = false;
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isLocked = false;
+
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().connectedLockDisplay.GetComponent<GreyScalLock>().childColor.SetActive(true);
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().connectedLockDisplay.GetComponent<GreyScalLock>().childGrey.SetActive(false);
+
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().GoToColorScale();
         }
 
         saltLocks.Clear();
 
         GridManager.instance.FillallEdgeTileInLevelList();
+
+
     }
 
     private void UnlcokKinine()
@@ -247,7 +258,12 @@ public class LevelManager : MonoBehaviour, IManageable
         {
             anim.SetBool("Unlock", true);
             //anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isLocked = false;
-            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isFull = false;
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().isLocked = false;
+
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().connectedLockDisplay.GetComponent<GreyScalLock>().childColor.SetActive(true);
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().connectedLockDisplay.GetComponent<GreyScalLock>().childGrey.SetActive(false);
+
+            anim.GetComponent<ConnecetdElement>().connectedElement.GetComponent<Tile>().GoToColorScale();
         }
 
         kinineLocks.Clear();

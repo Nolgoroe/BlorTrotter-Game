@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175db6ea9fb650d45bd7515061446024, type: 3}
+  m_Name: Level 20
+  m_EditorClassIdentifier: 
+  levelID: 19
+  maxNumberOfMoves: 15
+  summonEnemyCooldown: 2
+  maxConcurrentGlobalEnemies: 2
+  maxConcurrentSlugs: 0
+  maxConcurrentBeetles: 2
+  amountOfKnowledge: 1
+  amountOfFood: 3
+  amountToAddOnEatFood: 3
+  amountToAddOnEatBlob: 1
+  hasEnemies: 1
+  hasSlugs: 0
+  hasBeetles: 1
+  levelMusic: {fileID: 8300000, guid: 1360054196cbd43459bf985cd0ad6b62, type: 3}
+  levelMap: {fileID: 21300000, guid: 0221f739d4471e545b1ac93b37d47765, type: 3}
+  levelObstacles: {fileID: 21300000, guid: 5ca15fe5627c92842a458d07cd1a7a82, type: 3}
+  levelBeetleData: {fileID: 21300000, guid: db0444925dae34249b534b92ea54b791, type: 3}
+  spriteLevelImage: {fileID: 21300000, guid: 9143ff25ba9fd064f9d3eb34da98b32a, type: 3}
+  spriteLevelImageLocked: {fileID: 21300000, guid: 28c28f41a27312d44b1580019bea7788, type: 3}
+  movesNeeded: 4

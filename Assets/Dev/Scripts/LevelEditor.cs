@@ -368,6 +368,8 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                     t.isKinine = true;
                     t.foodObject = toSummon;
+
+                    t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.Kinine);
                 }
 
                 if (toSummon.CompareTag("Salt"))
@@ -377,12 +379,14 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                     t.isSalt = true;
                     t.foodObject = toSummon;
+
+                    t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.Salt);
                 }
 
                 if (toSummon.CompareTag("Lock Salt") || toSummon.CompareTag("Lock Kinine"))
                 {
-                    //t.isLocked = true;
-
+                    t.isLocked = true;
+                    t.isFull = false;
                     Animator anim = Instantiate(UIManager.instance.lockPrefab, parent).GetComponent<Animator>();
                     ConnecetdElement connected = anim.GetComponent<ConnecetdElement>();
 
@@ -392,23 +396,60 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                     if (toSummon.CompareTag("Lock Salt"))
                     {
+
                         LevelManager.instance.saltLocks.Add(anim);
 
-                        SpriteRenderer childOne = toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>();
-                        SpriteRenderer childTwo = toSummon.transform.GetChild(1).GetComponent<SpriteRenderer>();
+                        GreyScalLock greyScale =  toSummon.GetComponent<GreyScalLock>();
 
-                        childOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        childTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                        SpriteRenderer greyScaleChildOne = greyScale.childGrey.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                        SpriteRenderer greyScaleChildTwo = greyScale.childGrey.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+                        greyScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
+
+                        SpriteRenderer colorScaleChildOne = greyScale.childColor.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                        SpriteRenderer colorScaleChildTwo = greyScale.childColor.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+                        colorScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
+
+
+
+                        greyScale.childGrey.SetActive(true);
+                        greyScale.childColor.SetActive(false);
+                        t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.SaltTile);
+
+                        t.connectedLockDisplay = toSummon;
+
+                        t.GoToGreyScale();
                     }
                     else
                     {
                         LevelManager.instance.kinineLocks.Add(anim);
 
-                        SpriteRenderer childOne = toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>();
-                        SpriteRenderer childTwo = toSummon.transform.GetChild(1).GetComponent<SpriteRenderer>();
+                        GreyScalLock greyScale = toSummon.GetComponent<GreyScalLock>();
 
-                        childOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        childTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                        SpriteRenderer greyScaleChildOne = greyScale.childGrey.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                        SpriteRenderer greyScaleChildTwo = greyScale.childGrey.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+                        greyScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+                        SpriteRenderer colorScaleChildOne = greyScale.childColor.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                        SpriteRenderer colorScaleChildTwo = greyScale.childColor.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+                        colorScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
+                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+
+
+                        greyScale.childGrey.SetActive(true);
+                        greyScale.childColor.SetActive(false);
+                        t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.kinineTile);
+
+                        t.connectedLockDisplay = toSummon;
+
+                        t.GoToGreyScale();
                     }
                 }
             }

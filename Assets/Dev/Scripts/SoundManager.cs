@@ -16,7 +16,9 @@ public enum Sounds
     Victory,
     OneStar,
     TwoStar,
-    ThreeStar
+    ThreeStar,
+    MenuMusic,
+
     //// Add all sounds here
 }
 
@@ -49,9 +51,6 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
         instance = this;
 
 
-        SFXAudioSource = GetComponent<AudioSource>();
-
-
         enumToSound = new Dictionary<Sounds, AudioClip>();
 
 
@@ -69,35 +68,60 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
 
     public void PlaySound(AudioSource source, Sounds soundEnum)
     {
-        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
+        //source.PlayOneShot(enumToSound[soundEnum]);
+
+        source.clip = enumToSound[soundEnum];
+
+        source.Play();
+    }
+
+    public void PlaySound(AudioSource source, AudioClip music)
+    {
+        source.clip = music;
+
+        source.Play();
     }
 
     public void PlaySoundChangeVolume(AudioSource source, Sounds soundEnum, float Volume)
     {
-        SFXAudioSource.volume = Volume;
+        source.volume = Volume;
 
-        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
+        source.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public async void PlaySoundDelay(AudioSource source, Sounds soundEnum, int timeToWait)
     {
         await Task.Delay(timeToWait * 1000);
 
-        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
+        source.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public async void PlaySoundChangeVolumeAndDelay(AudioSource source, Sounds soundEnum, float Volume, int timeToWait)
     {
         await Task.Delay(timeToWait * 1000);
 
-        SFXAudioSource.volume = Volume;
+        source.volume = Volume;
 
-        SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
+        source.PlayOneShot(enumToSound[soundEnum]);
     }
 
     public void ResetVolume()
     {
         SFXAudioSource.volume = 1;
+        musicAudioSource.volume = 1;
+    }
+
+    public void StopMusic()
+    {
+        musicAudioSource.Stop();
+    }
+
+    public void UIInteractSound()
+    {
+        if (canHearSounds)
+        {
+            PlaySound(SFXAudioSource, Sounds.Selection);
+        }
     }
 }
 

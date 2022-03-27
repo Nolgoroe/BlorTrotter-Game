@@ -26,6 +26,8 @@ public class Slug : Entity
 
         currentTile.isEnemyGooPiece = true;
         targetTile.isEnemyGooPiece = true;
+        currentTile.isSlugBody = false;
+        targetTile.isSlugBody = true;
 
         //currentTile.turnsUntilEnemyGooDissappears = 3;
         targetTile.turnsUntilEnemyGooDissappears = 3;
@@ -135,11 +137,16 @@ public class Slug : Entity
 
                 await Task.Delay(1 * 1000);
                 Destroy(transform.parent.gameObject);
+
+                currentTile.isFull = false;
+                currentTile.isSlugBody = false;
             }
         }
         else
         {
             currentTile.isFull = false;
+            currentTile.isSlugBody = false;
+
             await EntityManager.instance.RemoveEnemyFromList(this, EntityManager.instance.allEnemies);
 
             await Task.Delay(1 * 1000);

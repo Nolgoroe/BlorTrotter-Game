@@ -160,6 +160,8 @@ public class UIManager : MonoBehaviour, IManageable
 
     [Header("ETC")]
     public List<GameObject> tempScreens;
+    public Slider musicSlider, SFXSlider;
+
 
     public void initManager()
     {
@@ -192,25 +194,55 @@ public class UIManager : MonoBehaviour, IManageable
 
     public async void TypeWriterWrite(string textToType, TMP_Text textObjectToChange)
     {
-        textObjectToChange.text = "";
+        string originalString = textToType;
 
-        float t = 0;
-        int charIndex = 0;
+        int numCharsRevealed = 0;
 
-        while (charIndex < textToType.Length)
+        while (numCharsRevealed < originalString.Length)
         {
-            t += Time.deltaTime * typewriterSpeed;
-            charIndex = Mathf.FloorToInt(t);
-            charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);
+            string s = GetPartialPayload(originalString, numCharsRevealed);
 
-            textObjectToChange.text = textToType.Substring(0, charIndex);
+            while (originalString[numCharsRevealed] == ' ')
+            {
+                ++numCharsRevealed;
+            }
 
-            await Task.Yield();
+            ++numCharsRevealed;
+
+
+            //textObjectToChange.text = originalString.Substring(0, numCharsRevealed);
+            textObjectToChange.text = GetPartialPayload(originalString, numCharsRevealed);
+
+            await Task.Delay(20);
         }
 
-        textObjectToChange.text = textToType;
+        textObjectToChange.text = originalString;
     }
 
+    string GetPartialPayload(string s, int typedSoFar)
+    {
+        var tempStr = new System.Text.StringBuilder(s.Length);
+        int count = 0;
+        bool payload = true;
+        for (int i = 0; i < s.Length; i++)
+        {
+            char c = s[i];
+            if (c == '<')
+                payload = false;
+
+            if (payload && count < typedSoFar)
+            {
+                count++;
+                tempStr.Append(c);
+            }
+            else if (!payload)
+                tempStr.Append(c);
+
+            if (c == '>')
+                payload = true;
+        }
+        return tempStr.ToString();
+    }
     public void DisplaySpecificScreens(UIScreenTypes[] screens)
     {
         foreach (GameObject go in allGameScreens)
@@ -267,6 +299,9 @@ public class UIManager : MonoBehaviour, IManageable
 
         DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen});
 
+        SoundManager.instance.StopMusic();
+        SoundManager.instance.PlaySound(SoundManager.instance.musicAudioSource, Sounds.MenuMusic);
+
         DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu, UIScreenTypes.MenuBG });
 
     }
@@ -322,7 +357,7 @@ public class UIManager : MonoBehaviour, IManageable
     {
         if (fadeIn)
         {
-            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.linear).setOnUpdate((float val) =>
             {
                 TMP_Text text = toFade.GetComponent<TMP_Text>();
                 Color newColor = text.color;
@@ -332,7 +367,7 @@ public class UIManager : MonoBehaviour, IManageable
         }
         else
         {
-            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.linear).setOnUpdate((float val) =>
             {
                 TMP_Text text = toFade.GetComponent<TMP_Text>();
                 Color newColor = text.color;
@@ -345,14 +380,14 @@ public class UIManager : MonoBehaviour, IManageable
     {
         if (fadeIn)
         {
-            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 0, 1, speed).setEase(LeanTweenType.linear).setOnUpdate((float val) =>
             {
                 toFade.alpha = val;
             });
         }
         else
         {
-            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.easeInOutQuad).setOnUpdate((float val) =>
+            LeanTween.value(toFade.gameObject, 1, 0, speed).setEase(LeanTweenType.linear).setOnUpdate((float val) =>
             {
                 toFade.alpha = val;
             });
@@ -424,6 +459,9 @@ public class UIManager : MonoBehaviour, IManageable
     }
     public void ReturnToMainMenuFromGame()
     {
+        SoundManager.instance.StopMusic();
+        SoundManager.instance.PlaySound(SoundManager.instance.musicAudioSource, Sounds.MenuMusic);
+
         LevelManager.instance.DestroyLevel();
         DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu, UIScreenTypes.MenuBG });
     }
@@ -678,6 +716,9 @@ public class UIManager : MonoBehaviour, IManageable
 
             toggleOnOptions.sprite = toggleOnSpriteGrey;
             toggleOffOptions.sprite = toggleOffSpriteOrange;
+
+            toggleOn.GetComponent<Button>().interactable = false;
+            toggleOff.GetComponent<Button>().interactable = true;
         }
         else
         {
@@ -686,6 +727,9 @@ public class UIManager : MonoBehaviour, IManageable
 
             toggleOnOptions.sprite = toggleOnSpriteOrange;
             toggleOffOptions.sprite = toggleOffSpriteGrey;
+
+            toggleOn.GetComponent<Button>().interactable = true;
+            toggleOff.GetComponent<Button>().interactable = false;
         }
     }
     public void FlipHearMusic()
@@ -702,6 +746,8 @@ public class UIManager : MonoBehaviour, IManageable
         {
             SoundManager.instance.canHearMusic = true;
             SoundManager.instance.musicAudioSource.enabled = true;
+
+            SoundManager.instance.musicAudioSource.Play();
 
             musicImage.sprite = musicSpriteOrange;
             musicImageOptions.sprite = musicSpriteOrange;
@@ -731,20 +777,28 @@ public class UIManager : MonoBehaviour, IManageable
 
     public async void WinLevelAnimationSequence()
     {
+        float value = musicSlider.value;
+
+        LeanTween.value(SoundManager.instance.gameObject, value, 0, 0.5f).setOnUpdate((float val) =>
+        {
+            SoundManager.instance.musicAudioSource.volume = val;
+        });
 
         await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Win);
 
-        await MoveGameplayFoliage();
-        await MoveGameplayPanelZones();
+        DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen});
 
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen, UIScreenTypes.GameBG });
         successTextMainPanel.gameObject.SetActive(true);
         defeatTextMainPanel.gameObject.SetActive(false);
 
-        await FadeInSuccessText();
-        await FadeOutSuccessText();
+        FadeInSuccessText();
+        MoveGameplayFoliage();
+        await MoveGameplayPanelZones();
 
-        SuccessText.alpha = 0;
+
+        //await FadeOutSuccessText();
+
+        //SuccessText.alpha = 0;
         SetWinLoseScreenData();
 
         await animateWinScreen();
@@ -759,20 +813,29 @@ public class UIManager : MonoBehaviour, IManageable
 
         restartButton.interactable = true;
         continueButton.interactable = true;
+
+        await Task.Delay(500);
+        SuccessText.alpha = 0;
     }
     public async void LoseLevelAnimationSequence()
     {
-        await MoveGameplayFoliage();
-        await MoveGameplayPanelZones();
+        float value = musicSlider.value;
 
-        DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen, UIScreenTypes.GameBG });
+        LeanTween.value(SoundManager.instance.gameObject, value, 0, 0.5f).setOnUpdate((float val) =>
+        {
+            SoundManager.instance.musicAudioSource.volume = val;
+        });
+
+        DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.WinLoseScreen });
+
         successTextMainPanel.gameObject.SetActive(false);
         defeatTextMainPanel.gameObject.SetActive(true);
 
-        await FadeInDefeatText();
-        await FadeOutDefeatText();
+        FadeInDefeatText();
+        MoveGameplayFoliage();
+        await MoveGameplayPanelZones();
 
-        defeatText.alpha = 0;
+
         SetWinLoseScreenData();
 
         await animateWinScreen();
@@ -787,6 +850,9 @@ public class UIManager : MonoBehaviour, IManageable
 
         restartButton.interactable = true;
         continueButton.interactable = true;
+
+        await Task.Delay(500);
+        defeatText.alpha = 0;
     }
 
     public void SetWinLoseScreenData()
@@ -849,6 +915,7 @@ public class UIManager : MonoBehaviour, IManageable
     {
         FadeText(true, defeatText, screenFadeSpeedSuccessText);
 
+
         float timeToWait = screenFadeSpeedSuccessText * 1000;
 
         await Task.Delay((int)timeToWait);
@@ -865,7 +932,7 @@ public class UIManager : MonoBehaviour, IManageable
     {
         LeanTween.move(Logo, LogoTargetPos, LogoMoveTime).setEaseOutBounce();
 
-        await Task.Delay(timeBetweenLogoAndMain);
+        await Task.Delay(timeBetweenLogoAndMain / 2);
 
         LeanTween.move(mainPanel, mainPanelTargetPos, mainPanelMoveTime).setEaseOutBounce();
 

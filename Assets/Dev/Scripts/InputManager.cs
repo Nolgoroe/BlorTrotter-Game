@@ -34,6 +34,11 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
                 if(UIManager.instance.tempScreens.Count > 0)
                 {
                     UIManager.instance.CheckDisableTempScreens();
+
+                    if (LevelManager.instance.currentLevel.levelID == 0)
+                    {
+                        TutorialManager.instance.DisplaySpecificText(TypeOfTutorial.SelectableTiles);
+                    }
                 }
             }
         }
@@ -65,8 +70,16 @@ public class InputManager : MonoBehaviour, IManageable  //singleton , only insta
 
                             if (TutorialManager.instance.showTutorials)
                             {
-                                TutorialManager.instance.CheckDisplayTutorialText(t);
+                                if (t.GetComponent<TutorialObject>() && !t.isBeetleForTutorial)
+                                {
+                                    TutorialManager.instance.CheckDisplayTutorialText(t);
+                                }
+                                else
+                                {
+                                    TutorialManager.instance.CheckShowSpecificTutorial(t);
+                                }
                             }
+
 
                             if (!t.isMainPlayerBody && (!t.isFull || t.isFood || t.isKinine || t.isSalt) /*&& !t.isLocked*/) //new
                             {

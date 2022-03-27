@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841288598165342484}
   - component: {fileID: 7369106341013944073}
+  - component: {fileID: 1251209338833897176}
   m_Layer: 0
   m_Name: VFX_Light_v2
   m_TagString: Untagged
@@ -150,8 +151,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1868389707
-  m_SortingLayer: 4
+  m_SortingLayerID: -587328245
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a39ee911f89e3f14f8050258d33fbef5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
@@ -164,6 +165,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1251209338833897176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772997168572333273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4c8cbf0fe5cc144883a84b1e7dea029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8253027442462377727
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,14 +314,19 @@ MonoBehaviour:
   enemyGooSprite: {fileID: 4285048993682252266}
   foodObject: {fileID: 0}
   enemySpawnParent: {fileID: 7729621525644460717}
+  connectedLockDisplay: {fileID: 0}
   cost: 0
   index: 0
   isFull: 0
+  isLocked: 0
   isWaterTile: 0
   isGooPiece: 0
   isEnemyGooPiece: 0
+  isBeetle: 0
+  isBeetleForTutorial: 0
   isAdjacentToMainBody: 0
   isMainPlayerBody: 0
+  isSlugBody: 0
   isFood: 0
   isKinine: 0
   isSalt: 0
@@ -319,6 +337,8 @@ MonoBehaviour:
   tileY: 0
   parentTileForPath: {fileID: 0}
   playerTeleportTile: {fileID: 0}
+  GreyVer: {fileID: 2420385214255724776, guid: ecadfde2881234e45a2de452cf039155, type: 3}
+  colorVer: {fileID: 4010117207300072446, guid: ec65d189965cb514e86d5a9fe5a13356, type: 3}
   turnsUntilEnemyGooDissappears: 0
   edgeType: 0
 --- !u!1001 &40794647215578016

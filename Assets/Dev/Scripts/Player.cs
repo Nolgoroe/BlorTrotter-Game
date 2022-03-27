@@ -51,15 +51,23 @@ public class Player : Entity
         }
 
         // function to leave goo behind here
-        foreach (Tile element in gooTiles)
-        {
-            GridManager.instance.LeaveGooOnTile(element);
-        }
 
         DetectMoveDirection(currentTile, targetTile);
 
-        await CheckWhatIsNextTile(currentTile, targetTile);
+        //await CheckWhatIsNextTile(currentTile, targetTile);
 
+
+
+        if (targetTile.isKinine)
+        {
+            await targetTile.RotateEatenBlobDisplay(currentTile,targetTile);
+        }
+        else if (targetTile.isSalt)
+        {
+           await targetTile.RotateEatenBlobDisplay(currentTile, targetTile);
+        }
+
+        //await Task.Delay(10000);
         currentTile = targetTile;
         currentTile.isMainPlayerBody = true;
         currentTile.isAdjacentToMainBody = false;
@@ -67,7 +75,12 @@ public class Player : Entity
 
         await PlayAnimation(AnimationType.Move);
 
+        foreach (Tile element in gooTiles)
+        {
+            GridManager.instance.LeaveGooOnTile(element);
+        }
 
+        GridManager.instance.SetTileFull(currentTile);
 
         //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
@@ -75,25 +88,6 @@ public class Player : Entity
         //{
         //    EntityManager.instance.SetPlayerTurn();
         //}
-
-        if (!targetTile.isFood && !targetTile.isKinine && !targetTile.isSalt)
-        {
-            GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
-
-            if (targetTile.isLightTile)
-            {
-                LevelManager.instance.DecreaseNumberOfMoves(3);
-                await PlayAnimation(AnimationType.Hurt);
-            }
-            else
-            {
-                LevelManager.instance.DecreaseNumberOfMoves(1);
-            }
-        }
-        else
-        {
-            EatFood(targetTile, (targetTile.isKinine || targetTile.isSalt));
-        }
 
         LevelManager.instance.CheckLoseLevel();
 
@@ -106,23 +100,88 @@ public class Player : Entity
         {
             case AnimationType.Move:
 
-                await Task.Delay(300);
-
-                CheckSoundPlayType();
-
                 Vector3 targetVector = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
-
                 GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
-                LeanTween.move(gameObject, targetVector, 0.1f);
 
-                await Task.Delay(400);
+                if (!currentTile.isFood && !currentTile.isKinine && !currentTile.isSalt)
+                {
+                    CheckWhatIsNextTile(currentTile);
+
+                    await Task.Delay(249);
+
+                    CheckSoundPlayType();
+
+                    await Task.Delay(83);
+
+                    LeanTween.move(gameObject, targetVector, 0.1f);
+                }
+                else
+                {
+                    //SpriteRenderer foodObjectRenderer = currentTile.foodObject.GetComponent<SpriteRenderer>();
+                    //int currentSorting = foodObjectRenderer.sortingOrder;
+
+                        //foodObjectRenderer.sortingOrder = currentSorting - 1;
+
+
+                    await Task.Delay(166);
+
+                    EatFood(currentTile, (currentTile.isKinine || currentTile.isSalt));
+
+                    await Task.Delay(166);
+
+                    CheckSoundPlayType();
+
+                    CheckWhatIsNextTile(currentTile);
+                    await Task.Delay(480);
+
+                    LeanTween.move(gameObject, targetVector, 0.210f);
+
+
+                    currentTile.isFood = false;
+
+                    if(!currentTile.isKinine && !currentTile.isSalt)
+                    {
+                        await Task.Delay(100);
+                        Destroy(currentTile.foodObject.gameObject);
+
+                        LevelManager.instance.CheckWinLevel();
+                    }
+                    else if (currentTile.isKinine)
+                    {
+                        currentTile.isKinine = false;
+                    }
+                    else if(currentTile.isSalt)
+                    {
+                        currentTile.isSalt = false;
+                    }
+
+                    currentTile.foodObject = null;
+                }
+
+                if (!LevelManager.instance.levelEnded)
+                {
+                    if (currentTile.isLightTile)
+                    {
+                        LevelManager.instance.DecreaseNumberOfMoves(3);
+                        await PlayAnimation(AnimationType.Hurt);
+                    }
+                    else
+                    {
+                        LevelManager.instance.DecreaseNumberOfMoves(1);
+                    }
+                }
+
+                //await Task.Delay(400);
                 //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetVector, 10f, 0.0f);
                 //transform.rotation = Quaternion.Euler(newDirection);
 
                 break;
             case AnimationType.Hurt:
                 anim.SetBool("isHurting", true);
+                await Task.Delay(500);
+
                 SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Hurt);
+
                 break;
             case AnimationType.Teleport:
                 anim.SetBool("isRetracting", true);
@@ -150,11 +209,6 @@ public class Player : Entity
         }
         else
         {
-            SpriteRenderer foodObjectRenderer = currentTile.foodObject.GetComponent<SpriteRenderer>();
-            int currentSorting = foodObjectRenderer.sortingOrder;
-
-            foodObjectRenderer.sortingOrder = currentSorting - 1;
-
             SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Eat_Absorb);
         }
     }
@@ -235,14 +289,14 @@ public class Player : Entity
         }
     }
 
-    public override async Task CheckWhatIsNextTile(Tile from, Tile TileTo)
+    public void CheckWhatIsNextTile(Tile tile)
     {
         if (currentMoveDirection == MoveDirection.left || currentMoveDirection == MoveDirection.down)
         {
-            if (TileTo.isFood || TileTo.isKinine || TileTo.isSalt)
+            if (tile.isFood || tile.isKinine || tile.isSalt)
             {
+                
                 anim.SetBool("isEating", true);
-                await Task.Delay(125);
             }
             else
             {
@@ -252,10 +306,11 @@ public class Player : Entity
         }
         else
         {
-            if (TileTo.isFood || TileTo.isKinine || TileTo.isSalt)
+            if (tile.isFood || tile.isKinine || tile.isSalt)
             {
+                
+
                 anim.SetBool("isEatingBack", true);
-                await Task.Delay(125);
             }
             else
             {
@@ -264,20 +319,23 @@ public class Player : Entity
         }
     }
 
-    void EatFood(Tile target, bool isKinineOrSalt)
+    async void EatFood(Tile target, bool isKinineOrSalt)
     {
-        target.isFood = false;
-
         if (isKinineOrSalt)
         {
-            Animator anim = target.foodObject.GetComponent<Animator>();
-            anim.SetBool("Absorb", true);
+            Animator objectAnim = target.foodObject.GetComponent<Animator>();
+            await Task.Delay(166);
+            objectAnim.SetBool("Absorb", true);
 
             if (target.isKinine)
             {
                 LevelManager.instance.ActivateKininePower();
                 ScoreManager.instance.currentCollectedKnowledge++;
                 UIManager.instance.UpdateKnowledgeAmount();
+
+                anim.SetBool("isPink", true);
+                anim.SetBool("isBase", false);
+                anim.SetBool("isBlue", false);
 
             }
 
@@ -286,26 +344,24 @@ public class Player : Entity
                 LevelManager.instance.ActivateSaltPower();
                 ScoreManager.instance.currentCollectedKnowledge++;
                 UIManager.instance.UpdateKnowledgeAmount();
+                anim.SetBool("isBlue", true);
+                anim.SetBool("isPink", false);
+                anim.SetBool("isBase", false);
 
             }
-
-            target.isKinine = false;
-            target.isSalt = false;
 
             LevelManager.instance.AddMovesEat(LevelManager.instance.currentLevel.amountToAddOnEatBlob);
         }
         else
         {
-            Destroy(target.foodObject.gameObject);
-
             LevelManager.instance.AddMovesEat(LevelManager.instance.currentLevel.amountToAddOnEatFood);
             ScoreManager.instance.currentCollectedFood++;
             UIManager.instance.UpdateFoodAmount();
 
-            LevelManager.instance.CheckWinLevel();
+            anim.SetBool("isBase", true);
+            anim.SetBool("isPink", false);
+            anim.SetBool("isBlue", false);
+
         }
-
-        target.foodObject = null;
-
     }
 }

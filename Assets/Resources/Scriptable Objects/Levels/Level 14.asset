@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 14
   m_EditorClassIdentifier: 
   levelID: 13
-  maxNumberOfMoves: 13
+  maxNumberOfMoves: 12
   summonEnemyCooldown: 2
   maxConcurrentGlobalEnemies: 1
   maxConcurrentSlugs: 0
@@ -25,9 +25,10 @@ MonoBehaviour:
   hasEnemies: 1
   hasSlugs: 0
   hasBeetles: 1
+  levelMusic: {fileID: 8300000, guid: 1360054196cbd43459bf985cd0ad6b62, type: 3}
   levelMap: {fileID: 21300000, guid: 0c20ee9191ee774428dc8906dd7c72c4, type: 3}
   levelObstacles: {fileID: 21300000, guid: 5455ccd8263a44d48a273f845e76f7ab, type: 3}
   levelBeetleData: {fileID: 21300000, guid: a7d2eee02c0e5824fb975fc5165440a1, type: 3}
-  spriteLevelImage: {fileID: 21300000, guid: 5188e9aa698f1c4428214b819d9a44f1, type: 3}
-  spriteLevelImageLocked: {fileID: 21300000, guid: 84e7e7b348dfad14686be3443869d71e, type: 3}
-  movesNeeded: 17
+  spriteLevelImage: {fileID: 21300000, guid: 6c75def0d9f125544a054bb5a2819ae1, type: 3}
+  spriteLevelImageLocked: {fileID: 21300000, guid: 69eed2cd9d6e66a478e8cadabe3edb09, type: 3}
+  movesNeeded: 3

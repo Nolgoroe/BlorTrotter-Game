@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587328245
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -6231917184833101518, guid: 03c55cc024fc4ff48bb36f27cf621e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -121,6 +121,7 @@ MonoBehaviour:
   entityAdjacentTiles: []
   enemyPath: []
   anim: {fileID: 0}
+  typeEntity: 0
 --- !u!114 &8703019097964354980
 MonoBehaviour:
   m_ObjectHideFlags: 0

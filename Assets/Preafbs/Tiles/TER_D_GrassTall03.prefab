@@ -136,14 +136,19 @@ MonoBehaviour:
   enemyGooSprite: {fileID: 4303569870590891201}
   foodObject: {fileID: 0}
   enemySpawnParent: {fileID: 3408016990773251247}
+  connectedLockDisplay: {fileID: 0}
   cost: 0
   index: 0
   isFull: 0
+  isLocked: 0
   isWaterTile: 0
   isGooPiece: 0
   isEnemyGooPiece: 0
+  isBeetle: 0
+  isBeetleForTutorial: 0
   isAdjacentToMainBody: 0
   isMainPlayerBody: 0
+  isSlugBody: 0
   isFood: 0
   isKinine: 0
   isSalt: 0
@@ -154,6 +159,8 @@ MonoBehaviour:
   tileY: 0
   parentTileForPath: {fileID: 0}
   playerTeleportTile: {fileID: 0}
+  GreyVer: {fileID: -5896240869649670809, guid: ecadfde2881234e45a2de452cf039155, type: 3}
+  colorVer: {fileID: -2052260010032887837, guid: ec65d189965cb514e86d5a9fe5a13356, type: 3}
   turnsUntilEnemyGooDissappears: 0
   edgeType: 0
 --- !u!1 &8404833841467937236

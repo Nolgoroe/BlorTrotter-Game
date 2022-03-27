@@ -7,6 +7,8 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
 {
     public Animator anim;
 
+    public bool isFlippedEaten;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -50,6 +52,7 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     public async void ResetRetractData()
     {
         anim.SetBool("isRetracting", false);
+        SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Moving_Spawning);
 
         await Task.Delay(1000);
 
@@ -58,6 +61,7 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     public void SetRetractData()
     {
         InputManager.instance.canRecieveInput = false; //new
+        SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Moving_Spawning);
     }
 
     public void SetSlugSpawnActions()
@@ -75,6 +79,15 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
         }
     }
 
+    public void CheckRotationAngle()
+    {
+        if (isFlippedEaten)
+        {
+            Vector3 rotation = new Vector3(0, 180, 0);
+            transform.rotation = Quaternion.Euler(rotation);
+        }
+    }
+
     public void AfterKinineSaltSpawn()
     {
         anim.SetBool("Spawn", false);
@@ -83,4 +96,24 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     {
         Destroy(gameObject, 0.5f);
     }
+
+
+    public void BeetleTeleportFromData()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 0.70f, transform.localPosition.z);
+
+        Tile current = GetComponent<Beetle>().currentTile;
+
+        current.isBeetleForTutorial = false;
+    }
+
+    public void ResetTeleportFromData()
+    {
+        Tile current = GetComponent<Beetle>().currentTile;
+
+        transform.localPosition = new Vector3(transform.localPosition.x, current.transform.localPosition.y + (LevelEditor.instance.offsetY * 2), transform.localPosition.z);
+
+        current.isBeetleForTutorial = true;
+    }
+
 }

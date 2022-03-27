@@ -38,7 +38,6 @@ public class Beetle : Entity
         {
             currentTile.isFull = false;
             currentTile.isBeetle = false;
-
         }
 
         if (currentAnimState == anim.parameterCount) // 3 = num of animation booleans
