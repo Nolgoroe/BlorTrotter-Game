@@ -144,10 +144,12 @@ public class Slug : Entity
             Destroy(transform.parent.gameObject);
         }
 
-
-        if (enemyPath.Count > 0)
+        if (enemyPath != null)
         {
-            MoveEntity(enemyPath[0]);
+            if (enemyPath.Count > 0)
+            {
+                await MoveEntity(enemyPath[0]);
+            }
         }
     }
 
@@ -254,6 +256,8 @@ public class Slug : Entity
             target.isMainPlayerBody = false;
             EntityManager.instance.SpawnPlayerRandomGooLocation();
         }
+
+        EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Hurt);
     }
 
     public override void ReleaseTargetTile()

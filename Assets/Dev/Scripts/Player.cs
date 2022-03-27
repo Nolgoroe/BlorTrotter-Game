@@ -68,15 +68,6 @@ public class Player : Entity
         await PlayAnimation(AnimationType.Move);
 
 
-        if (targetTile.isLightTile)
-        {
-            LevelManager.instance.DecreaseNumberOfMoves(3);
-            await PlayAnimation(AnimationType.Hurt);
-        }
-        else
-        {
-            LevelManager.instance.DecreaseNumberOfMoves(1);
-        }
 
         //transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
 
@@ -88,6 +79,16 @@ public class Player : Entity
         if (!targetTile.isFood && !targetTile.isKinine && !targetTile.isSalt)
         {
             GridManager.instance.SetTileFull(targetTile); ///before, it was just under the setTileFull(CurrentTile)
+
+            if (targetTile.isLightTile)
+            {
+                LevelManager.instance.DecreaseNumberOfMoves(3);
+                await PlayAnimation(AnimationType.Hurt);
+            }
+            else
+            {
+                LevelManager.instance.DecreaseNumberOfMoves(1);
+            }
         }
         else
         {
@@ -107,15 +108,21 @@ public class Player : Entity
 
                 await Task.Delay(300);
 
+                CheckSoundPlayType();
+
                 Vector3 targetVector = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
+
+                GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                LeanTween.move(gameObject, targetVector, 0.1f);
+
+                await Task.Delay(400);
                 //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetVector, 10f, 0.0f);
                 //transform.rotation = Quaternion.Euler(newDirection);
 
-                LeanTween.move(gameObject, targetVector, 0.1f);
-                GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
                 break;
             case AnimationType.Hurt:
                 anim.SetBool("isHurting", true);
+                SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Hurt);
                 break;
             case AnimationType.Teleport:
                 anim.SetBool("isRetracting", true);
@@ -135,6 +142,22 @@ public class Player : Entity
         /// Set player animation Data here
     }
 
+    private void CheckSoundPlayType()
+    {
+        if (!currentTile.isFood && !currentTile.isKinine && !currentTile.isSalt)
+        {
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Moving_Spawning);
+        }
+        else
+        {
+            SpriteRenderer foodObjectRenderer = currentTile.foodObject.GetComponent<SpriteRenderer>();
+            int currentSorting = foodObjectRenderer.sortingOrder;
+
+            foodObjectRenderer.sortingOrder = currentSorting - 1;
+
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Eat_Absorb);
+        }
+    }
     public override void AddGooTiles(Tile gooTile)
     {
         gooTiles.Add(gooTile);
@@ -249,17 +272,21 @@ public class Player : Entity
         {
             Animator anim = target.foodObject.GetComponent<Animator>();
             anim.SetBool("Absorb", true);
-            int currentSorting = anim.GetComponent<SpriteRenderer>().sortingOrder;
 
-            anim.GetComponent<SpriteRenderer>().sortingOrder = currentSorting - 1;
             if (target.isKinine)
             {
                 LevelManager.instance.ActivateKininePower();
+                ScoreManager.instance.currentCollectedKnowledge++;
+                UIManager.instance.UpdateKnowledgeAmount();
+
             }
 
             if (target.isSalt)
             {
                 LevelManager.instance.ActivateSaltPower();
+                ScoreManager.instance.currentCollectedKnowledge++;
+                UIManager.instance.UpdateKnowledgeAmount();
+
             }
 
             target.isKinine = false;

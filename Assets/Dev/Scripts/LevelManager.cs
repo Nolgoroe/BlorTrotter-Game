@@ -185,7 +185,10 @@ public class LevelManager : MonoBehaviour, IManageable
 
     public void DecreaseNumberOfMoves(int amount) 
     {
-        ScoreManager.instance.currentLevelNumberOfMovesRemaining-= amount;
+        UIManager.instance.decreaseMoveText.text = "-" + amount;
+        UIManager.instance.decreaseMoveText.gameObject.SetActive(true);
+
+        ScoreManager.instance.currentLevelNumberOfMovesRemaining -= amount;
 
         if (ScoreManager.instance.currentLevelNumberOfMovesRemaining < 0)
         {
@@ -196,6 +199,9 @@ public class LevelManager : MonoBehaviour, IManageable
     }
     public void AddMovesEat(int amount) 
     {
+        UIManager.instance.addMoveText.text = "+" + amount;
+        UIManager.instance.addMoveText.gameObject.SetActive(true);
+
         ScoreManager.instance.currentLevelNumberOfMovesRemaining += amount;
         UIManager.instance.UpdateNumOfMoves(true);
     }

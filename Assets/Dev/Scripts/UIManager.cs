@@ -22,7 +22,8 @@ public enum UIScreenTypes
     NarratorBlobScreen,
     AsthericWoodsGameScreen,
     GameBG,
-    MenuBG
+    MenuBG,
+    SureWantToGoIntoLevel,
 }
 
 public class UIManager : MonoBehaviour, IManageable
@@ -70,6 +71,8 @@ public class UIManager : MonoBehaviour, IManageable
     public TMP_Text knowledgeText;
     public TMP_Text foodText;
     public TMP_Text moveAmount;
+    public TMP_Text decreaseMoveText;
+    public TMP_Text addMoveText;
     public GameObject saltPowerSprite;
     public GameObject kininePowerSprite;
     public Slider FoodSlider, KnowledgeSlider;
@@ -606,18 +609,18 @@ public class UIManager : MonoBehaviour, IManageable
     public void OpenBlobNarratorScreen()
     {
         DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.NarratorBlobScreen });
-
-        //currentBlobImageIndex = 0;
-
-        //ChangeBlobNarratorDisplay();
-
+    }
+    public void OpenSureWantToGoIntoLevelScreen()
+    {
+        DisplaySpecificScreensNoDeactivate(new UIScreenTypes[] { UIScreenTypes.SureWantToGoIntoLevel });
     }
     public void CloseBlobNarratorScreen()
     {
         DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.NarratorBlobScreen });
-
-        //currentBlobImageIndex = 0;
-
+    }
+    public void CloseSureWantToGoIntoLevelScreen()
+    {
+        DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.SureWantToGoIntoLevel });
     }
     public void BlobNarratorArrowLeft()
     {
@@ -690,6 +693,7 @@ public class UIManager : MonoBehaviour, IManageable
         if (SoundManager.instance.canHearMusic)
         {
             SoundManager.instance.canHearMusic = false;
+            SoundManager.instance.musicAudioSource.enabled = false;
 
             musicImage.sprite = musicSpriteGrey;
             musicImageOptions.sprite = musicSpriteGrey;
@@ -697,6 +701,7 @@ public class UIManager : MonoBehaviour, IManageable
         else
         {
             SoundManager.instance.canHearMusic = true;
+            SoundManager.instance.musicAudioSource.enabled = true;
 
             musicImage.sprite = musicSpriteOrange;
             musicImageOptions.sprite = musicSpriteOrange;
@@ -707,6 +712,7 @@ public class UIManager : MonoBehaviour, IManageable
         if (SoundManager.instance.canHearSounds)
         {
             SoundManager.instance.canHearSounds = false;
+            SoundManager.instance.SFXAudioSource.enabled = false;
 
             soundImage.sprite = soundSpriteGrey;
             soundImageOptions.sprite = soundSpriteGrey;
@@ -714,6 +720,7 @@ public class UIManager : MonoBehaviour, IManageable
         else
         {
             SoundManager.instance.canHearSounds = true;
+            SoundManager.instance.SFXAudioSource.enabled = true;
 
             soundImage.sprite = soundSpriteOrange;
             soundImageOptions.sprite = soundSpriteOrange;

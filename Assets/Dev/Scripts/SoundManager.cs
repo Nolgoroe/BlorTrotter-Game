@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 public enum Sounds
 {
+    Blob_Eat_Absorb,
+    Blob_Hurt,
+    Blob_Moving_Spawning,
+
     //// Add all sounds here
 }
 

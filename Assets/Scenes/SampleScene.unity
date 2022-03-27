@@ -2453,6 +2453,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53730095}
   m_CullTransparentMesh: 1
+--- !u!1 &54757078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54757079}
+  - component: {fileID: 54757082}
+  - component: {fileID: 54757081}
+  - component: {fileID: 54757080}
+  m_Layer: 0
+  m_Name: Sure want to select level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &54757079
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54757078}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1018426847}
+  - {fileID: 1345866608}
+  - {fileID: 1938494830}
+  - {fileID: 559029460}
+  m_Father: {fileID: 90934769}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 253}
+  m_SizeDelta: {x: 886, y: 1920}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &54757080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54757078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &54757081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54757078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &54757082
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54757078}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &55091656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,7 +2590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 217.99994}
+  m_AnchoredPosition: {x: 10, y: 195}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55091658
@@ -2510,9 +2613,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Blob nait lorsque deux cellules sexuees se rencontrent. \n\nLes deux
-    cellules fusionnent permettant au noyau de se diviser.\n\n Plus le noyau se fragmente,
-    plus le Blob grandit"
+  m_text: "Le Blob na\xEEt lorsque deux cellules sexu\xE9es se rencontrent.\r\n\r\nLes
+    deux cellules fusionnent permettant au noyau de se diviser.\r\n\r\nPlus le noyau
+    se fragmente, plus le Blob grandit.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -3002,7 +3105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -813}
+  m_AnchoredPosition: {x: 10, y: -810}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62882395
@@ -3025,7 +3128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Blob aquatique\n\xA9Hulynoma,\naquatribu.com"
+  m_text: "Blob aquatique\r\n\xA9Hulynoma,\r\naquatribu.com\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -3292,7 +3395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -427}
+  m_AnchoredPosition: {x: 0, y: -473}
   m_SizeDelta: {x: 527.042, y: 351.361}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63148953
@@ -4182,6 +4285,7 @@ RectTransform:
   - {fileID: 1938545884}
   - {fileID: 1655708719}
   - {fileID: 822263784}
+  - {fileID: 54757079}
   - {fileID: 1735874063}
   - {fileID: 672310660}
   m_Father: {fileID: 843073786}
@@ -4557,6 +4661,7 @@ MonoBehaviour:
   - {fileID: 1207084366}
   - {fileID: 1688894360}
   - {fileID: 1168409168}
+  - {fileID: 54757078}
   screenFadeSpeed: 3
   testText: {fileID: 0}
   imageTest: {fileID: 0}
@@ -4584,6 +4689,8 @@ MonoBehaviour:
   knowledgeText: {fileID: 1995508566}
   foodText: {fileID: 842505014}
   moveAmount: {fileID: 680739131}
+  decreaseMoveText: {fileID: 599386607}
+  addMoveText: {fileID: 1684813775}
   saltPowerSprite: {fileID: 1214597960}
   kininePowerSprite: {fileID: 1823039484}
   FoodSlider: {fileID: 1818765952}
@@ -5046,9 +5153,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Blob le plus connu habite aux quatres coins du monde, et raffole de
-    l\u2019humidite. Il se plait dans les forets ombragees, se nichant dans les arbres
-    ou sous des feuilles."
+  m_text: "Le Blob le plus connu habite aux quatre coins du monde, et raffole de
+    l\u2019humidit\xE9. Il se pla\xEEt dans les for\xEAts ombrag\xE9es, se nichant
+    dans les arbres ou sous des feuilles.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -5623,7 +5730,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 220, y: -44.999996}
-  m_SizeDelta: {x: 123.633, y: 100}
+  m_SizeDelta: {x: 135, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164505265
 MonoBehaviour:
@@ -5645,7 +5752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20/20
+  m_text: 5/7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 790f866ef02d9eb46ad327285d964189, type: 2}
@@ -5682,7 +5789,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -6751,7 +6858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -41.850792}
+  m_AnchoredPosition: {x: 0, y: -41.85025}
   m_SizeDelta: {x: 800, y: 1377.753}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &203022142
@@ -8167,7 +8274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.999629, y: -688.9998}
+  m_AnchoredPosition: {x: 9.999629, y: -731}
   m_SizeDelta: {x: 250, y: 73.811}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263222274
@@ -8191,7 +8298,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Mais attention, le Blob ne mange pas n\u2019importe quoi : il sait choisir
-    la meilleure nourriture pour survivre."
+    la meilleure nourriture pour survivre.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -8707,11 +8814,11 @@ RectTransform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1564744613}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -651.39996}
+  m_AnchoredPosition: {x: 10, y: -627.00006}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288622076
@@ -8734,7 +8841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "blob dans  la nature\n\xA9allexis\nwww.naturefold.wordpress.com"
+  m_text: "Blob dans la nature\r\n\xA9Alexis,\r\nwww.naturefold.wordpress.com\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -9266,7 +9373,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAudioSource: {fileID: 314558743}
   SFXAudioSource: {fileID: 1500365926}
-  soundsForGame: []
+  soundsForGame:
+  - enumSound: 0
+    theSoundClip: {fileID: 8300000, guid: 24cb8040ef8ea5049b2b5c2e4f99961b, type: 3}
+  - enumSound: 1
+    theSoundClip: {fileID: 8300000, guid: 21d17221fd94a694881205fd51093845, type: 3}
+  - enumSound: 2
+    theSoundClip: {fileID: 8300000, guid: b4f823f404708e14fba812b85cd799a1, type: 3}
   canHearMusic: 0
   canHearSounds: 0
 --- !u!1 &317554333
@@ -10107,7 +10220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 74.00003}
+  m_AnchoredPosition: {x: 10, y: 28.000069}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &374364553
@@ -10130,9 +10243,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Du fait de sa lenteur, notre bestiole jaune est une proie facile, et tres
-    goutue. \n\nCertaines tribus indigenes les mangent, et disent qu\u2019ils ont
-    un gout tres proche des champignons.\r\n"
+  m_text: "Du fait de sa lenteur, notre bestiole jaune est une proie facile, et tr\xE8s
+    go\xFBtue.\r\n\r\nCertaines tribus indig\xE8nes les mangent, et disent qu\u2019ils
+    ont un go\xFBt tr\xE8s proche des champignons.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -10470,7 +10583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.1721, y: 88}
+  m_AnchoredPosition: {x: -4.1721, y: 115}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &390101665
@@ -10832,7 +10945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 387.00003}
+  m_AnchoredPosition: {x: 0, y: 341.00006}
   m_SizeDelta: {x: 527.042, y: 351.361}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &416834548
@@ -10908,7 +11021,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 220, y: -305}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 135, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418326682
 MonoBehaviour:
@@ -13368,7 +13481,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 523345117}
-  - component: {fileID: 523345118}
   m_Layer: 0
   m_Name: MoveUI
   m_TagString: Untagged
@@ -13388,6 +13500,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3882019854216357623}
+  - {fileID: 599386606}
+  - {fileID: 1684813773}
   m_Father: {fileID: 2065165747}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13396,17 +13510,6 @@ RectTransform:
   m_AnchoredPosition: {x: 115, y: -75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!210 &523345118
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523345116}
-  m_Enabled: 1
-  m_SortingLayerID: -1019569705
-  m_SortingLayer: 5
-  m_SortingOrder: 3
 --- !u!1 &524952188
 GameObject:
   m_ObjectHideFlags: 0
@@ -14134,7 +14237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -345.0001}
+  m_AnchoredPosition: {x: 0, y: -365.99982}
   m_SizeDelta: {x: 556.308, y: 370.872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535916897
@@ -14457,6 +14560,140 @@ Transform:
   m_Father: {fileID: 850327605}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &559029459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559029460}
+  - component: {fileID: 559029462}
+  - component: {fileID: 559029461}
+  m_Layer: 0
+  m_Name: Go to this level?
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &559029460
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559029459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 54757079}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -154}
+  m_SizeDelta: {x: 895.622, y: 158.722}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &559029461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559029459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "pr\xE9t \xE0 lancer l'aventure ?"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 790f866ef02d9eb46ad327285d964189, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 72
+  m_fontSizeBase: 15
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &559029462
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559029459}
+  m_CullTransparentMesh: 1
 --- !u!1 &569820829
 GameObject:
   m_ObjectHideFlags: 0
@@ -14838,7 +15075,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le blob n'aime pas grimper\n\xA9magali kitzmann,\nwww.genopolys.fr\n"
+  m_text: "Le blob n\u2019aime pas grimper\r\n\xA9Magalie Kitzmann,\r\nwww.genopolys.fr\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -15384,9 +15621,222 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -63.590374}
+  m_AnchoredPosition: {x: 0, y: -63.590736}
   m_SizeDelta: {x: 800, y: 1703.854}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &599386605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599386606}
+  - component: {fileID: 599386609}
+  - component: {fileID: 599386608}
+  - component: {fileID: 599386607}
+  - component: {fileID: 599386610}
+  - component: {fileID: 599386611}
+  m_Layer: 0
+  m_Name: Decrease move num
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &599386606
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 523345117}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &599386607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: -1
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 149d6b71e9350214ba6b5c2da71a397f, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 700
+  m_fontSizeBase: 700
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 15.7
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 599386608}
+  m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+--- !u!23 &599386608
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386605}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 149d6b71e9350214ba6b5c2da71a397f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1019569705
+  m_SortingLayer: 5
+  m_SortingOrder: 4
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!222 &599386609
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386605}
+  m_CullTransparentMesh: 1
+--- !u!95 &599386610
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386605}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e83dbb9f951cb6a4b961e616dda60639, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &599386611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be8428c5e6c73548b4202aeea067e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &609335894
 GameObject:
   m_ObjectHideFlags: 0
@@ -15444,7 +15894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "blob dans une boite de petri\n\xA9carolina biological supply company"
+  m_text: "Blob dans une bo\xEEte de petri\r\n\xA9Carolina Biological Supply Company\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -15803,12 +16253,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Le Blob se deplace lentement : environ 1 cm toutes les heures, en alternant
-    des phases de contraction et de relaxation de leur membrane.
-
-
-    Cette force
-    creee passe dans le reseau veineux et permet au Blob de se mouvoir.'
+  m_text: "Le Blob se d\xE9place lentement : environ 1 cm toutes les heures, en alternant
+    des phases de contraction et de relaxation de leur membrane.\r\n\r\nCette force
+    cr\xE9\xE9e passe dans le r\xE9seau veineux et permet au Blob de se mouvoir.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -16343,7 +16790,7 @@ RectTransform:
   - {fileID: 376616156}
   - {fileID: 1260974667}
   m_Father: {fileID: 90934769}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16745,8 +17192,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 7
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
-  m_sharedMaterial: {fileID: -2549645006107359616, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 22f97c4ba2cbbfd44b2ab41523490ee0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16834,7 +17281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2549645006107359616, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
+  - {fileID: 2100000, guid: 22f97c4ba2cbbfd44b2ab41523490ee0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17475,7 +17922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -408.99994}
+  m_AnchoredPosition: {x: 10, y: -443}
   m_SizeDelta: {x: 245.887, y: 226.883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713221805
@@ -17498,10 +17945,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "D\u2019ailleurs, chaque Blob a un mucus personnel, et peut detecter d'autres
-    congeneres s'il touche leur mucus.\r\n\n\nDans Blob-Trotter au contraire, le
-    Blob ne laisse pas de mucus derriere lui, mais peut etendre n\u2019importe quelle
-    partie de lui-meme pour revenir sur ses pas.\r\n"
+  m_text: "D\u2019ailleurs, chaque Blob a un mucus personnel, et peut d\xE9tecter
+    d'autres cong\xE9n\xE8res s'il touche leur mucus.\r\n\r\nDans Blob-Trotter au
+    contraire, le Blob ne laisse pas de mucus derri\xE8re lui, mais peut \xE9tendre
+    n\u2019importe quelle partie de lui-m\xEAme pour revenir sur ses pas.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -19282,8 +19729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.813446}
-  m_SizeDelta: {x: 800, y: 1512.2}
+  m_AnchoredPosition: {x: 0, y: -46.192375}
+  m_SizeDelta: {x: 800, y: 1442.874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &805985568 stripped
 RectTransform:
@@ -19705,86 +20152,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &837706513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 837706514}
-  - component: {fileID: 837706516}
-  - component: {fileID: 837706515}
-  m_Layer: 0
-  m_Name: Text (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &837706514
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837706513}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.074187, y: 2.074187, z: 2.074187}
-  m_Children: []
-  m_Father: {fileID: 1564744613}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -46.999954}
-  m_SizeDelta: {x: 245.8867, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &837706515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837706513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: " En se rassemblant, les Blobs partagent des informations comme leur r\xE9sistance
-    au sel ou autres obstacles."
---- !u!222 &837706516
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837706513}
-  m_CullTransparentMesh: 1
 --- !u!1 &838094044
 GameObject:
   m_ObjectHideFlags: 0
@@ -19919,8 +20286,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0/0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
-  m_sharedMaterial: {fileID: -2549645006107359616, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 22f97c4ba2cbbfd44b2ab41523490ee0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20008,7 +20375,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2549645006107359616, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
+  - {fileID: 2100000, guid: 22f97c4ba2cbbfd44b2ab41523490ee0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20430,7 +20797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "De son vrai nom Physarum Polycephalum, il n\u2019a ni cerveau, ni systeme
+  m_text: "De son vrai nom Physarum Polycephalum, il n\u2019a ni cerveau, ni syst\xE8me
     nerveux."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -20542,7 +20909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 285}
+  m_AnchoredPosition: {x: 10, y: 279.0001}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850693752
@@ -20565,7 +20932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sporocystes en phase de reproduction\n\xA9Bill Sheehan\nmushroomobserver.org"
+  m_text: "Sporocystes en phase de reproduction\r\n\xA9Bill Sheenan,\r\nMushroomobserver.org\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -22429,7 +22796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -433.69144}
+  m_AnchoredPosition: {x: 0, y: -479.6914}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &943266036
@@ -23072,7 +23439,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 101239802}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: CallStartLevel
+        m_MethodName: OpenSureWantToGoIntoLevelScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24303,7 +24670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.576, y: -180.97499}
+  m_AnchoredPosition: {x: 16.576, y: -168}
   m_SizeDelta: {x: 252.228, y: 207.127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1011061168
@@ -24326,9 +24693,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Comme il n\u2019a pas de tete, le Blob peut se deplacer a partir de n\u2019importe
-    quel endroit de son corps !\r\n\nAffame, il peut multiplier sa vitesse par 4.\r\n\r\nD\u2019ailleurs,
-    le Blob se deplace toujours de la maniere la plus optimisee\r"
+  m_text: "Comme il n\u2019a pas de t\xEAte, le Blob peut se d\xE9placer \xE0 partir
+    de n\u2019importe quel endroit de son corps !\r\n\r\nAffam\xE9, il peut multiplier
+    sa vitesse par 4.\r\n\r\nD\u2019ailleurs, le Blob se d\xE9place toujours de la
+    mani\xE8re la plus optimis\xE9e entre sa nourriture et lui !\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -24480,6 +24848,144 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017275774}
   m_CullTransparentMesh: 1
+--- !u!1001 &1018426846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 54757079}
+    m_Modifications:
+    - target: {fileID: 1114359069192732685, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_Name
+      value: Images UI BG NEW
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873628070241396649, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -81.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994050511324818340, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877644996063803290, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867279361028680049, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 24.198
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447546112835874866, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597055868868437512, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 24.198
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943984926423922380, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -81.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -285
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909683882142480456, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 24.198
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222642644510826199, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 82
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+--- !u!224 &1018426847 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8185152973194311017, guid: f4fae5dbe39ee214dbdf29b7cd19d936, type: 3}
+  m_PrefabInstance: {fileID: 1018426846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1020781935
 GameObject:
   m_ObjectHideFlags: 0
@@ -25558,7 +26064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 538.7498}
+  m_AnchoredPosition: {x: 0, y: 555.7499}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1062621733
@@ -25810,7 +26316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -561}
+  m_AnchoredPosition: {x: 0, y: -543}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1075019131
@@ -26475,7 +26981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 380.30853}
+  m_AnchoredPosition: {x: 0, y: 334.30856}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1098191286
@@ -26550,7 +27056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 639}
+  m_AnchoredPosition: {x: 10, y: 660}
   m_SizeDelta: {x: 250, y: 139.255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100597718
@@ -26573,9 +27079,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Deux Blobs peuvent fusionner et n\u2019en former qu\u2019un !\n\nIl n\u2019y
-    a que trois conditions : etre de la meme espece, venir du meme pays et etre de
-    type sexuel different. \nD\u2019ailleurs, les Blobs en ont 720 !"
+  m_text: "Deux Blobs peuvent fusionner et n\u2019en former qu\u2019un ! Il n\u2019y
+    a que trois conditions : \xEAtre de la m\xEAme esp\xE8ce, venir du m\xEAme pays
+    et \xEAtre de type sexuel diff\xE9rent. D\u2019ailleurs, les Blobs en ont 720
+    !\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -26709,10 +27216,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Blob de nos forets evite au maximum le soleil, qui le desseche et l\u2019abime.\r\n\nIl
-    en existe egalement dans des milieux plus etranges, comme des deserts arctiques,
-    des tropiques ou encore sous l\u2019eau ! \n\nEn fait, il en existe partout dans
-    la nature.\r\n"
+  m_text: "Le Blob de nos for\xEAts \xE9vite au maximum le soleil, qui le dess\xE8che
+    et l\u2019ab\xEEme.\r\n\r\nIl en existe \xE9galement dans des milieux plus \xE9tranges,
+    comme des d\xE9serts arctiques, des tropiques ou encore sous l\u2019eau !\r\n\r\nEn
+    fait, il en existe partout dans la nature.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -26904,7 +27411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -88.30075}
+  m_AnchoredPosition: {x: 0, y: -88.30047}
   m_SizeDelta: {x: 550, y: 2074.507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1124193488
@@ -29743,7 +30250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -560.99994}
+  m_AnchoredPosition: {x: 0, y: -542.99994}
   m_SizeDelta: {x: 535.38, y: 356.921}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240688623
@@ -31886,9 +32393,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Physarum Polycephalum a une memoire spatiale : Il laisse derriere lui
-    un mucus. S\u2019il le touche a nouveau, il saura qu\u2019il est deja passe par
-    ici, et n\u2019y reviendra plus."
+  m_text: "Le Physarum Polycephalum a une m\xE9moire spatiale : Il laisse derri\xE8re
+    lui un mucus. S\u2019il le touche \xE0 nouveau, il saura qu\u2019il est d\xE9j\xE0
+    pass\xE9 par ici, et n\u2019y reviendra plus.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -32995,11 +33502,11 @@ RectTransform:
   m_LocalScale: {x: 2.074187, y: 2.074187, z: 2.074187}
   m_Children: []
   m_Father: {fileID: 1564744613}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -111.99992}
+  m_AnchoredPosition: {x: 10, y: -59.999966}
   m_SizeDelta: {x: 245.887, y: 67.636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337302895
@@ -33022,8 +33529,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' En se rassemblant, les Blobs partagent des informations comme leur resistance
-    au sel ou autres obstacles.'
+  m_text: "En se rassemblant, les Blobs partagent des informations comme leur r\xE9sistance
+    au sel et autres obstacles.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -33288,6 +33795,138 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1345866607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345866608}
+  - component: {fileID: 1345866611}
+  - component: {fileID: 1345866610}
+  - component: {fileID: 1345866609}
+  m_Layer: 0
+  m_Name: V
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1345866608
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345866607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 54757079}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -150, y: -461}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1345866609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345866607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: 50a5539eeee0dd8488028746bcfd5d7a, type: 3}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1345866610}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 101239802}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CallStartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1345866610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345866607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3e8d860e27a9c9948b32542243a0de84, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1345866611
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345866607}
+  m_CullTransparentMesh: 1
 --- !u!1 &1346118739
 GameObject:
   m_ObjectHideFlags: 0
@@ -33687,7 +34326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75.141754}
+  m_AnchoredPosition: {x: 0, y: -75.14153}
   m_SizeDelta: {x: 800, y: 1877.121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1379584505
@@ -34640,11 +35279,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564744613}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -408}
+  m_AnchoredPosition: {x: 0, y: -356.00003}
   m_SizeDelta: {x: 554.174, y: 369.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407346176
@@ -35224,11 +35863,11 @@ RectTransform:
   m_LocalScale: {x: 2.074187, y: 2.074187, z: 2.074187}
   m_Children: []
   m_Father: {fileID: 1564744613}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -724.99994}
+  m_AnchoredPosition: {x: 10, y: -716.00006}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1423289949
@@ -35251,7 +35890,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Si un Blob est coupe en deux, les differentes parties deviendront autonomes.
+  m_text: "Si un Blob est coup\xE9 en deux, les diff\xE9rentes parties deviendront
+    autonomes."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -35650,7 +36290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -65.44675}
+  m_AnchoredPosition: {x: 0, y: -65.44673}
   m_SizeDelta: {x: 800, y: 1731.701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1442922861
@@ -36205,7 +36845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 914.7498}
+  m_AnchoredPosition: {x: 10, y: 931.7499}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469515833
@@ -36228,8 +36868,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Les premiers Blobs sont apparus sur Terre il y a environ 1 milliard d\u2019annees
-    et sont encore plus vieux que les dinosaures."
+  m_text: "Les premiers Blobs sont apparus sur Terre il y a environ 1 milliard d\u2019ann\xE9es
+    et sont encore plus vieux que les dinosaures.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -37551,9 +38191,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " En laboratoire, il mange egalement des flocons d\u2019avoine, des fruits
-    et des legumes.\n\n Pour manger, le Blob englobe l\u2019aliment et secrete des
-    enzymes pour le digerer."
+  m_text: "En laboratoire, il mange \xE9galement des flocons d\u2019avoine, des fruits
+    et des l\xE9gumes.\r\n\r\nPour manger, le Blob englobe l\u2019aliment et s\xE9cr\xE8te
+    des enzymes pour le dig\xE9rer.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -38655,7 +39295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -175.24797}
+  m_AnchoredPosition: {x: 10, y: -158.99998}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562533596
@@ -38678,7 +39318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Blob en etat de scl\xE9rote\n(hibernation)"
+  m_text: "Blob en \xE9tat de sc\xE9rote\r\n(hibernation)\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -38812,10 +39452,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dans la nature, le Blob mange des spores de champignons, des bacteries
-    et des microorganismes.
-
-'
+  m_text: "Dans la nature, le Blob mange des spores de champignons, des bact\xE9ries
+    et des microorganismes.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -39036,7 +39674,6 @@ RectTransform:
   - {fileID: 1100597717}
   - {fileID: 1624500045}
   - {fileID: 2030726665}
-  - {fileID: 837706514}
   - {fileID: 1337302894}
   - {fileID: 1407346175}
   - {fileID: 1638628872}
@@ -39047,8 +39684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -62.24469}
-  m_SizeDelta: {x: 800, y: 1683.656}
+  m_AnchoredPosition: {x: 0, y: -62.25316}
+  m_SizeDelta: {x: 800, y: 1683.792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1568977323
 GameObject:
@@ -39794,7 +40431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.999629, y: -538.9998}
+  m_AnchoredPosition: {x: 9.999629, y: -562}
   m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1584429047
@@ -39817,7 +40454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "blob mange de \nl'avoine\n\xA9magali kitzmann,\nwww.genopolys.fr\n"
+  m_text: "Blob mangeant de l\u2019avoine\r\n\xA9Magalie Kitzmann,\r\nwww.genopolys.fr\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -40048,7 +40685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -227}
+  m_AnchoredPosition: {x: 10, y: -228.99998}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602023459
@@ -40071,8 +40708,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " Si le climat est trop extreme, le Blob se deshydrate et passe en hibernation.
-    \n\nIl peut dormir comme ca pendant deux ou trois ans !\r\n"
+  m_text: "Si le climat est trop extr\xEAme, le Blob se d\xE9shydrate et passe en
+    hibernation.\r\n\r\nIl peut dormir comme \xE7a pendant deux ou trois ans !\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -40466,10 +41103,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Comme nous, les Blobs ont chacun leur personnalite : En fonction de leurs
-    origines, ils peuvent etre gourmands, explorateurs, rapides...\r\n\nD\u2019ailleurs,
-    les Blobs ne se comportent pas de la meme facon avec des compatriotes, qu\u2019
-    avec des etrangers!\r\n"
+  m_text: "Comme nous, les Blobs ont chacun leur personnalit\xE9 : En fonction de
+    leurs origines, ils peuvent \xEAtre gourmands, explorateurs, rapides\u2026\r\n\r\nD\u2019ailleurs,
+    les Blobs ne se comportent pas de la m\xEAme fa\xE7on avec des compatriotes,
+    qu\u2019avec des \xE9trangers !\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -40869,7 +41506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 196.00006}
+  m_AnchoredPosition: {x: 0, y: 248.00002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1632504483
@@ -41268,11 +41905,11 @@ RectTransform:
   - {fileID: 93635843}
   - {fileID: 1816993353}
   m_Father: {fileID: 1564744613}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -407.99994}
+  m_AnchoredPosition: {x: 0, y: -356}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1642433657
@@ -41842,7 +42479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 672.28503}
+  m_AnchoredPosition: {x: 10, y: 626.2851}
   m_SizeDelta: {x: 250, y: 53.831}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651146486
@@ -41865,7 +42502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Blob n\u2019a que deux predateurs : Les limaces et des petits scarabes"
+  m_text: "Le Blob n\u2019a que deux pr\xE9dateurs : Les limaces et des petits scarab\xE9es.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -42853,6 +43490,219 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684463948}
   m_CullTransparentMesh: 1
+--- !u!1 &1684813772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684813773}
+  - component: {fileID: 1684813777}
+  - component: {fileID: 1684813776}
+  - component: {fileID: 1684813775}
+  - component: {fileID: 1684813774}
+  - component: {fileID: 1684813778}
+  m_Layer: 0
+  m_Name: Add move num
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1684813773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684813772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 523345117}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -76.5}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1684813774
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684813772}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4222512d026a5dc4a94b1e6ea1307de3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1684813775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684813772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: +3
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 2ee19b85e6f121b4abfb87aa764f5657, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 700
+  m_fontSizeBase: 700
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 15.7
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1684813776}
+  m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+--- !u!23 &1684813776
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684813772}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2ee19b85e6f121b4abfb87aa764f5657, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1019569705
+  m_SortingLayer: 5
+  m_SortingOrder: 4
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!222 &1684813777
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684813772}
+  m_CullTransparentMesh: 1
+--- !u!114 &1684813778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684813772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be8428c5e6c73548b4202aeea067e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -44309,7 +45159,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 90934769}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -44671,7 +45521,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 220, y: -177}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 135, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750367509
 MonoBehaviour:
@@ -46219,7 +47069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -83.274475}
+  m_AnchoredPosition: {x: 0, y: -83.27365}
   m_SizeDelta: {x: 800, y: 1999.104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1823039484
@@ -46642,7 +47492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -756.00006}
+  m_AnchoredPosition: {x: 10, y: -776.99994}
   m_SizeDelta: {x: 245.887, y: 166.722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840451804
@@ -46665,10 +47515,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Blob entre ensuite en phase de Plasmode : Il va construire un reseau
+  m_text: "Le Blob entre ensuite en phase de plasmode : Il va construire un r\xE9seau
     de veines pour chercher de la nourriture. Une fois qu\u2019il sera assez grand,
-    il fabriquera et liberera des spores qui deviendront des cellules sexuees, et
-    le cycle recommencera."
+    il fabriquera et lib\xE8rera des spores qui deviendront des cellules sexu\xE9es,
+    et le cycle recommencera."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -46817,7 +47667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.1720967, y: 88.00002}
+  m_AnchoredPosition: {x: -4.1720967, y: 115.00003}
   m_SizeDelta: {x: 536.356, y: 357.571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852664286
@@ -48693,7 +49543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -345.00015}
+  m_AnchoredPosition: {x: 0, y: -365.9999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1921092080
@@ -48830,8 +49680,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Humides et gluants, il en existe des ronds, des fins, des roses, des blancs\u2026
-    Plus de milles especes ont deja ete identifiees!\n\nC\u2019est un microorganisme
-    vivant compose d\u2019une seule cellule. "
+    Plus de mille esp\xE8ces ont d\xE9j\xE0 \xE9t\xE9 identifi\xE9es !\r\n\r\nC\u2019est
+    un microorganisme vivant compos\xE9 d\u2019une seule cellule.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -49307,7 +50157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 387}
+  m_AnchoredPosition: {x: 10, y: 414}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935148657
@@ -49330,7 +50180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Les Blobs resistent au feu, et peuvent se regenerer s\u2019ils sont decoupes."
+  m_text: "Les Blobs r\xE9sistent au feu, et peuvent se r\xE9g\xE9n\xE9rer s\u2019ils
+    sont d\xE9coup\xE9s.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -49541,6 +50392,138 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937375288}
   m_CullTransparentMesh: 1
+--- !u!1 &1938494829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938494830}
+  - component: {fileID: 1938494833}
+  - component: {fileID: 1938494832}
+  - component: {fileID: 1938494831}
+  m_Layer: 0
+  m_Name: X
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1938494830
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938494829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 54757079}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 150, y: -461}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1938494831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938494829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: 6ae59977639369c48b36989d1020f8ef, type: 3}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1938494832}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 101239802}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CloseSureWantToGoIntoLevelScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1938494832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938494829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ddf56f3eb8dbf4a4c96eb596dbb6cae6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1938494833
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938494829}
+  m_CullTransparentMesh: 1
 --- !u!1 &1938545883
 GameObject:
   m_ObjectHideFlags: 0
@@ -49560,7 +50543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1938545884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50179,7 +51162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 538.7498}
+  m_AnchoredPosition: {x: 0, y: 555.7499}
   m_SizeDelta: {x: 542.762, y: 361.841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961716770
@@ -50332,8 +51315,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12.379476}
-  m_SizeDelta: {x: 800, y: 935.692}
+  m_AnchoredPosition: {x: 0, y: -14.739679}
+  m_SizeDelta: {x: 800, y: 971.089}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1971950376
 GameObject:
@@ -50619,8 +51602,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0/0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
-  m_sharedMaterial: {fileID: -2549645006107359616, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 22f97c4ba2cbbfd44b2ab41523490ee0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -50708,7 +51691,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2549645006107359616, guid: e303cbe0d3df2574aad2e29a021ca196, type: 2}
+  - {fileID: 2100000, guid: 22f97c4ba2cbbfd44b2ab41523490ee0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52062,7 +53045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 203.50006}
+  m_AnchoredPosition: {x: 0, y: 255.50002}
   m_SizeDelta: {x: 456.796, y: 304.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2030726666
@@ -53342,7 +54325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -116.99994}
+  m_AnchoredPosition: {x: 10, y: -137}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2093981263
@@ -53365,7 +54348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "expansion d'un blob\n\xA9Norty Edwards,\nmushroomobserver.org\n"
+  m_text: "Expansion d\u2019un blob\r\n\xA9Norty Edwards,\r\nmushroomobserver.org\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 3825316962571689527, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
@@ -54919,7 +55902,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019569705
   m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 392d9072978fa9b41bf35660ee68d66e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -55764,7 +56747,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019569705
   m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 5fb9a124b8505a1489ca65fec419b98c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -57983,7 +58966,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019569705
   m_SortingLayer: 5
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f574eb6a2ca86a049ac69127a9d753f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -58954,7 +59937,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019569705
   m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 65d6628f508ee4e4ba30c19e27fb9c8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

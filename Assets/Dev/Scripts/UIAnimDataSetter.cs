@@ -16,4 +16,8 @@ public class UIAnimDataSetter : MonoBehaviour
     {
         anim.SetBool("Effect Now", false);
     }
+    public void TurnOffObject()
+    {
+        gameObject.SetActive(false);
+    }
 }
