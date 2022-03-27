@@ -166,6 +166,8 @@ public class LevelManager : MonoBehaviour, IManageable
             levelEnded = true;
 
             UIManager.instance.LoseLevelAnimationSequence();
+
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Lose);
             Debug.Log("LOST LEVEL, OUT OF MOVES!");
         }
     }
@@ -179,6 +181,7 @@ public class LevelManager : MonoBehaviour, IManageable
 
             UIManager.instance.WinLevelAnimationSequence();
 
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Victory);
             Debug.Log("WON LEVEL");
         }
     }

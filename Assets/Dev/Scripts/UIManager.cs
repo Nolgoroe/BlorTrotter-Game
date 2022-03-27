@@ -807,11 +807,24 @@ public class UIManager : MonoBehaviour, IManageable
     {
         int score = ScoreManager.instance.calcualteEndLevelScore();
 
+        int counter = 0;
 
         for (int i = 0; i < score; i++)
         {
             stars[i].SetActive(true);
 
+            if(i == 0)
+            {
+                SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.OneStar);
+            }
+            else if(i == 1)
+            {
+                SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.TwoStar);
+            }
+            else if(i == 2)
+            {
+                SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.ThreeStar);
+            }
             await Task.Delay(timeWaitBetweenStars);
         }
 

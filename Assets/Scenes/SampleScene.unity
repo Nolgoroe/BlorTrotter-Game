@@ -9380,6 +9380,22 @@ MonoBehaviour:
     theSoundClip: {fileID: 8300000, guid: 21d17221fd94a694881205fd51093845, type: 3}
   - enumSound: 2
     theSoundClip: {fileID: 8300000, guid: b4f823f404708e14fba812b85cd799a1, type: 3}
+  - enumSound: 3
+    theSoundClip: {fileID: 8300000, guid: fa6a3d078f62c1f41be2a47b0cf86931, type: 3}
+  - enumSound: 4
+    theSoundClip: {fileID: 8300000, guid: 00215b31ae84bb740b2d2b706574a39e, type: 3}
+  - enumSound: 5
+    theSoundClip: {fileID: 8300000, guid: 99896d8bebf83a14b9eb82ec5e76df49, type: 3}
+  - enumSound: 6
+    theSoundClip: {fileID: 8300000, guid: a4688dfd8be49424aba37bfd36a87520, type: 3}
+  - enumSound: 7
+    theSoundClip: {fileID: 8300000, guid: 7117fb8c5def4e5499e82cb383e9982f, type: 3}
+  - enumSound: 8
+    theSoundClip: {fileID: 8300000, guid: 015efa705055936478593b3179b8f899, type: 3}
+  - enumSound: 9
+    theSoundClip: {fileID: 8300000, guid: 384281d661e1d2a489520e4fe1ffaba2, type: 3}
+  - enumSound: 10
+    theSoundClip: {fileID: 8300000, guid: 1e21695109aab85489667197f7718ec1, type: 3}
   canHearMusic: 0
   canHearSounds: 0
 --- !u!1 &317554333
@@ -15633,7 +15649,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 599386606}
-  - component: {fileID: 599386609}
   - component: {fileID: 599386608}
   - component: {fileID: 599386607}
   - component: {fileID: 599386610}
@@ -15797,14 +15812,6 @@ MeshRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 4
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &599386609
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599386605}
-  m_CullTransparentMesh: 1
 --- !u!95 &599386610
 Animator:
   serializedVersion: 3
@@ -43499,7 +43506,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1684813773}
-  - component: {fileID: 1684813777}
   - component: {fileID: 1684813776}
   - component: {fileID: 1684813775}
   - component: {fileID: 1684813774}
@@ -43682,14 +43688,6 @@ MeshRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 4
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &1684813777
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684813772}
-  m_CullTransparentMesh: 1
 --- !u!114 &1684813778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55243,7 +55241,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.7e-44, z: 1.6933e-41, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

@@ -182,7 +182,7 @@ public class Player : Entity
 
         GridManager.instance.SetInteractableTilesDisplay(this);
 
-        LevelManager.instance.CheckLoseLevel();
+        //LevelManager.instance.CheckLoseLevel();
 
         await Task.Yield();
     }

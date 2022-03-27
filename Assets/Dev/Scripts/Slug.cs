@@ -101,6 +101,8 @@ public class Slug : Entity
         LeanTween.move(gameObject, targetVector, 0.05f);
         GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
+        SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Slug_Moving);
+
         await Task.Yield();
     }
 

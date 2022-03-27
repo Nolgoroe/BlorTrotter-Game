@@ -188,6 +188,8 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         if (summonSlug)
         {
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Slug_Spawning);
+
             GameObject toSummon = Instantiate(slugPrefab, nextTileToSpawnEnemySlug.transform);
             Transform parent = nextTileToSpawnEnemySlug.transform;
             Entity et = toSummon.transform.GetChild(0).GetComponent<Slug>();

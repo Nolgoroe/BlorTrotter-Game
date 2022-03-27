@@ -9,7 +9,14 @@ public enum Sounds
     Blob_Eat_Absorb,
     Blob_Hurt,
     Blob_Moving_Spawning,
-
+    Slug_Moving,
+    Slug_Spawning,
+    Lose,
+    Selection,
+    Victory,
+    OneStar,
+    TwoStar,
+    ThreeStar
     //// Add all sounds here
 }
 
