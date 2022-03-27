@@ -20,6 +20,7 @@ public class Tile : MonoBehaviour
     public bool isWaterTile; 
     public bool isGooPiece; 
     public bool isEnemyGooPiece; 
+    public bool isBeetle; 
     public bool isAdjacentToMainBody;  //new
     public bool isMainPlayerBody;  //new
     public bool isFood;  //new
@@ -52,7 +53,7 @@ public class Tile : MonoBehaviour
     public EdgeType edgeType = EdgeType.notEdge;
 
 
-    public void SetEnemySpawnData()
+    public void SetEnemySpawnDataSlug()
     {
         isFull = true;
         isGooPiece = false;
@@ -60,5 +61,15 @@ public class Tile : MonoBehaviour
         isAdjacentToMainBody = false;
         isMainPlayerBody = false;
         turnsUntilEnemyGooDissappears = 3;
+    }
+    public void SetEnemySpawnDataBeetle()
+    {
+        isFull = true;
+        isGooPiece = false;
+        //isFood = false;
+
+        //isEnemyGooPiece = true;
+        //isAdjacentToMainBody = false;
+        //isMainPlayerBody = false;
     }
 }

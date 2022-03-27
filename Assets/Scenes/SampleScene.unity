@@ -3814,7 +3814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &84271926
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5622,7 +5622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -10}
+  m_AnchoredPosition: {x: 220, y: -44.999996}
   m_SizeDelta: {x: 123.633, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164505265
@@ -10907,7 +10907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -210}
+  m_AnchoredPosition: {x: 220, y: -305}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418326682
@@ -14193,7 +14193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &551949641
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20659,7 +20659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &856205355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21068,12 +21068,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   allEnemies: []
-  enemySpawnTiles: []
+  slugSpawnTiles: []
   beetleSpawnTiles: []
   beetleTargetTiles: []
   beetleTargetAndSpawnTiles: []
   slugPrefab: {fileID: 6652384447640864243, guid: 1db6ce4fdfa1e98499751ec3f0afb7d4, type: 3}
-  nextTileToSpawnEnemy: {fileID: 0}
+  beetlePrefab: {fileID: 637877807344674400, guid: 1ba20c1dc42e45a4d85c476116e54a07, type: 3}
+  nextTileToSpawnEnemySlug: {fileID: 0}
+  nextTileToSpawnEnemyBeetle: {fileID: 0}
+  summonSlug: 0
+  summonBeetle: 0
 --- !u!1 &889754266
 GameObject:
   m_ObjectHideFlags: 0
@@ -22587,7 +22591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -10}
+  m_AnchoredPosition: {x: -60, y: -44.999996}
   m_SizeDelta: {x: 440.35, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947287606
@@ -28633,7 +28637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1198973205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29814,7 +29818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -110}
+  m_AnchoredPosition: {x: -60, y: -177}
   m_SizeDelta: {x: 440.7, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243666987
@@ -32460,7 +32464,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -43004,7 +43008,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -44666,7 +44670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -110}
+  m_AnchoredPosition: {x: 220, y: -177}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750367509
@@ -49556,7 +49560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1938545884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51750,7 +51754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -210}
+  m_AnchoredPosition: {x: -60, y: -305}
   m_SizeDelta: {x: 440.7, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019003813
@@ -54256,7 +54260,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.2e-44, y: 2.4405384e-30, z: 9.1858e-41, w: 4.591775e-39}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

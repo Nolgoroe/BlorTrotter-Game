@@ -339,7 +339,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 if (toSummon.CompareTag("Enemy"))
                 {
-                    EntityManager.instance.enemySpawnTiles.Add(t);
+                    EntityManager.instance.slugSpawnTiles.Add(t);
 
                     Destroy(toSummon.gameObject);
 

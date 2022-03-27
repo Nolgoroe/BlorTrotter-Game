@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System;
 
+public enum EntityTypes { player, Slug, Beetle};
+
 public class EntityManager : MonoBehaviour, IManageable  //singleton , only instantiate one time 
 {
     public static EntityManager instance;
@@ -13,21 +15,24 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
     public List<Entity> allEnemies; // list is dynamic
 
-    public List<Tile> enemySpawnTiles;
+    public List<Tile> slugSpawnTiles;
     public List<Tile> beetleSpawnTiles;
     public List<Tile> beetleTargetTiles;
     public List<Tile> beetleTargetAndSpawnTiles;
 
     public GameObject slugPrefab;
+    public GameObject beetlePrefab;
 
     public Tile nextTileToSpawnEnemySlug;
     public Tile nextTileToSpawnEnemyBeetle;
+
+    public bool summonSlug, summonBeetle;
 
     public void initManager()
     {
         instance = this;
         allEnemies = new List<Entity>();
-        enemySpawnTiles = new List<Tile>();
+        slugSpawnTiles = new List<Tile>();
         beetleSpawnTiles = new List<Tile>();
         beetleTargetAndSpawnTiles = new List<Tile>();
 
@@ -93,7 +98,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
         if (LevelManager.instance.currentCooldownSummonEnemies <= 0)
         {
-            if (!CheckLimitOfEnemiesReached(LevelManager.instance.currentCooldownSummonEnemies))
+            if (!CheckLimitOfEnemiesReachedGlobal())
             {
                 SpawnEnemy();
             }
@@ -106,89 +111,145 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         if (LevelManager.instance.currentCooldownSummonEnemies - 1 == 0 && (!nextTileToSpawnEnemySlug || !nextTileToSpawnEnemyBeetle))
         {
-            int rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
-
-            Tile t = enemySpawnTiles[rand].GetComponent<Tile>();
-
-            int counter = 1000;
-
-            while (t.isFull)
+            if (!nextTileToSpawnEnemySlug && LevelManager.instance.currentLevel.hasSlugs)
             {
-                counter--;
-                rand = UnityEngine.Random.Range(0, enemySpawnTiles.Count);
-                t = enemySpawnTiles[rand].GetComponent<Tile>();
+                int rand = UnityEngine.Random.Range(0, slugSpawnTiles.Count);
 
-                if (counter <= 0)
+                Tile t = slugSpawnTiles[rand].GetComponent<Tile>();
+
+                int counter = 1000;
+
+                while (t.isFull)
                 {
-                    Debug.LogError("PROBLEM WITH SLUG SPAWN");
-                    break;
+                    counter--;
+                    rand = UnityEngine.Random.Range(0, slugSpawnTiles.Count);
+                    t = slugSpawnTiles[rand].GetComponent<Tile>();
+
+                    if (counter <= 0)
+                    {
+                        Debug.LogError("PROBLEM WITH SLUG SPAWN");
+                        break;
+                    }
                 }
+
+                nextTileToSpawnEnemySlug = t;
             }
 
-            nextTileToSpawnEnemySlug = t;
-        }
-
-        if (!CheckLimitOfEnemiesReached(LevelManager.instance.currentCooldownSummonEnemies) && (nextTileToSpawnEnemySlug || nextTileToSpawnEnemyBeetle))
-        {
-            if (nextTileToSpawnEnemySlug)
+            if (!nextTileToSpawnEnemyBeetle && LevelManager.instance.currentLevel.hasBeetles)
             {
-                GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemySlug);
+                int rand = UnityEngine.Random.Range(0, beetleSpawnTiles.Count);
+
+                Tile t = beetleSpawnTiles[rand].GetComponent<Tile>();
+
+                rand = UnityEngine.Random.Range(0, beetleSpawnTiles.Count);
+                t = beetleSpawnTiles[rand].GetComponent<Tile>();
+
+                nextTileToSpawnEnemyBeetle = t;
             }
 
-            if (nextTileToSpawnEnemyBeetle)
+
+            bool reachedMaxConcurrentBeetles = CheckLimitOfEnemiesReached(EntityTypes.Beetle);
+            bool reachedMaxConcurrentSlugs = CheckLimitOfEnemiesReached(EntityTypes.Slug);
+
+            if (!reachedMaxConcurrentBeetles && !reachedMaxConcurrentSlugs)
+            {
+                int rand = UnityEngine.Random.Range(0, 2);
+
+                if (rand == 0)
+                {
+                    GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemySlug);
+                    summonSlug = true;
+                    summonBeetle = false;
+                }
+                else
+                {
+                    GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemyBeetle);
+                    summonSlug = false;
+                    summonBeetle = true;
+                }
+
+            }
+            else if (!reachedMaxConcurrentBeetles)
             {
                 GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemyBeetle);
+                summonSlug = false;
+                summonBeetle = true;
+            }
+            else if (!reachedMaxConcurrentSlugs)
+            {
+                GridManager.instance.SetSpawnTileON(nextTileToSpawnEnemySlug);
+                summonSlug = true;
+                summonBeetle = false;
             }
         }
     }
 
     public void SpawnEnemy()
     {
-
-        // beetle spawn data here aswell
-        
-        // check if has reached max slugs or beetles - if not reached max in one then summon that one, if not reached max on both, choost random
-        // if reached max on both, don't summon.
-
-        GameObject toSummon = Instantiate(slugPrefab, nextTileToSpawnEnemySlug.transform);
-        Transform parent = nextTileToSpawnEnemySlug.transform;
-        Entity et = toSummon.transform.GetChild(0).GetComponent<Slug>();
-
-        if (nextTileToSpawnEnemySlug.isGooPiece)
+        if (summonSlug)
         {
-            toSummon.transform.GetChild(0).GetComponent<Slug>().EatGooPiece(nextTileToSpawnEnemySlug);
+            GameObject toSummon = Instantiate(slugPrefab, nextTileToSpawnEnemySlug.transform);
+            Transform parent = nextTileToSpawnEnemySlug.transform;
+            Entity et = toSummon.transform.GetChild(0).GetComponent<Slug>();
+
+            if (nextTileToSpawnEnemySlug.isGooPiece)
+            {
+                toSummon.transform.GetChild(0).GetComponent<Slug>().EatGooPiece(nextTileToSpawnEnemySlug);
+            }
+
+            nextTileToSpawnEnemySlug.SetEnemySpawnDataSlug();
+
+
+            if (!GridManager.instance.allEnemyGooTiles.Contains(nextTileToSpawnEnemySlug))
+            {
+                GridManager.instance.allEnemyGooTiles.Add(nextTileToSpawnEnemySlug);
+            }
+
+            et.AddGooTiles(nextTileToSpawnEnemySlug);
+
+            foreach (Tile element in et.gooTiles)
+            {
+                GridManager.instance.LeaveGooOnTileEnemy(element);
+            }
+
+
+            Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
+            et.transform.position = position;
+            toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+            LevelEditor.instance.SetParentByTag(toSummon);
+
+
+            AddEnemyToEnemiesList(et);
+            et.SetCurrentTile(nextTileToSpawnEnemySlug);
+
+
+            GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemySlug);
+
+            nextTileToSpawnEnemySlug = null;
         }
-
-        nextTileToSpawnEnemySlug.SetEnemySpawnData();
-
-
-        if (!GridManager.instance.allEnemyGooTiles.Contains(nextTileToSpawnEnemySlug))
+        else
         {
-            GridManager.instance.allEnemyGooTiles.Add(nextTileToSpawnEnemySlug);
+            GameObject toSummon = Instantiate(beetlePrefab, nextTileToSpawnEnemyBeetle.transform);
+
+            Transform parent = nextTileToSpawnEnemyBeetle.transform;
+            Entity et = toSummon.transform.GetComponent<Beetle>();
+
+            Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
+            et.transform.position = position;
+            toSummon.transform.GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + 2;
+
+            LevelEditor.instance.SetParentByTag(toSummon);
+
+            AddEnemyToEnemiesList(et);
+            et.SetCurrentTile(nextTileToSpawnEnemyBeetle);
+
+
+            GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemyBeetle);
+
+            nextTileToSpawnEnemyBeetle = null;
+
         }
-
-        et.AddGooTiles(nextTileToSpawnEnemySlug);
-
-        foreach (Tile element in et.gooTiles)
-        {
-            GridManager.instance.LeaveGooOnTileEnemy(element);
-        }
-
-
-        Vector3 position = new Vector3(parent.position.x, parent.position.y + (LevelEditor.instance.offsetY * 2), parent.position.z);
-        et.transform.position = position;
-        toSummon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
-
-        LevelEditor.instance.SetParentByTag(toSummon);
-
-
-        AddEnemyToEnemiesList(et);
-        et.SetCurrentTile(nextTileToSpawnEnemySlug);
-
-
-        GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemySlug);
-
-        nextTileToSpawnEnemySlug = null;
     }
 
     public void CallPrepareToMovePlayer(Tile targetTile) //new
@@ -201,39 +262,12 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         List<Task> tasks = new List<Task>();
 
-        List<Entity> tempList = new List<Entity>();
-        tempList.AddRange(allEnemies);
-
-        for (int i = 0; i < tempList.Count; i++)
-        {
-            if (tempList[i].enemyPath != null)
-            {
-                if (tempList[i].enemyPath.Count <= 0)
-                {
-                    tempList[i].ReleaseTargetTile();
-                    await RemoveEnemyFromList(tempList[i], allEnemies);
-
-                    await Task.Delay(1 * 1000);
-                    Destroy(tempList[i].transform.parent.gameObject);
-                }
-            }
-            else
-            {
-                tempList[i].currentTile.isFull = false;
-                await RemoveEnemyFromList(tempList[i], allEnemies);
-
-                await Task.Delay(1 * 1000);
-                Destroy(tempList[i].gameObject);
-            }
-        }
-
         for (int i = 0; i < allEnemies.Count; i++)
         {
 
             //Tile target = allEnemies[i].SetTargetTileForAstarPath(); 
-            allEnemies[i].ManageTurnStart();
 
-            tasks.Add(allEnemies[i].MoveEntity(allEnemies[i].enemyPath[0])); 
+            tasks.Add(allEnemies[i].ManageTurnStart());
         }
 
         await Task.WhenAll(tasks);
@@ -270,15 +304,56 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         player.PrepareToMove(player.gooTiles[rand]);
     }
 
-    public bool CheckLimitOfEnemiesReached(int amount)
+    public bool CheckLimitOfEnemiesReached(EntityTypes type)
     {
-        if(allEnemies.Count >= LevelManager.instance.currentLevel.maxConcurrentenemies)
+        int counter = 0;
+
+        switch (type)
+        {
+            case EntityTypes.Slug:
+
+                foreach (Entity et in allEnemies)
+                {
+                    if (et.typeEntity == EntityTypes.Slug)
+                    {
+                        counter++;
+                    }
+                }
+
+                if (counter == LevelManager.instance.currentLevel.maxConcurrentSlugs)
+                {
+                    return true;
+                }
+
+                break;
+            case EntityTypes.Beetle:
+                foreach (Entity et in allEnemies)
+                {
+                    if (et.typeEntity == EntityTypes.Beetle)
+                    {
+                        counter++;
+                    }
+                }
+
+                if (counter == LevelManager.instance.currentLevel.maxConcurrentBeetles)
+                {
+                    return true;
+                }
+
+                break;
+            default:
+                break;
+        }
+
+        return false;
+    }
+    public bool CheckLimitOfEnemiesReachedGlobal()
+    {
+        if(allEnemies.Count == LevelManager.instance.currentLevel.maxConcurrentGlobalEnemies)
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
 }

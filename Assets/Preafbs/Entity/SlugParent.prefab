@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6652384447640864243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88235, y: 0.8736373, z: 79.54461}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4761915766584867165}
@@ -208,6 +208,7 @@ MonoBehaviour:
   entityAdjacentTiles: []
   enemyPath: []
   anim: {fileID: 1711070921084630667}
+  typeEntity: 1
   PublicTargetTile: {fileID: 0}
   currentMoveDirection: 2
   DownArrowPrefab: {fileID: 669789502684931323}

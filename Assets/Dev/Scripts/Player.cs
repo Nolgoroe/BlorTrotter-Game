@@ -145,7 +145,7 @@ public class Player : Entity
         gooTiles.Remove(gooTile);
     }
 
-    public override void ManageTurnStart() 
+    public override async Task ManageTurnStart() 
     {
         isPlayerTurn = true;
 
@@ -160,6 +160,8 @@ public class Player : Entity
         GridManager.instance.SetInteractableTilesDisplay(this);
 
         LevelManager.instance.CheckLoseLevel();
+
+        await Task.Yield();
     }
 
     public override void SetCurrentTile(Tile tileOn)

@@ -56,26 +56,26 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
         Debug.Log("success Sound");
     }
 
-    public void PlaySound(Sounds soundEnum)
+    public void PlaySound(AudioSource source, Sounds soundEnum)
     {
         SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
-    public void PlaySoundChangeVolume(Sounds soundEnum, float Volume)
+    public void PlaySoundChangeVolume(AudioSource source, Sounds soundEnum, float Volume)
     {
         SFXAudioSource.volume = Volume;
 
         SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
-    public async void PlaySoundDelay(Sounds soundEnum, int timeToWait)
+    public async void PlaySoundDelay(AudioSource source, Sounds soundEnum, int timeToWait)
     {
         await Task.Delay(timeToWait * 1000);
 
         SFXAudioSource.PlayOneShot(enumToSound[soundEnum]);
     }
 
-    public async void PlaySoundChangeVolumeAndDelay(Sounds soundEnum, float Volume, int timeToWait)
+    public async void PlaySoundChangeVolumeAndDelay(AudioSource source, Sounds soundEnum, float Volume, int timeToWait)
     {
         await Task.Delay(timeToWait * 1000);
 

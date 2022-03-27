@@ -15,14 +15,19 @@ MonoBehaviour:
   levelID: 3
   maxNumberOfMoves: 7
   summonEnemyCooldown: 0
+  maxConcurrentGlobalEnemies: 0
   maxConcurrentSlugs: 0
+  maxConcurrentBeetles: 0
   amountOfKnowledge: 1
   amountOfFood: 2
   amountToAddOnEatFood: 3
   amountToAddOnEatBlob: 1
   hasEnemies: 0
+  hasSlugs: 0
+  hasBeetles: 0
   levelMap: {fileID: 21300000, guid: 5986c364ade066a46929354ac36b2489, type: 3}
   levelObstacles: {fileID: 21300000, guid: e89a5823f1e99e741800ff45db8c9dff, type: 3}
+  levelBeetleData: {fileID: 0}
   spriteLevelImage: {fileID: 21300000, guid: e26a27083d400d34ab1cdeb0c4796443, type: 3}
   spriteLevelImageLocked: {fileID: 21300000, guid: 6ddc70b4951b06a47ab3619b93e529fb, type: 3}
-  movesNeeded: 6
+  movesNeeded: 8

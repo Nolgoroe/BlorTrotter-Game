@@ -54,9 +54,11 @@ public class LevelManager : MonoBehaviour, IManageable
         saltLocks.Clear();
 
         EntityManager.instance.SetPlayer(null);
-        EntityManager.instance.enemySpawnTiles.Clear();
+        EntityManager.instance.slugSpawnTiles.Clear();
         EntityManager.instance.beetleSpawnTiles.Clear();
         EntityManager.instance.beetleTargetAndSpawnTiles.Clear();
+        EntityManager.instance.beetleTargetTiles.Clear();
+
         EntityManager.instance.allEnemies.Clear();
 
         ScoreManager.instance.currentCollectedKnowledge = 0;
@@ -102,9 +104,11 @@ public class LevelManager : MonoBehaviour, IManageable
         GridManager.instance.allEdgeTileInLevel.Clear();
 
         EntityManager.instance.SetPlayer(null);
-        EntityManager.instance.enemySpawnTiles.Clear();
+        EntityManager.instance.slugSpawnTiles.Clear();
         EntityManager.instance.beetleSpawnTiles.Clear();
         EntityManager.instance.beetleTargetAndSpawnTiles.Clear();
+        EntityManager.instance.beetleTargetTiles.Clear();
+
         EntityManager.instance.allEnemies.Clear();
 
         ScoreManager.instance.currentCollectedKnowledge = 0;

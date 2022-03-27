@@ -459,7 +459,12 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + LevelManager.instance.currentLevel.levelMap.texture.width;
 
-            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isEnemyGooPiece || allTilesInLevel[tileIndex].isBeetle)
+            {
+                return null;
+            }
+
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -479,8 +484,13 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         if (!(tile.edgeType == EdgeType.topRightEdge) && !(tile.edgeType == EdgeType.topLeftEdge) && !(tile.edgeType == EdgeType.topEdge))
         {
             int tileIndex = tile.index - LevelManager.instance.currentLevel.levelMap.texture.width;
+            
+            if (allTilesInLevel[tileIndex].isEnemyGooPiece || allTilesInLevel[tileIndex].isBeetle)
+            {
+                return null;
+            }
 
-            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -502,7 +512,12 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index - 1;
 
-            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isEnemyGooPiece || allTilesInLevel[tileIndex].isBeetle)
+            {
+                return null;
+            }
+
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -522,7 +537,12 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             int tileIndex = tile.index + 1;
 
-            if ((allTilesInLevel[tileIndex].isFull || allTilesInLevel[tileIndex].isEnemyGooPiece) && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
+            if (allTilesInLevel[tileIndex].isEnemyGooPiece || allTilesInLevel[tileIndex].isBeetle)
+            {
+                return null;
+            }
+
+            if (allTilesInLevel[tileIndex].isFull && !allTilesInLevel[tileIndex].isFood && !allTilesInLevel[tileIndex].isKinine && !allTilesInLevel[tileIndex].isSalt && !allTilesInLevel[tileIndex].isMainPlayerBody)
             {
                 return null;
             }
@@ -966,7 +986,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
         {
             if (!tile.isFull)
             {
-                if(tile.edgeType != EdgeType.notEdge && !EntityManager.instance.enemySpawnTiles.Contains(tile))
+                if(tile.edgeType != EdgeType.notEdge && !EntityManager.instance.slugSpawnTiles.Contains(tile))
                 {
                     allEdgeTileInLevel.Add(tile);
                 }

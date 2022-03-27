@@ -122,8 +122,33 @@ public class Slug : Entity
         gooTiles.Remove(gooTile);
     }
 
-    public override void ManageTurnStart()
+    public override async Task ManageTurnStart()
     {
+        if (enemyPath != null)
+        {
+            if (enemyPath.Count <= 0)
+            {
+                ReleaseTargetTile();
+                await EntityManager.instance.RemoveEnemyFromList(this, EntityManager.instance.allEnemies);
+
+                await Task.Delay(1 * 1000);
+                Destroy(transform.parent.gameObject);
+            }
+        }
+        else
+        {
+            currentTile.isFull = false;
+            await EntityManager.instance.RemoveEnemyFromList(this, EntityManager.instance.allEnemies);
+
+            await Task.Delay(1 * 1000);
+            Destroy(transform.parent.gameObject);
+        }
+
+
+        if (enemyPath.Count > 0)
+        {
+            MoveEntity(enemyPath[0]);
+        }
     }
 
     public override void SetCurrentTile(Tile tileOn)
@@ -226,6 +251,7 @@ public class Slug : Entity
 
         if (target.isMainPlayerBody)
         {
+            target.isMainPlayerBody = false;
             EntityManager.instance.SpawnPlayerRandomGooLocation();
         }
     }

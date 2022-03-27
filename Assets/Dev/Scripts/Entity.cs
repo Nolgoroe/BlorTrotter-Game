@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public enum AnimationType { Move, Hurt, Teleport, Win}
+public enum AnimationType { Move, Hurt, Win, Teleport, Land, LiftOff}
 public enum MoveDirection { up, down, left, right}
 public abstract class Entity : MonoBehaviour // abstract class for inheritance and polymorphism
 {
@@ -13,6 +13,7 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
     public List<Tile> entityAdjacentTiles;
     public List<Tile> enemyPath;
     public Animator anim;
+    public EntityTypes typeEntity;
 
     public virtual async Task MoveEntity(Tile targetTile) // can be override
     {
@@ -54,8 +55,18 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
     {
         Debug.Log("what happened?");
     }
-    public abstract void AddGooTiles(Tile gooTile);
-    public abstract void RemoveGooTiles(Tile gooTile);
-    public abstract void ManageTurnStart();
+    public virtual void AddGooTiles(Tile gooTile)
+    {
+
+    }
+    public virtual void RemoveGooTiles(Tile gooTile)
+    {
+
+    }
+    public virtual async Task ManageTurnStart()
+    {
+        Debug.Log("what happened?");
+        await Task.Delay(300);
+    }
     public abstract void SetCurrentTile(Tile tileOn);
 }
