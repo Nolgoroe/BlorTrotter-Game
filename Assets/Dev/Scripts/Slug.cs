@@ -22,7 +22,7 @@ public class Slug : Entity
 
     public override async Task MoveEntity(Tile targetTile)
     {
-        if (!targetTile.isBeetle && !targetTile.isSlugBody)
+        if (!targetTile.isBeetleForTutorial && !targetTile.isSlugBody)
         {
             GridManager.instance.SetTileFull(currentTile);
 

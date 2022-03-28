@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelID: 8
   maxNumberOfMoves: 14
-  summonEnemyCooldown: 2
+  summonEnemyCooldown: 3
   maxConcurrentGlobalEnemies: 2
   maxConcurrentSlugs: 2
   maxConcurrentBeetles: 0

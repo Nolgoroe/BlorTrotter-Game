@@ -26,7 +26,7 @@ public class Beetle : Entity
     {
         ChangeAnimState();
 
-        await Task.Delay(2000);
+        await Task.Delay(1500);
     }
 
     private void ChangeAnimState()

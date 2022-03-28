@@ -112,6 +112,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
                         return;
                     }
 
+                    SpawnEnemy();
                 }
 
                 if (summonBeetle)
@@ -122,10 +123,9 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
                         Debug.LogError("Tried to spawn on enemy");
                         return;
                     }
+
+                    SpawnEnemy();
                 }
-
-
-                SpawnEnemy();
             }
 
             LevelManager.instance.currentCooldownSummonEnemies = LevelManager.instance.currentLevel.summonEnemyCooldown;
@@ -134,7 +134,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
     public void CheckNextSpawnTileEnemy()
     {
-        if (LevelManager.instance.currentCooldownSummonEnemies - 1 == 0 && (!nextTileToSpawnEnemySlug || !nextTileToSpawnEnemyBeetle))
+        if (LevelManager.instance.currentCooldownSummonEnemies - 1 == 0)
         {
             if (!nextTileToSpawnEnemySlug && LevelManager.instance.currentLevel.hasSlugs)
             {

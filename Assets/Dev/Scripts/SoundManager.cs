@@ -70,6 +70,7 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
     public void PlaySound(AudioSource source, Sounds soundEnum)
     {
         //source.PlayOneShot(enumToSound[soundEnum]);
+        source.Stop();
 
         source.PlayOneShot(enumToSound[soundEnum]);
     }
