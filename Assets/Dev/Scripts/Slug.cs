@@ -22,7 +22,7 @@ public class Slug : Entity
 
     public override async Task MoveEntity(Tile targetTile)
     {
-        if (!targetTile.isBeetle || !targetTile.isSlugBody)
+        if (!targetTile.isBeetle && !targetTile.isSlugBody)
         {
             GridManager.instance.SetTileFull(currentTile);
 
@@ -80,7 +80,7 @@ public class Slug : Entity
 
             if (currentTile.isGooPiece)
             {
-                EatGooPiece(targetTile);
+                await EatGooPiece(targetTile);
             }
 
             enemyPath.RemoveAt(0);
@@ -263,7 +263,7 @@ public class Slug : Entity
         await Task.Yield();
     }
 
-    public async void EatGooPiece(Tile target)
+    public async Task EatGooPiece(Tile target)
     {
         target.isGooPiece = false;
         GridManager.instance.RemoveGooTileDisplay(target);
@@ -275,7 +275,7 @@ public class Slug : Entity
         if (target.isMainPlayerBody)
         {
             target.isMainPlayerBody = false;
-            EntityManager.instance.SpawnPlayerRandomGooLocation();
+            await EntityManager .instance.SpawnPlayerRandomGooLocation();
         }
     }
 

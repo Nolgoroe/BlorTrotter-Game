@@ -14,7 +14,7 @@ public class Player : Entity
         anim = GetComponent<Animator>();
     }
 
-    public override void PrepareToMove(Tile targetTile) //new
+    public override async Task PrepareToMove(Tile targetTile) //new
     {
         currentTile.isMainPlayerBody = false;
         GridManager.instance.SetTileFull(currentTile);
@@ -165,6 +165,8 @@ public class Player : Entity
                 {
                     if (currentTile.isLightTile)
                     {
+                        await Task.Delay(480);
+
                         LevelManager.instance.DecreaseNumberOfMoves(3);
                         await PlayAnimation(AnimationType.Hurt);
                     }
@@ -189,7 +191,7 @@ public class Player : Entity
             case AnimationType.Teleport:
                 anim.SetBool("isRetracting", true);
 
-                await Task.Delay(1000);
+                await Task.Delay(1200);
 
                 GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
                 transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);
@@ -227,8 +229,6 @@ public class Player : Entity
 
     public override async Task ManageTurnStart() 
     {
-        InputManager.instance.canRecieveInput = true; //new
-
         isPlayerTurn = true;
 
         entityAdjacentTiles.Clear();

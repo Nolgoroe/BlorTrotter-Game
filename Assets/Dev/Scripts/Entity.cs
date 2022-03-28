@@ -38,8 +38,10 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
 
     }
 
-    public virtual void PrepareToMove(Tile targetTile) //new
+    public virtual async Task PrepareToMove(Tile targetTile) //new
     {
+        await Task.Delay(300);
+
         Debug.Log("what happened?");
     }
     public virtual void DetectMoveDirection(Tile from, Tile TileTo) //new

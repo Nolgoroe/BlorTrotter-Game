@@ -26,7 +26,7 @@ public class Beetle : Entity
     {
         ChangeAnimState();
 
-        await Task.Delay(1000);
+        await Task.Delay(2000);
     }
 
     private void ChangeAnimState()
@@ -125,18 +125,20 @@ public class Beetle : Entity
         }
     }
 
-    public void EatGooPiece(Tile target)
+    public async void EatGooPiece(Tile target)
     {
         target.isGooPiece = false;
         GridManager.instance.RemoveGooTileDisplay(target);
         EntityManager.instance.GetPlayer().RemoveGooTiles(target);
         EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Hurt);
 
+        await Task.Delay(750);
+
         if (target.isMainPlayerBody)
         {
             target.isMainPlayerBody = false;
 
-            EntityManager.instance.SpawnPlayerRandomGooLocation();
+            await EntityManager.instance.SpawnPlayerRandomGooLocation();
         }
     }
 

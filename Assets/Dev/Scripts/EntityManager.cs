@@ -335,11 +335,11 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         //}
     }
 
-    public void SpawnPlayerRandomGooLocation()
+    public async Task SpawnPlayerRandomGooLocation()
     {
         int rand = UnityEngine.Random.Range(0, player.gooTiles.Count);
 
-        player.PrepareToMove(player.gooTiles[rand]);
+        await player.PrepareToMove(player.gooTiles[rand]);
     }
 
     public bool CheckLimitOfEnemiesReached(EntityTypes type)

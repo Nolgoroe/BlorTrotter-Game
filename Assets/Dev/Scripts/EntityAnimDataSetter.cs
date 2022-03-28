@@ -23,7 +23,7 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
 
         await Task.Delay(500);
 
-        //InputManager.instance.canRecieveInput = true; //new
+        InputManager.instance.canRecieveInput = true; //new
     }
 
     public void ResetDataRotatingSlug()
