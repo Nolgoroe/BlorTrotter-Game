@@ -98,6 +98,8 @@ public class Beetle : Entity
 
         currentTile.isFull = true;
         currentTile.isBeetle = true;
+
+        GridManager.instance.SetTargetTileBeetleOn(PublicTargetTile);
     }
 
     public async void CheckEatFood()
@@ -193,6 +195,8 @@ public class Beetle : Entity
 
     public void MoveBeetle()
     {
+        GridManager.instance.SetTargetTileBeetleOff(PublicTargetTile);
+
         Transform parent = PublicTargetTile.transform;
 
         transform.SetParent(parent);

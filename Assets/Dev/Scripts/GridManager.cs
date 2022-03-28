@@ -1036,7 +1036,15 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     {
         tileDisplayManager.SetTileDisplayEnemySpawnON(target);
     }
-    public void RemoveSpawnTileDisplay(Tile target)
+    public void RemoveSpawnTileOff(Tile target)
+    {
+        tileDisplayManager.SetTileDisplayEnemySpawnOFF(target);
+    }
+    public void SetTargetTileBeetleOn(Tile target)
+    {
+        tileDisplayManager.SetTileDisplayEnemySpawnON(target);
+    }
+    public void SetTargetTileBeetleOff(Tile target)
     {
         tileDisplayManager.SetTileDisplayEnemySpawnOFF(target);
     }

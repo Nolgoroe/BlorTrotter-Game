@@ -253,7 +253,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             et.SetCurrentTile(nextTileToSpawnEnemySlug);
 
 
-            GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemySlug);
+            GridManager.instance.RemoveSpawnTileOff(nextTileToSpawnEnemySlug);
 
             nextTileToSpawnEnemySlug = null;
 
@@ -279,7 +279,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             et.SetCurrentTile(nextTileToSpawnEnemyBeetle);
 
 
-            GridManager.instance.RemoveSpawnTileDisplay(nextTileToSpawnEnemyBeetle);
+            GridManager.instance.RemoveSpawnTileOff(nextTileToSpawnEnemyBeetle);
 
             nextTileToSpawnEnemyBeetle.SetEnemySpawnDataBeetle();
 
