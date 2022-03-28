@@ -433,13 +433,13 @@ public class LevelEditor : MonoBehaviour, IManageable
                         SpriteRenderer greyScaleChildTwo = greyScale.childGrey.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
                         greyScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
 
                         SpriteRenderer colorScaleChildOne = greyScale.childColor.transform.GetChild(0).GetComponent<SpriteRenderer>();
                         SpriteRenderer colorScaleChildTwo = greyScale.childColor.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
                         colorScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
 
 
 

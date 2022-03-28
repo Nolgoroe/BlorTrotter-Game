@@ -89,7 +89,7 @@ public class Player : Entity
         //    EntityManager.instance.SetPlayerTurn();
         //}
 
-        LevelManager.instance.CheckLoseLevel();
+        //LevelManager.instance.CheckLoseLevel();
 
         await Task.Delay(500);
     }
@@ -157,6 +157,8 @@ public class Player : Entity
                     }
 
                     currentTile.foodObject = null;
+
+                    GetAdjacentcyData();
                 }
 
                 if (!LevelManager.instance.levelEnded)
@@ -242,6 +244,19 @@ public class Player : Entity
         await Task.Yield();
     }
 
+    public void GetAdjacentcyData()
+    {
+
+        entityAdjacentTiles.Clear();
+        GridManager.instance.SetInteractableTilesDisplayOFF();
+
+        foreach (Tile tile in gooTiles)
+        {
+            GridManager.instance.GetAdjacentTile(tile, this); // reference to the script it's attached to
+        }
+
+        GridManager.instance.SetInteractableTilesDisplay(this);
+    }
     public override void SetCurrentTile(Tile tileOn)
     {
         currentTile = tileOn;

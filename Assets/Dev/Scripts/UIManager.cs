@@ -161,7 +161,7 @@ public class UIManager : MonoBehaviour, IManageable
     [Header("ETC")]
     public List<GameObject> tempScreens;
     public Slider musicSlider, SFXSlider;
-
+    public bool isTyping;
 
     public void initManager()
     {
@@ -194,30 +194,36 @@ public class UIManager : MonoBehaviour, IManageable
 
     public async void TypeWriterWrite(string textToType, TMP_Text textObjectToChange)
     {
-        textObjectToChange.text = "";
-        string originalString = textToType;
-
-        int numCharsRevealed = 0;
-
-        while (numCharsRevealed < originalString.Length)
+        if (!isTyping)
         {
-            string s = GetPartialPayload(originalString, numCharsRevealed);
+            isTyping = true;
 
-            while (originalString[numCharsRevealed] == ' ')
+            textObjectToChange.text = "";
+            string originalString = textToType;
+
+            int numCharsRevealed = 0;
+
+            while (numCharsRevealed < originalString.Length)
             {
+                string s = GetPartialPayload(originalString, numCharsRevealed);
+
+                while (originalString[numCharsRevealed] == ' ')
+                {
+                    ++numCharsRevealed;
+                }
+
                 ++numCharsRevealed;
+
+
+                //textObjectToChange.text = originalString.Substring(0, numCharsRevealed);
+                textObjectToChange.text = GetPartialPayload(originalString, numCharsRevealed);
+
+                await Task.Delay(45);
             }
 
-            ++numCharsRevealed;
-
-
-            //textObjectToChange.text = originalString.Substring(0, numCharsRevealed);
-            textObjectToChange.text = GetPartialPayload(originalString, numCharsRevealed);
-
-            await Task.Delay(20);
+            isTyping = false;
+            textObjectToChange.text = originalString;
         }
-
-        textObjectToChange.text = originalString;
     }
 
     string GetPartialPayload(string s, int typedSoFar)
@@ -510,11 +516,16 @@ public class UIManager : MonoBehaviour, IManageable
 
         /// if there is no last levelplayed, start from level 0.
         
+        if(lastLevelPlayed + 1 >= LevelManager.instance.allLevels.Length)
+        {
+            lastLevelPlayed = -1;
+        }
+
         LevelManager.instance.LaunchLevel(lastLevelPlayed + 1);
     }
 
     public void SetInGameUIData()
-    {
+      {
         if(LevelManager.instance.currentLevel.amountOfKnowledge == 0)
         {
             KnowledgeSlider.value = 1;

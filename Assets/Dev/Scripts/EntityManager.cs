@@ -64,7 +64,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
     public async void MovePlayer(Tile targetTile) // wait for the player to move for moving all the enemies
     {
-        player.MoveEntity(targetTile);
+        await player.MoveEntity(targetTile);
 
         if (LevelManager.instance.currentLevel.hasEnemies)
         {

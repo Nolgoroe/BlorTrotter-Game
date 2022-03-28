@@ -92,6 +92,12 @@ public class LevelManager : MonoBehaviour, IManageable
         GridManager.instance.allTilesInLevel.Clear();
         GridManager.instance.allEdgeTileInLevel.Clear();
         GridManager.instance.allEnemyGooTiles.Clear();
+
+
+        if(currentLevel.levelID >= allLevels.Length - 1)
+        {
+            UIManager.instance.continueButton.gameObject.SetActive(false);
+        }
     }
 
     public void DestroyLevel()
@@ -185,6 +191,8 @@ public class LevelManager : MonoBehaviour, IManageable
 
             UIManager.instance.WinLevelAnimationSequence();
 
+            SoundManager.instance.SFXAudioSource.volume = UIManager.instance.SFXSlider.value;
+
             SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Victory);
             Debug.Log("WON LEVEL");
         }
@@ -217,7 +225,7 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         UIManager.instance.kininePowerSprite.SetActive(true);
 
-        await Task.Delay(1000);
+        //await Task.Delay(1000);
 
         UnlcokKinine();
     }
@@ -226,7 +234,7 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         UIManager.instance.saltPowerSprite.SetActive(true);
 
-        await Task.Delay(1000);
+        //await Task.Delay(1000);
 
         UnlockSalt();
     }
