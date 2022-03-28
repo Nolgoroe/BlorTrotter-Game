@@ -140,4 +140,9 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
             transform.GetComponent<Beetle>().foodCarryDisplay.SetActive(true);
         }
     }
+
+    public void SetTargetBeetleDisplay()
+    {
+        GridManager.instance.SetTargetTileBeetleOn(GetComponent<Beetle>().PublicTargetTile);
+    }
 }

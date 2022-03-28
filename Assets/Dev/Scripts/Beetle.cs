@@ -98,8 +98,6 @@ public class Beetle : Entity
 
         currentTile.isFull = true;
         currentTile.isBeetle = true;
-
-        GridManager.instance.SetTargetTileBeetleOn(PublicTargetTile);
     }
 
     public async void CheckEatFood()

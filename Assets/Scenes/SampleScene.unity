@@ -6493,7 +6493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -624}
+  m_AnchoredPosition: {x: 0, y: -653.2501}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &193658064
@@ -15379,7 +15379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -882.7499}
+  m_AnchoredPosition: {x: 10, y: -912}
   m_SizeDelta: {x: 245.8867, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &580860236
@@ -16561,7 +16561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 733}
+  m_AnchoredPosition: {x: 10, y: 787}
   m_SizeDelta: {x: 245.887, y: 165.307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &623609772
@@ -16584,9 +16584,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le Blob se d\xE9place lentement : environ 1 cm toutes les heures, en alternant
-    des phases de contraction et de relaxation de leur membrane.\r\n\r\nCette force
-    cr\xE9\xE9e passe dans le r\xE9seau veineux et permet au Blob de se mouvoir.\r\n"
+  m_text: "Le Blob se d\xE9place lentement : environ un centim\xE8tre toutes les
+    heures, en alternant des phases de contraction et de relaxation de leur membrane.\r\n\r\nCette
+    force cr\xE9\xE9e passe dans le r\xE9seau veineux et permet au Blob de se mouvoir.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -25478,8 +25478,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Comme il n\u2019a pas de t\xEAte, le Blob peut se d\xE9placer \xE0 partir
     de n\u2019importe quel endroit de son corps !\r\n\r\nAffam\xE9, il peut multiplier
-    sa vitesse par 4.\r\n\r\nD\u2019ailleurs, le Blob se d\xE9place toujours de la
-    mani\xE8re la plus optimis\xE9e entre sa nourriture et lui !\r\n"
+    sa vitesse par quatre.\r\n\r\nD\u2019ailleurs, le Blob se d\xE9place toujours
+    de la mani\xE8re la plus optimis\xE9e entre sa nourriture et lui !\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -27730,7 +27730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.28}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60.77729}
+  m_AnchoredPosition: {x: 0, y: -60.77733}
   m_SizeDelta: {x: 800, y: 1773.497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092186774
@@ -27861,8 +27861,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 660}
-  m_SizeDelta: {x: 250, y: 139.255}
+  m_AnchoredPosition: {x: 8, y: 660}
+  m_SizeDelta: {x: 253.77, y: 139.255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100597718
 MonoBehaviour:
@@ -27886,8 +27886,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Deux Blobs peuvent fusionner et n\u2019en former qu\u2019un ! Il n\u2019y
     a que trois conditions : \xEAtre de la m\xEAme esp\xE8ce, venir du m\xEAme pays
-    et \xEAtre de type sexuel diff\xE9rent. D\u2019ailleurs, les Blobs en ont 720
-    !\r\n"
+    et \xEAtre de type sexuel diff\xE9rent. D\u2019ailleurs, les Blobs en ont sept-cent-vingt
+    !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -28216,7 +28216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -88.30049}
+  m_AnchoredPosition: {x: 0, y: -88.30066}
   m_SizeDelta: {x: 550, y: 2074.507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1118686466
@@ -35323,8 +35323,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75.14153}
-  m_SizeDelta: {x: 800, y: 1877.121}
+  m_AnchoredPosition: {x: 0, y: -83.35182}
+  m_SizeDelta: {x: 800, y: 2000.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1379584505
 PrefabInstance:
@@ -37947,8 +37947,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Les premiers Blobs sont apparus sur Terre il y a environ 1 milliard d\u2019ann\xE9es
-    et sont encore plus vieux que les dinosaures.\r\n"
+  m_text: "Les premiers Blobs sont apparus sur Terre il y a environ un milliard d\u2019ann\xE9es
+    et sont encore plus vieux que les dinosaures.\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ffe69165da5fc194db1ce27418eed264, type: 2}
@@ -45753,7 +45753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -623.99994}
+  m_AnchoredPosition: {x: 0, y: -653.25006}
   m_SizeDelta: {x: 750, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716864025
@@ -51182,7 +51182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Humides et gluants, il en existe des ronds, des fins, des roses, des blancs\u2026
-    Plus de mille esp\xE8ces ont d\xE9j\xE0 \xE9t\xE9 identifi\xE9es !\r\n\r\nC\u2019est
+    Plus de mille esp\xE8ces ont d\xE9j\xE0 \xE9t\xE9 identifi\xE9es !\r\r\n\r\nC\u2019est
     un microorganisme vivant compos\xE9 d\u2019une seule cellule.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}

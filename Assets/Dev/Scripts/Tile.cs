@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     public GameObject canBeSelectedSprite;
     public GameObject selectedSprite;
     public GameObject gooSprite;
+    public GameObject targetForBeetleDisplay;
     public GameObject enemyGooSprite;
     public GameObject foodObject;
     public GameObject enemySpawnParent;

@@ -191,7 +191,7 @@ public class Player : Entity
             case AnimationType.Teleport:
                 anim.SetBool("isRetracting", true);
 
-                await Task.Delay(1200);
+                await Task.Delay(1100);
 
                 GetComponent<SpriteRenderer>().sortingOrder = currentTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
                 transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y + (LevelEditor.instance.offsetY * 2), currentTile.transform.position.z);

@@ -1042,11 +1042,11 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
     }
     public void SetTargetTileBeetleOn(Tile target)
     {
-        tileDisplayManager.SetTileDisplayEnemySpawnON(target);
+        tileDisplayManager.SetTileDisplayBeetleTargetON(target);
     }
     public void SetTargetTileBeetleOff(Tile target)
     {
-        tileDisplayManager.SetTileDisplayEnemySpawnOFF(target);
+        tileDisplayManager.SetTileDisplayBeetleTargetOFF(target);
     }
 
     public void OnDrawGizmos()

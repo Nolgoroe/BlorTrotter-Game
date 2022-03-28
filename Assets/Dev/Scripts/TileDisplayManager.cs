@@ -51,4 +51,15 @@ public class TileDisplayManager : MonoBehaviour
     {
         tile.enemySpawnParent.SetActive(false);
     }
+
+    public void SetTileDisplayBeetleTargetON(Tile tile)
+    {
+        tile.targetForBeetleDisplay.SetActive(true);
+
+        tile.targetForBeetleDisplay.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+    }
+    public void SetTileDisplayBeetleTargetOFF(Tile tile)
+    {
+        tile.targetForBeetleDisplay.SetActive(false);
+    }
 }
