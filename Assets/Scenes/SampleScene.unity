@@ -9269,7 +9269,7 @@ MonoBehaviour:
   - enumSound: 2
     theSoundClip: {fileID: 8300000, guid: b4f823f404708e14fba812b85cd799a1, type: 3}
   - enumSound: 3
-    theSoundClip: {fileID: 8300000, guid: fa6a3d078f62c1f41be2a47b0cf86931, type: 3}
+    theSoundClip: {fileID: 8300000, guid: b4f823f404708e14fba812b85cd799a1, type: 3}
   - enumSound: 4
     theSoundClip: {fileID: 8300000, guid: 00215b31ae84bb740b2d2b706574a39e, type: 3}
   - enumSound: 5
@@ -9286,6 +9286,10 @@ MonoBehaviour:
     theSoundClip: {fileID: 8300000, guid: 1e21695109aab85489667197f7718ec1, type: 3}
   - enumSound: 11
     theSoundClip: {fileID: 8300000, guid: 75f62d1169ad638408e72bde18e99123, type: 3}
+  - enumSound: 12
+    theSoundClip: {fileID: 8300000, guid: 6f7b3625e87700c45a78127bbddbe19c, type: 3}
+  - enumSound: 13
+    theSoundClip: {fileID: 8300000, guid: 4ca208268c3b2e44f9240dbe56d95ed7, type: 3}
   canHearMusic: 0
   canHearSounds: 0
 --- !u!1 &317554333
@@ -33295,30 +33299,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptions:
   - type: 0
-    description: "Le <color=#E47623>soleil</color> fait perdre des points de d\xE9placements. "
+    description: "Le <color=#E47623>soleil</color> fait perdre des points de d\xE9placements."
   - type: 1
     description: "R\xE9cup\xE8re toutes les <color=#B57523>c\xE9r\xE9ales</color>
-      pour finir le niveau. "
+      pour finir le niveau."
   - type: 2
-    description: "D\xE9place <color=#F7C924>Bloub</color> en touchant une case adjacente. "
+    description: "D\xE9place <color=#F7C924>Bloub</color> en touchant une case adjacente."
   - type: 3
     description: "Fusionne avec ce blob pour r\xE9cup\xE9rer sa r\xE9sistance au
       <color=#48A6C0>sel</color>."
   - type: 4
-    description: 'Cherche le blob de <color=#48A6C0>sel</color> pour pouvoir passer. '
+    description: Cherche le blob de <color=#48A6C0>sel</color> pour pouvoir passer.
   - type: 5
-    description: "Fusionne avec ce blob pour gagner sa r\xE9sistance \xE0 la <color=#DC3A79>quinine</color>. "
+    description: "Fusionne avec ce blob pour gagner sa r\xE9sistance \xE0 la <color=#DC3A79>quinine</color>."
   - type: 6
-    description: 'Cherche le blob de <color=#DC3A79>quinine</color> pour pouvoir
-      passer. '
+    description: Cherche le blob de <color=#DC3A79>quinine</color> pour pouvoir passer.
   - type: 7
     description: "\xC9vite cette <color=#D34E2F>limace</color>, elle pourrait te
-      manger. "
+      manger."
   - type: 8
-    description: 'Le mucus de la <color=#D34E2F>limace</color> te bloque le passage. '
+    description: Le mucus de la <color=#D34E2F>limace</color> te bloque le passage.
   - type: 9
     description: "Le <color=#5124F9>scarab\xE9e</color> transporte la nourriture
-      ailleurs.  "
+      ailleurs."
 --- !u!1 &1327481731
 GameObject:
   m_ObjectHideFlags: 0
@@ -58652,6 +58655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  isFlippedEaten: 0
 --- !u!114 &4221203026471954865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60359,6 +60363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  isFlippedEaten: 0
 --- !u!114 &8176397192164442416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60931,6 +60936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  isFlippedEaten: 0
 --- !u!224 &8838951363196544042
 RectTransform:
   m_ObjectHideFlags: 0

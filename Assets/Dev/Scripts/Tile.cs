@@ -71,9 +71,9 @@ public class Tile : MonoBehaviour
     }
     public void SetEnemySpawnDataBeetle()
     {
-        isFull = true;
-        isGooPiece = false;
-        isBeetleForTutorial = true;
+        //isFull = true;
+        //isGooPiece = false;
+        //isBeetleForTutorial = true;
 
         //isFood = false;
 

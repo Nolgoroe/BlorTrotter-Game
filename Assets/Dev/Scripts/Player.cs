@@ -138,6 +138,7 @@ public class Player : Entity
 
 
                     currentTile.isFood = false;
+                    currentTile.isFull = false;
 
                     if(!currentTile.isKinine && !currentTile.isSalt)
                     {
@@ -236,7 +237,7 @@ public class Player : Entity
 
         GridManager.instance.SetInteractableTilesDisplay(this);
 
-        //LevelManager.instance.CheckLoseLevel();
+        LevelManager.instance.CheckLoseLevel();
 
         await Task.Yield();
     }

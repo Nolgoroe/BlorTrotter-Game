@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour, IManageable
         ChooseLevel(index);
 
         SoundManager.instance.StopMusic();
-        SoundManager.instance.PlaySound(SoundManager.instance.musicAudioSource, currentLevel.levelMusic);
+        SoundManager.instance.PlayMusic(SoundManager.instance.musicAudioSource, currentLevel.levelMusic);
 
         ResetDataStartLevel();
         LoadLevel();

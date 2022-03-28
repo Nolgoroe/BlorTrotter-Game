@@ -20,19 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1364398040992102820, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: 1364398040992102820, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.083333336
-      value: {fileID: 9080748416637837461, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: 9080748416637837461, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.16666667
-      value: {fileID: 7448229747927721948, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: 7448229747927721948, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.25
-      value: {fileID: -7681944659709511347, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: -7681944659709511347, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.33333334
-      value: {fileID: 4153545565581182762, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: 4153545565581182762, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.41666666
-      value: {fileID: -3717860296792740745, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: -3717860296792740745, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.5
-      value: {fileID: 1209664524407819405, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+      value: {fileID: 1209664524407819405, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - time: 0.5833333
       value: {fileID: 0}
     attribute: m_Sprite
@@ -54,13 +54,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1364398040992102820, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
-    - {fileID: 9080748416637837461, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
-    - {fileID: 7448229747927721948, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
-    - {fileID: -7681944659709511347, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
-    - {fileID: 4153545565581182762, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
-    - {fileID: -3717860296792740745, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
-    - {fileID: 1209664524407819405, guid: 9b7484a02c35b6543a3d4dfa0e067974, type: 3}
+    - {fileID: 1364398040992102820, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
+    - {fileID: 9080748416637837461, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
+    - {fileID: 7448229747927721948, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
+    - {fileID: -7681944659709511347, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
+    - {fileID: 4153545565581182762, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
+    - {fileID: -3717860296792740745, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
+    - {fileID: 1209664524407819405, guid: 0948b22b634cbbc459bffacc0d45bf05, type: 3}
     - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -89,6 +89,13 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: BeetleTeleportFromData
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: BeetleCarryFoodDataDissappear
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -13,9 +13,13 @@ public class Beetle : Entity
     public bool hasPickedFood;
     public GameObject foodObject;
 
+    public GameObject foodCarryDisplay;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        foodCarryDisplay.SetActive(false);
     }
 
     public override async Task ManageTurnStart()
@@ -87,11 +91,16 @@ public class Beetle : Entity
         currentTile.isBeetle = true;
     }
 
-    public void CheckEatFood()
+    public async void CheckEatFood()
     {
         if (currentTile.isFood)
         {
             EatFood(currentTile);
+
+            await Task.Delay(415);
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Beetle_Eat);
+
+            foodCarryDisplay.SetActive(true);
         }
         else
         {
@@ -101,6 +110,9 @@ public class Beetle : Entity
         if (currentTile.isGooPiece)
         {
             EatGooPiece(currentTile);
+
+            await Task.Delay(415);
+            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Beetle_Eat);
         }
     }
 
@@ -109,6 +121,7 @@ public class Beetle : Entity
         target.isGooPiece = false;
         GridManager.instance.RemoveGooTileDisplay(target);
         EntityManager.instance.GetPlayer().RemoveGooTiles(target);
+        EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Hurt);
 
         if (target.isMainPlayerBody)
         {
@@ -141,6 +154,8 @@ public class Beetle : Entity
         if (!currentTile.isFood && foodObject && !hasPickedFood)
         {
             MoveFoodObject(foodObject);
+
+            foodCarryDisplay.SetActive(false);
         }
     }
 

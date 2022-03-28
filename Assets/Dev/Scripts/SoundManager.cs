@@ -18,7 +18,8 @@ public enum Sounds
     TwoStar,
     ThreeStar,
     MenuMusic,
-
+    Beetle_Eat,
+    Beetle_Flight,
     //// Add all sounds here
 }
 
@@ -70,12 +71,34 @@ public class SoundManager : MonoBehaviour, IManageable   //singleton , only inst
     {
         //source.PlayOneShot(enumToSound[soundEnum]);
 
-        source.clip = enumToSound[soundEnum];
+        source.PlayOneShot(enumToSound[soundEnum]);
+    }
+    public void PlaySoundFadeOut(AudioSource source, Sounds soundEnum)
+    {
+        //source.PlayOneShot(enumToSound[soundEnum]);
+
+        source.PlayOneShot(enumToSound[soundEnum]);
+
+        float originalVolume = SFXAudioSource.volume;
+
+        LeanTween.value(SFXAudioSource.gameObject, SFXAudioSource.volume, 0, 2.6f).setOnComplete(() => SFXAudioSource.volume = originalVolume).setOnUpdate((float val) =>
+        {
+            SFXAudioSource.volume = val;
+        });
+    }
+    public void PlaySoundAsClip(AudioSource source, AudioClip SFX, bool isLooping)
+    {
+        if (isLooping)
+        {
+            source.loop = true;
+        }
+
+        source.clip = SFX;
 
         source.Play();
     }
 
-    public void PlaySound(AudioSource source, AudioClip music)
+    public void PlayMusic(AudioSource source, AudioClip music)
     {
         source.clip = music;
 

@@ -194,6 +194,7 @@ public class UIManager : MonoBehaviour, IManageable
 
     public async void TypeWriterWrite(string textToType, TMP_Text textObjectToChange)
     {
+        textObjectToChange.text = "";
         string originalString = textToType;
 
         int numCharsRevealed = 0;
@@ -300,7 +301,8 @@ public class UIManager : MonoBehaviour, IManageable
         DeactivateSpecificScreens(new UIScreenTypes[] { UIScreenTypes.StartGifScreen});
 
         SoundManager.instance.StopMusic();
-        SoundManager.instance.PlaySound(SoundManager.instance.musicAudioSource, Sounds.MenuMusic);
+        
+        SoundManager.instance.PlayMusic(SoundManager.instance.musicAudioSource, SoundManager.instance.enumToSound[Sounds.MenuMusic]);
 
         DisplaySpecificScreens(new UIScreenTypes[] { UIScreenTypes.MainMenu, UIScreenTypes.MenuBG });
 

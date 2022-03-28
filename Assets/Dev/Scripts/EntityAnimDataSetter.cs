@@ -105,6 +105,7 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
         Tile current = GetComponent<Beetle>().currentTile;
 
         current.isBeetleForTutorial = false;
+
     }
 
     public void ResetTeleportFromData()
@@ -116,4 +117,26 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
         current.isBeetleForTutorial = true;
     }
 
+
+    public void BeetleFlyData()
+    {
+        SoundManager.instance.PlaySoundFadeOut(SoundManager.instance.SFXAudioSource, Sounds.Beetle_Flight);
+    }
+    public void BeetleCarryFoodData()
+    {
+        Vector3 newV = transform.GetComponent<Beetle>().foodCarryDisplay.transform.localPosition;
+
+        transform.GetComponent<Beetle>().foodCarryDisplay.transform.localPosition = new Vector3(newV.x, newV.y + 0.75f, newV.z);
+    }
+    public void BeetleCarryFoodDataDissappear()
+    {
+        transform.GetComponent<Beetle>().foodCarryDisplay.SetActive(false);
+    }
+    public void BeetleCarryFoodDataAppear()
+    {
+        if (transform.GetComponent<Beetle>().hasPickedFood)
+        {
+            transform.GetComponent<Beetle>().foodCarryDisplay.SetActive(true);
+        }
+    }
 }
