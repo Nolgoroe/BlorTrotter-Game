@@ -397,7 +397,7 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                     if (toSummon.CompareTag("Lock Salt"))
                     {
-
+                        t.isSaltTile = true;
                         LevelManager.instance.saltLocks.Add(anim);
 
                         GreyScalLock greyScale =  toSummon.GetComponent<GreyScalLock>();
@@ -406,19 +406,19 @@ public class LevelEditor : MonoBehaviour, IManageable
                         SpriteRenderer greyScaleChildTwo = greyScale.childGrey.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
                         greyScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
+                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
                         SpriteRenderer colorScaleChildOne = greyScale.childColor.transform.GetChild(0).GetComponent<SpriteRenderer>();
                         SpriteRenderer colorScaleChildTwo = greyScale.childColor.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
                         colorScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
+                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
 
 
                         greyScale.childGrey.SetActive(true);
                         greyScale.childColor.SetActive(false);
-                        t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.SaltTile);
+                        //t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.SaltTile);
 
                         t.connectedLockDisplay = toSummon;
 
@@ -426,6 +426,8 @@ public class LevelEditor : MonoBehaviour, IManageable
                     }
                     else
                     {
+                        t.isKinineTile = true;
+
                         LevelManager.instance.kinineLocks.Add(anim);
 
                         GreyScalLock greyScale = toSummon.GetComponent<GreyScalLock>();
@@ -434,19 +436,19 @@ public class LevelEditor : MonoBehaviour, IManageable
                         SpriteRenderer greyScaleChildTwo = greyScale.childGrey.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
                         greyScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
+                        greyScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
                         SpriteRenderer colorScaleChildOne = greyScale.childColor.transform.GetChild(0).GetComponent<SpriteRenderer>();
                         SpriteRenderer colorScaleChildTwo = greyScale.childColor.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
                         colorScaleChildOne.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder;
-                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 2;
+                        colorScaleChildTwo.sortingOrder = parentObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
 
 
                         greyScale.childGrey.SetActive(true);
                         greyScale.childColor.SetActive(false);
-                        t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.kinineTile);
+                        //t.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.kinineTile);
 
                         t.connectedLockDisplay = toSummon;
 

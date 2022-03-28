@@ -230,7 +230,7 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         UIManager.instance.kininePowerSprite.SetActive(true);
 
-        await Task.Delay(1000);
+        await Task.Delay(150);
 
         UnlcokKinine();
     }
@@ -239,7 +239,7 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         UIManager.instance.saltPowerSprite.SetActive(true);
 
-        await Task.Delay(1000);
+        await Task.Delay(150);
 
         UnlockSalt();
     }

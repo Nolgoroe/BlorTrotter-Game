@@ -89,6 +89,8 @@ public class Player : Entity
         //    EntityManager.instance.SetPlayerTurn();
         //}
 
+        GetAdjacentcyData();
+
         LevelManager.instance.CheckLoseLevel();
 
         await Task.Delay(500);
@@ -157,8 +159,6 @@ public class Player : Entity
                     }
 
                     currentTile.foodObject = null;
-
-                    GetAdjacentcyData();
                 }
 
                 if (!LevelManager.instance.levelEnded)

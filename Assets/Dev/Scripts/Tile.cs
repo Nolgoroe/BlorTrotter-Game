@@ -31,7 +31,9 @@ public class Tile : MonoBehaviour
     public bool isSlugBody;  //new
     public bool isFood;  //new
     public bool isKinine;  //new
+    public bool isKinineTile;  //new
     public bool isSalt;  //new
+    public bool isSaltTile;  //new
     public bool isLightTile;
 
     public int gCost, hCost;

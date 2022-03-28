@@ -8,7 +8,7 @@ using System.Linq;
 
 public enum TypeOfTutorial
 {
-    Godray, Food, SelectableTiles, Salt, SaltTile, Kinine, kinineTile, Slug, SlugMucus, Beetle
+    Godray, Food, SelectableTiles, Salt, SaltTile, Kinine, kinineTile, Slug, SlugMucus, Beetle, SaltTileUnlocked, KinineTileUnlocked
 }
 
 public class TutorialManager : MonoBehaviour, IManageable
@@ -61,6 +61,35 @@ public class TutorialManager : MonoBehaviour, IManageable
         {
             DisplaySpecificText(TypeOfTutorial.SlugMucus);
             return;
+        }
+
+        if (t.isSaltTile)
+        {
+            if (t.isLocked)
+            {
+                DisplaySpecificText(TypeOfTutorial.SaltTile);
+                return;
+            }
+            else
+            {
+                DisplaySpecificText(TypeOfTutorial.SaltTileUnlocked);
+                return;
+            }
+        }
+
+        if (t.isKinineTile)
+        {
+            if (t.isLocked)
+            {
+                DisplaySpecificText(TypeOfTutorial.kinineTile);
+                return;
+            }
+            else
+            {
+                DisplaySpecificText(TypeOfTutorial.KinineTileUnlocked);
+                return;
+            }
+
         }
     }
 

@@ -3997,7 +3997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &84271926
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6404,7 +6404,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1502219711
   m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &188280377
 GameObject:
@@ -10584,7 +10584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: cycle de ve
+  m_text: Cycle de vie
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8fb3390100b954b80ed4571731825a, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 790f866ef02d9eb46ad327285d964189, type: 2}
@@ -10611,7 +10611,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 27.65
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20975,7 +20975,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1502219711
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &843143915
 GameObject:
@@ -27691,7 +27691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.28}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60.77733}
+  m_AnchoredPosition: {x: 0, y: -60.77736}
   m_SizeDelta: {x: 800, y: 1773.497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092186774
@@ -32877,7 +32877,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1502219711
   m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1289396707
 GameObject:
@@ -34006,6 +34006,10 @@ MonoBehaviour:
   - type: 9
     description: "Le <color=#5124F9>scarab\xE9e</color> transporte la nourriture
       ailleurs."
+  - type: 10
+    description: "D\xE9place <color=#F7C924>Bloub</color> en touchant une case adjacente."
+  - type: 11
+    description: "D\xE9place <color=#F7C924>Bloub</color> en touchant une case adjacente."
 --- !u!1 &1327481731
 GameObject:
   m_ObjectHideFlags: 0
