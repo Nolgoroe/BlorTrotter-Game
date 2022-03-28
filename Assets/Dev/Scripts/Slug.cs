@@ -22,78 +22,87 @@ public class Slug : Entity
 
     public override async Task MoveEntity(Tile targetTile)
     {
-        GridManager.instance.SetTileFull(currentTile);
-
-        currentTile.isEnemyGooPiece = true;
-        targetTile.isEnemyGooPiece = true;
-        currentTile.isSlugBody = false;
-        targetTile.isSlugBody = true;
-
-        //currentTile.turnsUntilEnemyGooDissappears = 3;
-        targetTile.turnsUntilEnemyGooDissappears = 3;
-
-        if (!GridManager.instance.allEnemyGooTiles.Contains(currentTile))
+        if (!targetTile.isBeetle || !targetTile.isSlugBody)
         {
-            GridManager.instance.allEnemyGooTiles.Add(currentTile);
-        }
+            GridManager.instance.SetTileFull(currentTile);
 
-        if (!GridManager.instance.allEnemyGooTiles.Contains(targetTile))
-        {
-            GridManager.instance.allEnemyGooTiles.Add(targetTile);
-        }
+            currentTile.isEnemyGooPiece = true;
+            targetTile.isEnemyGooPiece = true;
+            currentTile.isSlugBody = false;
+            targetTile.isSlugBody = true;
 
-        DetectMoveDirection(currentTile, targetTile);
+            //currentTile.turnsUntilEnemyGooDissappears = 3;
+            targetTile.turnsUntilEnemyGooDissappears = 3;
 
-        if (!gooTiles.Contains(currentTile))
-        {
-            gooTiles.Add(currentTile);
-        }
+            if (!GridManager.instance.allEnemyGooTiles.Contains(currentTile))
+            {
+                GridManager.instance.allEnemyGooTiles.Add(currentTile);
+            }
 
-        if (!gooTiles.Contains(targetTile))
-        {
-            gooTiles.Add(targetTile);
-        }
+            if (!GridManager.instance.allEnemyGooTiles.Contains(targetTile))
+            {
+                GridManager.instance.allEnemyGooTiles.Add(targetTile);
+            }
 
+            DetectMoveDirection(currentTile, targetTile);
 
-        await Task.Delay(300);
+            if (!gooTiles.Contains(currentTile))
+            {
+                gooTiles.Add(currentTile);
+            }
 
-        CheckWhatIsNextTile(currentTile, targetTile);
-
-
-
-        await Task.Delay(300);
-
-        foreach (Tile element in gooTiles)
-        {
-            GridManager.instance.LeaveGooOnTileEnemy(element);
-        }
+            if (!gooTiles.Contains(targetTile))
+            {
+                gooTiles.Add(targetTile);
+            }
 
 
-        currentTile = targetTile;
+            await Task.Delay(300);
 
-        PlayAnimation(AnimationType.Move);
-
-        GridManager.instance.SetTileFull(targetTile);
+            CheckWhatIsNextTile(currentTile, targetTile);
 
 
-        if (currentTile.isGooPiece)
-        {
-            EatGooPiece(targetTile);
-        }
 
-        enemyPath.RemoveAt(0);
+            await Task.Delay(300);
+
+            foreach (Tile element in gooTiles)
+            {
+                GridManager.instance.LeaveGooOnTileEnemy(element);
+            }
 
 
-        await Task.Delay(100);
-        if (enemyPath.Count > 0)
-        {
-            CalculateDirectionNextTile(currentTile, enemyPath[0], this);
+            currentTile = targetTile;
+
+            PlayAnimation(AnimationType.Move);
+
+            GridManager.instance.SetTileFull(targetTile);
+
+
+            if (currentTile.isGooPiece)
+            {
+                EatGooPiece(targetTile);
+            }
+
+            enemyPath.RemoveAt(0);
+
+
+            await Task.Delay(100);
+            if (enemyPath.Count > 0)
+            {
+                CalculateDirectionNextTile(currentTile, enemyPath[0], this);
+            }
+            else
+            {
+                TurnOffAllEnemyArrows();
+            }
+            //Debug.Log("ENEMY DONE");
         }
         else
         {
-            TurnOffAllEnemyArrows();
+            Debug.LogError("Target Is Enemy");
+
+            return;
         }
-        //Debug.Log("ENEMY DONE");
     }
 
     public override async Task PlayAnimation(AnimationType animType)
@@ -254,19 +263,20 @@ public class Slug : Entity
         await Task.Yield();
     }
 
-    public void EatGooPiece(Tile target)
+    public async void EatGooPiece(Tile target)
     {
         target.isGooPiece = false;
         GridManager.instance.RemoveGooTileDisplay(target);
         EntityManager.instance.GetPlayer().RemoveGooTiles(target);
 
+        await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Hurt);
+
+        await Task.Delay(750);
         if (target.isMainPlayerBody)
         {
             target.isMainPlayerBody = false;
             EntityManager.instance.SpawnPlayerRandomGooLocation();
         }
-
-        EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Hurt);
     }
 
     public override void ReleaseTargetTile()

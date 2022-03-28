@@ -23,7 +23,7 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
 
         await Task.Delay(500);
 
-        InputManager.instance.canRecieveInput = true; //new
+        //InputManager.instance.canRecieveInput = true; //new
     }
 
     public void ResetDataRotatingSlug()
@@ -52,11 +52,12 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     public async void ResetRetractData()
     {
         anim.SetBool("isRetracting", false);
-        SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Moving_Spawning);
-
-        await Task.Delay(1000);
+        //SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Moving_Spawning);
 
         InputManager.instance.canRecieveInput = true; //new
+
+        //await Task.Delay(1000);
+
     }
     public void SetRetractData()
     {

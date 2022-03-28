@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour, IManageable
 
         ChooseLevel(index);
 
+        SoundManager.instance.musicAudioSource.volume = UIManager.instance.musicSlider.value;
+
         SoundManager.instance.StopMusic();
         SoundManager.instance.PlayMusic(SoundManager.instance.musicAudioSource, currentLevel.levelMusic);
 
@@ -169,16 +171,19 @@ public class LevelManager : MonoBehaviour, IManageable
 
     public void CheckLoseLevel()
     {
-        if(ScoreManager.instance.currentLevelNumberOfMovesRemaining <= 0 || EntityManager.instance.GetPlayer().entityAdjacentTiles.Count == 0)
+        if (!levelEnded)
         {
-            InputManager.instance.canRecieveInput = false;
-            CameraController.canControlCamera = false;
-            levelEnded = true;
+            if (ScoreManager.instance.currentLevelNumberOfMovesRemaining <= 0 || EntityManager.instance.GetPlayer().entityAdjacentTiles.Count == 0)
+            {
+                InputManager.instance.canRecieveInput = false;
+                CameraController.canControlCamera = false;
+                levelEnded = true;
 
-            UIManager.instance.LoseLevelAnimationSequence();
+                UIManager.instance.LoseLevelAnimationSequence();
 
-            SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Lose);
-            Debug.Log("LOST LEVEL, OUT OF MOVES!");
+                SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Lose);
+                Debug.Log("LOST LEVEL, OUT OF MOVES!");
+            }
         }
     }
     public void CheckWinLevel()
@@ -225,7 +230,7 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         UIManager.instance.kininePowerSprite.SetActive(true);
 
-        //await Task.Delay(1000);
+        await Task.Delay(1000);
 
         UnlcokKinine();
     }
@@ -234,7 +239,7 @@ public class LevelManager : MonoBehaviour, IManageable
     {
         UIManager.instance.saltPowerSprite.SetActive(true);
 
-        //await Task.Delay(1000);
+        await Task.Delay(1000);
 
         UnlockSalt();
     }

@@ -66,29 +66,32 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         await player.MoveEntity(targetTile);
 
-        if (LevelManager.instance.currentLevel.hasEnemies)
+        if (!LevelManager.instance.levelEnded)
         {
-            if (GridManager.instance.allEnemyGooTiles.Count > 0)
+            if (LevelManager.instance.currentLevel.hasEnemies)
             {
-                GridManager.instance.CountdownEnemyGooTiles();
-            }
+                if (GridManager.instance.allEnemyGooTiles.Count > 0)
+                {
+                    GridManager.instance.CountdownEnemyGooTiles();
+                }
 
-            if (allEnemies.Count > 0)
-            {
-                MoveAllEnemies();
+                if (allEnemies.Count > 0)
+                {
+                    MoveAllEnemies();
+                }
+                else
+                {
+                    SetPlayerTurn();
+                }
+
+                DecreaseSpawnEnemyCooldown();
+
+                CheckNextSpawnTileEnemy();
             }
             else
             {
                 SetPlayerTurn();
             }
-
-            DecreaseSpawnEnemyCooldown();
-
-            CheckNextSpawnTileEnemy();
-        }
-        else
-        {
-            SetPlayerTurn();
         }
     }
 
@@ -100,6 +103,28 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         {
             if (!CheckLimitOfEnemiesReachedGlobal())
             {
+                if (summonSlug)
+                {
+                    if (nextTileToSpawnEnemySlug.isBeetleForTutorial || nextTileToSpawnEnemySlug.isSlugBody)
+                    {
+                        LevelManager.instance.currentCooldownSummonEnemies++;
+                        Debug.LogError("Tried to spawn on enemy");
+                        return;
+                    }
+
+                }
+
+                if (summonBeetle)
+                {
+                    if (nextTileToSpawnEnemyBeetle.isBeetleForTutorial || nextTileToSpawnEnemyBeetle.isSlugBody)
+                    {
+                        LevelManager.instance.currentCooldownSummonEnemies++;
+                        Debug.LogError("Tried to spawn on enemy");
+                        return;
+                    }
+                }
+
+
                 SpawnEnemy();
             }
 
@@ -151,6 +176,9 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             bool reachedMaxConcurrentBeetles = CheckLimitOfEnemiesReached(EntityTypes.Beetle);
             bool reachedMaxConcurrentSlugs = CheckLimitOfEnemiesReached(EntityTypes.Slug);
 
+            Debug.Log("Max beetles: " + reachedMaxConcurrentBeetles);
+            Debug.Log("Max Slugs: " + reachedMaxConcurrentSlugs);
+
             if (!reachedMaxConcurrentBeetles && !reachedMaxConcurrentSlugs)
             {
                 int rand = UnityEngine.Random.Range(0, 2);
@@ -188,7 +216,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
     {
         if (summonSlug)
         {
-
+            summonSlug = false;
             GameObject toSummon = Instantiate(slugPrefab, nextTileToSpawnEnemySlug.transform);
             Transform parent = nextTileToSpawnEnemySlug.transform;
             Entity et = toSummon.transform.GetChild(0).GetComponent<Slug>();
@@ -235,6 +263,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         }
         else
         {
+            summonBeetle = false;
             GameObject toSummon = Instantiate(beetlePrefab, nextTileToSpawnEnemyBeetle.transform);
 
             Transform parent = nextTileToSpawnEnemyBeetle.transform;

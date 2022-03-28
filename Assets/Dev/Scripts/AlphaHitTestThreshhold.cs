@@ -13,6 +13,10 @@ public class AlphaHitTestThreshhold : MonoBehaviour
     {
         theButton = GetComponent<Image>();
 
+    }
+
+    private void Update()
+    {
         theButton.alphaHitTestMinimumThreshold = threshhold;
     }
 }

@@ -89,7 +89,7 @@ public class Player : Entity
         //    EntityManager.instance.SetPlayerTurn();
         //}
 
-        //LevelManager.instance.CheckLoseLevel();
+        LevelManager.instance.CheckLoseLevel();
 
         await Task.Delay(500);
     }
@@ -181,7 +181,7 @@ public class Player : Entity
                 break;
             case AnimationType.Hurt:
                 anim.SetBool("isHurting", true);
-                await Task.Delay(500);
+                //await Task.Delay(250);
 
                 SoundManager.instance.PlaySound(SoundManager.instance.SFXAudioSource, Sounds.Blob_Hurt);
 
@@ -227,6 +227,8 @@ public class Player : Entity
 
     public override async Task ManageTurnStart() 
     {
+        InputManager.instance.canRecieveInput = true; //new
+
         isPlayerTurn = true;
 
         entityAdjacentTiles.Clear();

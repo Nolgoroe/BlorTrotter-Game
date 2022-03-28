@@ -38,10 +38,20 @@ public class Beetle : Entity
 
         currentAnimState++;
 
-        if(currentAnimState == 1)
+        if (currentAnimState == 1)
         {
             currentTile.isFull = false;
             currentTile.isBeetle = false;
+        }
+
+        if(currentAnimState == 2)
+        {
+            if (PublicTargetTile.isBeetleForTutorial || PublicTargetTile.isSlugBody)
+            {
+                currentAnimState--;
+                Debug.LogError("Target Is Enemy");
+                return;
+            }
         }
 
         if (currentAnimState == anim.parameterCount) // 3 = num of animation booleans
@@ -52,7 +62,6 @@ public class Beetle : Entity
         }
 
         anim.SetBool(anim.parameters[currentAnimState].name, true);
-
 
 
     }
