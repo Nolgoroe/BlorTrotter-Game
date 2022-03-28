@@ -139,19 +139,19 @@ public class LevelEditor : MonoBehaviour, IManageable
 
                 int neighbourValue = 0;
 
-                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x+1), y) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x + 1), y).b - 1) <= threshold)) && (x + 1) != LevelManager.instance.currentLevel.levelMap.texture.width)
                 {
                     neighbourValue += 2; ///right
                 }
-                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x ), y + 1) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y + 1)).b - 1) <= threshold)) && (y + 1) != LevelManager.instance.currentLevel.levelMap.texture.height)
                 {
                     neighbourValue += 1; ///top
                 }
-                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x ), y - 1) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel(x, (y - 1)).b - 1) <= threshold)) && (y - 1) != -1)
                 {
                     neighbourValue += 4;///bottom 
                 }
-                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold)) || LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y) == null)
+                if (((Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).r - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).g - 0) <= threshold && Mathf.Abs(LevelManager.instance.currentLevel.levelMap.texture.GetPixel((x - 1), y).b - 1) <= threshold)) && (x - 1) != -1)
                 {
                     neighbourValue += 8;///left
                 }
@@ -193,7 +193,8 @@ public class LevelEditor : MonoBehaviour, IManageable
                 tile = Instantiate(waterTile, position, Quaternion.identity, ObjectRefrencer.instance.levelMap.transform);
                 tile.GetComponent<Tile>().cost = neighbourValue;
                 tile.GetComponent<Tile>().isFull = true;
-                
+                tile.GetComponent<Tile>().SetXY(x, y);
+
 
                 SpriteRenderer spriteRenderer = tile.GetComponent<SpriteRenderer>();
 
