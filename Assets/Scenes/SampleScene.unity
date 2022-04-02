@@ -24021,6 +24021,44 @@ MonoBehaviour:
   levelsSaved:
   - levelID: 0
     AmountOfStars: 0
+  - levelID: 1
+    AmountOfStars: 0
+  - levelID: 2
+    AmountOfStars: 0
+  - levelID: 3
+    AmountOfStars: 0
+  - levelID: 4
+    AmountOfStars: 0
+  - levelID: 5
+    AmountOfStars: 0
+  - levelID: 6
+    AmountOfStars: 0
+  - levelID: 7
+    AmountOfStars: 0
+  - levelID: 8
+    AmountOfStars: 0
+  - levelID: 9
+    AmountOfStars: 0
+  - levelID: 10
+    AmountOfStars: 0
+  - levelID: 11
+    AmountOfStars: 0
+  - levelID: 12
+    AmountOfStars: 0
+  - levelID: 13
+    AmountOfStars: 0
+  - levelID: 14
+    AmountOfStars: 0
+  - levelID: 15
+    AmountOfStars: 0
+  - levelID: 16
+    AmountOfStars: 0
+  - levelID: 17
+    AmountOfStars: 0
+  - levelID: 18
+    AmountOfStars: 0
+  - levelID: 19
+    AmountOfStars: 0
 --- !u!1 &973383741
 GameObject:
   m_ObjectHideFlags: 0
@@ -57531,7 +57569,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1502219711
   m_SortingLayer: 6
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7014960694433329034, guid: 67f9c671326cf21448fcfe6e17f8ebcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -59237,7 +59275,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1502219711
   m_SortingLayer: 6
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -6231917184833101518, guid: 03c55cc024fc4ff48bb36f27cf621e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -59945,7 +59983,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1502219711
   m_SortingLayer: 6
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -6887237087543478794, guid: 8825aea2adf02d94e9988c7f45a8f170, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -60533,7 +60571,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1502219711
   m_SortingLayer: 6
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -3476716428246494227, guid: 79e701405cdbc6842bbeaf57aa29b4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 450083661
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d4727d81717b754c8e99d68632c02d7, type: 3}
+  m_Sprite: {fileID: 5589434499652820852, guid: 1f447ea14b05e5a4ca5ee43b84406ca3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeSelectedSprite: {fileID: 0}
   selectedSprite: {fileID: 0}
+  gooSprite: {fileID: 0}
+  targetForBeetleDisplay: {fileID: 0}
+  enemyGooSprite: {fileID: 0}
+  foodObject: {fileID: 0}
+  enemySpawnParent: {fileID: 0}
+  connectedLockDisplay: {fileID: 0}
   cost: 0
   index: 0
   isFull: 0
+  isLocked: 0
   isWaterTile: 1
   isGooPiece: 0
+  isEnemyGooPiece: 0
+  isBeetle: 0
+  isBeetleForTutorial: 0
+  isAdjacentToMainBody: 0
+  isMainPlayerBody: 0
+  isSlugBody: 0
+  isFood: 0
+  isKinine: 0
+  isKinineTile: 0
+  isSalt: 0
+  isSaltTile: 0
+  isLightTile: 0
+  gCost: 0
+  hCost: 0
+  tileX: 0
+  tileY: 0
+  parentTileForPath: {fileID: 0}
+  playerTeleportTile: {fileID: 0}
+  GreyVer: {fileID: 0}
+  colorVer: {fileID: 0}
+  turnsUntilEnemyGooDissappears: 0
   edgeType: 0
