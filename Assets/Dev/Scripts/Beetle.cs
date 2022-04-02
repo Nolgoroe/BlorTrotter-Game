@@ -15,11 +15,14 @@ public class Beetle : Entity
 
     public GameObject foodCarryDisplay;
 
+    public GameObject smokeVFX;
     private void Start()
     {
         anim = GetComponent<Animator>();
 
         foodCarryDisplay.SetActive(false);
+
+        smokeVFX.SetActive(false);
     }
 
     public override async Task ManageTurnStart()

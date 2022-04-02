@@ -15,15 +15,20 @@ public class Slug : Entity
     public GameObject LeftArrowPrefab;
     public GameObject RightArrowPrefab;
 
+    public GameObject slugCrumbs;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        slugCrumbs.SetActive(false);
     }
 
     public override async Task MoveEntity(Tile targetTile)
     {
         if (!targetTile.isBeetleForTutorial && !targetTile.isSlugBody)
         {
+            slugCrumbs.SetActive(false);
             GridManager.instance.SetTileFull(currentTile);
 
             currentTile.isEnemyGooPiece = true;
@@ -266,12 +271,14 @@ public class Slug : Entity
     public async Task EatGooPiece(Tile target)
     {
         target.isGooPiece = false;
+        slugCrumbs.SetActive(true);
         GridManager.instance.RemoveGooTileDisplay(target);
         EntityManager.instance.GetPlayer().RemoveGooTiles(target);
 
         await EntityManager.instance.GetPlayer().PlayAnimation(AnimationType.Hurt);
 
         await Task.Delay(750);
+
         if (target.isMainPlayerBody)
         {
             target.isMainPlayerBody = false;
@@ -304,14 +311,14 @@ public class Slug : Entity
             calling.DownArrowPrefab.SetActive(true);
 
             calling.DownArrowPrefab.transform.position = new Vector3(calling.transform.position.x + 1, calling.transform.position.y - 1, calling.transform.position.z);
-            Debug.Log("Down");
+            //Debug.Log("Down");
         }
         else if (TileTo.tileY > from.tileY)
         {
             calling.UpArrowPrefab.SetActive(true);
 
             calling.UpArrowPrefab.transform.position = new Vector3(calling.transform.position.x - 1, calling.transform.position.y, calling.transform.position.z);
-            Debug.Log("up");
+            //Debug.Log("up");
 
         }
         else if (TileTo.tileX < from.tileX)
@@ -320,7 +327,7 @@ public class Slug : Entity
 
             calling.LeftArrowPrefab.transform.position = new Vector3(calling.transform.position.x - 1, calling.transform.position.y - 1, calling.transform.position.z);
 
-            Debug.Log("left");
+            //Debug.Log("left");
 
         }
         else if (TileTo.tileX > from.tileX)
@@ -329,7 +336,7 @@ public class Slug : Entity
 
             calling.RightArrowPrefab.transform.position = new Vector3(calling.transform.position.x + 1, calling.transform.position.y, calling.transform.position.z);
 
-            Debug.Log("right");
+            //Debug.Log("right");
 
         }
     }

@@ -145,4 +145,9 @@ public class EntityAnimDataSetter : MonoBehaviour // all new
     {
         GridManager.instance.SetTargetTileBeetleOn(GetComponent<Beetle>().PublicTargetTile);
     }
+
+    public void DeploySmokeLandBeetle()
+    {
+        transform.GetComponent<Beetle>().smokeVFX.SetActive(true);
+    }
 }

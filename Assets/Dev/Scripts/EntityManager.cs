@@ -36,7 +36,7 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
         beetleSpawnTiles = new List<Tile>();
         beetleTargetAndSpawnTiles = new List<Tile>();
 
-        Debug.Log("success Entity Manager");
+        //Debug.Log("success Entity Manager");
     }
 
     public void AddEnemyToEnemiesList(Entity enemyToAdd) // add enemy to the list 
@@ -176,8 +176,8 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             bool reachedMaxConcurrentBeetles = CheckLimitOfEnemiesReached(EntityTypes.Beetle);
             bool reachedMaxConcurrentSlugs = CheckLimitOfEnemiesReached(EntityTypes.Slug);
 
-            Debug.Log("Max beetles: " + reachedMaxConcurrentBeetles);
-            Debug.Log("Max Slugs: " + reachedMaxConcurrentSlugs);
+            //Debug.Log("Max beetles: " + reachedMaxConcurrentBeetles);
+            //Debug.Log("Max Slugs: " + reachedMaxConcurrentSlugs);
 
             if (!reachedMaxConcurrentBeetles && !reachedMaxConcurrentSlugs)
             {
@@ -221,13 +221,6 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
             Transform parent = nextTileToSpawnEnemySlug.transform;
             Entity et = toSummon.transform.GetChild(0).GetComponent<Slug>();
 
-            if (nextTileToSpawnEnemySlug.isGooPiece)
-            {
-                toSummon.transform.GetChild(0).GetComponent<Slug>().EatGooPiece(nextTileToSpawnEnemySlug);
-            }
-
-            nextTileToSpawnEnemySlug.SetEnemySpawnDataSlug();
-
 
             if (!GridManager.instance.allEnemyGooTiles.Contains(nextTileToSpawnEnemySlug))
             {
@@ -254,6 +247,14 @@ public class EntityManager : MonoBehaviour, IManageable  //singleton , only inst
 
 
             GridManager.instance.RemoveSpawnTileOff(nextTileToSpawnEnemySlug);
+
+
+            if (nextTileToSpawnEnemySlug.isGooPiece)
+            {
+                await toSummon.transform.GetChild(0).GetComponent<Slug>().EatGooPiece(nextTileToSpawnEnemySlug);
+            }
+
+            nextTileToSpawnEnemySlug.SetEnemySpawnDataSlug();
 
             nextTileToSpawnEnemySlug = null;
 

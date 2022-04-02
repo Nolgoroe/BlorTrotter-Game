@@ -3997,7 +3997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &84271926
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24020,44 +24020,6 @@ MonoBehaviour:
   maxLevelReached: -1
   levelsSaved:
   - levelID: 0
-    AmountOfStars: 0
-  - levelID: 1
-    AmountOfStars: 0
-  - levelID: 2
-    AmountOfStars: 0
-  - levelID: 3
-    AmountOfStars: 0
-  - levelID: 4
-    AmountOfStars: 0
-  - levelID: 5
-    AmountOfStars: 0
-  - levelID: 6
-    AmountOfStars: 0
-  - levelID: 7
-    AmountOfStars: 0
-  - levelID: 8
-    AmountOfStars: 0
-  - levelID: 9
-    AmountOfStars: 0
-  - levelID: 10
-    AmountOfStars: 0
-  - levelID: 11
-    AmountOfStars: 0
-  - levelID: 12
-    AmountOfStars: 0
-  - levelID: 13
-    AmountOfStars: 0
-  - levelID: 14
-    AmountOfStars: 0
-  - levelID: 15
-    AmountOfStars: 0
-  - levelID: 16
-    AmountOfStars: 0
-  - levelID: 17
-    AmountOfStars: 0
-  - levelID: 18
-    AmountOfStars: 0
-  - levelID: 19
     AmountOfStars: 0
 --- !u!1 &973383741
 GameObject:

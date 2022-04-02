@@ -44,7 +44,19 @@ public class Tile : MonoBehaviour
 
     public int turnsUntilEnemyGooDissappears;
 
+    public GameObject smokeV1, smokeV2;
 
+    private void Start()
+    {
+        if (isLightTile)
+        {
+            smokeV1.SetActive(false);
+            smokeV2.SetActive(false);
+
+            float time = Random.Range(10f, 20f);
+            InvokeRepeating("RollSmokeVFX", time, time);
+        }
+    }
     public int fCost // no need for set
     {
         get
@@ -69,7 +81,7 @@ public class Tile : MonoBehaviour
         isEnemyGooPiece = true;
         isSlugBody = true;
         isAdjacentToMainBody = false;
-        isMainPlayerBody = false;
+        //isMainPlayerBody = false;
         turnsUntilEnemyGooDissappears = 3;
     }
     public void SetEnemySpawnDataBeetle()
@@ -105,7 +117,7 @@ public class Tile : MonoBehaviour
             foodObject.GetComponent<Animator>().SetBool("Flip", true);
 
             foodObject.GetComponent<EntityAnimDataSetter>().isFlippedEaten = true;
-            Debug.Log("Down HERE NOW");
+            //Debug.Log("Down HERE NOW");
         }
         else if (TileTo.tileX < from.tileX)
         {
@@ -113,8 +125,23 @@ public class Tile : MonoBehaviour
 
             foodObject.GetComponent<EntityAnimDataSetter>().isFlippedEaten = true;
 
-            Debug.Log("right HERE NOW");
+            //Debug.Log("right HERE NOW");
 
+        }
+    }
+
+
+    public void RollSmokeVFX()
+    {
+        int rand = Random.Range(0, 2);
+
+        if(rand == 0)
+        {
+            smokeV1.SetActive(true);
+        }
+        else
+        {
+            smokeV2.SetActive(true);
         }
     }
 

@@ -27,7 +27,7 @@ public class GridManager : MonoBehaviour, IManageable  //singleton , only instan
 
         currentlySelectedTile = null;
 
-        Debug.Log("success Grid Manager");
+        //Debug.Log("success Grid Manager");
     }
 
     public void AddTileToTileList(Tile toAdd)
