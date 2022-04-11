@@ -64,32 +64,4 @@ public class ScoreManager : MonoBehaviour, IManageable   //singleton , only inst
 
         return score;
     }
-
-
-
-
-    [ContextMenu("Test add int")]
-    public void callUpdateLevelScoreInt() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        UpdateLevelScore(5);
-    }
-
-    [ContextMenu("Test add Float")]
-    public void callUpdateLevelScoreFloat() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        UpdateLevelScore(5.5f);
-    }
-
-    [ContextMenu("Test decrease int")]
-    public void callUpdateLevelScoreIntDecrease() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        UpdateLevelScore(-1);
-    }
-
-    [ContextMenu("Test decrease Float")]
-    public void callUpdateLevelScoreDecrease() //DELTE THIS AFTER SHOWING NATHAN
-    {
-        UpdateLevelScore(-2.34f);
-    }
-
 }

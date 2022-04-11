@@ -376,6 +376,8 @@ public class Player : Entity
             ScoreManager.instance.currentCollectedFood++;
             UIManager.instance.UpdateFoodAmount();
 
+            currentTile.CancelFoddInvoke();
+
             anim.SetBool("isBase", true);
             anim.SetBool("isPink", false);
             anim.SetBool("isBlue", false);

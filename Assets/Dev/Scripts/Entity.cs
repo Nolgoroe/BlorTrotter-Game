@@ -20,16 +20,10 @@ public abstract class Entity : MonoBehaviour // abstract class for inheritance a
         await Task.Yield();
     }
 
-    #region   
     public virtual void SetTargetTileForAstarPath() 
     {
         Debug.Log("not a player or enemy - problem");
     }
-
-
-
-    #endregion
-
 
     public virtual async Task PlayAnimation(AnimationType animType) //new
     {

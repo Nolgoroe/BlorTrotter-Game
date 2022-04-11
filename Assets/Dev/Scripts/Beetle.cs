@@ -149,6 +149,8 @@ public class Beetle : Entity
     {
         current.isFood = false;
 
+        current.CancelFoddInvoke();
+
         current.foodObject.SetActive(false); 
 
         foodObject = current.foodObject;
@@ -181,6 +183,8 @@ public class Beetle : Entity
         toMove.SetActive(true);
 
         currentTile.isFood = true;
+        currentTile.StartFoodInvoke();
+
         currentTile.foodObject = toMove;
 
         currentTile.gameObject.AddComponent<TutorialObject>().SetDescription(TypeOfTutorial.Food);

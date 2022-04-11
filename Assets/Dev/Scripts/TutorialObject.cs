@@ -38,12 +38,4 @@ public class TutorialObject : MonoBehaviour
             Debug.LogError("PROBLEM WITH TUTORIAL");
         }
     }
-
-
-    [ContextMenu("HERE")]
-    public void CallDisplayTutorialText() //DELETE THIS AFTER SHOWING NATHAN
-    {
-        EventManager.instance.ShootEvent(actionEvent);
-    }
-
 }

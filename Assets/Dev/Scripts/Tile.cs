@@ -45,6 +45,7 @@ public class Tile : MonoBehaviour
     public int turnsUntilEnemyGooDissappears;
 
     public GameObject smokeV1, smokeV2;
+    public GameObject foodSparkle;
 
     private void Start()
     {
@@ -53,8 +54,14 @@ public class Tile : MonoBehaviour
             smokeV1.SetActive(false);
             smokeV2.SetActive(false);
 
-            float time = Random.Range(10f, 20f);
-            InvokeRepeating("RollSmokeVFX", time, time);
+            float timeSmoke = Random.Range(8f, 18f);
+
+            InvokeRepeating("RollSmokeVFX", timeSmoke, timeSmoke);
+        }
+
+        if (isFood)
+        {
+            StartFoodInvoke();
         }
     }
     public int fCost // no need for set
@@ -133,16 +140,44 @@ public class Tile : MonoBehaviour
 
     public void RollSmokeVFX()
     {
-        int rand = Random.Range(0, 2);
+        if (!isMainPlayerBody)
+        {
+            int rand = Random.Range(0, 2);
 
-        if(rand == 0)
-        {
-            smokeV1.SetActive(true);
+            if (rand == 0)
+            {
+                smokeV1.SetActive(true);
+            }
+            else
+            {
+                smokeV2.SetActive(true);
+            }
         }
-        else
+    }
+    public void RollFoodVFX()
+    {
+        if (isFood)
         {
-            smokeV2.SetActive(true);
+            foodSparkle.SetActive(true);
         }
     }
 
+    public void CancelFoddInvoke()
+    {
+        CancelInvoke("RollFoodVFX");
+
+        Debug.Log("Canceled Invoke repeating food");
+    }
+
+    public void StartFoodInvoke()
+    {
+        foodSparkle.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 2;
+
+        foodSparkle.SetActive(false);
+
+        float timeFood = Random.Range(6f, 16f);
+        InvokeRepeating("RollFoodVFX", timeFood, timeFood);
+
+        Debug.Log("Started Food Invoke");
+    }
 }
